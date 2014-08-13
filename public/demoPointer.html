@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="raphael-min.js"></script>
+<div id="raphael1"></div>
+<style>
+    #raphael1{margin:0 auto;width:610px;height:610px;background:url('2.jpg') no-repeat 1px -7px;;overflow:hidden;opacity:0.7}
+</style>
+<script>
+    var canvasN = Raphael('raphael1', 610, 610);
+    var rapAll=[];//存放页面rect元素的“画”对象
+    var anim = Raphael.animation({"fill":"#green"}, 1e3);
+    function rectD(){
+        var maxL=600/100+1;//9*9
+        for(var j=0;j<maxL;j++){//生成坐标系
+            for(var n=0;n<maxL;n++){
+                var rect1=canvasN.rect(n*100,j*100,8,8);//矩形
+                rect1.attr({"fill":"#fa0a0a"})  //填充色
+                     .attr("stroke","none")     //去掉底边;
+                     .data("i", 'j='+j+' n='+n)
+                     .click(function () {
+                         alert(this.data("i"));
+                     });
+                rect1.node.id='A'+n*100+j*100;
+            }
+        }
+    }
+    rectD();
+
+
+    function circleD(){
+        var circle=[];
+        //canvasN.clear();//清掉过去的画布内容
+        for(var m=0;m<30;m++){//坐标动态生成
+            circle.push({x:Math.random()*600,y:Math.random()*600})
+        }
+        for(var j=0;j<circle.length;j++){//添加节点
+            var curr=circle[j];
+            var circle1=canvasN.rect(curr.x,curr.y,8,8);//圆
+            circle1.attr({"fill":"green"})  //填充色
+                    .attr("stroke","none")   //去掉边框
+                    .hover(function () {
+                        circle1.attr("fill", "#ff0000");
+                    }, function () {
+                        circle1.attr("fill", "green");
+                    });
+            circle1.node.id='C'+curr.x+curr.y;//C代表后期生产的，可删除；A代表坐标系不能删除
+            circle1.animate(anim.repeat(Infinity));//动画效果
+            rapAll.push(circle1);
+        }
+    }
+    setTimeout(function(){//rapAll存放已有的所有节点。。现在存档额
+        for(var m=0;m<rapAll.length;m++){
+            //console.log(rapAll[m],rapAll[m].node)//画布.node 则为dom元素
+            /**
+            if(rapAll[m].node.getAttribute('id')=='C00'){//删除某个节点。
+                rapAll[m].remove();
+                console.log(rapAll.length);
+            }
+            **/
+            if(m<10){//删除节点
+                rapAll[m].remove();
+                rapAll.splice(m,1);
+            }
+        }
+    },2000)
+    circleD();
+
+
+    /**
+    setInterval(function(){
+        circleD();
+    },2000)
+***/
+</script>
+
+</body>
+</html>
