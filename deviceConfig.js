@@ -21,7 +21,6 @@ exports.uuidArr=function(){
  var uuidArr_L=uuidArr.length;deviceConfig.uuidArr()
  **/
 
-
 /**uuidArr = [{pointSB:'a0',x:2,y:2},{pointSB:'a1',x:20,y:30}];格式。。//,Cacc:'FE添加的mpgAjax中每个距离acc'
  * 坐标系X----向右; Y----向下
  * pointSB:uuid+“_”+major+"_"+"minor"
