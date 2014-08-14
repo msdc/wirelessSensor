@@ -7,6 +7,9 @@ var http = require('http'),
     server=http.createServer(app);
 var io = require('socket.io')(server);
 var redis=require('redis');
+var sensor=require('./sensor.js');
+var trilateration=require("./Trilateration.js");
+var kmeans=require("./KMeansClustering.js");
 var path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -20,23 +23,51 @@ io.on('connection', function (socket) {
     socket.on('sensorData', function(data){
         client = redis.createClient();
         client.on("error", function (err) {
-            socket.emit('redisError',{});
+            if(err){ console.error(err);}
         });
 
-        if(!data.monitorPackage){
-            res.send({result:false,message:"数据格式错误！monitorPackage未指定！"});
-        }
+        client.keys('*',function(err,reply){
+            reply.forEach(function(key){
+                client.get(key, function(err,reply){
+                    if(err){console.error(err);}
+                    console.log(key);
+                    var tpNDataArray = [];
+                    var data;
+                    try
+                    {
+                        data=JSON.parse(reply);
+                    }catch(e)
+                    {
+                        return;
+                    }
 
-        var serializeJsonData=JSON.stringify(data);
-        //var timespan=new Date().getUTCMilliseconds();
-        //client.set(data.deviceSerial+"_"+timespan, serializeJsonData);
-        client.set("socket.io.test",serializeJsonData);
-        client.get("socket.io.test",function(err,reply){
-            if(err){console.error(err);}
-            console.log(reply);
+                    //exclude incorrect data.
+                    if(!data.deviceSerial){
+                        return;
+                    }
+
+                    tpNDataArray.push(data);
+                    var trlCal = new trilateration(tpNDataArray);
+
+                    trlCal.delKeyZero(function (pointDt) {
+                        for (var point in pointDt) {
+                            if(!pointDt[point].beaconCanculatePosition)break;//skip incorrect data in redis.
+                            kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
+                                socket.emit("result",finalPoint);
+                                console.log("deviceID=" + finalPoint.deviceID);
+                                console.log("timePoint=" + finalPoint.timePoint);
+                                console.log("deviceSerial=" + finalPoint.deviceSerial);
+                                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCanculatePosition[0].x+",\"y=\""+finalPoint.beaconCanculatePosition[0].y+"}]");
+                                //todo write back info the redis and trigger postback event using websocket
+                            });
+                        }
+                    });
+                });
+            });
             client.quit();
         });
     });
+
 });
 
 

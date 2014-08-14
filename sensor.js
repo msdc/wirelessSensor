@@ -134,29 +134,69 @@ exports.getSampleData=function(req,res){
         console.log("Error " + err);
     });
 
-    client.get('F2LJMKYDDTWD_173',function(err,reply){
+    client.keys('*',function(err,reply){
+        reply.forEach(function(key){
+            client.get(key, function(err,reply){
+                if(err){console.error(err);}
+                console.log(key);
+                var tpNDataArray = [];
+                var data;
+                try
+                {
+                    data=JSON.parse(reply);
+                }catch(e)
+                {
+                    return;
+                }
 
-        var tpNDataArray = [];
-        tpNDataArray.push(JSON.parse(reply));
-        var trlCal = new trilateration(tpNDataArray);
+                //exclude incorrect data.
+                if(!data.deviceSerial){
+                    return;
+                }
 
-        trlCal.delKeyZero(function (pointDt) {
-            for (var point in pointDt) {
-                kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
-                    res.send(finalPoint);
-                    console.log("deviceID=" + finalPoint.deviceID);
-                    console.log("timePoint=" + finalPoint.timePoint);
-                    console.log("deviceSerial=" + finalPoint.deviceSerial);
-                    console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCanculatePosition[0].x+",\"y=\""+finalPoint.beaconCanculatePosition[0].y+"}]");
-                    //todo write back info the redis and trigger postback event using websocket
+                tpNDataArray.push(data);
+                var trlCal = new trilateration(tpNDataArray);
+
+                trlCal.delKeyZero(function (pointDt) {
+                    for (var point in pointDt) {
+                        if(!pointDt[point].beaconCanculatePosition)break;//skip incorrect data in redis.
+                        kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
+                            //res.send(finalPoint);
+                            console.log("deviceID=" + finalPoint.deviceID);
+                            console.log("timePoint=" + finalPoint.timePoint);
+                            console.log("deviceSerial=" + finalPoint.deviceSerial);
+                            console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCanculatePosition[0].x+",\"y=\""+finalPoint.beaconCanculatePosition[0].y+"}]");
+                            //todo write back info the redis and trigger postback event using websocket
+                        });
+                    }
                 });
-            }
+            });
         });
-
         client.quit();
+
+//        var tpNDataArray = [];
+//        tpNDataArray.push(JSON.parse(reply));
+//        var trlCal = new trilateration(tpNDataArray);
+//
+//        trlCal.delKeyZero(function (pointDt) {
+//            for (var point in pointDt) {
+//                kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
+//                    res.send(finalPoint);
+//                    console.log("deviceID=" + finalPoint.deviceID);
+//                    console.log("timePoint=" + finalPoint.timePoint);
+//                    console.log("deviceSerial=" + finalPoint.deviceSerial);
+//                    console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCanculatePosition[0].x+",\"y=\""+finalPoint.beaconCanculatePosition[0].y+"}]");
+//                    //todo write back info the redis and trigger postback event using websocket
+//                });
+//            }
+//        });
+
     });
 };
 
+exports.dealWithData=function(socket){
+   
+};
 /**
  * @param:[key]:deviceName设备名称  [callback] 回调函数，有两个参数 err,reply
  * reply中包含获取的数据信息，err 返回redis错误信息。
