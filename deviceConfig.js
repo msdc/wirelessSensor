@@ -9,6 +9,7 @@ exports.uuidArr=function(){
         pointSB[frontStr+'_0_6']={x:10.00,y:5.00};
     return pointSB;
 };
+
 /**
  var uuidArr=[//测试数据(固定值，设备坐标)
  {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_1',x:0.00,y:5.00},//,Cacc:'FE添加的mpgAjax中每个距离acc'
