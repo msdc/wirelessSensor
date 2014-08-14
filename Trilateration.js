@@ -1,5 +1,6 @@
 var deviceConfig=require('./deviceConfig');
 function Combine(a, n, m) {//产生组合
+
     m = m > n ? n : m;
 
     var order = [m + 1];
