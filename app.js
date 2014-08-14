@@ -22,8 +22,9 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json',limit:'50mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/sensorData',sensor.GetSensorDataFromMobile);
+app.get('/getDevicePoints',sensor.getSampleData);
 //app.get('/redis',redisTest.redisTest);
 
-http.createServer(app).listen(1337, function () {
-    console.log('Express server listening on port 1337');
+http.createServer(app).listen(13337, function () {
+    console.log('Express server listening on port 13337');
 });

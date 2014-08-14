@@ -94,6 +94,7 @@ function Calculation(mpgAjax) {
 Calculation.prototype = {
     delKeyZero:function(next){//格式化数据：eg 删除无效记录及不足3个点的记录
         var mpgAjax=this.mpgAjax;
+        currTelResule=[];
         for (var i = 0, L=mpgAjax.length; i <L; i++) {//循环所有手机
             var currTel=mpgAjax[i];//当前手机
             var mPackage=currTel.monitorPackage;//当前手机的“点-包”
@@ -171,7 +172,7 @@ Calculation.prototype = {
             }
         }
         console.log('结果：',currTelResule,'本次计算所需时间:',(+new Date())-that.tStrart);
-        next&&next(currTelResule);
+        next(currTelResule);
     }
 }
 
