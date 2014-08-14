@@ -151,7 +151,7 @@ Calculation.prototype = {
 }
 
 module.exports=Calculation;
-var Cal = new Calculation();
-Cal.delKeyZero();
+//var Cal = new Calculation();
+//Cal.delKeyZero();
 
 
