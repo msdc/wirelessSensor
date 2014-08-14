@@ -9,7 +9,6 @@ function Combine(a, n, m) {//产生组合
         order[i] = i - 1;
     }
     // 注意这里order[0]=-1用来作为循环判断标识
-
     var count = 0;
     var k = m;
     var flag = true;           // 标志找到一个有效组合
