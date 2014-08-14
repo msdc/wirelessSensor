@@ -64,27 +64,27 @@ var kTjFormat={//提交的数据格式
 var submitJson=[], //存放提交的数据
     currTelResule=[];//存放计算后最终手机 点-时间-坐标（数组bCPos）
 
-function Combine(a, n, m) {
+function Combine(inputArray, totalNum, selectNum) {
 
-    m = m > n ? n : m;
+    selectNum = selectNum > totalNum ? totalNum : selectNum;
 
-    var order = [m + 1];
+    var order = [selectNum + 1];
     var outputArray = [];
-    for (var i = 0; i <= m; i++) {
+    for (var i = 0; i <= selectNum; i++) {
         order[i] = i - 1;
     }
     // 注意这里order[0]=-1用来作为循环判断标识
 
     var count = 0;
-    var k = m;
+    var k = selectNum;
     var flag = true;           // 标志找到一个有效组合
     while (order[0]) {
         // 输出符合要求的组合
         if (flag) {
             var tpObj = [];
-            for (i = 1; i <= m; i++) {
+            for (i = 1; i <= selectNum; i++) {
                 //console.log(a[order[i]]);
-                tpObj.push(a[order[i]]);
+                tpObj.push(inputArray[order[i]]);
             }
             outputArray.push(tpObj);
             count++;
@@ -93,17 +93,17 @@ function Combine(a, n, m) {
         // 在当前位置选择新的数字
         order[k]++;
         // 当前位置已无数字可选，回溯
-        if (order[k] == n) {
+        if (order[k] == totalNum) {
             order[k--] = 0;
             continue;
         }
         // 更新当前位置的下一位置的数字
-        if (k < m) {
+        if (k < selectNum) {
             order[++k] = order[k - 1];
             continue;
         }
 
-        if (k == m) {
+        if (k == selectNum) {
             flag = true;
         }
     }

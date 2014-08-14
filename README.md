@@ -1,4 +1,4 @@
 wirelessSensor
 ==============
 
-poc for wirelessSensor write in nodejs
+POC for wirelessSensor using nodejs
