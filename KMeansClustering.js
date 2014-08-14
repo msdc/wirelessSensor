@@ -33,16 +33,23 @@ function getDataRanges(extremes) {
 function getDataExtremes(points) {
 
     var extremes = [];
-
+    var count=-1;
     for (var i in data)
     {
+        count++;
         var point = data[i];
 
         for (var dimension in point)
         {
+            //console.log("point_"+count+":"+dimension+"="+point[dimension]+";");
             if ( ! extremes[dimension] )
             {
                 extremes[dimension] = {min: 1000, max: 0};
+            }
+            if(point[dimension]===-Infinity||point[dimension]===Infinity||point[dimension]===NaN||point[dimension]===undefined)
+            {
+                console.log("第"+count+"个点，"+dimension+"="+point[dimension]+"，坐标数据异常，已排除此点");
+                continue;
             }
 
             if (point[dimension] < extremes[dimension].min)
@@ -54,6 +61,8 @@ function getDataExtremes(points) {
             {
                 extremes[dimension].max = point[dimension];
             }
+
+            //console.log(dimension+".min="+extremes[dimension].min+";"+dimension+".max="+extremes[dimension].max);
         }
     }
 
@@ -228,8 +237,8 @@ function getMobilePostion() {
  * 返回值示例：{x:5,y:5}
  * @api public
  */
-exports.GetMobileCurrentLocation=function(mobileData,next){
-    data=mobileData.beaconCanculatePosition;
+exports.GetFinallySensorData=function(calculatedSensorData,next){
+    data=calculatedSensorData.beaconCanculatePosition;
     dataExtremes = getDataExtremes(data);
     dataRange = getDataRanges(dataExtremes);
     means = initMeans(1);
@@ -237,7 +246,7 @@ exports.GetMobileCurrentLocation=function(mobileData,next){
     makeAssignments();
     getMobilePostion();
 
-    var mobilePosition={deviceID:mobileData.deviceID,timePoint:mobileData.timePoint,beaconCanculatePosition:[{x:means[0].x,y:means[0].y}]};
+    var mobilePosition={deviceID:calculatedSensorData.deviceID,deviceSerial:calculatedSensorData.deviceSerial,timePoint:calculatedSensorData.timePoint,beaconCanculatePosition:[{x:means[0].x,y:means[0].y}]};
 
     //reset global variable.
     means=[];
