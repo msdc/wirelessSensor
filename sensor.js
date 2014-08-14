@@ -195,7 +195,7 @@ exports.getSampleData=function(req,res){
 };
 
 exports.dealWithData=function(socket){
-   
+
 };
 /**
  * @param:[key]:deviceName设备名称  [callback] 回调函数，有两个参数 err,reply

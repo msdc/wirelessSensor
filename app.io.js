@@ -23,51 +23,23 @@ io.on('connection', function (socket) {
     socket.on('sensorData', function(data){
         client = redis.createClient();
         client.on("error", function (err) {
-            if(err){ console.error(err);}
+            socket.emit('redisError',{});
         });
 
-        client.keys('*',function(err,reply){
-            reply.forEach(function(key){
-                client.get(key, function(err,reply){
-                    if(err){console.error(err);}
-                    console.log(key);
-                    var tpNDataArray = [];
-                    var data;
-                    try
-                    {
-                        data=JSON.parse(reply);
-                    }catch(e)
-                    {
-                        return;
-                    }
+        if(!data.monitorPackage){
+            res.send({result:false,message:"数据格式错误！monitorPackage未指定！"});
+        }
 
-                    //exclude incorrect data.
-                    if(!data.deviceSerial){
-                        return;
-                    }
-
-                    tpNDataArray.push(data);
-                    var trlCal = new trilateration(tpNDataArray);
-
-                    trlCal.delKeyZero(function (pointDt) {
-                        for (var point in pointDt) {
-                            if(!pointDt[point].beaconCanculatePosition)break;//skip incorrect data in redis.
-                            kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
-                                socket.emit("result",finalPoint);
-                                console.log("deviceID=" + finalPoint.deviceID);
-                                console.log("timePoint=" + finalPoint.timePoint);
-                                console.log("deviceSerial=" + finalPoint.deviceSerial);
-                                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCanculatePosition[0].x+",\"y=\""+finalPoint.beaconCanculatePosition[0].y+"}]");
-                                //todo write back info the redis and trigger postback event using websocket
-                            });
-                        }
-                    });
-                });
-            });
+        var serializeJsonData=JSON.stringify(data);
+        //var timespan=new Date().getUTCMilliseconds();
+        //client.set(data.deviceSerial+"_"+timespan, serializeJsonData);
+        client.set("socket.io.test",serializeJsonData);
+        client.get("socket.io.test",function(err,reply){
+            if(err){console.error(err);}
+            console.log(reply);
             client.quit();
         });
     });
-
 });
 
 
