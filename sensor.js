@@ -97,21 +97,23 @@ exports.GetSensorDataFromMobile=function(req,res){
         var serializeJsonData=JSON.stringify(data);
         var timespan=new Date().getUTCMilliseconds();
         client.set(data.deviceSerial+"_"+timespan, serializeJsonData);
-        var tpNDataArray=[];
-        tpNDataArray.push(data);
-//        var trlCal=new trilateration(tpNDataArray);
+//        var tpNDataArray=[];
+//        tpNDataArray.push(data);
+//        var trlCal = new trilateration(tpNDataArray);
 //
 //        trlCal.delKeyZero(function (pointDt) {
-//            kmeans.GetMobileCurrentLocation(pointDt,function(finalPoint){
+//            kmeans.GetFinallySensorData(pointDt, function (finalPoint) {
 //                res.send(finalPoint);
-//                console.log("deviceID="+finalPoint.deviceID);
-//                console.log("timePoint="+finalPoint.timePoint);
-//                console.log("beaconCanculatePosition="+finalPoint.beaconCanculatePosition.toString());
+//                console.log("deviceID=" + finalPoint.deviceID);
+//                console.log("timePoint=" + finalPoint.timePoint);
+//                console.log("deviceSerial=" + finalPoint.deviceSerial);
+//                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCanculatePosition[0].x + ",\"y=\"" + finalPoint.beaconCanculatePosition[0].y + "}]");
 //                //todo write back info the redis and trigger postback event using websocket
-//                var resultPointKeyName=finalPoint.deviceID+"_"+new Date().getUTCMilliseconds()+"_"+"Calculated";
-//                client.set(resultPointKeyName,finalPoint);
+//                var resultPointKeyName = finalPoint.deviceID + "_" + new Date().getUTCMilliseconds() + "_" + "Calculated";
+//                client.set(resultPointKeyName, finalPoint);
 //            });
 //        });
+
         client.quit();
     });
 };
@@ -140,11 +142,12 @@ exports.getSampleData=function(req,res){
 
         trlCal.delKeyZero(function (pointDt) {
             for (var point in pointDt) {
-                kmeans.GetMobileCurrentLocation(pointDt[point], function (finalPoint) {
+                kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
                     res.send(finalPoint);
                     console.log("deviceID=" + finalPoint.deviceID);
                     console.log("timePoint=" + finalPoint.timePoint);
-                    console.log("beaconCanculatePosition=" + finalPoint.beaconCanculatePosition.toString());
+                    console.log("deviceSerial=" + finalPoint.deviceSerial);
+                    console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCanculatePosition[0].x+",\"y=\""+finalPoint.beaconCanculatePosition[0].y+"}]");
                     //todo write back info the redis and trigger postback event using websocket
                 });
             }
