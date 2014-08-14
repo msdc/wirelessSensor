@@ -1,7 +1,7 @@
 var uuidArr=[//测试数据(固定值，设备坐标)
     {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_1',x:0.00,y:5.00},//,Cacc:'FE添加的mpgAjax中每个距离acc'
     {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_2',x:5.00,y:0.00},
-    {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_3',x:0.00,y:5.00},
+    {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_3',x:0.00,y:0.00},
     {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_4',x:5.00,y:5.00},
     {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_5',x:2.50,y:2.30},
     {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_6',x:10.00,y:5.00}
@@ -120,9 +120,9 @@ Calculation.prototype = {
                     mPackage[j].comb=Combine(_v5,bPKGL.length,3);
                 }
             }
-            console.log('bPKGL处理后：',bPKGL);
+            console.log('bPKGL处理后：',bPKGL.length);
         }
-        console.log('mpgAjax：',mpgAjax);
+        console.log('mpgAjax：',mpgAjax.length);
         this.result(next);
     },
     result: function (next) {

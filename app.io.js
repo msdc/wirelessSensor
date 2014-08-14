@@ -7,9 +7,8 @@ var http = require('http'),
     server=http.createServer(app);
 var io = require('socket.io')(server);
 var redis=require('redis');
-var path = require('path');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public'));
 
 server.listen(13327,function(){
     console.log('Express server listening on port 13327');
