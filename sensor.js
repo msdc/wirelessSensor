@@ -1,18 +1,20 @@
 /**
  * Created by wang on 2014/8/12.
  */
-var redis=require('redis');
-var easypost=require('easypost');
-var trilateration=require("./Trilateration.js");
-var kmeans=require("./KMeansClustering.js");
+var redis = require('redis');
+var easypost = require('easypost');
+var trilateration = require("./Trilateration.js");
+var kmeans = require("./KMeansClustering.js");
 /**
  * @说明 获取手机端post数据的api接口
  * @api public
  * */
-exports.GetSensorDataFromMobile=function(req,res){
+exports.GetSensorDataFromMobile = function (req, res) {
     client = redis.createClient();
     client.on("error", function (err) {
-        if(err){SendError(err, res);}
+        if (err) {
+            SendError(err, res);
+        }
     });
 
 //// test data.
@@ -90,13 +92,13 @@ exports.GetSensorDataFromMobile=function(req,res){
 //    };
 
     easypost.get(req, res, function (data) {
-        if(!data.monitorPackage){
-            res.send({result:false,message:"数据格式错误！monitorPackage未指定！"});
+        if (!data.monitorPackage) {
+            res.send({result: false, message: "数据格式错误！monitorPackage未指定！"});
         }
 
-        var serializeJsonData=JSON.stringify(data);
-        var timespan=new Date().getUTCMilliseconds();
-        client.set(data.deviceSerial+"_"+timespan, serializeJsonData);
+        var serializeJsonData = JSON.stringify(data);
+        var timespan = new Date().getUTCMilliseconds();
+        client.set(data.deviceSerial + "_" + timespan, serializeJsonData);
 //        var tpNDataArray=[];
 //        tpNDataArray.push(data);
 //        var trlCal = new trilateration(tpNDataArray);
@@ -125,32 +127,33 @@ exports.GetSensorDataFromMobile=function(req,res){
  * */
 function SendError(err, res) {
     console.error(err);
-    res.send({result: false, message:err});
+    res.send({result: false, message: err});
 }
 
-exports.getSampleData=function(req,res){
+exports.getSampleData = function (req, res) {
     client = redis.createClient();
     client.on("error", function (err) {
         console.log("Error " + err);
     });
 
-    client.keys('*',function(err,reply){
-        reply.forEach(function(key){
-            client.get(key, function(err,reply){
-                if(err){console.error(err);}
+    client.keys('*', function (err, reply) {
+        reply.forEach(function (key) {
+            client.get(key, function (err, reply) {
+                if (err) {
+                    console.error(err);
+                }
                 console.log(key);
                 var tpNDataArray = [];
                 var data;
-                try
-                {
-                    data=JSON.parse(reply);
-                }catch(e)
-                {
+                try {
+                    data = JSON.parse(reply);
+                }
+                catch (e) {
                     return;
                 }
 
                 //exclude incorrect data.
-                if(!data.deviceSerial){
+                if (!data.deviceSerial) {
                     return;
                 }
 
@@ -159,13 +162,13 @@ exports.getSampleData=function(req,res){
 
                 trlCal.delKeyZero(function (pointDt) {
                     for (var point in pointDt) {
-                        if(!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
+                        if (!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
                         kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
                             //res.send(finalPoint);
                             console.log("deviceID=" + finalPoint.deviceID);
                             console.log("timePoint=" + finalPoint.timePoint);
                             console.log("deviceSerial=" + finalPoint.deviceSerial);
-                            console.log("beaconCalculatePosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x+",\"y=\""+finalPoint.beaconCalculatePosition[0].y+"}]");
+                            console.log("beaconCalculatePosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x + ",\"y=\"" + finalPoint.beaconCalculatePosition[0].y + "}]");
                             //todo write back info the redis and trigger postback event using websocket
                         });
                     }
@@ -194,7 +197,7 @@ exports.getSampleData=function(req,res){
     });
 };
 
-exports.dealWithData=function(socket){
+exports.dealWithData = function (socket) {
 
 };
 /**
@@ -202,13 +205,13 @@ exports.dealWithData=function(socket){
  * reply中包含获取的数据信息，err 返回redis错误信息。
  * @api public
  * */
-exports.GetSensorDataFromRedis=function(key,callback){
+exports.GetSensorDataFromRedis = function (key, callback) {
     client = redis.createClient();
     client.on("error", function (err) {
         console.log("Error " + err);
     });
 
-    client.get(key,function(err,reply){
+    client.get(key, function (err, reply) {
         callback(err, reply);
         client.quit();
     });
