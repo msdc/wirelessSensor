@@ -96,7 +96,7 @@ exports.getSampleData = function (req, res) {
 
                 trlCal.delKeyZero(function (pointDt) {
                     for (var point in pointDt) {
-                        if (!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
+                        if (!pointDt[point].beaconCalculatePosition) break;//skip incorrect data in redis.
                         kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
                             //res.send(finalPoint);
                             console.log("deviceID=" + finalPoint.deviceID);

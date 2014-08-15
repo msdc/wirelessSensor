@@ -1,0 +1,703 @@
+TAprilBeaconDemo
+v6
+r1
+cCheck dependencies
+cCpResource /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/ResourceRules.plist build/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist
+cProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo normal armv7s
+cCopyStringsFile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/en.lproj/InfoPlist.strings AprilBeaconDemo/en.lproj/InfoPlist.strings
+cCompileStoryboard /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Base.lproj/Main.storyboard
+cCompileAssetCatalog /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Images.xcassets
+cProcessInfoPlistFile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/Info.plist /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Info.plist
+cGenerateDSYMFile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app.dSYM /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo
+cProcessProductPackaging /Users/Ning/Library/MobileDevice/Provisioning\ Profiles/GangTeam.mobileprovision /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/embedded.mobileprovision
+cTouch /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app
+cProcessProductPackaging /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcent
+cCodeSign /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m
+c0000000053D3E2520000000000000B5A
+t1406394962
+s2906
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m
+c0000000053D3E2520000000000000B58
+t1406394962
+s2904
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m
+c0000000053D3E252000000000000232C
+t1406394962
+s9004
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m
+c0000000053D3E2520000000000000627
+t1406394962
+s1575
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m
+c0000000053D3E25200000000000013BD
+t1406394962
+s5053
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m
+c0000000053D3E2520000000000001223
+t1406394962
+s4643
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Info.plist
+c0000000053E1DC1B00000000000004CB
+t1407310875
+s1227
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch
+c0000000053D3E2520000000000000158
+t1406394962
+s344
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Base.lproj/Main.storyboard
+c0000000053D3E252000000000000AB46
+t1406394962
+s43846
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Images.xcassets
+c0000000053D3E2520000000000000088
+t1406394962
+s136
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m
+c0000000053D3E252000000000000064D
+t1406394962
+s1613
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/en.lproj/InfoPlist.strings
+c0000000053D3E252000000000000002D
+t1406394962
+s45
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m
+c0000000053D3E252000000000000015F
+t1406394962
+s351
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m
+c0000000053D3E2520000000000001FFF
+t1406394962
+s8191
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m
+c0000000053D3E2520000000000002870
+t1406394962
+s10352
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m
+c0000000053D3E2520000000000004E2D
+t1406394962
+s20013
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcent
+t1407310913
+s511
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.o
+t1407310880
+s71620
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.o
+t1407310880
+s69156
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.o
+t1407310881
+s127788
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.o
+t1407310880
+s59816
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.o
+t1407310880
+s77740
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.o
+t1407310880
+s14636
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.o
+t1407310880
+s75328
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/AprilBeaconDemo.LinkFileList
+c0000000053E1DC1D0000000000000771
+t1407310877
+s1905
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.o
+t1407310880
+s83860
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.o
+t1407310880
+s95296
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.o
+t1407310880
+s29788
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.o
+t1407310880
+s3944
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/assetcatalog_dependencies.txt
+t1407310892
+s425
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/assetcatalog_generated_info.plist
+t1407310892
+s525
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app
+t1407310913
+s374
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app.dSYM
+t2
+s0
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo
+t1407310883
+s290348
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/Base.lproj/Main.storyboardc
+t1407310912
+s510
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/Info.plist
+t1407310912
+s1323
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/PkgInfo
+t1407310912
+s8
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist
+t1407310877
+s150
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/embedded.mobileprovision
+t1407310913
+s8282
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/en.lproj/InfoPlist.strings
+t1407310883
+s42
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/libAprilBeaconSDK.a
+c0000000053D3E25200000000000B729C
+t1406394962
+s750236
+
+N/Users/Ning/Library/MobileDevice/Provisioning Profiles/GangTeam.mobileprovision
+c0000000053E0C032000000000000205A
+t1407238194
+s8282
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk
+c0000000053119F860000000000000132
+t1393663878
+s306
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist
+c000000005311A6B00000000000000094
+t1393665712
+s148
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/ResourceRules.plist
+c000000005311A6B00000000000000096
+t1393665712
+s150
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/SDKSettings.plist
+c000000005311A6B0000000000000036B
+t1393665712
+s875
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/CoreServices/SystemVersion.plist
+c000000005311A6B2000000000000019E
+t1393665714
+s414
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000005311A6B300000000004D7BC0
+t1393665715
+s5077952
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000005311A6B40000000000A90C10
+t1393665716
+s11078672
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000005311A6B80000000002759920
+t1393665720
+s41261344
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/include/module.map
+c0000000053100EA20000000000000ADC
+t1393561250
+s2780
+
+N/var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch.pch
+t1407310879
+s88412
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies3cbc639d1392b941^eca4a69d1392b941^---0#1#1#--18"Check dependencies36"E7F2FAB8-1D95-4528-B4CF-014C23B14C99-
+
+CCodeSign /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app
+s429003713.338344
+e429003715.403701
+r1
+xCodeSign
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection49"CodeSign build/Debug-iphoneos/AprilBeaconDemo.app49"CodeSign build/Debug-iphoneos/AprilBeaconDemo.appbadc74c11392b941^bc5967c31392b941^---0#0#1#-19%DVTDocumentLocation2@111"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/0000000000000000^1081"CodeSign build/Debug-iphoneos/AprilBeaconDemo.app    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export CODESIGN_ALLOCATE=/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    Using code signing identity "iPhone Developer: Gang Lu (WDJTR25CY5)" and provisioning profile "GangTeam" (E99FF5F3-E2E1-4F7C-84EE-C4F32EA4478A)    /usr/bin/codesign --force --sign 54E7EBD27320E69A31377F3FD42104AA0C4515FF --resource-rules=/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist --entitlements /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcent /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app36"B8A672A6-2782-4393-84F0-6558370E1C7D-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileAssetCatalog /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Images.xcassets
+s429003683.414400
+e429003693.185286
+r1
+xCompileAssetCatalog
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Images.xcassets
+o/* com.apple.actool.compilation-results */
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/LaunchImage-700-568h@2x.png
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/Assets.car
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/assetcatalog_generated_info.plist
+o
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection92"CompileAssetCatalog build/Debug-iphoneos/AprilBeaconDemo.app AprilBeaconDemo/Images.xcassets92"CompileAssetCatalog build/Debug-iphoneos/AprilBeaconDemo.app AprilBeaconDemo/Images.xcassetsb1326aa31392b941^f86e2fad1392b941^-453"/* com.apple.actool.compilation-results *//Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/LaunchImage-700-568h@2x.png/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/Assets.car/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/assetcatalog_generated_info.plist-0#0#1#-19%DVTDocumentLocation2@102"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Images.xcassets/0000000000000000^1192"CompileAssetCatalog build/Debug-iphoneos/AprilBeaconDemo.app AprilBeaconDemo/Images.xcassets    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin/actool --output-format human-readable-text --notices --warnings --export-dependency-info /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/assetcatalog_dependencies.txt --output-partial-info-plist /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/assetcatalog_generated_info.plist --app-icon AppIcon --launch-image LaunchImage --platform iphoneos --minimum-deployment-target 7.1 --target-device iphone --compress-pngs --compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Images.xcassets36"E57D4F48-2B53-48CC-AFFE-89E9906DE6EA-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003680.847532
+e429003680.971474
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/AprilBeaconSDK.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconManager.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconRegion.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeacon.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABSensor.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m213"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.o AprilBeaconDemo/ABAppDelegate.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compilerf418d9a01392b941^4eb3f8a01392b941^---0#0#1#-19%DVTDocumentLocation2@101"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m0000000000000000^4032"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.o AprilBeaconDemo/ABAppDelegate.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.o36"124B2DBB-94DD-4A1F-87F8-A9C15D7A5739-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003680.707862
+e429003680.896292
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/AprilBeaconSDK.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconManager.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconRegion.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeacon.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABSensor.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection114"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m237"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.o AprilBeaconDemo/ABBluetoothViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler9758b5a01392b941^dfdde6a01392b941^---0#0#1#-19%DVTDocumentLocation2@113"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m0000000000000000^4104"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.o AprilBeaconDemo/ABBluetoothViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.o36"1D989623-822B-4CB5-A417-32A047BD3CD2-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003680.833866
+e429003681.021153
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/AprilBeaconSDK.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconManager.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconRegion.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeacon.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABSensor.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m231"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.o AprilBeaconDemo/ABModifyViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler5699d5a01392b941^a06d05a11392b941^---0#0#1#-19%DVTDocumentLocation2@110"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m0000000000000000^4086"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.o AprilBeaconDemo/ABModifyViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.o36"CB9E2DE6-E86E-4A9A-93DB-F90BA5393B23-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003680.708694
+e429003680.831504
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/AprilBeaconSDK.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconManager.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconRegion.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeacon.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABSensor.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m243"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.o AprilBeaconDemo/ABNotificationViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compilerd388b5a01392b941^d6e1d4a01392b941^---0#0#1#-19%DVTDocumentLocation2@116"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m0000000000000000^4122"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.o AprilBeaconDemo/ABNotificationViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.o36"51D38E1B-EB1E-4F86-867F-8F4BB683DC01-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003679.931212
+e429003680.618678
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/AprilBeaconSDK.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconManager.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconRegion.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeacon.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABSensor.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m243"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.o AprilBeaconDemo/ABSelectDeviceViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compilere28fee9f1392b941^ff759ea01392b941^---0#0#1#-19%DVTDocumentLocation2@116"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m0000000000000000^4122"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.o AprilBeaconDemo/ABSelectDeviceViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.o36"89954A57-ADE6-43BB-B2E2-602DA0D32EAC-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003680.897054
+e429003680.958019
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m221"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.o AprilBeaconDemo/Model/ABTransmitters.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler5d17e6a01392b941^9641f5a01392b941^---0#0#1#-19%DVTDocumentLocation2@108"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m0000000000000000^4050"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.o AprilBeaconDemo/Model/ABTransmitters.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.o36"0E62F3A2-C8FC-4E6D-A04C-56B04E890E3A-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003679.931768
+e429003680.616512
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/AprilBeaconSDK.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconManager.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconRegion.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeacon.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABSensor.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m219"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.o AprilBeaconDemo/ABViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler81b1ee9f1392b941^58209ea01392b941^---0#0#1#-19%DVTDocumentLocation2@104"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m0000000000000000^4050"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.o AprilBeaconDemo/ABViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.o36"D9A1D9E9-DAFD-4A67-AF9C-7E0585AFE079-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003679.929978
+e429003680.708382
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m241"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.o JVFloatLabeledTextField/JVFloatLabeledTextField.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler8544ee9f1392b941^959ab5a01392b941^---0#0#1#-19%DVTDocumentLocation2@119"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m0000000000000000^4108"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.o JVFloatLabeledTextField/JVFloatLabeledTextField.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.o36"D4250578-594C-4D56-8D55-5136459396BD-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003680.616980
+e429003680.847258
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m239"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.o JVFloatLabeledTextField/JVFloatLabeledTextView.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compilera5169ea01392b941^6ceed8a01392b941^---0#0#1#-19%DVTDocumentLocation2@118"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m0000000000000000^4102"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.o JVFloatLabeledTextField/JVFloatLabeledTextView.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.o36"40DC103E-C3DD-4258-AB09-9A296B87398A-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003680.618987
+e429003680.896269
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection124"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m249"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.o JVFloatLabeledTextField/NSString+TextDirectionality.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler4fcc9ea01392b941^ebe2e6a01392b941^---0#0#1#-19%DVTDocumentLocation2@123"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m0000000000000000^4132"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.o JVFloatLabeledTextField/NSString+TextDirectionality.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.o36"4614D7D4-BE08-44A0-B22E-D20AD937B2F4-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003679.930670
+e429003680.707528
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/AprilBeaconSDK.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconManager.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconRegion.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeacon.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABSensor.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m195"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.o AprilBeaconDemo/main.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler7d78ee9f1392b941^7023b5a01392b941^---0#0#1#-19%DVTDocumentLocation2@92"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m0000000000000000^3978"CompileC build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.o AprilBeaconDemo/main.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.o36"0F30B1B6-0D1C-4A7B-96BC-B28DFB40F7FD-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCompileStoryboard /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Base.lproj/Main.storyboard
+s429003683.413770
+e429003712.594317
+r1
+xCompileStoryboard
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Base.lproj/Main.storyboard
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection60"CompileStoryboard AprilBeaconDemo/Base.lproj/Main.storyboard60"CompileStoryboard AprilBeaconDemo/Base.lproj/Main.storyboard07086aa31392b941^7d2598c01392b941^---0#0#1#-19%DVTDocumentLocation2@112"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Base.lproj/Main.storyboard0000000000000000^871"CompileStoryboard AprilBeaconDemo/Base.lproj/Main.storyboard    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export IBSC_MINIMUM_COMPATIBILITY_VERSION=7.1    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    export XCODE_DEVELOPER_USR_PATH=/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin/..    /Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 7.1 --output-format human-readable-text --compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/Base.lproj/Main.storyboardc /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Base.lproj/Main.storyboard36"C12092A9-A8AE-4077-B98D-9696DFD3EAAC-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCopyStringsFile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/en.lproj/InfoPlist.strings AprilBeaconDemo/en.lproj/InfoPlist.strings
+s429003683.413592
+e429003683.490457
+r1
+xCopyStringsFile
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/en.lproj/InfoPlist.strings
+xAprilBeaconDemo/en.lproj/InfoPlist.strings
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection47"Copy AprilBeaconDemo/en.lproj/InfoPlist.strings126"CopyStringsFile build/Debug-iphoneos/AprilBeaconDemo.app/en.lproj/InfoPlist.strings AprilBeaconDemo/en.lproj/InfoPlist.stringsdbfa69a31392b941^08907da31392b941^---0#0#1#-19%DVTDocumentLocation2@112"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/en.lproj/InfoPlist.strings0000000000000000^636"CopyStringsFile build/Debug-iphoneos/AprilBeaconDemo.app/en.lproj/InfoPlist.strings AprilBeaconDemo/en.lproj/InfoPlist.strings    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/en.lproj -- AprilBeaconDemo/en.lproj/InfoPlist.strings36"F8F2DDF4-816A-4052-BB1A-15F7EC4FE75F-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CCpResource /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/ResourceRules.plist build/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist
+s429003677.695088
+e429003677.717285
+r1
+xCpResource
+x/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/ResourceRules.plist
+xbuild/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection65"Copy build/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist194"CpResource /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/ResourceRules.plist build/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist0c02b39d1392b941^f25cdf9d1392b941^---0#0#1#-19%DVTDocumentLocation2@130"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist0034840bdfffdf42^794"CpResource /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/ResourceRules.plist build/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/ResourceRules.plist /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app36"5CED3267-AC21-423B-BCC5-9A81F04ABAFE-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CGenerateDSYMFile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app.dSYM /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo
+s429003712.644983
+e429003713.039738
+r1
+xGenerateDSYMFile
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app.dSYM
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Generate /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app.dSYM119"GenerateDSYMFile build/Debug-iphoneos/AprilBeaconDemo.app.dSYM build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemob22fa5c01392b941^d82d0ac11392b941^---0#0#1#-19%DVTDocumentLocation2@115"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app.dSYM0034840bdfffdf42^713"GenerateDSYMFile build/Debug-iphoneos/AprilBeaconDemo.app.dSYM build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app.dSYM36"668A9172-99D3-42D5-BC52-34A63ECF833C-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CLd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo normal armv7s
+s429003681.023258
+e429003683.412590
+r1
+xLd
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo
+xnormal
+xarmv7s
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/AprilBeaconDemo.LinkFileList
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextField.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/main.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABSelectDeviceViewController.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABViewController.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/JVFloatLabeledTextView.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/NSString+TextDirectionality.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABBluetoothViewController.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABNotificationViewController.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABModifyViewController.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABAppDelegate.o
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/ABTransmitters.o
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/libAprilBeaconSDK.a
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libobjc.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libSystem.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.ios.a
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreBluetooth.framework/CoreBluetooth
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreVideo.framework/CoreVideo
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreImage.framework/CoreImage
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Security.framework/Security
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/OpenGLES.framework/OpenGLES
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreText.framework/CoreText
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcache.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcommonCrypto.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcompiler_rt.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcopyfile.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcorecrypto.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libdispatch.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libdyld.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libkeymgr.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/liblaunch.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libmacho.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libremovefile.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_asl.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_blocks.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_c.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_configuration.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_dnssd.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_info.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_kernel.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_m.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_malloc.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_network.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_notify.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_platform.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_pthread.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_sandbox.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_stats.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libunwind.dylib
+d/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libxpc.dylib
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection124"Link /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo73"Ld build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo normal armv7s310a06a11392b941^9da069a31392b941^---0#0#1#--1534"Ld build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo normal armv7s    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export IPHONEOS_DEPLOYMENT_TARGET=7.1    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch armv7s -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -L/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo -L../AprilSDK -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos -filelist /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/AprilBeaconDemo.LinkFileList -dead_strip -fobjc-arc -fobjc-link-runtime -miphoneos-version-min=7.1 -framework CoreGraphics -framework UIKit -framework Foundation -lAprilBeaconSDK -Xlinker -dependency_info -Xlinker /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/Objects-normal/armv7s/AprilBeaconDemo_dependency_info.dat -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/AprilBeaconDemo36"626D8CA8-EED3-40F8-BA0E-3897ED46C748-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CProcessInfoPlistFile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/Info.plist /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Info.plist
+s429003712.594938
+e429003712.644233
+r1
+xProcessInfoPlistFile
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/Info.plist
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Info.plist
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"Process /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Info.plist115"ProcessInfoPlistFile build/Debug-iphoneos/AprilBeaconDemo.app/Info.plist AprilBeaconDemo/AprilBeaconDemo-Info.plist236898c01392b941^28eea4c01392b941^---0#0#1#-19%DVTDocumentLocation2@112"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Info.plist0000000000000000^1136"ProcessInfoPlistFile build/Debug-iphoneos/AprilBeaconDemo.app/Info.plist AprilBeaconDemo/AprilBeaconDemo-Info.plist    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Info.plist -genpkginfo /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -resourcerulesfile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/ResourceRules.plist -additionalcontentfile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/assetcatalog_generated_info.plist -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/Info.plist36"4201F8BC-24DE-43D3-9963-262A069D8CFD-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CProcessPCH /Users/Ning/Library/Developer/Xcode/DerivedData/AprilBeaconDemo-ghkofowncxmmjkdudvupehwdtgzm/Index/PrecompiledHeaders/AprilBeaconDemo-Prefix-cingzhjlmdrngjdrgowvcjapfnqw_ast/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429003677.718246
+e429003679.928192
+r1
+xProcessPCH
+x/var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch.pch
+xAprilBeaconDemo/AprilBeaconDemo-Prefix.pch
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Precompile AprilBeaconDemo/AprilBeaconDemo-Prefix.pch322"ProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compilere02db89d1392b941^e0a0ed9f1392b941^---0#0#1#-19%DVTDocumentLocation2@112"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch0000000000000000^4050"ProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources/armv7s -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos --serialize-diagnostics /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch.dia -MMD -MT dependencies -MF /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch.d -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch -o /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-gaqztxcvaqoedkcegstutthslksi/AprilBeaconDemo-Prefix.pch.pch36"4CB406AE-6405-413D-B696-05DC553C54EE-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CProcessProductPackaging /Users/Ning/Library/MobileDevice/Provisioning\ Profiles/GangTeam.mobileprovision /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/embedded.mobileprovision
+s429003713.040590
+e429003713.128399
+r1
+xProcessProductPackaging
+x/Users/Ning/Library/MobileDevice/Provisioning Profiles/GangTeam.mobileprovision
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/embedded.mobileprovision
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection170"ProcessProductPackaging /Users/Ning/Library/MobileDevice/Provisioning\ Profiles/GangTeam.mobileprovision build/Debug-iphoneos/AprilBeaconDemo.app/embedded.mobileprovision170"ProcessProductPackaging /Users/Ning/Library/MobileDevice/Provisioning\ Profiles/GangTeam.mobileprovision build/Debug-iphoneos/AprilBeaconDemo.app/embedded.mobileprovision4c8b0ac11392b941^37e320c11392b941^---0#0#1#-19%DVTDocumentLocation2@135"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/embedded.mobileprovision0034840bdfffdf42^680"ProcessProductPackaging /Users/Ning/Library/MobileDevice/Provisioning\ Profiles/GangTeam.mobileprovision build/Debug-iphoneos/AprilBeaconDemo.app/embedded.mobileprovision    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-productPackagingUtility /Users/Ning/Library/MobileDevice/Provisioning\ Profiles/GangTeam.mobileprovision -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app/embedded.mobileprovision36"A998F56F-E26A-4682-8AC7-D856DFDA7956-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CProcessProductPackaging /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcent
+s429003713.129797
+e429003713.337682
+r1
+xProcessProductPackaging
+x/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcent
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection232"ProcessProductPackaging /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcent232"ProcessProductPackaging /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcentca5021c11392b941^217656c11392b941^---0#0#1#-19%DVTDocumentLocation2@156"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcent0034840bdfffdf42^830"ProcessProductPackaging /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcent    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-productPackagingUtility /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist -entitlements -format xml -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphoneos/AprilBeaconDemo.build/AprilBeaconDemo.xcent36"010B6BAE-0038-45DD-8580-390652F9ADE6-
+b87433AFD-BF45-444B-8CC3-B9D25B742F42
+
+CTouch /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphoneos/AprilBeaconDemo.app
+r0
+
