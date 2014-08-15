@@ -22,6 +22,15 @@ io.on('connection', function (socket) {
     socket.emit('welcome', { welcome: 'server connected success..' });
 
     socket.on('sensorData',function(data){
+        client = redis.createClient();
+        client.on("error", function (err) {
+            console.log(err);
+        });
+        var serializeJsonData = JSON.stringify(data);
+        var timespan = new Date().getUTCMilliseconds();
+        client.set(data.deviceSerial + "_" + timespan, serializeJsonData);
+        client.quit();
+
         SensorDataCalculater.calculate(socket,data);
     });
 

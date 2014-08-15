@@ -17,88 +17,19 @@ exports.GetSensorDataFromMobile = function (req, res) {
         }
     });
 
-//// test data.
-//    var data = {
-//        "deviceName": "mobile1",
-//        "deviceSerial": "f2ljmkdotwo",
-//        "monitorPackage": [
-//            {
-//                "checkPoint": "2011-12-11 00:00:00:0000",
-//                "beaconPKG": [
-//                    {
-//                        "uuid": "qweqe-123ff-123f-sarqr1",
-//                        "major": "0",
-//                        "minor": "4",
-//                        "beaconBLE": "qweqe-123ff-123f-sarq23",
-//                        "acc": "5.74"
-//                    },
-//                    {
-//                        "uuid": "qweqe-123ff-123f-sarqr2",
-//                        "major": "0",
-//                        "minor": "4",
-//                        "beaconBLE": "qweqe-123ff-123f-sarq23",
-//                        "acc": "6.24"
-//                    },
-//                    {
-//                        "uuid": "qweqe-123ff-123f-sarqr3",
-//                        "major": "0",
-//                        "minor": "4",
-//                        "beaconBLE": "qweqe-123ff-123f-sarq23",
-//                        "acc": "3.74"
-//                    },
-//                    {
-//                        "uuid": "qweqe-123ff-123f-sarqr4",
-//                        "major": "0",
-//                        "minor": "4",
-//                        "beaconBLE": "qweqe-123ff-123f-sarq23",
-//                        "acc": "3.48"
-//                    }
-//                ]
-//            },
-//            {
-//                "checkPoint": "2011-12-11 00:00:12:5600",
-//                "beaconPKG": [
-//                    {
-//                        "uuid": "qweqe-123ff-123f-sarqr1",
-//                        "major": "0",
-//                        "minor": "4",
-//                        "beaconBLE": "qweqe-123ff-123f-sarq23",
-//                        "acc": "5.74"
-//                    },
-//                    {
-//                        "uuid": "qweqe-123ff-123f-sarqr2",
-//                        "major": "0",
-//                        "minor": "3",
-//                        "beaconBLE": "qweqe-123ff-123f-sarq23",
-//                        "acc": "6.24"
-//                    },
-//                    {
-//                        "uuid": "qweqe-123ff-123f-sarqr3",
-//                        "major": "0",
-//                        "minor": "2",
-//                        "beaconBLE": "qweqe-123ff-123f-sarq23",
-//                        "acc": "3.74"
-//                    },
-//                    {
-//                        "uuid": "qweqe-123ff-123f-sarqr4",
-//                        "major": "0",
-//                        "minor": "1",
-//                        "beaconBLE": "qweqe-123ff-123f-sarq23",
-//                        "acc": "3.48"
-//                    }
-//                ]
-//            }
-//        ]
-//    };
-
     easypost.get(req, res, function (data) {
+        var data=JSON.parse(data);
         if (!data.monitorPackage) {
+            console.log('数据格式错误！monitorPackage未指定！');
             res.send({result: false, message: "数据格式错误！monitorPackage未指定！"});
+            res.end();
+            return;
         }
 
         var serializeJsonData = JSON.stringify(data);
         var timespan = new Date().getUTCMilliseconds();
         client.set(data.deviceSerial + "_" + timespan, serializeJsonData);
+
 //        var tpNDataArray=[];
 //        tpNDataArray.push(data);
 //        var trlCal = new trilateration(tpNDataArray);
@@ -117,6 +48,9 @@ exports.GetSensorDataFromMobile = function (req, res) {
 //        });
 
         client.quit();
+        console.log("deviceSerial="+data.deviceSerial+"，数据接收成功！");
+        res.send({result: true, message: "数据接收成功！"});
+        res.end();
     });
 };
 
