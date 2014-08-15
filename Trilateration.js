@@ -64,7 +64,9 @@ Calculation.prototype = {
 
                     var sbArr = [c0, c1, c2];
                     for (var k = 0; k < sbArr.length; k++) {
-                        var uuidT = that.uuidArr[sbArr[k].uuid + '_' + sbArr[k].major + "_" + sbArr[k].minor];
+                        var tpDeviceKey=sbArr[k].uuid + '_' + sbArr[k].major + "_" + sbArr[k].minor;
+                        tpDeviceKey=tpDeviceKey.toUpperCase();
+                        var uuidT = that.uuidArr[tpDeviceKey];
                         //console.log('uuidT',uuidT,sbArr[k].acc);
                         findXY.push({acc: sbArr[k].acc, x: uuidT.x, y: uuidT.y});//取X Y +ACC
                     }
