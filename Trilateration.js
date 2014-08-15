@@ -69,7 +69,7 @@ Calculation.prototype = {
                         findXY.push({acc: sbArr[k].acc, x: uuidT.x, y: uuidT.y});//取X Y +ACC
                     }
                     var resP = that.getTrilateration(findXY[0], findXY[1], findXY[2], findXY[0].acc, findXY[1].acc, findXY[2].acc);
-                    if (isNaN(resP.x) || isNaN(resP.y)) {
+                    if (isNaN(resP.x) || isNaN(resP.y)||resP.x==-Infinity||resP.x==Infinity||resP.y==-Infinity||resP.y==Infinity) {
                         console.log('不存', resP);
                     } else {
                         bCPos.push(resP);
@@ -86,7 +86,7 @@ Calculation.prototype = {
             }
         }
         console.log('总个数:' + currPointCom.length, '结果：', currPointCom, '本次计算时间:', (new Date().getTime()) - that.tStart);
-        next(currPointCom);
+        next(currTelResule);
     },
     getTrilateration: function (pos1, pos2, pos3, distToPos1, distToPos2, distToPos3) {
         var xa = pos1.x, ya = pos1.y, xb = pos2.x,
