@@ -1,0 +1,558 @@
+TAprilBeaconDemo
+v6
+r1
+cCheck dependencies
+cProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-acindyklcaqjyvgxjisvhdpuyvaz/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperation.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextField.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/main.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLSessionManager.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JSONKit.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLConnectionOperation.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m
+c0000000053C35DC20000000000001CFC
+t1405312450
+s7420
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperationManager.m
+c0000000053C35DC200000000000029D2
+t1405312450
+s10706
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFNetworkReachabilityManager.m
+c0000000053C35DC200000000000021AA
+t1405312450
+s8618
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.m
+c0000000053C35DC200000000000067FA
+t1405312450
+s26618
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.m
+c0000000053C35DC20000000000009DDD
+t1405312450
+s40413
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m
+c0000000053D3E25200000000000013BD
+t1406394962
+s5053
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch
+c0000000053D3E2520000000000000158
+t1406394962
+s344
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m
+c0000000053D3E252000000000000015F
+t1406394962
+s351
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m
+c000000004FFE3726000000000002B471
+t1342060326
+s177265
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m
+c0000000053D3E2520000000000001FFF
+t1406394962
+s8191
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/ABSelectDeviceViewController.o
+t2
+s0
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperation.o
+t2
+s0
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperationManager.o
+t2
+s0
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFNetworkReachabilityManager.o
+t2
+s0
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLConnectionOperation.o
+t2
+s0
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLSessionManager.o
+t2
+s0
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JSONKit.o
+t2
+s0
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextField.o
+t2
+s0
+
+N/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/SDKSettings.plist
+c000000005311A6CC00000000000003B4
+t1393665740
+s948
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/CoreServices/SystemVersion.plist
+c000000005311A6D8000000000000019E
+t1393665752
+s414
+
+N/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/include/module.map
+c0000000053100EA20000000000000ADC
+t1393561250
+s2780
+
+N/var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-acindyklcaqjyvgxjisvhdpuyvaz/AprilBeaconDemo-Prefix.pch.pch
+t2
+s0
+
+N/var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch.pch
+t1407738173
+s122656
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperationManager.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPSessionManager.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFNetworkReachabilityManager.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFSecurityPolicy.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLRequestSerialization.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLResponseSerialization.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/pinyin.c
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m
+r0
+
+CBuild AST from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies1ec28cb89898b941^efe13eb99898b941^---0#1#1#--18"Check dependencies36"05CA87B8-0C95-4504-BE0C-CCC1E9C14661-
+
+CCompileAssetCatalog /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/AprilBeaconDemo.app /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Images.xcassets
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/ABAppDelegate.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/ABBluetoothViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABBluetoothViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/ABModifyViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABModifyViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/ABNotificationViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABNotificationViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/ABSelectDeviceViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABSelectDeviceViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/ABTransmitters.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Model/ABTransmitters.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/ABViewController.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperation.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429430973.354781
+e429430975.428955
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperation.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFSecurityPolicy.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLResponseSerialization.h
+oIn file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m:23:
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.h:39:60: warning: auto property synthesis will not synthesize property 'response' because it is 'readwrite' but it will be synthesized 'readonly' via another property [-Wobjc-property-synthesis]
+o@property (readonly, nonatomic, strong) NSHTTPURLResponse *response;
+o                                                           ^
+oIn file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m:23:
+oIn file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.h:24:
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.h:106:56: note: property declared here
+o@property (readonly, nonatomic, strong) NSURLResponse *response;
+o                                                       ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m:48:56: warning: auto property synthesis will not synthesize property 'request' because it is 'readwrite' but it will be synthesized 'readonly' via another property [-Wobjc-property-synthesis]
+o@property (readwrite, nonatomic, strong) NSURLRequest *request;
+o                                                       ^
+oIn file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m:23:
+oIn file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.h:24:
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.h:101:55: note: property declared here
+o@property (readonly, nonatomic, strong) NSURLRequest *request;
+o                                                      ^
+o2 warnings generated.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection108"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m231"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperation.o AFNetworking/AFHTTPRequestOperation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilere4f35abd9898b941^03cf6dbf9898b941^-2016"In file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m:23:/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.h:39:60: warning: auto property synthesis will not synthesize property 'response' because it is 'readwrite' but it will be synthesized 'readonly' via another property [-Wobjc-property-synthesis]@property (readonly, nonatomic, strong) NSHTTPURLResponse *response;                                                           ^In file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m:23:In file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.h:24:/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.h:106:56: note: property declared here@property (readonly, nonatomic, strong) NSURLResponse *response;                                                       ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m:48:56: warning: auto property synthesis will not synthesize property 'request' because it is 'readwrite' but it will be synthesized 'readonly' via another property [-Wobjc-property-synthesis]@property (readwrite, nonatomic, strong) NSURLRequest *request;                                                       ^In file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m:23:In file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.h:24:/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.h:101:55: note: property declared here@property (readonly, nonatomic, strong) NSURLRequest *request;                                                      ^2 warnings generated.2(36%IDEClangDiagnosticActivityLogMessage2@148"Auto property synthesis will not synthesize property 'response' because it is 'readwrite' but it will be synthesized 'readonly' via another property-429430975#18446744073709551615#0#2(2@126"In file included from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m:23:-429430975#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@107"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m0000000000000000^22#8#22#8#1176#0#21"Apple LLVM 5.1 Notice--2@22"Property declared here-429430975#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@109"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.h0000000000000000^105#55#105#55#6255#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@107"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.h0000000000000000^38#59#38#59#1880#0#14"Semantic Issue--2@147"Auto property synthesis will not synthesize property 'request' because it is 'readwrite' but it will be synthesized 'readonly' via another property-429430975#18446744073709551615#0#1(2@22"Property declared here-429430975#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@109"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.h0000000000000000^100#54#100#54#6123#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@107"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m0000000000000000^47#55#47#55#2101#0#14"Semantic Issue--0#0#1#-19%DVTDocumentLocation4@107"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m0000000000000000^4246"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperation.o AFNetworking/AFHTTPRequestOperation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources/i386 -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperation.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperation.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperation.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperation.o36"16AB4062-9371-4C56-ABDA-58D3A03C1C6A-
+b707DFE92-92E4-497C-8AD4-EA806A4A231C
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPRequestOperationManager.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPRequestOperationManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFHTTPSessionManager.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFHTTPSessionManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFNetworkReachabilityManager.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFNetworkReachabilityManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFSecurityPolicy.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFSecurityPolicy.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLConnectionOperation.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429430977.250345
+e429430977.712990
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLConnectionOperation.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFSecurityPolicy.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection110"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.m235"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLConnectionOperation.o AFNetworking/AFURLConnectionOperation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler533e40c19898b941^6e87b6c19898b941^---0#0#1#-19%DVTDocumentLocation2@109"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.m0000000000000000^4258"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLConnectionOperation.o AFNetworking/AFURLConnectionOperation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources/i386 -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLConnectionOperation.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLConnectionOperation.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLConnectionOperation.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLConnectionOperation.o36"33AB625C-9562-4ADF-909A-91312F3E7645-
+b707DFE92-92E4-497C-8AD4-EA806A4A231C
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLRequestSerialization.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLRequestSerialization.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLResponseSerialization.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLResponseSerialization.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLSessionManager.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429430975.431105
+e429430977.249841
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLSessionManager.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLResponseSerialization.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLRequestSerialization.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFSecurityPolicy.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFNetworkReachabilityManager.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.m225"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLSessionManager.o AFNetworking/AFURLSessionManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerf3746ebf9898b941^41f53fc19898b941^---0#0#1#-19%DVTDocumentLocation2@104"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.m0000000000000000^4228"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLSessionManager.o AFNetworking/AFURLSessionManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources/i386 -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLSessionManager.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLSessionManager.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/AFURLSessionManager.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/AFURLSessionManager.o36"E6D87010-252E-47B2-857E-29A4BEC0609D-
+b707DFE92-92E4-497C-8AD4-EA806A4A231C
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JSONKit.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429430976.998597
+e429430977.511723
+r0
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JSONKit.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.h
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:140:2: error: JSONKit does not support Objective-C Automatic Reference Counting (ARC)
+o#error JSONKit does not support Objective-C Automatic Reference Counting (ARC)
+o ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:449:23: error: ARC forbids Objective-C objects in struct
+o  NSError            *error;
+o                      ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:463:6: error: ARC forbids Objective-C objects in struct
+o  id object;
+o     ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:477:27: error: ARC forbids Objective-C objects in struct
+o  NSError                *error;
+o                          ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:505:6: error: ARC forbids Objective-C objects in struct
+o  id key, object;
+o     ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:638:3: error: 'NSAutoreleasePool' is unavailable: not available in automatic reference counting mode
+o  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // Though technically not required, the run time environment at load time initialization may be less than ideal.
+o  ^
+oIn module 'Foundation' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.h:63:
+o/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSAutoreleasePool.h:8:12: note: declaration has been explicitly marked unavailable here
+o@interface NSAutoreleasePool : NSObject {
+o           ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:638:49: error: 'NSAutoreleasePool' is unavailable: not available in automatic reference counting mode
+o  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // Though technically not required, the run time environment at load time initialization may be less than ideal.
+o                                                ^
+oIn module 'Foundation' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.h:63:
+o/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSAutoreleasePool.h:8:12: note: declaration has been explicitly marked unavailable here
+o@interface NSAutoreleasePool : NSObject {
+o           ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:653:25: error: ARC forbids explicit message send of 'release'
+o  [[temp_NSNumber init] release];
+o   ~~~~~~~~~~~~~~~~~~~~ ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:656:9: error: 'release' is unavailable: not available in automatic reference counting mode
+o  [pool release]; pool = NULL;
+o        ^
+oIn module 'ObjectiveC' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:108:
+o/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/objc/NSObject.h:38:1: note: declaration has been explicitly marked unavailable here
+o- (oneway void)release OBJC_ARC_UNAVAILABLE;
+o^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:656:9: error: ARC forbids explicit message send of 'release'
+o  [pool release]; pool = NULL;
+o   ~~~~ ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:662:14: error: pointer to non-const type 'id' with no explicit ownership
+o  id         *objects;
+o             ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:729:112: error: implicit conversion of Objective-C pointer type 'id' to C pointer type 'CFTypeRef' (aka 'const void *') requires a bridged cast
+o    for(atObject = 0UL; atObject < count; atObject++) { if(JK_EXPECT_T(objects[atObject] != NULL)) { CFRelease(objects[atObject]); objects[atObject] = NULL; } }
+o                                                                                                               ^~~~~~~~~~~~~~~~~
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:729:112: note: use __bridge to convert directly (no change in ownership)
+o    for(atObject = 0UL; atObject < count; atObject++) { if(JK_EXPECT_T(objects[atObject] != NULL)) { CFRelease(objects[atObject]); objects[atObject] = NULL; } }
+o                                                                                                               ^
+o                                                                                                               (__bridge CFTypeRef)( )
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:729:112: note: use CFBridgingRetain call to make an ARC object available as a +1 'CFTypeRef' (aka 'const void *')
+o    for(atObject = 0UL; atObject < count; atObject++) { if(JK_EXPECT_T(objects[atObject] != NULL)) { CFRelease(objects[atObject]); objects[atObject] = NULL; } }
+o                                                                                                               ^
+o                                                                                                               CFBridgingRetain()
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:733:10: error: ARC forbids explicit message send of 'dealloc'
+o  [super dealloc];
+o   ~~~~~ ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:748:10: warning: destination for this 'memcpy' call is a pointer to ownership-qualified type '__autoreleasing id' [-Warc-non-pod-memaccess]
+o  memcpy(objectsPtr, objects + range.location, range.length * sizeof(id));
+o  ~~~~~~ ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:748:10: note: explicitly cast the pointer to silence this warning
+o  memcpy(objectsPtr, objects + range.location, range.length * sizeof(id));
+o         ^
+o         (void*)
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:762:111: error: assigning '__autoreleasing id *' to '__unsafe_unretained id *' changes retain/release properties of pointer
+o  if(JK_EXPECT_F(state->state == 0UL))   { state->mutationsPtr = (unsigned long *)&mutations; state->itemsPtr = stackbuf; }
+o                                                                                                              ^ ~~~~~~~~
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:779:24: error: ARC forbids explicit message send of 'retain'
+o  anObject = [anObject retain];
+o              ~~~~~~~~ ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:801:24: error: ARC forbids explicit message send of 'retain'
+o  anObject = [anObject retain];
+o              ~~~~~~~~ ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:810:37: error: 'retain' is unavailable: not available in automatic reference counting mode
+o  return((mutations == 0UL) ? [self retain] : [(NSArray *)[NSArray allocWithZone:zone] initWithObjects:objects count:count]);
+o                                    ^
+oIn module 'ObjectiveC' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:108:
+o/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/objc/NSObject.h:37:1: note: declaration has been explicitly marked unavailable here
+o- (id)retain OBJC_ARC_UNAVAILABLE;
+o^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:810:37: error: ARC forbids explicit message send of 'retain'
+o  return((mutations == 0UL) ? [self retain] : [(NSArray *)[NSArray allocWithZone:zone] initWithObjects:objects count:count]);
+o                               ~~~~ ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:759:89: warning: conflicting parameter types in implementation of 'countByEnumeratingWithState:objects:count:': '__unsafe_unretained id *' vs '__autoreleasing id *' [-Wmismatched-parameter-types]
+o- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len
+o                                                                                   ~~~~ ^
+oIn module 'Foundation' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.h:63:
+o/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSEnumerator.h:28:110: note: previous definition is here
+o- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len;
+o                                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:742:26: warning: conflicting parameter types in implementation of 'getObjects:range:': '__unsafe_unretained id *' vs '__autoreleasing id *' [-Wmismatched-parameter-types]
+o- (void)getObjects:(id *)objectsPtr range:(NSRange)range
+o                    ~~~~ ^
+oIn module 'Foundation' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.h:63:
+o/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSArray.h:31:47: note: previous definition is here
+o- (void)getObjects:(id __unsafe_unretained [])objects range:(NSRange)range;
+o                    ~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:679:27: error: cast of C pointer type 'void *' to Objective-C pointer type 'JKArray *' requires a bridged cast
+o  if(JK_EXPECT_T((array = (JKArray *)calloc(1UL, _JKArrayInstanceSize)) != NULL)) { // Directly allocate the JKArray instance via calloc.
+o                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:196:53: note: expanded from macro 'JK_EXPECT_T'
+o#define JK_EXPECT_T(cond)               JK_EXPECTED(cond, 1U)
+o                                                    ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:195:65: note: expanded from macro 'JK_EXPECTED'
+o#define JK_EXPECTED(cond, expect)       __builtin_expect((long)(cond), (expect))
+o                                                                ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:679:27: note: use __bridge to convert directly (no change in ownership)
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:196:53: note: expanded from macro 'JK_EXPECT_T'
+o#define JK_EXPECT_T(cond)               JK_EXPECTED(cond, 1U)
+o                                                    ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:195:65: note: expanded from macro 'JK_EXPECTED'
+o#define JK_EXPECTED(cond, expect)       __builtin_expect((long)(cond), (expect))
+o                                                                ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:679:38: note: use CFBridgingRelease call to transfer ownership of a +1 'void *' into ARC
+o  if(JK_EXPECT_T((array = (JKArray *)calloc(1UL, _JKArrayInstanceSize)) != NULL)) { // Directly allocate the JKArray instance via calloc.
+o                                     ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:196:53: note: expanded from macro 'JK_EXPECT_T'
+o#define JK_EXPECT_T(cond)               JK_EXPECTED(cond, 1U)
+o                                                    ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:195:65: note: expanded from macro 'JK_EXPECTED'
+o#define JK_EXPECTED(cond, expect)       __builtin_expect((long)(cond), (expect))
+o                                                                ^
+o/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:680:12: warning: 'isa' is deprecated [-Wdeprecated-declarations]
+o    array->isa      = _JKArrayClass;
+o           ^
+oIn module 'ObjectiveC' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:108:
+o/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/objc/NSObject.h:53:11: note: 'isa' declared here
+o    Class isa  OBJC_ISA_AVAILABILITY;
+o          ^
+ofatal error: too many errors emitted, stopping now [-ferror-limit=]
+o4 warnings and 20 errors generated.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m196"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JSONKit.o JSONKit/JSONKit.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerfad2ffc09898b941^51fa82c19898b941^-13052"/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:140:2: error: JSONKit does not support Objective-C Automatic Reference Counting (ARC)#error JSONKit does not support Objective-C Automatic Reference Counting (ARC) ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:449:23: error: ARC forbids Objective-C objects in struct  NSError            *error;                      ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:463:6: error: ARC forbids Objective-C objects in struct  id object;     ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:477:27: error: ARC forbids Objective-C objects in struct  NSError                *error;                          ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:505:6: error: ARC forbids Objective-C objects in struct  id key, object;     ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:638:3: error: 'NSAutoreleasePool' is unavailable: not available in automatic reference counting mode  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // Though technically not required, the run time environment at load time initialization may be less than ideal.  ^In module 'Foundation' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.h:63:/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSAutoreleasePool.h:8:12: note: declaration has been explicitly marked unavailable here@interface NSAutoreleasePool : NSObject {           ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:638:49: error: 'NSAutoreleasePool' is unavailable: not available in automatic reference counting mode  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // Though technically not required, the run time environment at load time initialization may be less than ideal.                                                ^In module 'Foundation' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.h:63:/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSAutoreleasePool.h:8:12: note: declaration has been explicitly marked unavailable here@interface NSAutoreleasePool : NSObject {           ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:653:25: error: ARC forbids explicit message send of 'release'  [[temp_NSNumber init] release];   ~~~~~~~~~~~~~~~~~~~~ ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:656:9: error: 'release' is unavailable: not available in automatic reference counting mode  [pool release]; pool = NULL;        ^In module 'ObjectiveC' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:108:/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/objc/NSObject.h:38:1: note: declaration has been explicitly marked unavailable here- (oneway void)release OBJC_ARC_UNAVAILABLE;^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:656:9: error: ARC forbids explicit message send of 'release'  [pool release]; pool = NULL;   ~~~~ ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:662:14: error: pointer to non-const type 'id' with no explicit ownership  id         *objects;             ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:729:112: error: implicit conversion of Objective-C pointer type 'id' to C pointer type 'CFTypeRef' (aka 'const void *') requires a bridged cast    for(atObject = 0UL; atObject < count; atObject++) { if(JK_EXPECT_T(objects[atObject] != NULL)) { CFRelease(objects[atObject]); objects[atObject] = NULL; } }                                                                                                               ^~~~~~~~~~~~~~~~~/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:729:112: note: use __bridge to convert directly (no change in ownership)    for(atObject = 0UL; atObject < count; atObject++) { if(JK_EXPECT_T(objects[atObject] != NULL)) { CFRelease(objects[atObject]); objects[atObject] = NULL; } }                                                                                                               ^                                                                                                               (__bridge CFTypeRef)( )/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:729:112: note: use CFBridgingRetain call to make an ARC object available as a +1 'CFTypeRef' (aka 'const void *')    for(atObject = 0UL; atObject < count; atObject++) { if(JK_EXPECT_T(objects[atObject] != NULL)) { CFRelease(objects[atObject]); objects[atObject] = NULL; } }                                                                                                               ^                                                                                                               CFBridgingRetain()/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:733:10: error: ARC forbids explicit message send of 'dealloc'  [super dealloc];   ~~~~~ ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:748:10: warning: destination for this 'memcpy' call is a pointer to ownership-qualified type '__autoreleasing id' [-Warc-non-pod-memaccess]  memcpy(objectsPtr, objects + range.location, range.length * sizeof(id));  ~~~~~~ ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:748:10: note: explicitly cast the pointer to silence this warning  memcpy(objectsPtr, objects + range.location, range.length * sizeof(id));         ^         (void*)/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:762:111: error: assigning '__autoreleasing id *' to '__unsafe_unretained id *' changes retain/release properties of pointer  if(JK_EXPECT_F(state->state == 0UL))   { state->mutationsPtr = (unsigned long *)&mutations; state->itemsPtr = stackbuf; }                                                                                                              ^ ~~~~~~~~/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:779:24: error: ARC forbids explicit message send of 'retain'  anObject = [anObject retain];              ~~~~~~~~ ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:801:24: error: ARC forbids explicit message send of 'retain'  anObject = [anObject retain];              ~~~~~~~~ ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:810:37: error: 'retain' is unavailable: not available in automatic reference counting mode  return((mutations == 0UL) ? [self retain] : [(NSArray *)[NSArray allocWithZone:zone] initWithObjects:objects count:count]);                                    ^In module 'ObjectiveC' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:108:/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/objc/NSObject.h:37:1: note: declaration has been explicitly marked unavailable here- (id)retain OBJC_ARC_UNAVAILABLE;^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:810:37: error: ARC forbids explicit message send of 'retain'  return((mutations == 0UL) ? [self retain] : [(NSArray *)[NSArray allocWithZone:zone] initWithObjects:objects count:count]);                               ~~~~ ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:759:89: warning: conflicting parameter types in implementation of 'countByEnumeratingWithState:objects:count:': '__unsafe_unretained id *' vs '__autoreleasing id *' [-Wmismatched-parameter-types]- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len                                                                                   ~~~~ ^In module 'Foundation' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.h:63:/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSEnumerator.h:28:110: note: previous definition is here- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len;                                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~ ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:742:26: warning: conflicting parameter types in implementation of 'getObjects:range:': '__unsafe_unretained id *' vs '__autoreleasing id *' [-Wmismatched-parameter-types]- (void)getObjects:(id *)objectsPtr range:(NSRange)range                    ~~~~ ^In module 'Foundation' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.h:63:/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSArray.h:31:47: note: previous definition is here- (void)getObjects:(id __unsafe_unretained [])objects range:(NSRange)range;                    ~~~~~~~~~~~~~~~~~~~~~~~~~ ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:679:27: error: cast of C pointer type 'void *' to Objective-C pointer type 'JKArray *' requires a bridged cast  if(JK_EXPECT_T((array = (JKArray *)calloc(1UL, _JKArrayInstanceSize)) != NULL)) { // Directly allocate the JKArray instance via calloc.                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:196:53: note: expanded from macro 'JK_EXPECT_T'#define JK_EXPECT_T(cond)               JK_EXPECTED(cond, 1U)                                                    ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:195:65: note: expanded from macro 'JK_EXPECTED'#define JK_EXPECTED(cond, expect)       __builtin_expect((long)(cond), (expect))                                                                ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:679:27: note: use __bridge to convert directly (no change in ownership)/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:196:53: note: expanded from macro 'JK_EXPECT_T'#define JK_EXPECT_T(cond)               JK_EXPECTED(cond, 1U)                                                    ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:195:65: note: expanded from macro 'JK_EXPECTED'#define JK_EXPECTED(cond, expect)       __builtin_expect((long)(cond), (expect))                                                                ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:679:38: note: use CFBridgingRelease call to transfer ownership of a +1 'void *' into ARC  if(JK_EXPECT_T((array = (JKArray *)calloc(1UL, _JKArrayInstanceSize)) != NULL)) { // Directly allocate the JKArray instance via calloc.                                     ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:196:53: note: expanded from macro 'JK_EXPECT_T'#define JK_EXPECT_T(cond)               JK_EXPECTED(cond, 1U)                                                    ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:195:65: note: expanded from macro 'JK_EXPECTED'#define JK_EXPECTED(cond, expect)       __builtin_expect((long)(cond), (expect))                                                                ^/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:680:12: warning: 'isa' is deprecated [-Wdeprecated-declarations]    array->isa      = _JKArrayClass;           ^In module 'ObjectiveC' imported from /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m:108:/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/objc/NSObject.h:53:11: note: 'isa' declared here    Class isa  OBJC_ISA_AVAILABILITY;          ^fatal error: too many errors emitted, stopping now [-ferror-limit=]4 warnings and 20 errors generated.24(36%IDEClangDiagnosticActivityLogMessage2@71"JSONKit does not support Objective-C Automatic Reference Counting (ARC)-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^139#1#139#1#4995#0#19"User Defined Issues--2@41"ARC forbids Objective-C objects in struct-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^448#22#448#22#16585#0#16"ARC Restrictions--2@41"ARC forbids Objective-C objects in struct-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^462#5#462#5#16838#0#16"ARC Restrictions--2@41"ARC forbids Objective-C objects in struct-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^476#26#476#26#17276#0#16"ARC Restrictions--2@41"ARC forbids Objective-C objects in struct-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^504#5#504#5#18276#0#16"ARC Restrictions--2@86"'NSAutoreleasePool' is unavailable: not available in automatic reference counting mode-429430977#18446744073709551615#0#1(2@55"Declaration has been explicitly marked unavailable here-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@198"file:///Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSAutoreleasePool.h0000000000000000^7#11#7#11#163#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^637#2#637#2#26623#0#14"Semantic Issue--2@86"'NSAutoreleasePool' is unavailable: not available in automatic reference counting mode-429430977#18446744073709551615#0#1(2@55"Declaration has been explicitly marked unavailable here-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@198"file:///Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSAutoreleasePool.h0000000000000000^7#11#7#11#163#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^637#48#637#48#26669#0#14"Semantic Issue--2@46"ARC forbids explicit message send of 'release'-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^652#24#652#24#27543#0#16"ARC Restrictions1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^652#3#652#23#27522#19#-2@76"'release' is unavailable: not available in automatic reference counting mode-429430977#18446744073709551615#0#1(2@55"Declaration has been explicitly marked unavailable here-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@151"file:///Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/objc/NSObject.h0000000000000000^37#0#37#0#823#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^655#8#655#8#27588#0#14"Semantic Issue--2@46"ARC forbids explicit message send of 'release'-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^655#8#655#8#27588#0#16"ARC Restrictions1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^655#3#655#7#27583#0#-2@57"Pointer to non-const type 'id' with no explicit ownership-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^661#13#661#13#27730#0#18"ARC Semantic Issue--2@127"Implicit conversion of Objective-C pointer type 'id' to C pointer type 'CFTypeRef' (aka 'const void *') requires a bridged cast-429430977#18446744073709551615#0#2(2@57"Use __bridge to convert directly (no change in ownership)-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^728#111#728#111#31791#0#17"ARC Casting Rules2(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^728#111#728#111#31791#0#3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^728#128#728#128#31808#0#-2@98"Use CFBridgingRetain call to make an ARC object available as a +1 'CFTypeRef' (aka 'const void *')-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^728#111#728#111#31791#0#17"ARC Casting Rules2(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^728#111#728#111#31791#0#3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^728#128#728#128#31808#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^728#111#728#111#31791#0#17"ARC Casting Rules1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^728#111#728#128#31791#16#-2@46"ARC forbids explicit message send of 'dealloc'-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^732#9#732#9#31892#0#16"ARC Restrictions1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^732#3#732#8#31886#0#-2@96"Destination for this 'memcpy' call is a pointer to ownership-qualified type '__autoreleasing id'-429430977#18446744073709551615#0#1(2@51"Explicitly cast the pointer to silence this warning-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^747#9#747#9#32759#0#14"Semantic Issue1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^747#9#747#9#32759#0#-1#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^747#9#747#9#32759#0#18"ARC Semantic Issue1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^747#2#747#8#32752#0#-2@107"Assigning '__autoreleasing id *' to '__unsafe_unretained id *' changes retain/release properties of pointer-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^761#110#761#110#33599#0#14"Semantic Issue1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^761#112#761#120#33601#0#-2@45"ARC forbids explicit message send of 'retain'-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^778#23#778#23#34809#0#16"ARC Restrictions1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^778#14#778#22#34800#0#-2@45"ARC forbids explicit message send of 'retain'-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^800#23#800#23#36481#0#16"ARC Restrictions1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^800#14#800#22#36472#0#-2@75"'retain' is unavailable: not available in automatic reference counting mode-429430977#18446744073709551615#0#1(2@55"Declaration has been explicitly marked unavailable here-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@151"file:///Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/objc/NSObject.h0000000000000000^36#0#36#0#788#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^809#36#809#36#36774#0#14"Semantic Issue--2@45"ARC forbids explicit message send of 'retain'-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^809#36#809#36#36774#0#16"ARC Restrictions1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^809#31#809#35#36769#0#-2@147"Conflicting parameter types in implementation of 'countByEnumeratingWithState:objects:count:': '__unsafe_unretained id *' vs '__autoreleasing id *'-429430977#18446744073709551615#0#1(2@27"Previous definition is here-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@193"file:///Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSEnumerator.h0000000000000000^27#109#27#109#811#0#21"Apple LLVM 5.1 Notice1(3@193"file:///Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSEnumerator.h0000000000000000^27#83#27#108#785#24#-1#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^758#88#758#88#33337#0#14"Semantic Issue1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^758#83#758#87#33332#3#-2@122"Conflicting parameter types in implementation of 'getObjects:range:': '__unsafe_unretained id *' vs '__autoreleasing id *'-429430977#18446744073709551615#0#1(2@27"Previous definition is here-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@188"file:///Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSArray.h0000000000000000^30#46#30#46#978#0#21"Apple LLVM 5.1 Notice1(3@188"file:///Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSArray.h0000000000000000^30#20#30#45#952#24#-1#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^741#25#741#25#32035#0#14"Semantic Issue1(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^741#20#741#24#32030#3#-2@95"Cast of C pointer type 'void *' to Objective-C pointer type 'JKArray *' requires a bridged cast-429430977#18446744073709551615#0#4(2@33"Expanded from macro 'JK_EXPECT_T'-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^195#52#195#52#7954#0#21"Apple LLVM 5.1 Notice2(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^678#26#678#70#28375#43#3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^678#37#678#70#28386#32#-2@33"Expanded from macro 'JK_EXPECTED'-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^194#64#194#64#7885#0#21"Apple LLVM 5.1 Notice2(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^678#26#678#70#28375#43#3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^678#37#678#70#28386#32#-2@57"Use __bridge to convert directly (no change in ownership)-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^678#26#678#26#28375#0#17"ARC Casting Rules--2@74"Use CFBridgingRelease call to transfer ownership of a +1 'void *' into ARC-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^678#37#678#37#28386#0#17"ARC Casting Rules--2#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^678#26#678#26#28375#0#17"ARC Casting Rules2(3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^678#26#678#70#28375#43#3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^678#37#678#70#28386#32#-2@19"'isa' is deprecated-429430977#18446744073709551615#0#1(2@19"'isa' declared here-429430977#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@151"file:///Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/objc/NSObject.h0000000000000000^52#10#52#10#1156#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^679#11#679#11#28498#0#12"Deprecations--2@37"Too many errors emitted, stopping now-429430977#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic-20"Apple LLVM 5.1 Error--0#0#1#-19%DVTDocumentLocation4@87"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m0000000000000000^4146"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JSONKit.o JSONKit/JSONKit.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources/i386 -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JSONKit.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JSONKit.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JSONKit/JSONKit.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JSONKit.o36"0165EEDF-E59F-4016-8B4A-B6502F9C2E7B-
+b707DFE92-92E4-497C-8AD4-EA806A4A231C
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextField.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429430973.355128
+e429430975.430862
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextField.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m244"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextField.o JVFloatLabeledTextField/JVFloatLabeledTextField.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler1b0e5bbd9898b941^e84c6ebf9898b941^---0#0#1#-19%DVTDocumentLocation2@119"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m0000000000000000^4274"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextField.o JVFloatLabeledTextField/JVFloatLabeledTextField.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources/i386 -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextField.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextField.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextField.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextField.o36"BE122729-B7E5-4CDF-9601-0B9EEF0225AA-
+b707DFE92-92E4-497C-8AD4-EA806A4A231C
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/JVFloatLabeledTextView.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/JVFloatLabeledTextView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/NSString+TextDirectionality.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/JVFloatLabeledTextField/NSString+TextDirectionality.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/main.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429430975.429310
+e429430976.998125
+r1
+xCompileC
+xbuild/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/main.o
+x/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/ABAppDelegate.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/AprilBeaconSDK.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconManager.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeaconRegion.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABBeacon.h
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilSDK/Headers/ABSensor.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m198"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/main.o AprilBeaconDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler65fe6dbf9898b941^be87ffc09898b941^---0#0#1#-19%DVTDocumentLocation2@92"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m0000000000000000^4144"CompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/main.o AprilBeaconDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources/i386 -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator -include /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch -MMD -MT dependencies -MF /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/main.dia -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/main.m -o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/main.o36"5AC90F8D-0028-4BCD-B1C5-E45552CC9C48-
+b707DFE92-92E4-497C-8AD4-EA806A4A231C
+
+CCompileC build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/Objects-normal/i386/pinyin.o /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AFNetworking/pinyin.c normal i386 c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileStoryboard /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/Base.lproj/Main.storyboard
+r0
+
+CCopyStringsFile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/AprilBeaconDemo.app/en.lproj/InfoPlist.strings AprilBeaconDemo/en.lproj/InfoPlist.strings
+r0
+
+CGenerateDSYMFile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/AprilBeaconDemo.app.dSYM /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/AprilBeaconDemo.app/AprilBeaconDemo
+r0
+
+CLd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/AprilBeaconDemo.app/AprilBeaconDemo normal i386
+r0
+
+CProcessInfoPlistFile /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/AprilBeaconDemo.app/Info.plist /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Info.plist
+r0
+
+CProcessPCH /Users/Ning/Library/Developer/Xcode/DerivedData/AprilBeaconDemo-ghkofowncxmmjkdudvupehwdtgzm/Index/PrecompiledHeaders/AprilBeaconDemo-Prefix-aemibhmufunxanfitdlpxljqwinl_ast/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /Users/Ning/Library/Developer/Xcode/DerivedData/AprilBeaconDemo-ghkofowncxmmjkdudvupehwdtgzm/Index/PrecompiledHeaders/AprilBeaconDemo-Prefix-ezpsxinrwfcyshazemyyjysqlrcb_ast/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-acindyklcaqjyvgxjisvhdpuyvaz/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 c com.apple.compilers.llvm.clang.1_0.compiler
+s429430969.284329
+e429430971.794428
+r1
+xProcessPCH
+x/var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-acindyklcaqjyvgxjisvhdpuyvaz/AprilBeaconDemo-Prefix.pch.pch
+xAprilBeaconDemo/AprilBeaconDemo-Prefix.pch
+xnormal
+xi386
+xc
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Precompile AprilBeaconDemo/AprilBeaconDemo-Prefix.pch310"ProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-acindyklcaqjyvgxjisvhdpuyvaz/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 c com.apple.compilers.llvm.clang.1_0.compiler637f49b99898b941^1860cbbb9898b941^---0#0#1#-19%DVTDocumentLocation2@112"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch0000000000000000^3906"ProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-acindyklcaqjyvgxjisvhdpuyvaz/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c-header -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -g -Wno-sign-conversion -mios-simulator-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources/i386 -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator --serialize-diagnostics /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-acindyklcaqjyvgxjisvhdpuyvaz/AprilBeaconDemo-Prefix.pch.dia -MMD -MT dependencies -MF /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-acindyklcaqjyvgxjisvhdpuyvaz/AprilBeaconDemo-Prefix.pch.d -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch -o /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-acindyklcaqjyvgxjisvhdpuyvaz/AprilBeaconDemo-Prefix.pch.pch36"3B820313-6C25-45F8-A195-52624DF2F62D-
+b707DFE92-92E4-497C-8AD4-EA806A4A231C
+
+CProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s429430969.284003
+e429430973.353823
+r1
+xProcessPCH
+x/var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch.pch
+xAprilBeaconDemo/AprilBeaconDemo-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Precompile AprilBeaconDemo/AprilBeaconDemo-Prefix.pch320"ProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler287d49b99898b941^ee945abd9898b941^---0#0#1#-19%DVTDocumentLocation2@112"file:///Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch0000000000000000^4196"ProcessPCH /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch.pch AprilBeaconDemo/AprilBeaconDemo-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo    export LANG=en_US.US-ASCII    export PATH="/Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Volumes/Xcode/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Ning/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-generated-files.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-own-target-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-all-target-headers.hmap -iquote /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/AprilBeaconDemo-project-headers.hmap -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/include -I/Volumes/Xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I../AprilSDK/Headers -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources/i386 -I/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/AprilBeaconDemo.build/Debug-iphonesimulator/AprilBeaconDemo.build/DerivedSources -F/Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator --serialize-diagnostics /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch.dia -MMD -MT dependencies -MF /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch.d -c /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/AprilBeaconDemo/AprilBeaconDemo-Prefix.pch -o /var/folders/vx/mjl0cxdn1bgdz36m_4x_02vh0000gn/C/com.apple.DeveloperTools/5.1-5B130a/Xcode/SharedPrecompiledHeaders/AprilBeaconDemo-Prefix-evewzxnpctmjsmdmwblpimosulbx/AprilBeaconDemo-Prefix.pch.pch36"63CAF09B-DFEB-4E79-A06A-328DB7B18E89-
+b707DFE92-92E4-497C-8AD4-EA806A4A231C
+
+CTouch /Users/Ning/Desktop/AprilBeacon-iOS-SDK-master/AprilBeaconDemo/build/Debug-iphonesimulator/AprilBeaconDemo.app
+r0
+

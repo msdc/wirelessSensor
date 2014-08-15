@@ -1,0 +1,666 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3BBB9E201998989600C5C8A6 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E1F1998989600C5C8A6 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3BBB9E37199898A700C5C8A6 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E23199898A700C5C8A6 /* AFHTTPRequestOperation.m */; };
+		3BBB9E38199898A700C5C8A6 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E25199898A700C5C8A6 /* AFHTTPRequestOperationManager.m */; };
+		3BBB9E39199898A700C5C8A6 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E27199898A700C5C8A6 /* AFHTTPSessionManager.m */; };
+		3BBB9E3A199898A700C5C8A6 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E2A199898A700C5C8A6 /* AFNetworkReachabilityManager.m */; };
+		3BBB9E3B199898A700C5C8A6 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E2C199898A700C5C8A6 /* AFSecurityPolicy.m */; };
+		3BBB9E3C199898A700C5C8A6 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E2E199898A700C5C8A6 /* AFURLConnectionOperation.m */; };
+		3BBB9E3D199898A700C5C8A6 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E30199898A700C5C8A6 /* AFURLRequestSerialization.m */; };
+		3BBB9E3E199898A700C5C8A6 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E32199898A700C5C8A6 /* AFURLResponseSerialization.m */; };
+		3BBB9E3F199898A700C5C8A6 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E34199898A700C5C8A6 /* AFURLSessionManager.m */; };
+		3BBB9E40199898A700C5C8A6 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB9E35199898A700C5C8A6 /* pinyin.c */; };
+		657AE1C1199B3403005DF68E /* UIDevice+serialNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 657AE1C0199B3403005DF68E /* UIDevice+serialNumber.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E224EF88192D9D8400AB5D9B /* libAprilBeaconSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E224EF87192D9D8400AB5D9B /* libAprilBeaconSDK.a */; };
+		E26EB6AC197F5323007619B1 /* ABModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E26EB6AB197F5323007619B1 /* ABModifyViewController.m */; };
+		E26EB6B4197F5374007619B1 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E26EB6AF197F5374007619B1 /* JVFloatLabeledTextField.m */; };
+		E26EB6B5197F5374007619B1 /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E26EB6B1197F5374007619B1 /* JVFloatLabeledTextView.m */; };
+		E26EB6B6197F5374007619B1 /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = E26EB6B3197F5374007619B1 /* NSString+TextDirectionality.m */; };
+		E2ED5E551919E1F000C0BF2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ED5E541919E1F000C0BF2C /* Foundation.framework */; };
+		E2ED5E571919E1F000C0BF2C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ED5E561919E1F000C0BF2C /* CoreGraphics.framework */; };
+		E2ED5E591919E1F000C0BF2C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ED5E581919E1F000C0BF2C /* UIKit.framework */; };
+		E2ED5E5F1919E1F000C0BF2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2ED5E5D1919E1F000C0BF2C /* InfoPlist.strings */; };
+		E2ED5E611919E1F000C0BF2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ED5E601919E1F000C0BF2C /* main.m */; };
+		E2ED5E651919E1F000C0BF2C /* ABAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ED5E641919E1F000C0BF2C /* ABAppDelegate.m */; };
+		E2ED5E681919E1F000C0BF2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2ED5E661919E1F000C0BF2C /* Main.storyboard */; };
+		E2ED5E6B1919E1F000C0BF2C /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ED5E6A1919E1F000C0BF2C /* ABViewController.m */; };
+		E2ED5E6D1919E1F000C0BF2C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2ED5E6C1919E1F000C0BF2C /* Images.xcassets */; };
+		E2ED5E741919E1F000C0BF2C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ED5E731919E1F000C0BF2C /* XCTest.framework */; };
+		E2ED5E751919E1F100C0BF2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ED5E541919E1F000C0BF2C /* Foundation.framework */; };
+		E2ED5E761919E1F100C0BF2C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ED5E581919E1F000C0BF2C /* UIKit.framework */; };
+		E2ED5E7E1919E1F100C0BF2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2ED5E7C1919E1F100C0BF2C /* InfoPlist.strings */; };
+		E2ED5E801919E1F100C0BF2C /* AprilBeaconDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ED5E7F1919E1F100C0BF2C /* AprilBeaconDemoTests.m */; };
+		E2ED5EE5191B32C600C0BF2C /* ABBluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ED5EDD191B32C600C0BF2C /* ABBluetoothViewController.m */; };
+		E2ED5EE6191B32C600C0BF2C /* ABNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ED5EDF191B32C600C0BF2C /* ABNotificationViewController.m */; };
+		E2ED5EE7191B32C600C0BF2C /* ABSelectDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ED5EE1191B32C600C0BF2C /* ABSelectDeviceViewController.m */; };
+		E2ED5EE8191B32C600C0BF2C /* ABTransmitters.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ED5EE4191B32C600C0BF2C /* ABTransmitters.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E2ED5E771919E1F100C0BF2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2ED5E491919E1F000C0BF2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2ED5E501919E1F000C0BF2C;
+			remoteInfo = AprilBeaconDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3BBB9E1E1998989600C5C8A6 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		3BBB9E1F1998989600C5C8A6 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		3BBB9E22199898A700C5C8A6 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		3BBB9E23199898A700C5C8A6 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		3BBB9E24199898A700C5C8A6 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		3BBB9E25199898A700C5C8A6 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		3BBB9E26199898A700C5C8A6 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		3BBB9E27199898A700C5C8A6 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		3BBB9E28199898A700C5C8A6 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		3BBB9E29199898A700C5C8A6 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		3BBB9E2A199898A700C5C8A6 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		3BBB9E2B199898A700C5C8A6 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		3BBB9E2C199898A700C5C8A6 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		3BBB9E2D199898A700C5C8A6 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		3BBB9E2E199898A700C5C8A6 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		3BBB9E2F199898A700C5C8A6 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		3BBB9E30199898A700C5C8A6 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		3BBB9E31199898A700C5C8A6 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		3BBB9E32199898A700C5C8A6 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		3BBB9E33199898A700C5C8A6 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		3BBB9E34199898A700C5C8A6 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		3BBB9E35199898A700C5C8A6 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		3BBB9E36199898A700C5C8A6 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		657AE1BF199B3403005DF68E /* UIDevice+serialNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+serialNumber.h"; sourceTree = "<group>"; };
+		657AE1C0199B3403005DF68E /* UIDevice+serialNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+serialNumber.m"; sourceTree = "<group>"; };
+		E224EF87192D9D8400AB5D9B /* libAprilBeaconSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAprilBeaconSDK.a; path = ../AprilSDK/libAprilBeaconSDK.a; sourceTree = "<group>"; };
+		E26EB6AA197F5323007619B1 /* ABModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABModifyViewController.h; sourceTree = "<group>"; };
+		E26EB6AB197F5323007619B1 /* ABModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABModifyViewController.m; sourceTree = "<group>"; };
+		E26EB6AE197F5374007619B1 /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextField.h; sourceTree = "<group>"; };
+		E26EB6AF197F5374007619B1 /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		E26EB6B0197F5374007619B1 /* JVFloatLabeledTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextView.h; sourceTree = "<group>"; };
+		E26EB6B1197F5374007619B1 /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextView.m; sourceTree = "<group>"; };
+		E26EB6B2197F5374007619B1 /* NSString+TextDirectionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TextDirectionality.h"; sourceTree = "<group>"; };
+		E26EB6B3197F5374007619B1 /* NSString+TextDirectionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TextDirectionality.m"; sourceTree = "<group>"; };
+		E2ED5E511919E1F000C0BF2C /* AprilBeaconDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AprilBeaconDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2ED5E541919E1F000C0BF2C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E2ED5E561919E1F000C0BF2C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E2ED5E581919E1F000C0BF2C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E2ED5E5C1919E1F000C0BF2C /* AprilBeaconDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AprilBeaconDemo-Info.plist"; sourceTree = "<group>"; };
+		E2ED5E5E1919E1F000C0BF2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E2ED5E601919E1F000C0BF2C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E2ED5E621919E1F000C0BF2C /* AprilBeaconDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AprilBeaconDemo-Prefix.pch"; sourceTree = "<group>"; };
+		E2ED5E631919E1F000C0BF2C /* ABAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABAppDelegate.h; sourceTree = "<group>"; };
+		E2ED5E641919E1F000C0BF2C /* ABAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABAppDelegate.m; sourceTree = "<group>"; };
+		E2ED5E671919E1F000C0BF2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E2ED5E691919E1F000C0BF2C /* ABViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABViewController.h; sourceTree = "<group>"; };
+		E2ED5E6A1919E1F000C0BF2C /* ABViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABViewController.m; sourceTree = "<group>"; };
+		E2ED5E6C1919E1F000C0BF2C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E2ED5E721919E1F000C0BF2C /* AprilBeaconDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AprilBeaconDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2ED5E731919E1F000C0BF2C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E2ED5E7B1919E1F100C0BF2C /* AprilBeaconDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AprilBeaconDemoTests-Info.plist"; sourceTree = "<group>"; };
+		E2ED5E7D1919E1F100C0BF2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E2ED5E7F1919E1F100C0BF2C /* AprilBeaconDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AprilBeaconDemoTests.m; sourceTree = "<group>"; };
+		E2ED5EDC191B32C600C0BF2C /* ABBluetoothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABBluetoothViewController.h; sourceTree = "<group>"; };
+		E2ED5EDD191B32C600C0BF2C /* ABBluetoothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABBluetoothViewController.m; sourceTree = "<group>"; };
+		E2ED5EDE191B32C600C0BF2C /* ABNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABNotificationViewController.h; sourceTree = "<group>"; };
+		E2ED5EDF191B32C600C0BF2C /* ABNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNotificationViewController.m; sourceTree = "<group>"; };
+		E2ED5EE0191B32C600C0BF2C /* ABSelectDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectDeviceViewController.h; sourceTree = "<group>"; };
+		E2ED5EE1191B32C600C0BF2C /* ABSelectDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectDeviceViewController.m; sourceTree = "<group>"; };
+		E2ED5EE3191B32C600C0BF2C /* ABTransmitters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTransmitters.h; sourceTree = "<group>"; };
+		E2ED5EE4191B32C600C0BF2C /* ABTransmitters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTransmitters.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E2ED5E4E1919E1F000C0BF2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2ED5E571919E1F000C0BF2C /* CoreGraphics.framework in Frameworks */,
+				E2ED5E591919E1F000C0BF2C /* UIKit.framework in Frameworks */,
+				E2ED5E551919E1F000C0BF2C /* Foundation.framework in Frameworks */,
+				E224EF88192D9D8400AB5D9B /* libAprilBeaconSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2ED5E6F1919E1F000C0BF2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2ED5E741919E1F000C0BF2C /* XCTest.framework in Frameworks */,
+				E2ED5E761919E1F100C0BF2C /* UIKit.framework in Frameworks */,
+				E2ED5E751919E1F100C0BF2C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3BBB9E1C1998986F00C5C8A6 /* Third-Party */ = {
+			isa = PBXGroup;
+			children = (
+				3BBB9E21199898A700C5C8A6 /* AFNetworking */,
+				3BBB9E1D1998989600C5C8A6 /* JSONKit */,
+				657AE1BF199B3403005DF68E /* UIDevice+serialNumber.h */,
+				657AE1C0199B3403005DF68E /* UIDevice+serialNumber.m */,
+			);
+			name = "Third-Party";
+			sourceTree = "<group>";
+		};
+		3BBB9E1D1998989600C5C8A6 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				3BBB9E1E1998989600C5C8A6 /* JSONKit.h */,
+				3BBB9E1F1998989600C5C8A6 /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		3BBB9E21199898A700C5C8A6 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				3BBB9E22199898A700C5C8A6 /* AFHTTPRequestOperation.h */,
+				3BBB9E23199898A700C5C8A6 /* AFHTTPRequestOperation.m */,
+				3BBB9E24199898A700C5C8A6 /* AFHTTPRequestOperationManager.h */,
+				3BBB9E25199898A700C5C8A6 /* AFHTTPRequestOperationManager.m */,
+				3BBB9E26199898A700C5C8A6 /* AFHTTPSessionManager.h */,
+				3BBB9E27199898A700C5C8A6 /* AFHTTPSessionManager.m */,
+				3BBB9E28199898A700C5C8A6 /* AFNetworking.h */,
+				3BBB9E29199898A700C5C8A6 /* AFNetworkReachabilityManager.h */,
+				3BBB9E2A199898A700C5C8A6 /* AFNetworkReachabilityManager.m */,
+				3BBB9E2B199898A700C5C8A6 /* AFSecurityPolicy.h */,
+				3BBB9E2C199898A700C5C8A6 /* AFSecurityPolicy.m */,
+				3BBB9E2D199898A700C5C8A6 /* AFURLConnectionOperation.h */,
+				3BBB9E2E199898A700C5C8A6 /* AFURLConnectionOperation.m */,
+				3BBB9E2F199898A700C5C8A6 /* AFURLRequestSerialization.h */,
+				3BBB9E30199898A700C5C8A6 /* AFURLRequestSerialization.m */,
+				3BBB9E31199898A700C5C8A6 /* AFURLResponseSerialization.h */,
+				3BBB9E32199898A700C5C8A6 /* AFURLResponseSerialization.m */,
+				3BBB9E33199898A700C5C8A6 /* AFURLSessionManager.h */,
+				3BBB9E34199898A700C5C8A6 /* AFURLSessionManager.m */,
+				3BBB9E35199898A700C5C8A6 /* pinyin.c */,
+				3BBB9E36199898A700C5C8A6 /* pinyin.h */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		E26EB6AD197F5374007619B1 /* JVFloatLabeledTextField */ = {
+			isa = PBXGroup;
+			children = (
+				E26EB6AE197F5374007619B1 /* JVFloatLabeledTextField.h */,
+				E26EB6AF197F5374007619B1 /* JVFloatLabeledTextField.m */,
+				E26EB6B0197F5374007619B1 /* JVFloatLabeledTextView.h */,
+				E26EB6B1197F5374007619B1 /* JVFloatLabeledTextView.m */,
+				E26EB6B2197F5374007619B1 /* NSString+TextDirectionality.h */,
+				E26EB6B3197F5374007619B1 /* NSString+TextDirectionality.m */,
+			);
+			path = JVFloatLabeledTextField;
+			sourceTree = "<group>";
+		};
+		E2ED5E481919E1F000C0BF2C = {
+			isa = PBXGroup;
+			children = (
+				E26EB6AD197F5374007619B1 /* JVFloatLabeledTextField */,
+				E2ED5E5A1919E1F000C0BF2C /* AprilBeaconDemo */,
+				3BBB9E1C1998986F00C5C8A6 /* Third-Party */,
+				E2ED5E791919E1F100C0BF2C /* AprilBeaconDemoTests */,
+				E2ED5E531919E1F000C0BF2C /* Frameworks */,
+				E2ED5E521919E1F000C0BF2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E2ED5E521919E1F000C0BF2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2ED5E511919E1F000C0BF2C /* AprilBeaconDemo.app */,
+				E2ED5E721919E1F000C0BF2C /* AprilBeaconDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E2ED5E531919E1F000C0BF2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E224EF87192D9D8400AB5D9B /* libAprilBeaconSDK.a */,
+				E2ED5E541919E1F000C0BF2C /* Foundation.framework */,
+				E2ED5E561919E1F000C0BF2C /* CoreGraphics.framework */,
+				E2ED5E581919E1F000C0BF2C /* UIKit.framework */,
+				E2ED5E731919E1F000C0BF2C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E2ED5E5A1919E1F000C0BF2C /* AprilBeaconDemo */ = {
+			isa = PBXGroup;
+			children = (
+				E2ED5EDC191B32C600C0BF2C /* ABBluetoothViewController.h */,
+				E2ED5EDD191B32C600C0BF2C /* ABBluetoothViewController.m */,
+				E2ED5EDE191B32C600C0BF2C /* ABNotificationViewController.h */,
+				E2ED5EDF191B32C600C0BF2C /* ABNotificationViewController.m */,
+				E2ED5EE0191B32C600C0BF2C /* ABSelectDeviceViewController.h */,
+				E2ED5EE1191B32C600C0BF2C /* ABSelectDeviceViewController.m */,
+				E26EB6AA197F5323007619B1 /* ABModifyViewController.h */,
+				E26EB6AB197F5323007619B1 /* ABModifyViewController.m */,
+				E2ED5EE2191B32C600C0BF2C /* Model */,
+				E2ED5E631919E1F000C0BF2C /* ABAppDelegate.h */,
+				E2ED5E641919E1F000C0BF2C /* ABAppDelegate.m */,
+				E2ED5E661919E1F000C0BF2C /* Main.storyboard */,
+				E2ED5E691919E1F000C0BF2C /* ABViewController.h */,
+				E2ED5E6A1919E1F000C0BF2C /* ABViewController.m */,
+				E2ED5E6C1919E1F000C0BF2C /* Images.xcassets */,
+				E2ED5E5B1919E1F000C0BF2C /* Supporting Files */,
+			);
+			path = AprilBeaconDemo;
+			sourceTree = "<group>";
+		};
+		E2ED5E5B1919E1F000C0BF2C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E2ED5E5C1919E1F000C0BF2C /* AprilBeaconDemo-Info.plist */,
+				E2ED5E5D1919E1F000C0BF2C /* InfoPlist.strings */,
+				E2ED5E601919E1F000C0BF2C /* main.m */,
+				E2ED5E621919E1F000C0BF2C /* AprilBeaconDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E2ED5E791919E1F100C0BF2C /* AprilBeaconDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				E2ED5E7F1919E1F100C0BF2C /* AprilBeaconDemoTests.m */,
+				E2ED5E7A1919E1F100C0BF2C /* Supporting Files */,
+			);
+			path = AprilBeaconDemoTests;
+			sourceTree = "<group>";
+		};
+		E2ED5E7A1919E1F100C0BF2C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E2ED5E7B1919E1F100C0BF2C /* AprilBeaconDemoTests-Info.plist */,
+				E2ED5E7C1919E1F100C0BF2C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E2ED5EE2191B32C600C0BF2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E2ED5EE3191B32C600C0BF2C /* ABTransmitters.h */,
+				E2ED5EE4191B32C600C0BF2C /* ABTransmitters.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E2ED5E501919E1F000C0BF2C /* AprilBeaconDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2ED5E831919E1F100C0BF2C /* Build configuration list for PBXNativeTarget "AprilBeaconDemo" */;
+			buildPhases = (
+				E2ED5E4D1919E1F000C0BF2C /* Sources */,
+				E2ED5E4E1919E1F000C0BF2C /* Frameworks */,
+				E2ED5E4F1919E1F000C0BF2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AprilBeaconDemo;
+			productName = AprilBeaconDemo;
+			productReference = E2ED5E511919E1F000C0BF2C /* AprilBeaconDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E2ED5E711919E1F000C0BF2C /* AprilBeaconDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2ED5E861919E1F100C0BF2C /* Build configuration list for PBXNativeTarget "AprilBeaconDemoTests" */;
+			buildPhases = (
+				E2ED5E6E1919E1F000C0BF2C /* Sources */,
+				E2ED5E6F1919E1F000C0BF2C /* Frameworks */,
+				E2ED5E701919E1F000C0BF2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2ED5E781919E1F100C0BF2C /* PBXTargetDependency */,
+			);
+			name = AprilBeaconDemoTests;
+			productName = AprilBeaconDemoTests;
+			productReference = E2ED5E721919E1F000C0BF2C /* AprilBeaconDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E2ED5E491919E1F000C0BF2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AB;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = AprilBrother;
+				TargetAttributes = {
+					E2ED5E711919E1F000C0BF2C = {
+						TestTargetID = E2ED5E501919E1F000C0BF2C;
+					};
+				};
+			};
+			buildConfigurationList = E2ED5E4C1919E1F000C0BF2C /* Build configuration list for PBXProject "AprilBeaconDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E2ED5E481919E1F000C0BF2C;
+			productRefGroup = E2ED5E521919E1F000C0BF2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E2ED5E501919E1F000C0BF2C /* AprilBeaconDemo */,
+				E2ED5E711919E1F000C0BF2C /* AprilBeaconDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E2ED5E4F1919E1F000C0BF2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2ED5E6D1919E1F000C0BF2C /* Images.xcassets in Resources */,
+				E2ED5E5F1919E1F000C0BF2C /* InfoPlist.strings in Resources */,
+				E2ED5E681919E1F000C0BF2C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2ED5E701919E1F000C0BF2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2ED5E7E1919E1F100C0BF2C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E2ED5E4D1919E1F000C0BF2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BBB9E37199898A700C5C8A6 /* AFHTTPRequestOperation.m in Sources */,
+				E26EB6B4197F5374007619B1 /* JVFloatLabeledTextField.m in Sources */,
+				E2ED5E611919E1F000C0BF2C /* main.m in Sources */,
+				3BBB9E3F199898A700C5C8A6 /* AFURLSessionManager.m in Sources */,
+				3BBB9E201998989600C5C8A6 /* JSONKit.m in Sources */,
+				3BBB9E3C199898A700C5C8A6 /* AFURLConnectionOperation.m in Sources */,
+				3BBB9E38199898A700C5C8A6 /* AFHTTPRequestOperationManager.m in Sources */,
+				E2ED5EE7191B32C600C0BF2C /* ABSelectDeviceViewController.m in Sources */,
+				3BBB9E3A199898A700C5C8A6 /* AFNetworkReachabilityManager.m in Sources */,
+				E2ED5E6B1919E1F000C0BF2C /* ABViewController.m in Sources */,
+				E26EB6B5197F5374007619B1 /* JVFloatLabeledTextView.m in Sources */,
+				3BBB9E3B199898A700C5C8A6 /* AFSecurityPolicy.m in Sources */,
+				3BBB9E40199898A700C5C8A6 /* pinyin.c in Sources */,
+				E26EB6B6197F5374007619B1 /* NSString+TextDirectionality.m in Sources */,
+				3BBB9E3D199898A700C5C8A6 /* AFURLRequestSerialization.m in Sources */,
+				E2ED5EE5191B32C600C0BF2C /* ABBluetoothViewController.m in Sources */,
+				3BBB9E3E199898A700C5C8A6 /* AFURLResponseSerialization.m in Sources */,
+				E2ED5EE6191B32C600C0BF2C /* ABNotificationViewController.m in Sources */,
+				E26EB6AC197F5323007619B1 /* ABModifyViewController.m in Sources */,
+				3BBB9E39199898A700C5C8A6 /* AFHTTPSessionManager.m in Sources */,
+				E2ED5E651919E1F000C0BF2C /* ABAppDelegate.m in Sources */,
+				657AE1C1199B3403005DF68E /* UIDevice+serialNumber.m in Sources */,
+				E2ED5EE8191B32C600C0BF2C /* ABTransmitters.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2ED5E6E1919E1F000C0BF2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2ED5E801919E1F100C0BF2C /* AprilBeaconDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E2ED5E781919E1F100C0BF2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2ED5E501919E1F000C0BF2C /* AprilBeaconDemo */;
+			targetProxy = E2ED5E771919E1F100C0BF2C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E2ED5E5D1919E1F000C0BF2C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2ED5E5E1919E1F000C0BF2C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E2ED5E661919E1F000C0BF2C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2ED5E671919E1F000C0BF2C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E2ED5E7C1919E1F100C0BF2C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2ED5E7D1919E1F100C0BF2C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E2ED5E811919E1F100C0BF2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E2ED5E821919E1F100C0BF2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E2ED5E841919E1F100C0BF2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gang Lu (WDJTR25CY5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gang Lu (WDJTR25CY5)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AprilBeaconDemo/AprilBeaconDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../AprilSDK/Headers/,
+				);
+				INFOPLIST_FILE = "AprilBeaconDemo/AprilBeaconDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					../AprilSDK,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E99FF5F3-E2E1-4F7C-84EE-C4F32EA4478A";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E2ED5E851919E1F100C0BF2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gang Lu (WDJTR25CY5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AprilBeaconDemo/AprilBeaconDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../AprilSDK/Headers/,
+				);
+				INFOPLIST_FILE = "AprilBeaconDemo/AprilBeaconDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					../AprilSDK,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E99FF5F3-E2E1-4F7C-84EE-C4F32EA4478A";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E2ED5E871919E1F100C0BF2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AprilBeaconDemo.app/AprilBeaconDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AprilBeaconDemo/AprilBeaconDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AprilBeaconDemoTests/AprilBeaconDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E2ED5E881919E1F100C0BF2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AprilBeaconDemo.app/AprilBeaconDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AprilBeaconDemo/AprilBeaconDemo-Prefix.pch";
+				INFOPLIST_FILE = "AprilBeaconDemoTests/AprilBeaconDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E2ED5E4C1919E1F000C0BF2C /* Build configuration list for PBXProject "AprilBeaconDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2ED5E811919E1F100C0BF2C /* Debug */,
+				E2ED5E821919E1F100C0BF2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2ED5E831919E1F100C0BF2C /* Build configuration list for PBXNativeTarget "AprilBeaconDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2ED5E841919E1F100C0BF2C /* Debug */,
+				E2ED5E851919E1F100C0BF2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2ED5E861919E1F100C0BF2C /* Build configuration list for PBXNativeTarget "AprilBeaconDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2ED5E871919E1F100C0BF2C /* Debug */,
+				E2ED5E881919E1F100C0BF2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E2ED5E491919E1F000C0BF2C /* Project object */;
+}
