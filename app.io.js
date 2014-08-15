@@ -20,7 +20,12 @@ server.listen(13327,function(){
 
 io.on('connection', function (socket) {
     socket.emit('welcome', { welcome: 'server connected success..' });
-    socket.on('sensorData', function(data){
+
+    socket.on('sensorData',function(data){
+        SensorDataCalculater.calculate(socket,data);
+    });
+
+    socket.on('sensorDataFromRedis', function(data){
         client = redis.createClient();
         client.on("error", function (err) {
             console.log(err);
@@ -31,42 +36,48 @@ io.on('connection', function (socket) {
                 client.get(key, function(err,reply){
                     if(err){console.error(err);}
                     console.log(key);
-                    var tpNDataArray = [];
-                    var data;
-                    try
-                    {
-                        data=JSON.parse(reply);
-                    }catch(e)
-                    {
-                        return;
-                    }
-
-                    //exclude incorrect data.
-                    if(!data.deviceSerial){
-                        return;
-                    }
-
-                    tpNDataArray.push(data);
-                    var trlCal = new trilateration(tpNDataArray);
-
-                    trlCal.delKeyZero(function (pointDt) {
-                        for (var point in pointDt) {
-                            if(!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
-                            kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
-                                socket.emit('result',finalPoint);
-                                console.log("deviceID=" + finalPoint.deviceID);
-                                console.log("timePoint=" + finalPoint.timePoint);
-                                console.log("deviceSerial=" + finalPoint.deviceSerial);
-                                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x+",\"y=\""+finalPoint.beaconCalculatePosition[0].y+"}]");
-                                //todo write back info the redis and trigger postback event using websocket
-                            });
-                        }
-                    });
+                    SensorDataCalculater.calculate(socket,reply);
                 });
             });
             client.quit();
         });
     });
 });
+
+/*One package of Sensor Data Calculate static class.*/
+function SensorDataCalculater(){};
+SensorDataCalculater.calculate=function(socket,data){
+    var tpNDataArray = [];
+    var data;
+    try
+    {
+        data=JSON.parse(data);
+    }catch(e)
+    {
+        return;
+    }
+
+    //exclude incorrect data.
+    if(!data.deviceSerial){
+        return;
+    }
+
+    tpNDataArray.push(data);
+    var trlCal = new trilateration(tpNDataArray);
+
+    trlCal.delKeyZero(function (pointDt) {
+        for (var point in pointDt) {
+            if(!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
+            kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
+                socket.emit('result',finalPoint);
+                console.log("deviceID=" + finalPoint.deviceID);
+                console.log("timePoint=" + finalPoint.timePoint);
+                console.log("deviceSerial=" + finalPoint.deviceSerial);
+                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x+",\"y=\""+finalPoint.beaconCalculatePosition[0].y+"}]");
+                //todo write back info the redis and trigger postback event using websocket
+            });
+        }
+    });
+};
 
 
