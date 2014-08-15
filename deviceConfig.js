@@ -47,6 +47,6 @@ exports.uuidArr=function(){
  **/
 /**提交的数据格式
  var kTjFormat={
-    "deviceID": "mobile1",deviceSerial:'1141',"timePoint": "2013-12-23 00:00:00:0001","beaconCanculatePosition": [{"x": "0.813","y": "2.88624"},{"x": "1.86","y": "2.88"}]
+    "deviceID": "mobile1",deviceSerial:'1141',"timePoint": "2013-12-23 00:00:00:0001","beaconCalculatePosition": [{"x": "0.813","y": "2.88624"},{"x": "1.86","y": "2.88"}]
 };
  **/

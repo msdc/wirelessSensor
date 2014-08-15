@@ -220,7 +220,7 @@ function getMobilePostion() {
  * {
     "deviceID": "mobile1",
     "timePoint": "2013-12-23 00:00:00:0001",
-    "beaconCanculatePosition": [
+    "beaconCalculatePosition": [
         {
             "x": 0.58,
             "y": 2.34
@@ -238,7 +238,7 @@ function getMobilePostion() {
  * @api public
  */
 exports.GetFinallySensorData=function(calculatedSensorData,next){
-    data=calculatedSensorData.beaconCanculatePosition;
+    data=calculatedSensorData.beaconCalculatePosition;
     dataExtremes = getDataExtremes(data);
     dataRange = getDataRanges(dataExtremes);
     means = initMeans(1);
@@ -246,7 +246,7 @@ exports.GetFinallySensorData=function(calculatedSensorData,next){
     makeAssignments();
     getMobilePostion();
 
-    var mobilePosition={deviceID:calculatedSensorData.deviceID,deviceSerial:calculatedSensorData.deviceSerial,timePoint:calculatedSensorData.timePoint,beaconCanculatePosition:[{x:means[0].x,y:means[0].y}]};
+    var mobilePosition={deviceID:calculatedSensorData.deviceID,deviceSerial:calculatedSensorData.deviceSerial,timePoint:calculatedSensorData.timePoint,beaconCalculatePosition:[{x:means[0].x,y:means[0].y}]};
 
     //reset global variable.
     means=[];

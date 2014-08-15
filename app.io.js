@@ -51,13 +51,13 @@ io.on('connection', function (socket) {
 
                     trlCal.delKeyZero(function (pointDt) {
                         for (var point in pointDt) {
-                            if(!pointDt[point].beaconCanculatePosition)break;//skip incorrect data in redis.
+                            if(!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
                             kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
                                 socket.emit('result',finalPoint);
                                 console.log("deviceID=" + finalPoint.deviceID);
                                 console.log("timePoint=" + finalPoint.timePoint);
                                 console.log("deviceSerial=" + finalPoint.deviceSerial);
-                                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCanculatePosition[0].x+",\"y=\""+finalPoint.beaconCanculatePosition[0].y+"}]");
+                                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x+",\"y=\""+finalPoint.beaconCalculatePosition[0].y+"}]");
                                 //todo write back info the redis and trigger postback event using websocket
                             });
                         }
