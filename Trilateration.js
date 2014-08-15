@@ -52,10 +52,9 @@ Calculation.prototype = {
             for (var n = 0; n < mPackage.length; n++) {
                 var cBPKG = mPackage[n].beaconPKG, //当前手机“点-包” 之“详细点”
                     Ccomb = mPackage[n].comb;//需要取得下标志
-
+                var bCPos = [];//点的每个组合计算出的坐标
                 //console.log('当前包的点beaconPKG:',cBPKG,Ccomb);
                 for (var j = 0; j < Ccomb.length; j++) {
-                    var bCPos = [];//点的每个组合计算出的坐标
                     var down_comb = Ccomb[j];//每个Ccomb[j]中存放一个组合:eg:[0,1,2]  [0,1,3]
                     var findXY = [];//findTel存放某设备的坐标+距离acc
                     var c0 = cBPKG[down_comb[0]],//所需要的3个点 对应："beaconPKG": [ {"uuid": "a0", "acc": "5.74"}}
@@ -69,7 +68,7 @@ Calculation.prototype = {
                         findXY.push({acc: sbArr[k].acc, x: uuidT.x, y: uuidT.y});//取X Y +ACC
                     }
                     var resP = that.getTrilateration(findXY[0], findXY[1], findXY[2], findXY[0].acc, findXY[1].acc, findXY[2].acc);
-                    if (isNaN(resP.x) || isNaN(resP.x)) {
+                    if (isNaN(resP.x) || isNaN(resP.y)||resP.x==-Infinity||resP.x==Infinity||resP.y==-Infinity||resP.y==Infinity) {
                         console.log('不存', resP);
                     } else {
                         bCPos.push(resP);
@@ -86,7 +85,7 @@ Calculation.prototype = {
             }
         }
         console.log('总个数:' + currPointCom.length, '结果：', currPointCom, '本次计算时间:', (new Date().getTime()) - that.tStart);
-        next && next(that.currTelResule);
+        next(currTelResule);
     },
     getTrilateration: function (pos1, pos2, pos3, distToPos1, distToPos2, distToPos3) {
         var xa = pos1.x, ya = pos1.y, xb = pos2.x,
@@ -99,8 +98,7 @@ Calculation.prototype = {
         var x = ((y * (ya - yb)) - T) / (xb - xa);
         var position = {
             x: 0,
-            y: 0,
-            z: 0
+            y: 0
         };
         position.x = x;
         position.y = y;
