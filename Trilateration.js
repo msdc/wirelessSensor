@@ -1,49 +1,6 @@
 var deviceConfig=require('./deviceConfig');
 
-function Combine(a, n, m) {//产生组合
 
-    m = m > n ? n : m;
-
-    var order = [m + 1];
-    var outputArray = [];
-    for (var i = 0; i <= m; i++) {
-        order[i] = i - 1;
-    }
-    // 注意这里order[0]=-1用来作为循环判断标识
-    var count = 0;
-    var k = m;
-    var flag = true;           // 标志找到一个有效组合
-    while (order[0]) {
-        // 输出符合要求的组合
-        if (flag) {
-            var tpObj = [];
-            for (i = 1; i <= m; i++) {
-                //console.log(a[order[i]]);
-                tpObj.push(a[order[i]]);
-            }
-            outputArray.push(tpObj);
-            count++;
-            flag = false;
-        }
-        // 在当前位置选择新的数字
-        order[k]++;
-        // 当前位置已无数字可选，回溯
-        if (order[k] == n) {
-            order[k--] = 0;
-            continue;
-        }
-        // 更新当前位置的下一位置的数字
-        if (k < m) {
-            order[++k] = order[k - 1];
-            continue;
-        }
-
-        if (k == m) {
-            flag = true;
-        }
-    }
-    return outputArray;
-}
 
 
 
@@ -148,7 +105,51 @@ Calculation.prototype = {
         position.y = y;
         console.log('oneCom:',pos1, pos2, pos3, distToPos1, distToPos2, distToPos3,'计算出：',position)
         return position;
+    },
+    Combine:function(inputArray, totalNum, chooseNum) {//产生组合
+
+    chooseNum = chooseNum > totalNum ? totalNum : chooseNum;
+
+    var order = [chooseNum + 1];
+    var outputArray = [];
+    for (var i = 0; i <= chooseNum; i++) {
+        order[i] = i - 1;
     }
+    // 注意这里order[0]=-1用来作为循环判断标识
+    var count = 0;
+    var k = chooseNum;
+    var flag = true;           // 标志找到一个有效组合
+    while (order[0]) {
+        // 输出符合要求的组合
+        if (flag) {
+            var tpObj = [];
+            for (i = 1; i <= chooseNum; i++) {
+                //console.log(a[order[i]]);
+                tpObj.push(inputArray[order[i]]);
+            }
+            outputArray.push(tpObj);
+            count++;
+            flag = false;
+        }
+        // 在当前位置选择新的数字
+        order[k]++;
+        // 当前位置已无数字可选，回溯
+        if (order[k] == totalNum) {
+            order[k--] = 0;
+            continue;
+        }
+        // 更新当前位置的下一位置的数字
+        if (k < chooseNum) {
+            order[++k] = order[k - 1];
+            continue;
+        }
+
+        if (k == chooseNum) {
+            flag = true;
+        }
+    }
+    return outputArray;
+}
 }
 
 module.exports=Calculation;
