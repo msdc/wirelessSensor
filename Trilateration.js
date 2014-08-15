@@ -114,8 +114,9 @@ Calculation.prototype = {
                         //console.log('uuidT',uuidT,sbArr[k].acc);
                         findXY.push({acc:sbArr[k].acc,x:uuidT.x,y:uuidT.y});//取X Y +ACC
                     }
+                    var resP=that.getTrilateration(findXY[0], findXY[1], findXY[2], findXY[0].acc, findXY[1].acc, findXY[2].acc);
+                    if(isNaN(resP.x)||isNaN(resP.x)){console.log('不存',resP);} else{ bCPos.push(resP);}
 
-                    bCPos.push(that.getTrilateration(findXY[0], findXY[1], findXY[2], findXY[0].acc, findXY[1].acc, findXY[2].acc));
                     if(j==Ccomb.length-1){//最后一个点的计算完成且该手机包点最后一条记录计算完成。。
                         currPointCom.push({
                             deviceID: currTel.deviceName,
