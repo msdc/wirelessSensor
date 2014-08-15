@@ -97,11 +97,7 @@ Calculation.prototype = {
         var T = (Math.pow(xa, 2) - Math.pow(xb, 2) + Math.pow(ya, 2) - Math.pow(yb, 2) + Math.pow(rb, 2) - Math.pow(ra, 2)) / 2;
         var y = ((T * (xb - xc)) - (S * (xb - xa))) / (((ya - yb) * (xb - xc)) - ((yc - yb) * (xb - xa)));
         var x = ((y * (ya - yb)) - T) / (xb - xa);
-        var position = {
-            x: 0,
-            y: 0,
-            z: 0
-        };
+        var position = {x: 0,y: 0};
         position.x = x;
         position.y = y;
         console.log('oneCom:', pos1, pos2, pos3, distToPos1, distToPos2, distToPos3, '计算出：', position)
