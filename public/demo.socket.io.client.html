@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="./socket.io/socket.io.js"></script>
-    <script src="FlatSystem.js"></script>
     <script>
         window.onload=function(){
             var canvas;
@@ -33,7 +32,8 @@
             var socket = io.connect('http://localhost:13327');
             socket.on('welcome', function (data) {
                 console.log(data);
-                socket.emit('sensorData',{})
+                socket.emit('sensorDataFromRedis',{})
+                socket.emit('sensorData',{});
             });
             socket.on('result',function(data){
                 setTimeout(function(){
