@@ -36,9 +36,9 @@ Calculation.prototype = {
                     mPackage[j].comb = this.combine(_v5, bPKGL.length, 3);
                 }
             }
-            console.log('bPKGL处理后：', bPKGL);
+            //console.log('bPKGL处理后：', bPKGL);
         }
-        console.log('mpgAjax：', mpgAjax);
+        //console.log('mpgAjax：', mpgAjax);
         this.result(next);
     },
     result: function (next) {
@@ -54,8 +54,7 @@ Calculation.prototype = {
                     Ccomb = mPackage[n].comb;//需要取得下标志
                 var bCPos = [];//点的每个组合计算出的坐标
                 //console.log('当前包的点beaconPKG:',cBPKG,Ccomb);
-                for (var j = 0; j < Ccomb.length; j++) {
-
+                for (var j = 0; j < Ccomb.length; j++) {//一条记录的多个组合计算并存放
                     var down_comb = Ccomb[j];//每个Ccomb[j]中存放一个组合:eg:[0,1,2]  [0,1,3]
                     var findXY = [];//findTel存放某设备的坐标+距离acc
                     var c0 = cBPKG[down_comb[0]],//所需要的3个点 对应："beaconPKG": [ {"uuid": "a0", "acc": "5.74"}}
@@ -74,19 +73,18 @@ Calculation.prototype = {
                     } else {
                         bCPos.push(resP);
                     }
-
-                    if (j == Ccomb.length - 1) {//最后一个点的计算完成且该手机包点最后一条记录计算完成。。
-                        currPointCom.push({
-                            deviceID: currTel.deviceName,
-                            deviceSerial: currTel.deviceSerial,
-                            timePoint: mPackage[n].checkPoint,
-                            beaconCalculatePosition: bCPos});
-                    }
                 }
+                currPointCom.push({
+                    deviceID: currTel.deviceName,
+                    deviceSerial: currTel.deviceSerial,
+                    timePoint: mPackage[n].checkPoint,
+                    beaconCalculatePosition: bCPos
+                });//最后一个点的计算完成且该手机包点最后一条记录计算完成。。
+                //console.log('当前:',currPointCom);
             }
         }
         console.log('总个数:' + currPointCom.length, '结果：', currPointCom, '本次计算时间:', (new Date().getTime()) - that.tStart);
-        next(currTelResule);
+        next(currPointCom);
     },
     getTrilateration: function (pos1, pos2, pos3, distToPos1, distToPos2, distToPos3) {
         var xa = pos1.x, ya = pos1.y, xb = pos2.x,
