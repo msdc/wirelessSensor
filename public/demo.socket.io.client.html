@@ -4,18 +4,60 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="./socket.io/socket.io.js"></script>
+    <script src="FlatSystem.js"></script>
     <script>
-        var socket = io.connect('http://localhost:13327');
-        socket.on('welcome', function (data) {
-            console.log(data);
-            socket.emit('sensorData',{})
-        });
-        socket.on('result',function(data){
-            console.log(data);
-        });
+        window.onload=function(){
+            var canvas;
+            var ctx;
+            var height = 600;
+            var width = 800;
+            //set the coordinate center point.
+            var centerPointX=400;
+            var centerPointY=300;
+
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            //draw x line.
+            ctx.beginPath();
+            ctx.moveTo(0,centerPointY);
+            ctx.lineTo(width,centerPointY);
+            ctx.stroke();
+
+            //draw y line.
+            ctx.beginPath();
+            ctx.moveTo(centerPointX,0);
+            ctx.lineTo(centerPointX,height);
+            ctx.stroke();
+
+            var socket = io.connect('http://localhost:13327');
+            socket.on('welcome', function (data) {
+                console.log(data);
+                socket.emit('sensorData',{})
+            });
+            socket.on('result',function(data){
+                setTimeout(function(){
+                    draw(centerPointX,centerPointY,ctx,data.beaconCalculatePosition);
+                },2000);
+                console.log(data);
+            });
+        };
+
+        function draw(centerPointX,centerPointY,ctx,point) {
+
+            ctx.save();
+            var x = point[0].x+centerPointX;
+            var y = point[0].y+centerPointY;
+            ctx.fillStyle = 'green';
+            ctx.translate(x, y);
+            ctx.beginPath();
+            ctx.arc(0, 0, 2, 0, Math.PI*2, true);
+            ctx.fill();
+            ctx.closePath();
+
+            ctx.restore();
+        }
     </script>
 </head>
-<body>
-
-</body>
+<canvas id="canvas" height="600" width="800">您的浏览器不支持canvas！</canvas>
 </html>
