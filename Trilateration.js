@@ -86,7 +86,7 @@ Calculation.prototype = {
             }
         }
         console.log('总个数:' + currPointCom.length, '结果：', currPointCom, '本次计算时间:', (new Date().getTime()) - that.tStart);
-        next(currTelResule);
+        next(currPointCom);
     },
     getTrilateration: function (pos1, pos2, pos3, distToPos1, distToPos2, distToPos3) {
         var xa = pos1.x, ya = pos1.y, xb = pos2.x,
