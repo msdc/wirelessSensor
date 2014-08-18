@@ -7,9 +7,8 @@ var http = require('http'),
     server=http.createServer(app);
 var io = require('socket.io')(server);
 var redis=require('redis');
-var sensor=require('./sensor.js');
-var trilateration=require("./Trilateration.js");
-var kmeans=require("./KMeansClustering.js");
+var sensor=require('./sensor.js'),
+    sensorDataCalculater=sensor.SensorDataCalculater;
 var path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -31,7 +30,7 @@ io.on('connection', function (socket) {
         client.set(data.deviceSerial + "_" + timespan, serializeJsonData);
         client.quit();
 
-        SensorDataCalculater.calculate(socket,data);
+        sensorDataCalculater.calculate(socket,data);
     });
 
     socket.on('sensorDataFromRedis', function(data){
@@ -53,64 +52,9 @@ io.on('connection', function (socket) {
                     {
                         client.quit();
                     }
-                    SensorDataCalculater.calculate(socket,reply);
+                    sensorDataCalculater.calculate(socket,reply);
                 });
             });
         });
     });
 });
-
-/*One package of Sensor Data Calculate static class.*/
-function SensorDataCalculater(){};
-SensorDataCalculater.calculate=function(socket,data){
-    var tpNDataArray = [];
-    var data;
-    try
-    {
-        data=JSON.parse(data);
-    }catch(e)
-    {
-        return;
-    }
-
-    //exclude incorrect data.
-    if(!data.deviceSerial){
-        return;
-    }
-
-    tpNDataArray.push(data);
-    var trlCal = new trilateration(tpNDataArray);
-
-    trlCal.delKeyZero(function (pointDt) {
-        for (var point in pointDt) {
-            if(!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
-            kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
-                //Save to the redis
-                //SensorDataCalculater.saveToRedis(finalPoint);
-                socket.emit('result',finalPoint);
-                console.log("deviceID=" + finalPoint.deviceID);
-                console.log("timePoint=" + finalPoint.timePoint);
-                console.log("deviceSerial=" + finalPoint.deviceSerial);
-                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x+",\"y=\""+finalPoint.beaconCalculatePosition[0].y+"}]");
-                //todo write back info the redis and trigger postback event using websocket
-            });
-        }
-    });
-};
-
-/**
- * @param {类聚后的最终的点}
- * @return {无}
- * */
-SensorDataCalculater.saveToRedis=function(finalPoint){
-    var client = redis.createClient();
-    client.on("error", function (err) {
-        console.log(err);
-    });
-
-    var serializeJsonData=JSON.stringify(finalPoint);
-    client.set(finalPoint.deviceSerial + "_" + timespan+"_Calculated", serializeJsonData);
-    client.quit();
-};
-
-
