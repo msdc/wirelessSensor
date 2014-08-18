@@ -31,7 +31,7 @@
         /**初始化 end**/
 
 
-        function DrawPointer(){}
+        window.DrawPointer=function(){}
         DrawPointer.prototype={
             coordinate:function(){//坐标系（更新一次）
                 var that=this;
@@ -65,11 +65,12 @@
                     circle1.attr({"fill":"blue"})  //填充色
                             .attr("stroke","none")   //去掉边框
                             .data('dt',{x:cX,y:cY,'deviceSerial':m})
-                            .click(function(){
-                               var str='设备名称:'+this.data('dt').deviceSerial+' 坐标 X:'+this.data('dt').x+' Y:'+this.data('dt').y;
-                               console.log(str)
-                               alert(str);
-                            })
+                            .hover(function(e){
+                                var str='设备名称:'+this.data('dt').deviceSerial+' 坐标 X:'+this.data('dt').x+' Y:'+this.data('dt').y;
+                                $('#tips').css({left:e.clientX+'px',top:e.clientY+'px'}).html(str).show();
+                            },function(){
+                                $('#tips').hide();
+                            });
                     var dt=circle1.data('dt');
                     circle1.node.id='sb_'+dt.deviceSerial;
                     circle1.node.setAttribute('msg','设备名称:'+dt.deviceSerial+' 坐标 X:'+dt.x+' Y:'+dt.y);
@@ -126,12 +127,13 @@
                 circle1.attr({"fill":"green"})  //填充色
                         .attr("stroke","none")   //去掉边框
                         .data('dt',{x:cX,y:cY,deviceID:curr.deviceID,timePoint:curr.timePoint,'deviceSerial':curr.deviceSerial})
-                        .click(function(){
-                            var dt=this.data('dt');
-                            var str='人物名称:'+dt.deviceID+' 坐标 X:'+dt.x+' Y:'+dt.y+' 时间:'+dt.timePoint+' 设备编号='+curr.deviceSerial;
-                            console.log(str);
-                            alert(str);
-                        })
+                        .hover(function(e){
+                             var dt=this.data('dt');
+                             var str='人物名称:'+dt.deviceID+' 坐标 X:'+dt.x+' Y:'+dt.y+' 时间:'+dt.timePoint+' 设备编号='+curr.deviceSerial;
+                            $('#tips').css({left:e.clientX+'px',top:e.clientY+'px'}).html(str).show();
+                        },function(){
+                            $('#tips').hide();
+                        });
                 var dt=circle1.data('dt');
                 circle1.node.id=curr.deviceID;
                 circle1.node.setAttribute('msg','名称:'+dt.deviceID+' 坐标 X:'+dt.x+' Y:'+dt.y+' 时间:'+dt.timePoint+' 设备编号='+curr.deviceSerial);
@@ -186,9 +188,11 @@
     })
 </script>
 <div id="raphael1"><img src="2.jpg" id="imgA"/></div>
+<div id="tips"></div>
 <style>
     #raphael1{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;width:610px;height:610px;}
     #imgA{position:absolute;left:0px;top:0px;z-index:-10;width:610px;height:610px;}
+    #tips{max-width:300px;font-size:12px;line-height:1.2em;background:#fff;border-radius:8px;position:absolute;left:0px;top:0px;border:1px solid #ff7300;padding:5px;}
 </style>
 </body>
 </html>
