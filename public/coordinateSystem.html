@@ -33,10 +33,36 @@
 
         window.DrawPointer=function(){}
         DrawPointer.prototype={
+            evt:function(){
+                that=this
+                $('#addBZ').unbind('click').click(function(){
+                    $('#raphael1').click(function(e){
+                        /** 如果有，则移动，如果没有，则添加 **/
+                        if($('.occupying').length){//暂时不‘添加多个标注’
+                            $('.occupying').css({left:e.clientX+'px',top:e.clientY+'px'}).show();
+                        }
+                        else{
+                            var Oelem='<div class="occupying"></div>';
+                            $('body').append(Oelem);
+                            $('.occupying:last').css({left:e.clientX+'px',top:e.clientY+'px'}).show();
+                        }
+                        return false;
+                    })
+                })
+                $('#submitBZ').unbind('click').click(function(){//暂时不‘添加多个标注’
+                    var sLeft=parseFloat($('.occupying:last').css('left')),
+                        sTop=parseFloat($('.occupying:last').css('Top'));
+                    var Odoc=raphael1.offset();
+                    console.log(sLeft-Odoc.left,sTop-Odoc.top);
+                    var pX=sLeft-Odoc.left,pY=sTop-Odoc.top//当前坐标系上的坐标
+                    alert('提交到服务器上的距离'+pX*configJson.resolution*configJson.zoomImg+'米*'+pY*configJson.resolution*configJson.zoomImg+'米 当前坐标系上的坐标'+pX+'*'+pY)
+                    return false;
+                })
+            },
             coordinate:function(){//坐标系（更新一次）
                 var that=this;
                 var xAxisWid =configJson.canvas.w/configJson.canvas.numX,
-                        yAxisWid=configJson.canvas.h/configJson.canvas.numY;//9*9。+1从0.0点开始。。。。
+                    yAxisWid=configJson.canvas.h/configJson.canvas.numY;//9*9。+1从0.0点开始。。。。
                 for(var j=0;j<configJson.canvas.numX;j++){
                     for(var n=0;n<configJson.canvas.numY;n++){
                         ;(function(n,j){
@@ -53,6 +79,7 @@
                     }
                 }
                 that.sbPos();
+                that.evt();
             },
             sbPos:function(){//设备坐标（更新一次）
                 var uuidArr=configJson.uuidArr();
@@ -189,10 +216,14 @@
 </script>
 <div id="raphael1"><img src="2.jpg" id="imgA"/></div>
 <div id="tips"></div>
+<p><input type="button" value="添加标注" id="addBZ"/>
+   <input type="button" value="提交标注" id="submitBZ"/>
+</p>
 <style>
     #raphael1{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;width:610px;height:610px;}
     #imgA{position:absolute;left:0px;top:0px;z-index:-10;width:610px;height:610px;}
-    #tips{max-width:300px;font-size:12px;line-height:1.2em;background:#fff;border-radius:8px;position:absolute;left:0px;top:0px;border:1px solid #ff7300;padding:5px;}
+    #tips{z-index:max-width:300px;font-size:12px;line-height:1.2em;background:#fff;border-radius:8px;position:absolute;left:0px;top:0px;border:1px solid #ff7300;padding:5px;}
+    .occupying{background:url('t2.png') no-repeat left top;width:10px;height:10px;position: absolute;left:0px;top:0px;}
 </style>
 </body>
 </html>
