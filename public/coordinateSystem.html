@@ -9,156 +9,181 @@
 <script src="raphael-min.js"></script>
 <script src="jquery.js"></script>
 <script type="text/javascript">
-$(function(){
-    var raphael1=$('#raphael1');
-    var imgA=$('#imgA');
-    /**初始化 start**/
-    configJson.resolution=configJson.scale*configJson.inchesM/configJson.PPI;//地图分辨率
-    var a1=Math.max(configJson.bj_draw.w,configJson.bj_draw.h),
-        b1=Math.max(configJson.canvas.w,configJson.canvas.h);
-    var c1=a1/b1;
-    if(c1>1){
-        configJson.zoomImg=c1;//图片与画布的比例..缩放
-        configJson.bj_draw.nW=configJson.bj_draw.w/c1;//缩放后的大小
-        configJson.bj_draw.nH=configJson.bj_draw.h/c1;
-    }
-    imgA.css({width:configJson.bj_draw.nW+'px',height:configJson.bj_draw.nH+'px',src:configJson.bj_draw.src});
-    raphael1.css({width:configJson.canvas.w+'px',height:configJson.canvas.h+'px'});
-
-    var canvasN = Raphael('raphael1', configJson.canvas.w, configJson.canvas.h),
-        rectW= 8,rectH= 8,radius=8;//坐标系矩形宽高、画圆的半径
-    var rapAll=[];//存放页面rect元素的“画”对象
-    /**初始化 end**/
-
-    rectD();
-    function rectD(){//生成坐标系。
-        var xAxisWid =configJson.canvas.w/configJson.canvas.numX,
-            yAxisWid=configJson.canvas.h/configJson.canvas.numY;//9*9。+1从0.0点开始。。。。。配置文件
-        for(var j=0;j<configJson.canvas.numX;j++){
-            for(var n=0;n<configJson.canvas.numY;n++){
-               ;(function(n,j){
-                    var rect1=canvasN.rect(n*xAxisWid,j*yAxisWid,rectW,rectH);//rect(x,y,w,h)
-                    //矩形。。。不一定是100，有可能是50。。故除以7即成为7*7坐标系。。矩形和圆的半径大小
-                    rect1.attr({"fill":"#fa0a0a"})  //填充色
-                            .attr("stroke","none")     //去掉底边;
-                            .data("i", 'j='+j+' n='+n)
-                            .data("m", 'mobile1')
-                            .click(function () {
-                                //console.log('坐标点：',this.data("i"),this.data("m"));
-                                console.log('坐标：',rect1.node.id)
-                            });
-                    rect1.node.id='A'+n*xAxisWid+'_'+j*yAxisWid;
-                })(n,j)
-            }
+    $(function(){
+        var raphael1=$('#raphael1');
+        var imgA=$('#imgA');
+        /**初始化 start**/
+        configJson.resolution=configJson.scale*configJson.inchesM/configJson.PPI;//地图分辨率
+        var a1=Math.max(configJson.bj_draw.w,configJson.bj_draw.h),
+                b1=Math.max(configJson.canvas.w,configJson.canvas.h);
+        var c1=a1/b1;
+        if(c1>1){
+            configJson.zoomImg=c1;//图片与画布的比例..缩放
+            configJson.bj_draw.nW=configJson.bj_draw.w/c1;//缩放后的大小
+            configJson.bj_draw.nH=configJson.bj_draw.h/c1;
         }
-    }
+        imgA.css({width:configJson.bj_draw.nW+'px',height:configJson.bj_draw.nH+'px',src:configJson.bj_draw.src});
+        raphael1.css({width:configJson.canvas.w+'px',height:configJson.canvas.h+'px'});
+
+        var canvasN = Raphael('raphael1', configJson.canvas.w, configJson.canvas.h),
+                rectW= 5,rectH= 5,radius=8;//坐标系矩形宽高、画圆的半径
+        var rapAll=[];//存放页面rect元素的“画”对象
+        /**初始化 end**/
 
 
-    function DrawPointer(){}
-    DrawPointer.prototype={
-        formatData:function(postData){//格式化成可用数据
-            var that=this;
-            var currData=that.source_Send=postData,
-                    fotData=[];
-            for(var i=0;i<currData.length;i++){
-                //console.log('checkPoint1:',(!!currData[i].deviceID),(!!currData[i].timePoint),(!!currData[i].beaconCalculatePosition))
-                if((!!currData[i].deviceID)&&(!!currData[i].timePoint)&&(!!currData[i].beaconCalculatePosition)){//3个字段必须有
-                    //console.log('checkPoint2:',currData[i].beaconCalculatePosition.length>0,!!currData[i].beaconCalculatePosition[0].x,!!currData[i].beaconCalculatePosition[0].y);
-                    if((currData[i].beaconCalculatePosition.length>0)&&!!currData[i].beaconCalculatePosition[0].x&&(!!currData[i].beaconCalculatePosition[0].y)){
-                        fotData.push(currData[i]);
+        function DrawPointer(){}
+        DrawPointer.prototype={
+            coordinate:function(){//坐标系（更新一次）
+                var that=this;
+                var xAxisWid =configJson.canvas.w/configJson.canvas.numX,
+                        yAxisWid=configJson.canvas.h/configJson.canvas.numY;//9*9。+1从0.0点开始。。。。
+                for(var j=0;j<configJson.canvas.numX;j++){
+                    for(var n=0;n<configJson.canvas.numY;n++){
+                        ;(function(n,j){
+                            var rect1=canvasN.rect(n*xAxisWid,j*yAxisWid,rectW,rectH);//rect(x,y,w,h)
+                            rect1.attr({"fill":"#fa0a0a"})  //填充色
+                                    .attr("stroke","none")     //去掉底边;
+                                    .data("i", 'j='+j+' n='+n)
+                                    .data("m", 'mobile1')
+                                    .click(function () {
+                                        console.log('坐标：',rect1.node.id)
+                                    });
+                            rect1.node.id='A'+n*xAxisWid+'_'+j*yAxisWid;
+                        })(n,j)
                     }
                 }
-            }
-            that.fotData=fotData;
-            console.log('format：',fotData);
-            that.delNode();
-        },
-        delNode:function(){//删除页面已有的,更新新的。(原有的是该人的旧坐标，该人现更新为新坐标)
-            var that=this;
-            for(var m=0;m<rapAll.length;m++){//已有的node
-                for(var k=0;k<that.fotData.length;k++){//新来的
-                    if(that.fotData[k].deviceID==rapAll[m].node.getAttribute('id')) {//删除某个节点。
-                        rapAll.splice(m,1);
-                        m--;
-                        console.log(rapAll);
-                    }
-                }
-            }
-            that.circleD();
-        },
-        circleD:function(){//添加新节点
-            var that=this;
-            var fotData=that.fotData;
-            if(!that.fotData||this.fotData.length<1){console.log('no data');return;}
-            for(var j=0;j<fotData.length;j++){
-                (function(j,fotData){
-                    var curr=fotData[j];
-                    var cX=fotData[j].beaconCalculatePosition[0].x,
-                        cY=fotData[j].beaconCalculatePosition[0].y;
-                    console.log('XY:source-M:',cX,cY);
-                    cX=parseFloat(cX)*configJson.resolution*configJson.zoomImg;
-                    cY=parseFloat(cY)*configJson.resolution*configJson.zoomImg;
-                    console.log('XY:End-PX:',cX,cY,' zoomImg:',configJson.zoomImg);
-                    var circle1=canvasN.circle(cX,cX,radius);//圆
-                    circle1.attr({"fill":"green"})  //填充色
+                that.sbPos();
+            },
+            sbPos:function(){//设备坐标（更新一次）
+                var uuidArr=configJson.uuidArr();
+                for(var m in uuidArr){
+                    console.log('sbpos-XY:Source-PX:',uuidArr[m].x,uuidArr[m].y,' zoomImg:',configJson.zoomImg);
+                    var cX=parseFloat(uuidArr[m].x)*configJson.resolution*configJson.zoomImg;
+                    var cY=parseFloat(uuidArr[m].y)*configJson.resolution*configJson.zoomImg;
+                    console.log('sbpos-XY:End-PX:',cX,cY,' zoomImg:',configJson.zoomImg);
+                    var circle1=canvasN.circle(cX,cY,radius);//圆
+                    circle1.attr({"fill":"blue"})  //填充色
                             .attr("stroke","none")   //去掉边框
-                            .data('dt',{x:cX,y:cY,deviceID:curr.deviceID,timePoint:curr.timePoint,'deviceSerial':curr.deviceSerial})
+                            .data('dt',{x:cX,y:cY,'deviceSerial':m})
                             .click(function(){
-                                var dt=this.data('dt');
-                                var str='名称:'+dt.deviceID+' 坐标 X:'+dt.x+' Y:'+dt.y+' 时间:'+dt.timePoint+' 设备编号='+curr.deviceSerial;
-                                console.log(str);
+                               var str='设备名称:'+this.data('dt').deviceSerial+' 坐标 X:'+this.data('dt').x+' Y:'+this.data('dt').y;
+                               console.log(str)
+                               alert(str);
                             })
                     var dt=circle1.data('dt');
-                    circle1.node.id=curr.deviceID;
-                    circle1.node.setAttribute('msg','名称:'+dt.deviceID+' 坐标 X:'+dt.x+' Y:'+dt.y+' 时间:'+dt.timePoint+' 设备编号='+curr.deviceSerial);
-                    var anim2 = Raphael.animation({"fill":"#000"}, Math.random()*1500+300);
-                    circle1.animate(anim2.repeat(Infinity));//动画效果
-                    rapAll.push(circle1);
-                })(j,fotData)
+                    circle1.node.id='sb_'+dt.deviceSerial;
+                    circle1.node.setAttribute('msg','设备名称:'+dt.deviceSerial+' 坐标 X:'+dt.x+' Y:'+dt.y);
+                }
+            },
+            formatData:function(postData){//格式化成可用数据
+                var that=this;
+                var currData=that.source_Send=postData,
+                        fotData=[];
+                for(var i=0;i<currData.length;i++){
+                    //console.log('checkPoint1:',(!!currData[i].deviceID),(!!currData[i].timePoint),(!!currData[i].beaconCalculatePosition))
+                    if((!!currData[i].deviceID)&&(!!currData[i].timePoint)&&(!!currData[i].beaconCalculatePosition)){//3个字段必须有
+                        //console.log('checkPoint2:',currData[i].beaconCalculatePosition.length>0,!!currData[i].beaconCalculatePosition[0].x,!!currData[i].beaconCalculatePosition[0].y);
+                        if((currData[i].beaconCalculatePosition.length>0)&&!!currData[i].beaconCalculatePosition[0].x&&(!!currData[i].beaconCalculatePosition[0].y)){
+                            fotData.push(currData[i]);
+                        }
+                    }
+                }
+                that.fotData=fotData;
+                console.log('format：',fotData);
+                that.delNode();
+            },
+            delNode:function(){//删除页面已有的,更新新的。(原有的是该人的旧坐标，该人现更新为新坐标)
+                var that=this;
+                for(var m=0;m<rapAll.length;m++){//已有的node
+                    for(var k=0;k<that.fotData.length;k++){//新来的
+                        if(that.fotData[k].deviceID==rapAll[m].node.getAttribute('id')) {//删除某个节点。
+                            rapAll.splice(m,1);
+                            m--;
+                            console.log(rapAll);
+                        }
+                    }
+                }
+                that.circleD();
+            },
+            circleD:function(){//添加新节点
+                var that=this;
+                var fotData=that.fotData;
+                if(!that.fotData||this.fotData.length<1){console.log('no data');return;}
+                for(var j=0;j<fotData.length;j++){
+                    that.posAB(j,fotData);
+                }
+            },
+            posAB:function(j,fotData){//人的坐标（更新N次）
+                var that=this;
+                var curr=fotData[j];
+                var cX=fotData[j].beaconCalculatePosition[0].x,
+                        cY=fotData[j].beaconCalculatePosition[0].y;
+                console.log('XY:source-M:',cX,cY);
+                cX=parseFloat(cX)*configJson.resolution*configJson.zoomImg;
+                cY=parseFloat(cY)*configJson.resolution*configJson.zoomImg;
+                console.log('XY:End-PX:',cX,cY,' zoomImg:',configJson.zoomImg);
+                var circle1=canvasN.circle(cX,cY,radius);//圆
+                circle1.attr({"fill":"green"})  //填充色
+                        .attr("stroke","none")   //去掉边框
+                        .data('dt',{x:cX,y:cY,deviceID:curr.deviceID,timePoint:curr.timePoint,'deviceSerial':curr.deviceSerial})
+                        .click(function(){
+                            var dt=this.data('dt');
+                            var str='人物名称:'+dt.deviceID+' 坐标 X:'+dt.x+' Y:'+dt.y+' 时间:'+dt.timePoint+' 设备编号='+curr.deviceSerial;
+                            console.log(str);
+                            alert(str);
+                        })
+                var dt=circle1.data('dt');
+                circle1.node.id=curr.deviceID;
+                circle1.node.setAttribute('msg','名称:'+dt.deviceID+' 坐标 X:'+dt.x+' Y:'+dt.y+' 时间:'+dt.timePoint+' 设备编号='+curr.deviceSerial);
+                var anim2 = Raphael.animation({"fill":"#000"}, Math.random()*1500+300);
+                circle1.animate(anim2.repeat(Infinity));//动画效果
+                rapAll.push(circle1);
             }
         }
-    }
+        new DrawPointer().coordinate();//设备坐标+坐标系
 
 
 
 
-    var kTjFormat=[//后台返回的数据格式
-        {
-            "deviceID": "mobile1",
-            "timePoint": "2013-12-23 00:00:00:0001",
-            "deviceSerial": 'dS0',
-            "beaconCalculatePosition": [
-                {"x": "50","y": "75"}
-            ]
-        },
-        {
-            "deviceID": "mobile2",
-            "timePoint": "2013-12-23 00:00:00:0885",
-            "deviceSerial": 'dSl',
-            "beaconCalculatePosition": [
-                {"x": "1050","y": "650"}
-            ]
-        },
-        {
-            "deviceID": "mobile3",
-            "timePoint": "2013-12-23 00:00:00:5120",
-            "deviceSerial": 'dS2',
-            "beaconCalculatePosition": [
-                {"x": "200","y": "700"}
-            ]
-        },
-        {
-            "deviceID": "mobile4",
-            "timePoint": "2013-12-23 00:00:00:2755",
-            "deviceSerial": 'dS3',
-            "beaconCalculatePosition": [
-                {"x": "800","y": "900"}
-            ]
-        }
-    ];
-    var drawP1=new DrawPointer();
-    drawP1.formatData(kTjFormat);
-})
+        /**后台调用 start**/
+        var kTjFormat=[//后台返回的数据格式
+            {
+                "deviceID": "mobile1",
+                "timePoint": "2013-12-23 00:00:00:0001",
+                "deviceSerial": 'dS0',
+                "beaconCalculatePosition": [
+                    {"x": "50","y": "75"}
+                ]
+            },
+            {
+                "deviceID": "mobile2",
+                "timePoint": "2013-12-23 00:00:00:0885",
+                "deviceSerial": 'dSl',
+                "beaconCalculatePosition": [
+                    {"x": "1050","y": "650"}
+                ]
+            },
+            {
+                "deviceID": "mobile3",
+                "timePoint": "2013-12-23 00:00:00:5120",
+                "deviceSerial": 'dS2',
+                "beaconCalculatePosition": [
+                    {"x": "200","y": "700"}
+                ]
+            },
+            {
+                "deviceID": "mobile4",
+                "timePoint": "2013-12-23 00:00:00:2755",
+                "deviceSerial": 'dS3',
+                "beaconCalculatePosition": [
+                    {"x": "800","y": "900"}
+                ]
+            }
+        ];
+        var drawP1=new DrawPointer();
+        drawP1.formatData(kTjFormat);
+        /**后台调用 end**/
+    })
 </script>
 <div id="raphael1"><img src="2.jpg" id="imgA"/></div>
 <style>

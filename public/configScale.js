@@ -11,5 +11,16 @@ window.configJson={ //配置文件
     scale:600||500,  //比例尺1/500
     PPI:96||96, //1英寸有96px
     inchesM:0.0254, //1英寸等于0.0254米..固定值不可更改
-    zoomImg:1   //默认为1。。即图片和画布一样大小
+    zoomImg:1,   //默认为1。。即图片和画布一样大小
+    uuidArr:function(){
+        var pointSB=[];
+        var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
+        pointSB[frontStr+'_0_1']={x:500.00,y:170.00};
+        pointSB[frontStr+'_0_2']={x:900.00,y:900.00};
+        pointSB[frontStr+'_0_3']={x:200.00,y:150.00};
+        pointSB[frontStr+'_0_4']={x:750.00,y:600.00};
+        pointSB[frontStr+'_0_5']={x:900.00,y:270.00};
+        pointSB[frontStr+'_0_6']={x:600.00,y:590.00};
+        return pointSB;
+    }
 };
