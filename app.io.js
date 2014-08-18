@@ -42,7 +42,8 @@ io.on('connection', function (socket) {
         var count=0;
         var keysLength=0;
         client.keys('*',function(err,reply){
-            if(reply.length===0)
+            keysLength=reply.length;
+            if(keysLength===0)
             {
                 client.quit();
                 return;
