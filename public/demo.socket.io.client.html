@@ -37,11 +37,11 @@
 
             $('#btn_start').click(function(){
                 socket.emit('sensorDataFromRedis',{});
-                socket.emit('sensorData',{});
+                //socket.emit('sensorData',{});
             });
 
-            $('btn_refresh').click(function(){
-                window.location.reload();
+            $('#btn_refresh').click(function(){
+                window.location.reload(true);
             });
 
             socket.on('result',function(data){
@@ -72,8 +72,8 @@
 <body>
 <div>
     <canvas id="canvas" height="600" width="800">您的浏览器不支持canvas！</canvas>
-    <button type="button" id="btn_start">Start</button>
-    <button type="button" id="btn_refresh">Refresh</button>
+    <button type="button" id="btn_start">Draw Points</button>
+    <button type="button" id="btn_refresh">Refresh Canvas</button>
 </div>
 </body>
 </html>

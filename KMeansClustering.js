@@ -248,38 +248,10 @@ exports.GetFinallySensorData=function(calculatedSensorData,next){
 
     var mobilePosition={deviceID:calculatedSensorData.deviceID,deviceSerial:calculatedSensorData.deviceSerial,timePoint:calculatedSensorData.timePoint,beaconCalculatePosition:[{x:means[0].x,y:means[0].y}]};
 
-    //reset global variable.
+    //reset global variable value for the next calculate.
     means=[];
     assignments = [];
     data = [];
 
     next(mobilePosition);
 };
-
-/**
-* @参数：手持设备坐标地址，iBeacon设备坐标地址数组。
-* 手持设备坐标示例：{x:1,y:1}
-* iBeacon设备坐标地址数组示例： [{x:1,y:1}，{x:2,y:2}，{x:3,y:3}]
-*
-* @返回值: 标有手持设备和iBeacon设备坐标地址的矢量图
-* @api:public
-*/
-exports.GetVectorGraph=function(mobileLocation,locationArray){
-
-};
-
-
-/*
- * Res.js调用mobileLocation.js的方法步骤
- * 1.引用对应的js文件  var mobileLocation=require('./mobileLocation');
- * 2.需要修改Res.js中的传递的数据格式  bCPos.push({x:x,y:y});
- * 3.如果是多个设备，则需要循环调用得到最终的坐标点，代码格式如下所示：
-         var Cal = new Calculation();
-         var result=Cal.result();
-         for(var r in result)
-         {
-            var obj =mobileLocation.GetMobileCurrentLocation(result[r]);
-            console.log(obj);
-         }
- *
- * */
