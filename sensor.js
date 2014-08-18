@@ -30,23 +30,6 @@ exports.GetSensorDataFromMobile = function (req, res) {
         var timespan = new Date().getUTCMilliseconds();
         client.set(data.deviceSerial + "_" + timespan, serializeJsonData);
 
-//        var tpNDataArray=[];
-//        tpNDataArray.push(data);
-//        var trlCal = new trilateration(tpNDataArray);
-//
-//        trlCal.delKeyZero(function (pointDt) {
-//            kmeans.GetFinallySensorData(pointDt, function (finalPoint) {
-//                res.send(finalPoint);
-//                console.log("deviceID=" + finalPoint.deviceID);
-//                console.log("timePoint=" + finalPoint.timePoint);
-//                console.log("deviceSerial=" + finalPoint.deviceSerial);
-//                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x + ",\"y=\"" + finalPoint.beaconCalculatePosition[0].y + "}]");
-//                //todo write back info the redis and trigger postback event using websocket
-//                var resultPointKeyName = finalPoint.deviceID + "_" + new Date().getUTCMilliseconds() + "_" + "Calculated";
-//                client.set(resultPointKeyName, finalPoint);
-//            });
-//        });
-
         client.quit();
         console.log("deviceSerial="+data.deviceSerial+"，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
@@ -117,24 +100,6 @@ exports.getSampleData = function (req, res) {
                 });
             });
         });
-
-//        var tpNDataArray = [];
-//        tpNDataArray.push(JSON.parse(reply));
-//        var trlCal = new trilateration(tpNDataArray);
-//
-//        trlCal.delKeyZero(function (pointDt) {
-//            for (var point in pointDt) {
-//                kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
-//                    res.send(finalPoint);
-//                    console.log("deviceID=" + finalPoint.deviceID);
-//                    console.log("timePoint=" + finalPoint.timePoint);
-//                    console.log("deviceSerial=" + finalPoint.deviceSerial);
-//                    console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x+",\"y=\""+finalPoint.beaconCalculatePosition[0].y+"}]");
-//                    //todo write back info the redis and trigger postback event using websocket
-//                });
-//            }
-//        });
-
     });
 };
 
@@ -157,7 +122,7 @@ exports.GetSensorDataFromRedis = function (key, callback) {
 
 /*One package of Sensor Data Calculate static class.*/
 function SensorDataCalculater(){};
-SensorDataCalculater.calculate=function(socket,data){
+SensorDataCalculater.calculate=function(io,socket,data){
     var tpNDataArray = [];
     var data;
     try
@@ -180,14 +145,15 @@ SensorDataCalculater.calculate=function(socket,data){
         for (var point in pointDt) {
             if(!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
             kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
-                //Save to the redis
-                //SensorDataCalculater.saveToRedis(finalPoint);
-                socket.emit('result',finalPoint);
+                //socket.emit('result',finalPoint);
+                io.emit('result',finalPoint);
                 console.log("deviceID=" + finalPoint.deviceID);
                 console.log("timePoint=" + finalPoint.timePoint);
                 console.log("deviceSerial=" + finalPoint.deviceSerial);
                 console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x+",\"y=\""+finalPoint.beaconCalculatePosition[0].y+"}]");
                 //todo write back info the redis and trigger postback event using websocket
+                //Save to the redis
+                //SensorDataCalculater.saveToRedis(finalPoint);
             });
         }
     });
@@ -204,7 +170,8 @@ SensorDataCalculater.saveToRedis=function(finalPoint){
     });
 
     var serializeJsonData=JSON.stringify(finalPoint);
-    client.set(finalPoint.deviceSerial + "_" + timespan+"_Calculated", serializeJsonData);
+    var resultPointKeyName = finalPoint.deviceID + "_" + new Date().getUTCMilliseconds() + "_" + "Calculated";
+    client.set(resultPointKeyName, serializeJsonData);
     client.quit();
 };
 

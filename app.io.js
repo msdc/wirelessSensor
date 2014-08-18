@@ -30,7 +30,7 @@ io.on('connection', function (socket) {
         client.set(data.deviceSerial + "_" + timespan, serializeJsonData);
         client.quit();
 
-        sensorDataCalculater.calculate(socket,data);
+        sensorDataCalculater.calculate(io,socket,data);
     });
 
     socket.on('sensorDataFromRedis', function(data){
@@ -52,7 +52,7 @@ io.on('connection', function (socket) {
                     {
                         client.quit();
                     }
-                    sensorDataCalculater.calculate(socket,reply);
+                    sensorDataCalculater.calculate(io,socket,reply);
                 });
             });
         });
