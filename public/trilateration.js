@@ -1,15 +1,15 @@
-var width;
-var height;
-var boxesX = 20;
-var boxesY = 20;
+var width,height;//存放画布大小
+var boxesX = 20,boxesY = 20;//横向20个，纵向20个
 var vp;
-var vpc;
-var recHeight;
-var recWidth;
+var vpc;//画布
+var recHeight;//纵向每个格子的宽度
+var recWidth;//横向每个格子的宽度
 var p1 = {x: 5, y: 3};
 var p2 = {x: 15, y: 4};
 var p3 = {x: 10, y: 18};
 var punknown = {x: 10, y: 12};
+var resArr=[];
+
 function init(e) {
     vp = document.getElementById("viewport");
     vpc = vp.getContext("2d");
@@ -17,94 +17,73 @@ function init(e) {
     height = vp.height;
     recHeight = height / boxesY;
     recWidth = width / boxesX;
-    for (var x = 0; x < width; x += recWidth) {
+	console.log('recWH ',recHeight,recWidth);// 24 32 
+	
+    for (var x = 0; x < width; x += recWidth) {//24 32...横向20，纵向20.。。。。每个格子大小
         for (var y = 0; y < height; y += recHeight) {
-            vpc.strokeRect(x, y, recWidth, recHeight);
+            vpc.strokeRect(x, y, recWidth, recHeight);//画矩形
         }
-    }
+    }//画格子
+	
     p1.x = getRandom(1, boxesX / 2);
-    p1.y = getRandom(1, boxesY / 2);
+    p1.y = getRandom(1, boxesY / 2);//随机产生的xy 在
     drawOpaque(p1);
-    $("refPt1").innerHTML = "X: " + p1.x + " Y: " + p1.y;
+    $("#refPt1").html( "X: " + p1.x + " Y: " + p1.y);
+	
     p2.x = getRandom(boxesX / 2, boxesX);
     p2.y = getRandom(boxesY / 2, boxesY);
     drawOpaque(p2);
-    $("refPt2").innerHTML = "X: " + p2.x + " Y: " + p2.y;
+    $("#refPt2").html( "X: " + p2.x + " Y: " + p2.y);
+	
     p3.x = getRandom(1, boxesX);
     p3.y = getRandom(1, boxesY);
     drawOpaque(p3);
-    $("refPt3").innerHTML = "X: " + p3.x + " Y: " + p3.y;
+    $("#refPt3").html("X: " + p3.x + " Y: " + p3.y);
+	
     punknown.x = getRandom(1, boxesX);
     punknown.y = getRandom(1, boxesY);
-    $("refUnknown").innerHTML = "X: " + punknown.x + " Y: " + punknown.y;
+    $("#refUnknown").html ("X: " + punknown.x + " Y: " + punknown.y);
+	
+	/**已知refUnknown为最终要求的点。和它距离每个圆半径的距离。。然后根据每个圆的坐标和距离，求这个已知的refUnknown（去验证它）**/
+	/**
+	用一个已知的第4点坐标 punknown。。去计算距离p1 p2 p3之间的距离。。然后反过来用p1 p2 p3坐标 disP1 disP2 disP3求求第四点。
+	
+	**/
+	
     var distanceFromP1 = getEuclidean(punknown, p1);
     var distanceFromP2 = getEuclidean(punknown, p2);
     var distanceFromP3 = getEuclidean(punknown, p3);
-    drawCircle(p1, distanceFromP1 * recHeight, "red");
+	
+    drawCircle(p1, distanceFromP1 * recHeight, "red");//距离*每个格子的高度。。eg：距离3个格子的高度
     drawCircle(p2, distanceFromP2 * recHeight, "green");
     drawCircle(p3, distanceFromP3 * recHeight, "blue");
-    debug("Distance from P1: " + distanceFromP1);
+    
+	debug("Distance from P1: " + distanceFromP1);//相当于提示信息
     debug("Distance from P2: " + distanceFromP2);
     debug("Distance from P3: " + distanceFromP3);
-    var calculatedPos = getTrilateration(p1, p2, p3, distanceFromP1, distanceFromP2, distanceFromP3);
+    
+	var calculatedPos = getTrilateration(p1, p2, p3, distanceFromP1, distanceFromP2, distanceFromP3);
     debug("Found position: X: " + calculatedPos.x + " Y: " + calculatedPos.y);
-    vpc.fillStyle = "red";
+    vpc.fillStyle = "#ff7300";
     drawOpaque(calculatedPos);
-    //Event.observe(vp, "click", vpClick);
-    //Event.observe(vp, "mousemove", vpMove);
 }
-function vpClick(e) {
-    var mousePos = getMouseOffsetPos(e, vp);
-    var gridPos = getGridPos(mousePos);
-    $("clickX").innerHTML = gridPos.x;
-    $("clickY").innerHTML = gridPos.y;
-    drawOpaque(gridPos);
-}
-function vpMove(e) {
-    var mousePos = getMouseOffsetPos(e, vp);
-    var gridPos = getGridPos(mousePos);
-    $("mouseX").innerHTML = mousePos.x;
-    $("mouseY").innerHTML = mousePos.y;
-    $("gridX").innerHTML = gridPos.x;
-    $("gridY").innerHTML = gridPos.y;
-}
-function getMouseOffsetPos(pointerEvent, elPos) {
-    var offset = Position.cumulativeOffset(elPos);
-    var x = Event.pointerX(pointerEvent);
-    var y = Event.pointerY(pointerEvent);
-    x -= offset.left;
-    y -= offset.top;
-    var mouseOffsetPos = {};
-    mouseOffsetPos.x = x;
-    mouseOffsetPos.y = y;
-    return mouseOffsetPos;
-}
-function getGridPos(position) {
-    var xBoxOffset = position.x / recWidth;
-    var yBoxOffset = position.y / recHeight;
-    xBoxOffset = Math.ceil(xBoxOffset);
-    yBoxOffset = Math.ceil(yBoxOffset);
-    var gridPosition = {};
-    gridPosition.x = xBoxOffset;
-    gridPosition.y = yBoxOffset
-    return gridPosition;
-}
+
+
+
 function getBoxActualPos(position) {
     var actX = (--position.x) * recWidth;
     var actY = (--position.y) * recHeight;
     var actPos = {};
     actPos.x = actX;
     actPos.y = actY;
+	console.log('actPos',actPos)
     return actPos;
 }
 function drawOpaque(position) {
     var boxActPos = getBoxActualPos(position);
     vpc.fillRect(boxActPos.x, boxActPos.y, recWidth, recHeight);
 }
-function drawStroke(position) {
-    var boxActPos = getBoxActualPos(position);
-    vpc.strokeRect(boxActPos.x, boxActPos.y, recWidth, recHeight);
-}
+
 function drawCircle(position, radius, color) {
     var boxActPos = getBoxActualPos(position);
     vpc.strokeStyle = color;
@@ -114,17 +93,24 @@ function drawCircle(position, radius, color) {
     vpc.stroke();
     vpc.closePath();
 }
-function getRandom(offset, max) {
+function getRandom(offset, max) {//1 10
+    console.log('start')
     var rand = Math.random();
-    var diff = max - offset;
-    diff *= rand;
+	console.log('rand',rand)
+    var diff = max - offset;//9
+	console.log('diff',diff)
+    diff *= rand;//0-9
+	console.log('diff2',diff)
     var res = diff + offset;
+	console.log('res',res,'fan:',Math.ceil(Math.floor(res), offset))
+	 console.log('end')
     return Math.ceil(Math.floor(res), offset);
 }
-function getEuclidean(position1, position2) {
+function getEuclidean(position1, position2) {//a平方+b平方=c平方
     return Math.sqrt(Math.pow(position2.x - position1.x, 2) + Math.pow(position2.y - position1.y, 2));
 }
 function getTrilateration(position1, position2, position3, distToPos1, distToPos2, distToPos3) {
+	
     var xa = position1.x;
     var ya = position1.y
     var xb = position2.x;
@@ -141,11 +127,14 @@ function getTrilateration(position1, position2, position3, distToPos1, distToPos
     var position = {x: 0, y: 0, z: 0};
     position.x = x;
     position.y = y;
+	console.log('com:',position1, position2, position3, distToPos1, distToPos2, distToPos3,position)
+	resArr.push({p1:position1, p2:position2, p3:position3,dtp1:distToPos1,dtp2: distToPos2, dt3:distToPos3,res:position});
+	console.log('resArr:',resArr)
     return position;
 }
+
 function debug(message) {
-    $("freeflowdebug").innerHTML = message + "<br />" + $("freeflowdebug").innerHTML;
+    $("#freeflowdebug").html('<p style="margin-bottom:10px;background:#ff7300">'+message + "<br />" + $("#freeflowdebug").html()+'</p>');
 }
-/**
- * Created by wang on 2014/8/15.
- */
+
+
