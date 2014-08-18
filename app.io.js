@@ -22,7 +22,7 @@ io.on('connection', function (socket) {
     socket.emit('welcome', { welcome: 'server connected success..' });
 
     socket.on('sensorData',function(data){
-        client = redis.createClient();
+        var client = redis.createClient();
         client.on("error", function (err) {
             console.log(err);
         });
@@ -35,20 +35,27 @@ io.on('connection', function (socket) {
     });
 
     socket.on('sensorDataFromRedis', function(data){
-        client = redis.createClient();
+        var client = redis.createClient();
         client.on("error", function (err) {
             console.log(err);
         });
 
+        var count=0;
+        var keysLength=0;
         client.keys('*',function(err,reply){
+            keysLength=reply.length;
             reply.forEach(function(key){
                 client.get(key, function(err,reply){
                     if(err){console.error(err);}
+                    count++;
                     console.log(key);
+                    if(count==keysLength||count>keysLength)
+                    {
+                        client.quit();
+                    }
                     SensorDataCalculater.calculate(socket,reply);
                 });
             });
-            client.quit();
         });
     });
 });
@@ -78,6 +85,8 @@ SensorDataCalculater.calculate=function(socket,data){
         for (var point in pointDt) {
             if(!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
             kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
+                //Save to the redis
+                //SensorDataCalculater.saveToRedis(finalPoint);
                 socket.emit('result',finalPoint);
                 console.log("deviceID=" + finalPoint.deviceID);
                 console.log("timePoint=" + finalPoint.timePoint);
@@ -87,6 +96,21 @@ SensorDataCalculater.calculate=function(socket,data){
             });
         }
     });
+};
+
+/**
+ * @param {类聚后的最终的点}
+ * @return {无}
+ * */
+SensorDataCalculater.saveToRedis=function(finalPoint){
+    var client = redis.createClient();
+    client.on("error", function (err) {
+        console.log(err);
+    });
+
+    var serializeJsonData=JSON.stringify(finalPoint);
+    client.set(finalPoint.deviceSerial + "_" + timespan+"_Calculated", serializeJsonData);
+    client.quit();
 };
 
 
