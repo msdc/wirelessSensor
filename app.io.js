@@ -42,7 +42,10 @@ io.on('connection', function (socket) {
         var count=0;
         var keysLength=0;
         client.keys('*',function(err,reply){
-            keysLength=reply.length;
+            if(keysLength===0){
+                client.quit();
+                return;
+            }
             reply.forEach(function(key){
                 client.get(key, function(err,reply){
                     if(err){console.error(err);}
