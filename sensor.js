@@ -10,7 +10,7 @@ var kmeans = require("./KMeansClustering.js");
  * @api public
  * */
 exports.GetSensorDataFromMobile = function (req, res) {
-    client = redis.createClient();
+    var client = redis.createClient();
     client.on("error", function (err) {
         if (err) {
             SendError(err, res);
@@ -18,7 +18,7 @@ exports.GetSensorDataFromMobile = function (req, res) {
     });
 
     easypost.get(req, res, function (data) {
-        var data=JSON.parse(data);
+        //var data=JSON.parse(data);
         if (!data.monitorPackage) {
             console.log('数据格式错误！monitorPackage未指定！');
             res.send({result: false, message: "数据格式错误！monitorPackage未指定！"});
@@ -65,18 +65,26 @@ function SendError(err, res) {
 }
 
 exports.getSampleData = function (req, res) {
-    client = redis.createClient();
+    var client = redis.createClient();
     client.on("error", function (err) {
         console.log("Error " + err);
     });
 
+    var count=0;
+    var keysLength=0;
     client.keys('*', function (err, reply) {
+        keysLength=reply.length;
         reply.forEach(function (key) {
             client.get(key, function (err, reply) {
                 if (err) {
                     console.error(err);
                 }
+                count++;
                 console.log(key);
+                if(count==keysLength||count>keysLength)
+                {
+                    client.quit();
+                }
                 var tpNDataArray = [];
                 var data;
                 try {
@@ -109,7 +117,6 @@ exports.getSampleData = function (req, res) {
                 });
             });
         });
-        client.quit();
 
 //        var tpNDataArray = [];
 //        tpNDataArray.push(JSON.parse(reply));
@@ -140,7 +147,7 @@ exports.dealWithData = function (socket) {
  * @api public
  * */
 exports.GetSensorDataFromRedis = function (key, callback) {
-    client = redis.createClient();
+    var client = redis.createClient();
     client.on("error", function (err) {
         console.log("Error " + err);
     });
