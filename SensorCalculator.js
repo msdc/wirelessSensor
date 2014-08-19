@@ -8,10 +8,11 @@ function SensorDataCalculator() {};
 
 SensorDataCalculator.processCalculate = function (sourceData) {
     var tpNDataArray = [];
-    var finalResult = [];
+    var finalResult=[];
     var dataObj;
     try {
         dataObj = JSON.parse(sourceData);
+        dataObj=SensorDataCalculator.filterDataByAcc(dataObj,'20');
     }
     catch (e) {
         return;
@@ -26,11 +27,11 @@ SensorDataCalculator.processCalculate = function (sourceData) {
     //清除空点
     trlCal.cleanZeroKey();
     //三点定一点
-    var levelOneResult = trlCal.getCalResult();
+    var levelOneResult=trlCal.getCalResult();
     //聚类计算
-    if (levelOneResult && levelOneResult.length > 0) {
-        for (var point in levelOneResult) {
-            if (levelOneResult[point].beaconCalculatePosition) {
+    if(levelOneResult&&levelOneResult.length>0){
+        for(var point in levelOneResult){
+            if(!levelOneResult[point].beaconCalculatePosition) {
                 continue;
             }
             var levelTwoResult = kmeans.GetClusteredPoint(levelOneResult[point]);
@@ -38,38 +39,40 @@ SensorDataCalculator.processCalculate = function (sourceData) {
         }
     }
     return finalResult;
-    /*    trlCal.cleanZeroKey(function (pointDt) {
-     for (var point in pointDt) {
-     if (!pointDt[point].beaconCalculatePosition) break;//skip incorrect data in redis.
-     kmeans.GetClusteredPoint(pointDt[point], function (finalPoint) {
-     //socket.emit('result',finalPoint);
-     //io.emit('result', finalPoint);
-     console.log("deviceID=" + finalPoint.deviceID);
-     console.log("timePoint=" + finalPoint.timePoint);
-     console.log("deviceSerial=" + finalPoint.deviceSerial);
-     console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x + ",\"y=\"" + finalPoint.beaconCalculatePosition[0].y + "}]");
-     //todo write back info the redis and trigger postback event using websocket
-     //Save to the redis
-     //SensorDataCalculator.saveToRedis(finalPoint);
-     });
-     }
-     });*/
+/*    trlCal.cleanZeroKey(function (pointDt) {
+        for (var point in pointDt) {
+            if (!pointDt[point].beaconCalculatePosition) break;//skip incorrect data in redis.
+            kmeans.GetClusteredPoint(pointDt[point], function (finalPoint) {
+                //socket.emit('result',finalPoint);
+                //io.emit('result', finalPoint);
+               console.log("deviceID=" + finalPoint.deviceID);
+               console.log("timePoint=" + finalPoint.timePoint);
+               console.log("deviceSerial=" + finalPoint.deviceSerial);
+                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x + ",\"y=\"" + finalPoint.beaconCalculatePosition[0].y + "}]");
+                //todo write back info the redis and trigger postback event using websocket
+                //Save to the redis
+                //SensorDataCalculator.saveToRedis(finalPoint);
+            });
+        }
+    });*/
 };
 
-SensorDataCalculator.getKeyBeforeCalculate = function (deviceSerial) {
+SensorDataCalculator.getKeyBeforeCalculate=function(deviceSerial){
     var timespan = (new Date()).getTime();
-    var key = null;
-    if (deviceSerial) {
+    var key=null;
+    if(deviceSerial)
+    {
         key = deviceSerial + "_" + timespan;
     }
     return key;
 };
 
-SensorDataCalculator.getKeyAfterCalculate = function (deviceSerial) {
+SensorDataCalculator.getKeyAfterCalculate=function(deviceSerial){
     var timespan = (new Date()).getTime();
-    var key = null;
-    if (deviceSerial) {
-        key = deviceSerial + "_" + timespan + "_" + "Calculated";
+    var key=null;
+    if(deviceSerial)
+    {
+        key = deviceSerial + "_" + timespan+ "_" + "Calculated";
     }
     return key;
 };
@@ -90,24 +93,38 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
 }
 
 SensorDataCalculator.filterDataByAcc = function (sourceData,filterValue) {
+    var finalResult={};
     var tpPkg = sourceData.monitorPackage;
+    finalResult.deviceSerial=sourceData.deviceSerial;
+    finalResult.deviceName=sourceData.deviceName;
     if (tpPkg) {
-        tpPkg.each(function (pkg) {
-            var tpTimeStamp = pkg.checkPoint;
+        var rtPKG=[];
+        for(var pkIndex in tpPkg){
+            var pkg=tpPkg[pkIndex];
+            var rtNode={};
+            rtNode.checkPoint = pkg.checkPoint;
             var beaconNodes = pkg.beaconPKG;
+            var rtBeaconNodes=[];
             if (beaconNodes&&beaconNodes.length > 3) {
-                    beaconNodes.each(function(tpNode){
-                        if(parseInt(tpNode.acc)>parseInt(filterValue)){
-                            beaconNodes.remove(tpNode);
-                        }
-                    });
-                pkg.beaconPKG=beaconNodes;
+                for(var i=0;i<beaconNodes.length;i++){
+                    if(parseInt(beaconNodes[i].acc)>parseInt((filterValue))){
+                        continue;
+                    }
+                    else{
+                        rtBeaconNodes.push(beaconNodes[i]);
+                    }
+                }
             }
-        });
+            else{
+                rtBeaconNodes.push(beaconNodes);
+            }
+            rtNode.beaconPKG=rtBeaconNodes;
+            rtPKG.push(rtNode);
+        }
+        finalResult.monitorPackage=rtPKG;
     }
-    sourceData.monitoring=tpPkg;
-    return sourceData;
+    //sourceData.monitoring=tpPkg;
+    return finalResult;
 }
 
 module.exports = SensorDataCalculator;
-

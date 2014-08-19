@@ -15,19 +15,18 @@
             var socket = io.connect('http://localhost:1338');
 
             socket.on('welcome', function (data) {
+                //setInterval(function(){socket.emit('drawPointFromRedis',{});},1000);
+                socket.emit('drawPointFromRedis',{});
+                //socket.emit('sensorData',{});
                 console.log(data);
             });
 
             socket.on('result',function(data){
+                if(!data){return;}
                 setTimeout(function(){
                     draw(centerPointX,centerPointY,ctx,data);
                 },2000);
                 console.log(data);
-            });
-
-            $('#btn_start').click(function(){
-                socket.emit('sensorDataFromRedis',{});
-                //socket.emit('sensorData',{});
             });
 
             $('#btn_refresh').click(function(){
@@ -80,7 +79,7 @@
 <body>
 <div>
     <canvas id="canvas" height="600" width="800">您的浏览器不支持canvas！</canvas>
-    <button type="button" id="btn_start">Draw Points</button>
+<!--    <button type="button" id="btn_start">Draw Points</button>-->
     <button type="button" id="btn_refresh">Refresh Canvas</button>
 </div>
 </body>

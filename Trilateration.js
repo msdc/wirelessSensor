@@ -83,7 +83,7 @@ Calculation.prototype = {
                                     beaconCalculatePosition: bCPos});
             }
         }
-        console.log('总个数:' + currPointCom.length, '结果：', currPointCom, '本次计算时间:', (new Date().getTime()) - that.tStart);
+        //console.log('总个数:' + currPointCom.length, '结果：', currPointCom, '本次计算时间:', (new Date().getTime()) - that.tStart);
         return currPointCom;
     },
     getTrilateration: function (pos1, pos2, pos3, distToPos1, distToPos2, distToPos3) {
