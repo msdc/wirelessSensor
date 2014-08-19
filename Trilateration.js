@@ -9,7 +9,7 @@ function Calculation(mpgAjax) {
 }
 
 Calculation.prototype = {
-    delKeyZero: function (next) {//格式化数据：eg 删除无效记录及不足3个点的记录
+    cleanZeroKey: function () {//格式化数据：eg 删除无效记录及不足3个点的记录
         var mpgAjax = this.mpgAjax;
         for (var i = 0, L = mpgAjax.length; i < L; i++) {//循环所有手机
             var currTel = mpgAjax[i];//当前手机
@@ -39,10 +39,10 @@ Calculation.prototype = {
             console.log('bPKGL处理后：', bPKGL);
         }
         console.log('mpgAjax：', mpgAjax);
-        this.result(next);
+        //this.result(next);
     },
-    result: function (next) {
-        var that = this;
+    getCalResult: function () {
+        //var that = this;
         var mpgAjax = this.mpgAjax;
         var currPointCom = [];//当前点产生的多个组合的最终结果
         for (var i = 0, L = mpgAjax.length; i < L; i++) {//循环所有手机
@@ -55,7 +55,6 @@ Calculation.prototype = {
                 var bCPos = [];//点的每个组合计算出的坐标
                 //console.log('当前包的点beaconPKG:',cBPKG,Ccomb);
                 for (var j = 0; j < Ccomb.length; j++) {
-
                     var down_comb = Ccomb[j];//每个Ccomb[j]中存放一个组合:eg:[0,1,2]  [0,1,3]
                     var findXY = [];//findTel存放某设备的坐标+距离acc
                     var c0 = cBPKG[down_comb[0]],//所需要的3个点 对应："beaconPKG": [ {"uuid": "a0", "acc": "5.74"}}
@@ -66,11 +65,11 @@ Calculation.prototype = {
                     for (var k = 0; k < sbArr.length; k++) {
                         var tpDeviceKey=sbArr[k].uuid + '_' + sbArr[k].major + "_" + sbArr[k].minor;
                         tpDeviceKey=tpDeviceKey.toUpperCase();
-                        var uuidT = that.uuidArr[tpDeviceKey];
+                        var uuidT = this.uuidArr[tpDeviceKey];
                         //console.log('uuidT',uuidT,sbArr[k].acc);
                         findXY.push({acc: sbArr[k].acc, x: uuidT.x, y: uuidT.y});//取X Y +ACC
                     }
-                    var resP = that.getTrilateration(findXY[0], findXY[1], findXY[2], findXY[0].acc, findXY[1].acc, findXY[2].acc);
+                    var resP = this.getTrilateration(findXY[0], findXY[1], findXY[2], findXY[0].acc, findXY[1].acc, findXY[2].acc);
                     if (isNaN(resP.x) || isNaN(resP.y)||resP.x==-Infinity||resP.x==Infinity||resP.y==-Infinity||resP.y==Infinity) {
                         console.log('不存', resP);
                     } else {
@@ -85,7 +84,7 @@ Calculation.prototype = {
             }
         }
         console.log('总个数:' + currPointCom.length, '结果：', currPointCom, '本次计算时间:', (new Date().getTime()) - that.tStart);
-        next(currPointCom);
+        return currPointCom;
     },
     getTrilateration: function (pos1, pos2, pos3, distToPos1, distToPos2, distToPos3) {
         var xa = pos1.x, ya = pos1.y, xb = pos2.x,
@@ -150,6 +149,6 @@ Calculation.prototype = {
 
 module.exports = Calculation;
 //var Cal = new Calculation();
-//Cal.delKeyZero();
+//Cal.cleanZeroKey();
 
 

@@ -1,40 +1,36 @@
-/**
- * Created by wang on 2014/8/14.
- */
-var express = require('express'),
-    app=express();
-var http = require('http'),
-    server=http.createServer(app);
+var express = require('express');
+var app=express();
+var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+
 var redis=require('redis');
-var sensor=require('./sensor.js'),
-    sensorDataCalculater=sensor.SensorDataCalculater;
-var path = require('path');
 
-app.use(express.static(path.join(__dirname, 'public')));
+var sensor=require('./sensor.js');
 
-server.listen(13327,function(){
-    console.log('Express server listening on port 13327');
+app.use(express.static(__dirname + '/public'));
+
+server.listen(1338, function(){
+    console.log('Express socket io server listening on port 1338');
 });
 
 io.on('connection', function (socket) {
     socket.emit('welcome', { welcome: 'server connected success..' });
-
+    console.log("new client:"+socket.id);
     socket.on('sensorData',function(data){
         var client = redis.createClient();
         client.on("error", function (err) {
             console.log(err);
         });
         var serializeJsonData = JSON.stringify(data);
-        var timespan = new Date().getUTCMilliseconds();
-        client.set(data.deviceSerial + "_" + timespan, serializeJsonData);
+        var timePoint = new Date().getUTCMilliseconds();
+        client.set(data.deviceSerial + "_" + timePoint, serializeJsonData);
         client.quit();
 
-        sensorDataCalculater.calculate(io,socket,data);
+        sensor.processDataFromSocket(io,socket,data);
     });
 
-    socket.on('sensorDataFromRedis', function(data){
-        var client = redis.createClient();
+    socket.on('drawPointFromRedis', function(data){
+       /* var client = redis.createClient();
         client.on("error", function (err) {
             console.log(err);
         });
@@ -57,9 +53,9 @@ io.on('connection', function (socket) {
                     {
                         client.quit();
                     }
-                    sensorDataCalculater.calculate(io,socket,reply);
+                    sensor.processCalculate(io,socket,reply);
                 });
             });
-        });
+        });*/
     });
 });

@@ -6,14 +6,44 @@
     <script src="./socket.io/socket.io.js"></script>
     <script src="jquery.js"></script>
     <script>
-        window.onload=function(){
+        var ctx;
+        var centerPointX=300;
+        var centerPointY=300;
+        $(function(){
+            initCanvas();
+
+            var socket = io.connect('http://localhost:1338');
+
+            socket.on('welcome', function (data) {
+                console.log(data);
+            });
+
+            socket.on('result',function(data){
+                setTimeout(function(){
+                    draw(centerPointX,centerPointY,ctx,data);
+                },2000);
+                console.log(data);
+            });
+
+            $('#btn_start').click(function(){
+                socket.emit('sensorDataFromRedis',{});
+                //socket.emit('sensorData',{});
+            });
+
+            $('#btn_refresh').click(function(){
+                window.location.reload(true);
+            });
+        });
+
+        function initCanvas()
+        {
             var canvas;
-            var ctx;
+            //var ctx;
             var height = 600;
             var width = 800;
             //set the coordinate center point.
-            var centerPointX=400;
-            var centerPointY=300;
+            //var centerPointX=400;
+            //var centerPointY=300;
 
             canvas = document.getElementById('canvas');
             ctx = canvas.getContext('2d');
@@ -29,28 +59,7 @@
             ctx.moveTo(centerPointX,0);
             ctx.lineTo(centerPointX,height);
             ctx.stroke();
-
-            var socket = io.connect('http://localhost:13327');
-            socket.on('welcome', function (data) {
-                console.log(data);
-            });
-
-            $('#btn_start').click(function(){
-                socket.emit('sensorDataFromRedis',{});
-                //socket.emit('sensorData',{});
-            });
-
-            $('#btn_refresh').click(function(){
-                window.location.reload(true);
-            });
-
-            socket.on('result',function(data){
-                setTimeout(function(){
-                    draw(centerPointX,centerPointY,ctx,data);
-                },2000);
-                console.log(data);
-            });
-        };
+        }
 
         function draw(centerPointX,centerPointY,ctx,data) {
             var point=data.beaconCalculatePosition;
@@ -63,7 +72,6 @@
             ctx.arc(0, 0, 2, 0, Math.PI*2, true);
             ctx.fill();
             ctx.closePath();
-
             ctx.restore();
         }
 
