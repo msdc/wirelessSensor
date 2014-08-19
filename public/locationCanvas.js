@@ -25,7 +25,6 @@ $(function () {
     var rapAll = [];//存放页面rect元素的“画”对象
     /**初始化 end**/
 
-
     window.DrawPointer = function () {}
     DrawPointer.prototype = {
         evt: function () {
@@ -60,8 +59,7 @@ $(function () {
                 yAxisWid = configJson.canvas.h / configJson.canvas.numY;//9*9。+1从0.0点开始。。。。
             for (var j = 0; j < configJson.canvas.numX; j++) {
                 for (var n = 0; n < configJson.canvas.numY; n++) {
-                    ;
-                    (function (n, j) {
+                    ;(function (n, j) {
                         var rect1 = canvasN.rect(n * xAxisWid, j * yAxisWid, rectW, rectH);//rect(x,y,w,h)
                         rect1.attr({"fill": "#fa0a0a"})  //填充色
                             .attr("stroke", "none")     //去掉底边;

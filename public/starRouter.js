@@ -1,5 +1,4 @@
 /**矩阵（2维数组） +中间路径***/
-
 var closelist=[],openlist=[];
 var gw=10,gh=10,gwh=14;
 var p_start=new Array(2),p_end=new Array(2);
