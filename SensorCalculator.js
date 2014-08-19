@@ -56,5 +56,25 @@ SensorDataCalculator.processCalculate = function (sourceData) {
     });*/
 };
 
-exports.SensorDataCalculator = SensorDataCalculator;
+SensorDataCalculator.getKeyBeforeCalculate=function(deviceSerial){
+    var timespan = (new Date()).getTime();
+    var key=null;
+    if(deviceSerial)
+    {
+        key = deviceSerial + "_" + timespan;
+    }
+    return key;
+};
+
+SensorDataCalculator.getKeyAfterCalculate=function(deviceSerial){
+    var timespan = (new Date()).getTime();
+    var key=null;
+    if(deviceSerial)
+    {
+        key = deviceSerial + "_" + timespan+ "_" + "Calculated";
+    }
+    return key;
+};
+
+module.exports = SensorDataCalculator;
 

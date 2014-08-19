@@ -14,8 +14,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json',limit:'50mb' }));
 
 app.use(express.static(__dirname + '/public'));
 
-app.post('/sensorData',sensor.GetSensorDataFromMobile);
-
+app.post('/sensorData',sensor.GetSensorDataFromDevices);
 app.get('/getSampleData',sensor.getSampleData);
 //app.get('/redis',redisTest.redisTest);
 

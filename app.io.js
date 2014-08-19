@@ -2,6 +2,8 @@ var express = require('express');
 var app=express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var redis_port = 6379,
+    redis_host = "127.0.0.1";
 
 var redis=require('redis');
 
@@ -17,7 +19,7 @@ io.on('connection', function (socket) {
     socket.emit('welcome', { welcome: 'server connected success..' });
     console.log("new client:"+socket.id);
     socket.on('sensorData',function(data){
-        var client = redis.createClient();
+        var client = redis.createClient(redis_port,redis_host);
         client.on("error", function (err) {
             console.log(err);
         });
@@ -30,7 +32,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('drawPointFromRedis', function(data){
-       /* var client = redis.createClient();
+       /* var client = redis.createClient(redis_port,redis_host);
         client.on("error", function (err) {
             console.log(err);
         });

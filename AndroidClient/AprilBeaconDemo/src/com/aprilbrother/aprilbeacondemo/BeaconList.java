@@ -10,6 +10,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -27,6 +28,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -57,12 +60,43 @@ public class BeaconList extends Activity {
 	private BeaconAdapter adapter;
 	private BeaconManager beaconManager;
 	private ArrayList<Beacon> myBeacons;
+	
+	private ListView lv;
+	private EditText et;
+	private Button bt;
+	
+	private boolean detectionFlag = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		lv = (ListView) findViewById(R.id.lv);
+		et = (EditText) findViewById(R.id.et);
+		bt = (Button) findViewById(R.id.bt);
+		
+//		init();
+	}
+	
+	public void startDetection(View v){
+		String postUrl = et.getText().toString().trim();
+		if(TextUtils.isEmpty(postUrl)){
+			Toast.makeText(BeaconList.this, "请输入收集数据的地址", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
+		detectionFlag = true;
+		
+		POST_URL = postUrl;
+		
+		et.setVisibility(View.GONE);
+		bt.setVisibility(View.GONE);
+		lv.setVisibility(View.VISIBLE);
+		
 		init();
+		
+		onStartJudge();
 	}
 	
 	/**
@@ -70,7 +104,6 @@ public class BeaconList extends Activity {
 	 */
 	private void init() {
 		myBeacons = new ArrayList<Beacon>();
-		ListView lv = (ListView) findViewById(R.id.lv);
 		adapter = new BeaconAdapter(this);
 		lv.setAdapter(adapter);
 		beaconManager = new BeaconManager(this);
@@ -80,8 +113,10 @@ public class BeaconList extends Activity {
 			@Override
 			public void onBeaconsDiscovered(Region region,
 					final List<Beacon> beacons) {
+				
+				final List<Beacon> newBeacons = beaconSort(beacons, true);
 
-				if(beacons.size() > 3){
+				if(newBeacons.size() >= 3){
 				
 					collectTime = System.currentTimeMillis();
 					
@@ -93,7 +128,7 @@ public class BeaconList extends Activity {
 //					Log.v("TESTLOG", "collect---size:" + myData.monitorPackage.size() + "---" + myMonitor.checkPoint);
 					
 					MyBeacon myBeacon;
-					for(Beacon beacon : beacons){
+					for(Beacon beacon : newBeacons){
 						myBeacon = myMonitor.new MyBeacon();
 						myBeacon.uuid = beacon.getProximityUUID();
 						myBeacon.major = beacon.getMajor() + "";
@@ -118,7 +153,7 @@ public class BeaconList extends Activity {
 						Gson gson = new Gson();
 						String jsonStr = gson.toJson(myData);
 						
-						Log.v("TESTLOG", jsonStr);
+//						Log.v("TESTLOG", jsonStr);
 	
 						if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
 							try {
@@ -132,23 +167,24 @@ public class BeaconList extends Activity {
 						}
 						
 						sendData(jsonStr);
+//						sendDataByWebSocket(jsonStr);
 						
 						myData = null;
 					}
 					
 				}
 				
-				myBeacons.addAll(beacons);
+				myBeacons.addAll(newBeacons);
 				
-				if(beacons!=null && beacons.size()>0)
-				Log.i(TAG, "rssi = "+beacons.get(0).getRssi());
+				if(newBeacons!=null && newBeacons.size()>0)
+				Log.i(TAG, "rssi = "+newBeacons.get(0).getRssi());
 
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
 						getActionBar().setSubtitle(
-								"Found beacons: " + beacons.size());
-						adapter.replaceWith(beacons);
+								"Found beacons: " + newBeacons.size());
+						adapter.replaceWith(newBeacons);
 					}
 				});
 			}
@@ -219,7 +255,13 @@ public class BeaconList extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		
+		if(detectionFlag){
+			onStartJudge();
+		}
+	}
 
+	private void onStartJudge() {
 		if (!beaconManager.hasBluetooth()) {
 			Toast.makeText(this, "Device does not have Bluetooth Low Energy",
 					Toast.LENGTH_LONG).show();
@@ -237,24 +279,30 @@ public class BeaconList extends Activity {
 
 	@Override
 	protected void onDestroy() {
-//		beaconManager.disconnect();
+		if(detectionFlag){
+			beaconManager.disconnect();
+		}
 		super.onDestroy();
 	}
 
 	@Override
 	protected void onStop() {
-		try {
-			myBeacons.clear();
-			beaconManager.stopRanging(ALL_BEACONS_REGION);
-		} catch (RemoteException e) {
-			Log.d(TAG, "Error while stopping ranging", e);
+		if(detectionFlag){
+			try {
+				myBeacons.clear();
+				beaconManager.stopRanging(ALL_BEACONS_REGION);
+			} catch (RemoteException e) {
+				Log.d(TAG, "Error while stopping ranging", e);
+			}
 		}
 		super.onStop();
 	}
 	
 	//------------------收集信息-------------------------
 	
-	public static final String POST_URL = "http://192.168.100.2:1337/sensorData";
+	public static String POST_URL = "http://192.168.100.2:1337/sensorData";
+//	public static final String WEBSOCKET_URL = "http://192.168.100.2:13327";
+	public static final String WEBSOCKET_URL = "http://192.168.100.189:1338";
 	
 	public static final long COLLECT_INTERVAL = 500;
 	public static final long SEND_INTERVAL = 5000;
@@ -349,6 +397,59 @@ public class BeaconList extends Activity {
 		}.start();
 	}
 	
+//	private void sendDataByWebSocket(final String jsonStr) {
+//		new Thread(){
+//			public void run() {
+//				if(!TextUtils.isEmpty(jsonStr) && !TextUtils.isEmpty(WEBSOCKET_URL)){
+//					Log.v("TESTLOG", "connect " + WEBSOCKET_URL);
+//					try {
+//						SocketIO socketIO = new SocketIO();
+//						socketIO.connect(WEBSOCKET_URL, new IOCallback() {
+//							
+//							@Override
+//							public void onMessage(JSONObject json, IOAcknowledge ack) {
+//								try {
+//									Log.d("TESTLOG", "Server said:" + json.toString(2));
+//								} catch (JSONException e) {
+//									e.printStackTrace();
+//								}
+//							}
+//
+//							@Override
+//							public void onMessage(String data, IOAcknowledge ack) {
+//								Log.d("TESTLOG", "Server said: " + data);
+//							}
+//
+//							@Override
+//							public void onError(SocketIOException socketIOException) {
+//								Log.d("TESTLOG", "an Error occured" + socketIOException.fillInStackTrace().toString());
+//							}
+//
+//							@Override
+//							public void onDisconnect() {
+//								Log.d("TESTLOG", "Connection terminated.");
+//							}
+//
+//							@Override
+//							public void onConnect() {
+//								Log.d("TESTLOG", "Connection established");
+//							}
+//
+//							@Override
+//							public void on(String event, IOAcknowledge ack, Object... args) {
+//								Log.d("TESTLOG", "Server triggered event '" + event + "'");
+//							}
+//						});
+//						
+//						socketIO.send("sensorData");
+//					} catch (Exception e) {
+//						Log.w("TESTLOG", e.fillInStackTrace().toString());
+//					}
+//				}
+//			};
+//		}.start();
+//	}
+	
 	class MyData{
 		public String deviceName;
 		public String deviceSerial;
@@ -388,6 +489,33 @@ public class BeaconList extends Activity {
 	class SendResponse{
 		public String result;
 		public String message;
+	}
+	
+	/**
+	 * 将beacons按照Minor排序
+	 * @param beacons
+	 * @param asc true升序 false降序
+	 * @return
+	 */
+	protected List<Beacon> beaconSort(List<Beacon> beacons, final boolean asc) {
+		List<Beacon> list = new ArrayList<Beacon>(beacons);
+		Collections.sort(list, new Comparator(){
+			@Override
+			public int compare(Object lhs, Object rhs) {
+				Beacon beacon0 = (Beacon) lhs;
+				Beacon beacon1 = (Beacon) rhs;
+				int flag = 0;
+				if(beacon0.getMinor() > beacon1.getMinor()){
+					flag = asc == true ? 1 : -1;
+				}else if(beacon0.getMinor() < beacon1.getMinor()){
+					flag = asc == true ? -1 : 1;
+				}else{
+					flag = (beacon0.getDistance() < beacon1.getDistance()) ? -1 : 1;
+				}
+				return flag;
+			}
+		});
+		return list;
 	}
 	
 	//------------------收集信息-------------------------
