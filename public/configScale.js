@@ -13,8 +13,8 @@ window.configJson={ //配置文件
     inchesM:0.0254, //1英寸等于0.0254米..固定值不可更改
     zoomImg:1,   //默认为1。。即图片和画布一样大小
     uuidArr:function(){
-        var pointSB=[];
-        var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
+        var pointSB=[],
+            frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
         pointSB[frontStr+'_0_1']={x:250.00,y:310.00};//单位为米
         pointSB[frontStr+'_0_2']={x:190.00,y:290.00};
         pointSB[frontStr+'_0_3']={x:120.00,y:150.00};
