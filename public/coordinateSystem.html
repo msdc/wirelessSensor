@@ -7,18 +7,60 @@
     <script type="text/javascript" src="raphael-min.js"></script>
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="locationCanvas.js"></script>
+    <script type="text/javascript" src="starRouter.js"></script>
 </head>
 <body>
-<div id="raphael1"><img src="2.jpg" id="imgA"/></div>
+<div id="wrapRapGird">
+    <table id="maptt" cellspacing="1" cellpadding="0" border="0" bgcolor="#000000"></table><!--网格-->
+    <div id="raphaelTP">
+        <img src="2.jpg" id="imgA"/>
+    </div><!--坐标系+背景图片-->
+</div>
+
+<input type="button" id="pointOrGrid" value="坐标系,无“寻径”功能"/>
+<div class="setPoints">
+    <em class="cS1">设置起点</em><em class="cS2">设置终点</em><em class="cS3">设置障碍点</em>
+    <input id="searchLJ" type="button" value="查找路径">
+</div>
 <div id="tips"></div>
-<p><input type="button" value="添加标注" id="addBZ"/>
+<p class="bzAdd">
+   <input type="button" value="添加标注" id="addBZ"/>
    <input type="button" value="提交标注" id="submitBZ"/>
 </p>
 <style>
-    #raphael1{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;width:610px;height:610px;}
+    body,html{margin:0;padding:0}
+    #raphael1,#wrapRapGird{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;width:610px;height:610px;}
     #imgA{position:absolute;left:0px;top:0px;z-index:-10;}
     #tips{display:none;z-index:max-width:300px;font-size:12px;line-height:1.2em;background:#fff;border-radius:8px;position:absolute;left:0px;top:0px;border:1px solid #ff7300;padding:5px;}
     .occupying{display:none;background:url('t2.png') no-repeat left top;width:10px;height:10px;position: absolute;left:0px;top:0px;}
+
+    /**table **/
+    #maptt{position:absolute;left:0px;top:0px;display:none;z-inde:-10;}
+    #maptt td{background:#fff;width:20px;height:20px;}
+    #maptt td.mStart{background:#ff0000;}
+    #maptt td.mEnd{background:#0000ff;}
+    #maptt td.mSleep{background:#cccccc;}
+    .setPoints{display:none;}
+    .setPoints em{margin:0px 5px;color:#cc0000;cursor:pointer;font-style:normal;}
+
 </style>
+<script>
+    $(function(){//暂时放到这里。。 切换 网格 or 坐标系
+        $('#pointOrGrid').data('gird','false').click(function(){//初始化为‘坐标系’，无“寻径”功能
+            var gird=$(this).data('gird');
+            if(gird=='false'){//change gird
+                $('.setPoints').show();
+                $('#maptt').show().css({'zIndex':10});
+                $(this).data('gird','true').val('“寻径”功能启动，隐藏坐标系');
+                $('#raphaelTP,.occupying').hide();//隐藏 画布、‘标注’
+            }
+            else{
+                $('.setPoints,#maptt').hide().css({'zIndex':-10});;
+                $(this).data('gird','false').val('坐标系,无“寻径”功能');
+                $('#raphaelTP,.occupying').show();//显示 画布、‘标注’
+            }
+        })
+    })
+</script>
 </body>
 </html>

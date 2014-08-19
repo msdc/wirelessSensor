@@ -1,5 +1,5 @@
 $(function () {
-    var raphael1 = $('#raphael1');
+    var raphaelTP = $('#raphaelTP');
     var imgA = $('#imgA');
     /**初始化 start**/
     configJson.resolution = configJson.scale * configJson.inchesM / configJson.PPI;//地图分辨率
@@ -18,9 +18,9 @@ $(function () {
     }
 
     imgA.attr({width: configJson.bj_draw.nW, height: configJson.bj_draw.nH, src: configJson.bj_draw.src});
-    raphael1.css({width: configJson.canvas.w + 'px', height: configJson.canvas.h + 'px'});
+    raphaelTP.css({width: configJson.canvas.w + 'px', height: configJson.canvas.h + 'px'});
 
-    var canvasN = Raphael('raphael1', configJson.canvas.w, configJson.canvas.h),
+    var canvasN = Raphael('raphaelTP', configJson.canvas.w, configJson.canvas.h),
         rectW = 5, rectH = 5, radius = 8, sbW = 20, sbH = 20;//坐标系矩形宽高、画圆的半径 设备大小
     var rapAll = [];//存放页面rect元素的“画”对象
     /**初始化 end**/
@@ -31,7 +31,7 @@ $(function () {
         evt: function () {
             var that = this;
             $('#addBZ').unbind('click').click(function () {
-                $('#raphael1').click(function (e) {
+                $('#raphaelTP').click(function (e) {
                     /** 如果有，则移动，如果没有，则添加 **/
                     if ($('.occupying').length) {//暂时不‘添加多个标注’
                         $('.occupying').css({left: e.clientX + 'px', top: e.clientY + 'px'}).show();
@@ -47,7 +47,7 @@ $(function () {
             $('#submitBZ').unbind('click').click(function () {//暂时不‘添加多个标注’
                 var sLeft = parseFloat($('.occupying:last').css('left')),
                     sTop = parseFloat($('.occupying:last').css('Top'));
-                var Odoc = raphael1.offset();
+                var Odoc = raphaelTP.offset();
                 console.log(sLeft - Odoc.left, sTop - Odoc.top);
                 var pX = sLeft - Odoc.left, pY = sTop - Odoc.top//当前坐标系上的坐标
                 alert('提交到服务器上的距离' + pX * configJson.resolution / configJson.zoomImg + '米*' + pY * configJson.resolution * configJson.zoomImg + '米 当前坐标系上的坐标' + pX + '*' + pY)
