@@ -30,7 +30,7 @@
             ctx.lineTo(centerPointX,height);
             ctx.stroke();
 
-            var socket = io.connect('http://localhost:13327');
+            var socket = io.connect('http://192.168.100.2:13327');
             socket.on('welcome', function (data) {
                 console.log(data);
             });

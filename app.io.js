@@ -13,7 +13,7 @@ var path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-server.listen(13327,function(){
+server.listen(13327,'192.168.100.2',function(){
     console.log('Express server listening on port 13327');
 });
 
