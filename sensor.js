@@ -7,11 +7,7 @@ var sensorCalculator=require("./SensorCalculator.js");
 //var trilateration = require("./Trilateration.js");
 //var kmeans = require("./KMeansClustering.js");
 
-/**
- * @param
- * @说明 向客户端发送错误信息，并向控制台输出该错误信息。
- * @api private.
- * */
+
 function SendError(err, res) {
     console.error(err);
     res.send({result: false, message: err});
@@ -55,7 +51,7 @@ exports.getSampleData = function (req, res) {
                 tpNDataArray.push(data);
                 var trlCal = new trilateration(tpNDataArray);
 
-                trlCal.cleanKeyZero(function (pointDt) {
+                trlCal.cleanZeroKey(function (pointDt) {
                     for (var point in pointDt) {
                         if (!pointDt[point].beaconCalculatePosition) break;//skip incorrect data in redis.
                         kmeans.GetClusteredPoint(pointDt[point], function (finalPoint) {
@@ -73,11 +69,6 @@ exports.getSampleData = function (req, res) {
     });*/
 };
 
-/**
- * @param:[key]:deviceName设备名称  [callback] 回调函数，有两个参数 err,reply
- * reply中包含获取的数据信息，err 返回redis错误信息。
- * @api public
- * */
 exports.GetSensorDataFromRedis = function (key, callback) {
     var client = redis.createClient();
 
@@ -91,10 +82,6 @@ exports.GetSensorDataFromRedis = function (key, callback) {
     });
 };
 
-/**
- * @说明 获取手机端post数据的api接口
- * @api public
- * */
 exports.GetSensorDataFromMobile = function (req, res) {
     var client = redis.createClient();
     client.on("error", function (err) {
@@ -122,10 +109,6 @@ exports.GetSensorDataFromMobile = function (req, res) {
     });
 };
 
-/**
- * @param {类聚后的最终的点}
- * @return {无}
- * */
 exports.saveToRedis = function (finalPoint) {
     var client = redis.createClient();
     client.on("error", function (err) {
@@ -141,8 +124,8 @@ exports.saveToRedis = function (finalPoint) {
 exports.processDataFromSocket= function (io, socket, data) {
 
 
-}
+};
 
 exports.processDataFromHttp=function(res,req){
 
-}
+};

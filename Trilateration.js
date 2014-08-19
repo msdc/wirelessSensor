@@ -9,7 +9,7 @@ function Calculation(mpgAjax) {
 }
 
 Calculation.prototype = {
-    cleanKeyZero: function () {//格式化数据：eg 删除无效记录及不足3个点的记录
+    cleanZeroKey: function () {//格式化数据：eg 删除无效记录及不足3个点的记录
         var mpgAjax = this.mpgAjax;
         for (var i = 0, L = mpgAjax.length; i < L; i++) {//循环所有手机
             var currTel = mpgAjax[i];//当前手机
@@ -149,6 +149,6 @@ Calculation.prototype = {
 
 module.exports = Calculation;
 //var Cal = new Calculation();
-//Cal.cleanKeyZero();
+//Cal.cleanZeroKey();
 
 

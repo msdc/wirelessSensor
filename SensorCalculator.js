@@ -4,13 +4,8 @@
 var trilateration = require("./Trilateration.js");
 var kmeans = require("./KMeansClustering.js");
 
-/*One package of Sensor Data Calculate static class.*/
-function SensorDataCalculator() {
-};
+function SensorDataCalculator() {};
 
-/*
- 进行计算模块
- */
 SensorDataCalculator.processCalculate = function (sourceData) {
     var tpNDataArray = [];
     var finalResult=[];
@@ -29,7 +24,7 @@ SensorDataCalculator.processCalculate = function (sourceData) {
     tpNDataArray.push(dataObj);
     var trlCal = new trilateration(tpNDataArray);
     //清除空点
-    trlCal.cleanKeyZero();
+    trlCal.cleanZeroKey();
     //三点定一点
     var levelOneResult=trlCal.getCalResult();
     //聚类计算
@@ -43,7 +38,7 @@ SensorDataCalculator.processCalculate = function (sourceData) {
         }
     }
     return finalResult;
-/*    trlCal.cleanKeyZero(function (pointDt) {
+/*    trlCal.cleanZeroKey(function (pointDt) {
         for (var point in pointDt) {
             if (!pointDt[point].beaconCalculatePosition) break;//skip incorrect data in redis.
             kmeans.GetClusteredPoint(pointDt[point], function (finalPoint) {
