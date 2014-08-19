@@ -6,7 +6,8 @@ var easypost = require('easypost');
 var sensorCalculator=require("./SensorCalculator.js");
 //var trilateration = require("./Trilateration.js");
 //var kmeans = require("./KMeansClustering.js");
-
+var redis_port = 6379,
+    redis_host = "127.0.0.1";
 
 function SendError(err, res) {
     console.error(err);
@@ -14,7 +15,7 @@ function SendError(err, res) {
 }
 
 exports.getSampleData = function (req, res) {
-    /*var client = redis.createClient();
+    /*var client = redis.createClient(redis_port,redis_host);
     client.on("error", function (err) {
         SendError(err,res);
     });
@@ -70,7 +71,7 @@ exports.getSampleData = function (req, res) {
 };
 
 exports.GetSensorDataFromRedis = function (key, callback) {
-    var client = redis.createClient();
+    var client = redis.createClient(redis_port,redis_host);
 
     client.on("error", function (err) {
         console.log("Error " + err);
@@ -82,13 +83,14 @@ exports.GetSensorDataFromRedis = function (key, callback) {
     });
 };
 
-exports.GetSensorDataFromMobile = function (req, res) {
-    var client = redis.createClient();
+exports.GetSensorDataFromDevices = function (req, res) {
+    var client = redis.createClient(redis_port,redis_host);
     client.on("error", function (err) {
         if (err) {
             SendError(err, res);
         }
     });
+
     easypost.get(req, res, function (data) {
         //var data=JSON.parse(data);
         if (!data.monitorPackage) {
@@ -99,10 +101,10 @@ exports.GetSensorDataFromMobile = function (req, res) {
         }
 
         var serializeJsonData = JSON.stringify(data);
-        var timespan = new Date().getUTCMilliseconds();
-        client.set(data.deviceSerial + "_" + timespan, serializeJsonData);
-
+        var redisKey=sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
+        client.set(redisKey, serializeJsonData);
         client.quit();
+
         console.log("deviceSerial="+data.deviceSerial+"，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
         res.end();
@@ -110,13 +112,13 @@ exports.GetSensorDataFromMobile = function (req, res) {
 };
 
 exports.saveToRedis = function (finalPoint) {
-    var client = redis.createClient();
+    var client = redis.createClient(redis_port,redis_host);
     client.on("error", function (err) {
         console.log(err);
     });
 
     var serializeJsonData = JSON.stringify(finalPoint);
-    var resultPointKeyName = finalPoint.deviceID + "_" + new Date().getUTCMilliseconds() + "_" + "Calculated";
+    var resultPointKeyName = sensorCalculator.getKeyAfterCalculate(finalPoint.deviceSerial);
     client.set(resultPointKeyName, serializeJsonData);
     client.quit();
 };
