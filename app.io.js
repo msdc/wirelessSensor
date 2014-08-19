@@ -1,92 +1,63 @@
-/**
- * Created by wang on 2014/8/14.
- */
-var express = require('express'),
-    app=express();
-var http = require('http'),
-    server=http.createServer(app);
+var express = require('express');
+var app=express();
+var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var redis_port = 6379,
+    redis_host = "127.0.0.1";
+
 var redis=require('redis');
+
 var sensor=require('./sensor.js');
-var trilateration=require("./Trilateration.js");
-var kmeans=require("./KMeansClustering.js");
-var path = require('path');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public'));
 
-server.listen(13327,function(){
-    console.log('Express server listening on port 13327');
+server.listen(1338, function(){
+    console.log('Express socket io server listening on port 1338');
 });
 
 io.on('connection', function (socket) {
     socket.emit('welcome', { welcome: 'server connected success..' });
-
+    console.log("new client:"+socket.id);
     socket.on('sensorData',function(data){
-        client = redis.createClient();
+        var client = redis.createClient(redis_port,redis_host);
         client.on("error", function (err) {
             console.log(err);
         });
         var serializeJsonData = JSON.stringify(data);
-        var timespan = new Date().getUTCMilliseconds();
-        client.set(data.deviceSerial + "_" + timespan, serializeJsonData);
+        var timePoint = new Date().getUTCMilliseconds();
+        client.set(data.deviceSerial + "_" + timePoint, serializeJsonData);
         client.quit();
 
-        SensorDataCalculater.calculate(socket,data);
+        sensor.processDataFromSocket(io,socket,data);
     });
 
-    socket.on('sensorDataFromRedis', function(data){
-        client = redis.createClient();
+    socket.on('drawPointFromRedis', function(data){
+       /* var client = redis.createClient(redis_port,redis_host);
         client.on("error", function (err) {
             console.log(err);
         });
 
+        var count=0;
+        var keysLength=0;
         client.keys('*',function(err,reply){
+            keysLength=reply.length;
+            if(keysLength===0)
+            {
+                client.quit();
+                return;
+            }
             reply.forEach(function(key){
                 client.get(key, function(err,reply){
                     if(err){console.error(err);}
+                    count++;
                     console.log(key);
-                    SensorDataCalculater.calculate(socket,reply);
+                    if(count==keysLength||count>keysLength)
+                    {
+                        client.quit();
+                    }
+                    sensor.processCalculate(io,socket,reply);
                 });
             });
-            client.quit();
-        });
+        });*/
     });
 });
-
-/*One package of Sensor Data Calculate static class.*/
-function SensorDataCalculater(){};
-SensorDataCalculater.calculate=function(socket,data){
-    var tpNDataArray = [];
-    var data;
-    try
-    {
-        data=JSON.parse(data);
-    }catch(e)
-    {
-        return;
-    }
-
-    //exclude incorrect data.
-    if(!data.deviceSerial){
-        return;
-    }
-
-    tpNDataArray.push(data);
-    var trlCal = new trilateration(tpNDataArray);
-
-    trlCal.delKeyZero(function (pointDt) {
-        for (var point in pointDt) {
-            if(!pointDt[point].beaconCalculatePosition)break;//skip incorrect data in redis.
-            kmeans.GetFinallySensorData(pointDt[point], function (finalPoint) {
-                socket.emit('result',finalPoint);
-                console.log("deviceID=" + finalPoint.deviceID);
-                console.log("timePoint=" + finalPoint.timePoint);
-                console.log("deviceSerial=" + finalPoint.deviceSerial);
-                console.log("beaconCanculatedPosition=[{\"x\"=" + finalPoint.beaconCalculatePosition[0].x+",\"y=\""+finalPoint.beaconCalculatePosition[0].y+"}]");
-                //todo write back info the redis and trigger postback event using websocket
-            });
-        }
-    });
-};
-
-

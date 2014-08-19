@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="configScale.js"></script>
+    <script type="text/javascript" src="raphael-min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="locationCanvas.js"></script>
+</head>
+<body>
+<div id="raphael1"><img src="2.jpg" id="imgA"/></div>
+<div id="tips"></div>
+<p><input type="button" value="添加标注" id="addBZ"/>
+   <input type="button" value="提交标注" id="submitBZ"/>
+</p>
+<style>
+    #raphael1{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;width:610px;height:610px;}
+    #imgA{position:absolute;left:0px;top:0px;z-index:-10;}
+    #tips{display:none;z-index:max-width:300px;font-size:12px;line-height:1.2em;background:#fff;border-radius:8px;position:absolute;left:0px;top:0px;border:1px solid #ff7300;padding:5px;}
+    .occupying{display:none;background:url('t2.png') no-repeat left top;width:10px;height:10px;position: absolute;left:0px;top:0px;}
+</style>
+</body>
+</html>
