@@ -1,18 +1,18 @@
 exports.uuidArr=function(){
     var pointSB=[];
     var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
-        pointSB[frontStr+'_0_1']={x:0.00,y:5.00};//Cacc:'FE添加的mpgAjax中每个距离acc'
-        pointSB[frontStr+'_0_2']={x:5.00,y:0.00};
+        pointSB[frontStr+'_0_1']={x:0.00,y:6.00};
+        pointSB[frontStr+'_0_2']={x:5.40,y:0.00};
         pointSB[frontStr+'_0_3']={x:0.00,y:0.00};
-        pointSB[frontStr+'_0_4']={x:5.00,y:5.00};
-        pointSB[frontStr+'_0_5']={x:2.50,y:2.30};
-        pointSB[frontStr+'_0_6']={x:10.00,y:5.00};
+        pointSB[frontStr+'_0_4']={x:5.40,y:6.00};
+        pointSB[frontStr+'_0_5']={x:4.10,y:2.80};
+        pointSB[frontStr+'_0_6']={x:-0.32,y:2.80};//-0.32墙。
     return pointSB;
 };
 
 /**
  var uuidArr=[//测试数据(固定值，设备坐标)
- {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_1',x:0.00,y:5.00},//,Cacc:'FE添加的mpgAjax中每个距离acc'
+ {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_1',x:0.00,y:5.00},
  {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_2',x:5.00,y:0.00},
  {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_3',x:0.00,y:5.00},
  {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_4',x:5.00,y:5.00},
