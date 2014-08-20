@@ -88,11 +88,12 @@ exports.processDataFromHttp = function (req, res) {
 
         //save the data after calculated.
         var finalResult = sensorCalculator.processCalculate(serializeJsonData);
-        var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
-        client.set(keyAfterCalculate, JSON.stringify(finalResult));
-        client.expire(keyAfterCalculate,5000);
-        client.quit();
-
+        if(finalResult.length>0) {
+            var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
+            client.set(keyAfterCalculate, JSON.stringify(finalResult));
+            client.expire(keyAfterCalculate, 60);
+            client.quit();
+        }
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
         res.end();
