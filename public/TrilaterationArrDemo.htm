@@ -54,18 +54,63 @@
     </div>
 </div>
 <script>
-    var dataD=[];
-	;$(function(){
-		$('#clkH').click(function(){
-            q++;
-            var currD=dataD[q];
-            if(dataD.length<1){
-                alert('还缺少测试数据。。请添加到dataD数组中。')
-            }
-            /***还缺少dataD内容。***/
-            var p1={x:10,y:10},p2={x:20,y:20},p3={x:12,y:13};
-            var dp1= 5,dp2= 3,dp3=7;
+    function combine(inputArray, totalNum, chooseNum) {//产生组合
+        chooseNum = chooseNum > totalNum ? totalNum : chooseNum;
 
+        var order = [chooseNum + 1];
+        var outputArray = [];
+        for (var i = 0; i <= chooseNum; i++) {
+            order[i] = i - 1;
+        }
+        // 注意这里order[0]=-1用来作为循环判断标识
+        var count = 0;
+        var k = chooseNum;
+        var flag = true;           // 标志找到一个有效组合
+        while (order[0]) {
+            // 输出符合要求的组合
+            if (flag) {
+                var tpObj = [];
+                for (i = 1; i <= chooseNum; i++) {
+                    //console.log(a[order[i]]);
+                    tpObj.push(inputArray[order[i]]);
+                }
+                outputArray.push(tpObj);
+                count++;
+                flag = false;
+            }
+            // 在当前位置选择新的数字
+            order[k]++;
+            // 当前位置已无数字可选，回溯
+            if (order[k] == totalNum) {
+                order[k--] = 0;
+                continue;
+            }
+            // 更新当前位置的下一位置的数字
+            if (k < chooseNum) {
+                order[++k] = order[k - 1];
+                continue;
+            }
+
+            if (k == chooseNum) {
+                flag = true;
+            }
+        }
+        return outputArray;
+    }
+    var dataD=[{acc:'3.18',x:0,y:6},{acc:'3.95',x:0,y:0},{ acc:'3.95',x:0,y:0 }, { acc: '4.88', x: 0, y: 6 },{ acc: '4.88', x: 0, y: 0 },{ acc: '4.88', x: 5.4, y: 6 }];
+
+    var t2=combine(dataD, dataD.length, 3);
+    console.log(t2);
+    ;$(function(){
+		$('#clkH').click(function(){
+            if(q==t2.length){
+                q=-1;
+            }
+            q++;
+            var currD=t2[q];//数组
+
+            var p1={x:currD[0].x,y:currD[0].y},p2={x:currD[1].x,y:currD[1].y},p3={x:currD[1].x,y:currD[2].y};
+            var dp1= currD[0].acc,dp2= currD[1].acc,dp3=currD[2].acc;
             init(p1,p2,p3,dp1,dp2,dp3);
         })
 	})
