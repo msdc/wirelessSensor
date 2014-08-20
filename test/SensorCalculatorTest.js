@@ -5,6 +5,6 @@ fs.readFile('../sampleData/data3.txt',{encoding:"UTF8",flag:"r"}, function (err,
     if (err) throw err;
     //console.log(data);
     var tpObj=JSON.parse(data);
-    var result= sensorCalculator.filterDataByAcc(tpObj,"20");
+    var result= sensorCalculator.processCalculate(data);//sensorCalculator.filterDataByAcc(tpObj,"20");
     console.log(result);
 });
