@@ -9,7 +9,7 @@ function SensorDataCalculator() {};
 
 function MonitorPackageHandler(monitorPackage){
     this.monitorPackage=monitorPackage||{};
-    this.beaconArray=deviceConfig.uuidArr();
+    this.beaconArray=deviceConfig.singleSensorPointArray();
     this.prefixString='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_';
 }
 
