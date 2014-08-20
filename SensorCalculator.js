@@ -333,7 +333,7 @@ SensorDataCalculator.combineExtendData = function (monitorPkgNode) {
     }
     //sourceData.monitoring=tpPkg;
     return finalResult;
-}
+};
 
 SensorDataCalculator.combinePerPkgNode = function (monitorPkgNode) {
     var finalExtendNodeArray = [];
@@ -358,7 +358,7 @@ SensorDataCalculator.combinePerPkgNode = function (monitorPkgNode) {
         finalExtendNodeArray.push(rtMonitorPkgNode);
     }
     return finalExtendNodeArray;
-}
+};
 
 SensorDataCalculator.combine = function (inputArray, totalNum, chooseNum) {//产生组合
 
