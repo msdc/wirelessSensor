@@ -63,8 +63,8 @@
         function draw(centerPointX,centerPointY,ctx,data) {
             var point=data.beaconCalculatePosition;
             ctx.save();
-            var x = point[0].x+centerPointX;
-            var y = point[0].y+centerPointY;
+            var x = point[0].x*10+centerPointX;
+            var y = point[0].y*10+centerPointY;
             ctx.fillStyle = 'green';
             ctx.translate(x, y);
             ctx.beginPath();
