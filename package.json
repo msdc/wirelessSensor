@@ -8,9 +8,9 @@
     "email": ""
   },
   "dependencies": {
-    "body-parser": "^1.4.3",
+    "body-parser": "^1.6.5",
     "easypost": "^0.1.1",
-    "express": "^4.6.1",
+    "express": "^4.8.5",
     "redis": "^0.12.0",
     "socket.io": "^1.0.6"
   }

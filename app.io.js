@@ -2,10 +2,7 @@ var express = require('express');
 var app=express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-var redis_port = 6379,
-    redis_host = "127.0.0.1";
-
-var redis=require('redis');
+var sensorCalculator=require("./SensorCalculator.js");
 
 var sensor=require('./sensor.js');
 
@@ -17,47 +14,12 @@ server.listen(1338, function(){
 
 io.on('connection', function (socket) {
     socket.emit('welcome', { welcome: 'server connected success..' });
-    console.log("new client:"+socket.id);
-    socket.on('sensorData',function(data){
-        var client = redis.createClient(redis_port,redis_host);
-        client.on("error", function (err) {
-            console.log(err);
-        });
-        var serializeJsonData = JSON.stringify(data);
-        var timePoint = new Date().getUTCMilliseconds();
-        client.set(data.deviceSerial + "_" + timePoint, serializeJsonData);
-        client.quit();
-
-        sensor.processDataFromSocket(io,socket,data);
+    console.log("new client:" + socket.id);
+    socket.on('sensorData', function (data) {
+        sensor.processDataFromSocket(io, socket, data);
     });
 
-    socket.on('drawPointFromRedis', function(data){
-       /* var client = redis.createClient(redis_port,redis_host);
-        client.on("error", function (err) {
-            console.log(err);
-        });
-
-        var count=0;
-        var keysLength=0;
-        client.keys('*',function(err,reply){
-            keysLength=reply.length;
-            if(keysLength===0)
-            {
-                client.quit();
-                return;
-            }
-            reply.forEach(function(key){
-                client.get(key, function(err,reply){
-                    if(err){console.error(err);}
-                    count++;
-                    console.log(key);
-                    if(count==keysLength||count>keysLength)
-                    {
-                        client.quit();
-                    }
-                    sensor.processCalculate(io,socket,reply);
-                });
-            });
-        });*/
+    socket.on('drawPointFromRedis', function (data) {
+        sensor.drawPointFromRedis(io, socket, data);
     });
 });
