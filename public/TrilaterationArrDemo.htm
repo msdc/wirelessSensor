@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Trilateration test</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script src="jquery.js" type="text/javascript"></script>
+    <style>content {
+    }
+
+    #main-content {
+        display: table;
+        float: left
+    }
+
+    .cell {
+        display: table-cell
+    }
+
+    #maincontainer {
+    }
+
+    #viewportcontainer {
+        width: 640px;
+        float: left
+    }
+
+    #debugcontainer {
+        width: 400px;
+        float: right
+    }</style>
+</head>
+<body>
+<header>
+    <h1 id="clkH">单击生成</h1>
+</header>
+<div id="content">
+    <div id="mainContent">
+        <div id="viewportcontainer" class="cell">
+            <canvas width="640" height="480" id="viewport"></canvas>
+        </div>
+        <div id="debugcontainer" class="cell">
+            <h2>Random Reference Points</h2>
+            Point 1: <span id="refPt1"></span> <br/>
+            Point 2: <span id="refPt2"></span> <br/>
+            Point 3: <span id="refPt3"></span> <br/>
+
+            <h2>"Unknown position"</h2>
+            Unknown (p4): <span id="refUnknown"></span> <br/>
+            <br/>
+
+            <div id="freeflowdebug">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var dataD=[];
+	;$(function(){
+		$('#clkH').click(function(){
+            q++;
+            var currD=dataD[q];
+            if(dataD.length<1){
+                alert('还缺少测试数据。。请添加到dataD数组中。')
+            }
+            /***还缺少dataD内容。***/
+            var p1={x:10,y:10},p2={x:20,y:20},p3={x:12,y:13};
+            var dp1= 5,dp2= 3,dp3=7;
+
+            init(p1,p2,p3,dp1,dp2,dp3);
+        })
+	})
+</script>
+<script>
+    var width,height;//存放画布大小
+    var boxesX = 20,boxesY = 20;//横向20个，纵向20个
+    var vp;
+    var vpc;//画布
+    var recHeight;//纵向每个格子的宽度
+    var recWidth;//横向每个格子的宽度
+    var p1 = {x: 5, y: 3};
+    var p2 = {x: 15, y: 4};
+    var p3 = {x: 10, y: 18};
+    var punknown = {x: 10, y: 12};
+    var resArr=[],q=0;
+
+    function init(p1,p2,p3,dp1,dp2,dp3) {
+        $('#viewportcontainer').html('');
+        $('#viewportcontainer').html('<canvas width="640" height="480" id="viewport"></canvas>');
+        vp = document.getElementById("viewport");
+        vpc = vp.getContext("2d");
+
+        resArr=[];
+        width = vp.width;
+        height =vp.height;
+        recHeight = height / boxesY;
+        recWidth = width / boxesX;
+        console.log('recWH ',recHeight,recWidth);// 24 32
+        for (var x = 0; x < width; x += recWidth) {//24 32...横向20，纵向20.。。。。每个格子大小
+            for (var y = 0; y < height; y += recHeight) {
+                vpc.strokeRect(x, y, recWidth, recHeight);//画矩形
+            }
+        }//画格子
+
+        drawOpaque(p1);
+        $("#refPt1").html( "X: " + p1.x + " Y: " + p1.y);
+        drawOpaque(p2);
+        $("#refPt2").html( "X: " + p2.x + " Y: " + p2.y);
+        drawOpaque(p3);
+        $("#refPt3").html("X: " + p3.x + " Y: " + p3.y);
+
+
+        drawCircle(p1, dp1 * recHeight, "red");//距离*每个格子的高度。。eg：距离3个格子的高度
+        drawCircle(p2, dp2 * recHeight, "green");
+        drawCircle(p3, dp3 * recHeight, "blue");
+
+        debug("Distance from P1: " + dp1);//相当于提示信息
+        debug("Distance from P2: " + dp2);
+        debug("Distance from P3: " + dp3);
+
+        var calculatedPos = getTrilateration(p1, p2, p3, dp1, dp2, dp3);
+        debug("Found position: X: " + calculatedPos.x + " Y: " + calculatedPos.y);
+        vpc.fillStyle = "#ff7300";
+        drawOpaque(calculatedPos);
+    }
+
+
+
+    function getBoxActualPos(position) {
+        var actX = (--position.x) * recWidth;
+        var actY = (--position.y) * recHeight;
+        var actPos = {};
+        actPos.x = actX;
+        actPos.y = actY;
+        console.log('actPos',actPos)
+        return actPos;
+    }
+    function drawOpaque(position) {
+        var boxActPos = getBoxActualPos(position);
+        vpc.fillRect(boxActPos.x, boxActPos.y, recWidth, recHeight);
+    }
+
+    function drawCircle(position, radius, color) {
+        var boxActPos = getBoxActualPos(position);
+        vpc.strokeStyle = color;
+        vpc.lineWidth = 6;
+        vpc.beginPath();
+        vpc.arc(boxActPos.x + 40, boxActPos.y + 30, radius, 0, 2 * Math.PI, false);
+        vpc.stroke();
+        vpc.closePath();
+    }
+    function getRandom(offset, max) {//1 10
+        console.log('start')
+        var rand = Math.random();
+        console.log('rand',rand)
+        var diff = max - offset;//9
+        console.log('diff',diff)
+        diff *= rand;//0-9
+        console.log('diff2',diff)
+        var res = diff + offset;
+        console.log('res',res,'fan:',Math.ceil(Math.floor(res), offset))
+        console.log('end')
+        return Math.ceil(Math.floor(res), offset);
+    }
+    function getEuclidean(position1, position2) {//a平方+b平方=c平方
+        return Math.sqrt(Math.pow(position2.x - position1.x, 2) + Math.pow(position2.y - position1.y, 2));
+    }
+    function getTrilateration(position1, position2, position3, distToPos1, distToPos2, distToPos3) {
+
+        var xa = position1.x;
+        var ya = position1.y
+        var xb = position2.x;
+        var yb = position2.y;
+        var xc = position3.x;
+        var yc = position3.y;
+        var ra = distToPos1;
+        var rb = distToPos2;
+        var rc = distToPos3;
+        S = (Math.pow(xc, 2.) - Math.pow(xb, 2.) + Math.pow(yc, 2.) - Math.pow(yb, 2.) + Math.pow(rb, 2.) - Math.pow(rc, 2.)) / 2.0;
+        T = (Math.pow(xa, 2.) - Math.pow(xb, 2.) + Math.pow(ya, 2.) - Math.pow(yb, 2.) + Math.pow(rb, 2.) - Math.pow(ra, 2.)) / 2.0;
+        y = ((T * (xb - xc)) - (S * (xb - xa))) / (((ya - yb) * (xb - xc)) - ((yc - yb) * (xb - xa)));
+        x = ((y * (ya - yb)) - T) / (xb - xa);
+        var position = {x: 0, y: 0, z: 0};
+        position.x = x;
+        position.y = y;
+        console.log('com:',position1, position2, position3, distToPos1, distToPos2, distToPos3,position)
+        resArr.push({p1:position1, p2:position2, p3:position3,dtp1:distToPos1,dtp2: distToPos2, dt3:distToPos3,res:position});
+        console.log('resArr:',resArr)
+        return position;
+    }
+
+    function debug(message) {
+        $("#freeflowdebug").html('<p style="margin-bottom:10px;background:#ff7300">'+message + "<br />" + $("#freeflowdebug").html()+'</p>');
+    }
+
+</script>
+
+
+</body>
+</html>

@@ -7,6 +7,13 @@ exports.uuidArr=function(){
         pointSB[frontStr+'_0_4']={x:5.40,y:6.00};
         pointSB[frontStr+'_0_5']={x:4.10,y:2.80};
         pointSB[frontStr+'_0_6']={x:-0.32,y:2.80};//-0.32墙。
+
+    var singleSensorPoint=[];
+        singleSensorPoint[frontStr+"_0_7"]={x:0.00};
+        singleSensorPoint[frontStr+"_0_8"]={x:5.00};
+        singleSensorPoint[frontStr+"_0_9"]={x:10.00};
+        singleSensorPoint[frontStr+"_0_10"]={x:15.00};
+
     return pointSB;
 };
 

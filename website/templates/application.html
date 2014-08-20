@@ -1,0 +1,158 @@
+﻿<!-----------------------头部----开始--------------------------------------->
+<div id="header">
+    <div class="navbar-header">
+        <div class="navbar-brand">
+            <div class="header_L">
+                <a href="ad_index.html">
+                    <img src="images/logo.png" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-right">
+        <ul class="nav nav-pills margTop">
+            <li><i class="glyphicon glyphicon-user whiteCol"></i></li>
+            <li>
+                <p class="whiteCol row_delMg">IBEACONS</p>
+                <div><a href="#" class="login_a">注销</a><span class="whiteCol Mag2">|</span><a href="#" class="login_a">退出</a></div>
+            </li>
+
+        </ul>
+        <button class="navbar-toggle collapsed btn_bg" data-target="#navbar-menu" data-toggle="collapse" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar bar_bg"></span>
+            <span class="icon-bar bar_bg"></span>
+            <span class="icon-bar bar_bg"></span>
+        </button>
+    </div>
+</div>
+<!-----------------------头部----结束--------------------------------------->
+<div class="row row_delMg">
+    <!-----------------------导航----开始--------------------------------------->
+    <div class="col-sm-3 col-md-2 row_bg pad_zero">
+        <div class="menu_tips">NAVIGATION</div>
+        <div id="navbar-menu" class="navbar-collapse collapse">
+            <ul class="nav">
+                <li class="li_btm_bg">
+                    <a href="#menu-app" data-toggle="collapse" class="gaik"><span class="glyphicon glyphicon-inbox span_size"></span>场所管理<span class="icon-angle-down span_fl_R"></span></a>
+                    <ul class="nav nav-list collapse second-menu" id="menu-app">
+                        <li>
+                            <a href="#" class="xl_a">
+                                <i class="icon-caret-right font_dot">
+                                </i>
+                                场所信息
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <i class="icon-caret-right font_dot">
+                                </i>
+                                场所地图
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <i class="icon-caret-right font_dot">
+                                </i>
+                                场所商家
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <i class="icon-caret-right font_dot">
+                                </i>
+                                用户组
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <i class="icon-caret-right font_dot">
+                                </i>
+                                用户
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <i class="icon-caret-right font_dot">
+                                </i>
+                                场所人流分布
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="li_btm_bg">
+                    <a href="#menu-hd" data-toggle="collapse" class="gaik"><span class="glyphicon glyphicon-lock span_size"></span>商家管理<span class="icon-angle-down span_fl_R"></a>
+                    <ul class="nav nav-list collapse second-menu" id="menu-hd">
+                        <li>
+                            <a href="#" class="xl_a">
+                                <span class="icon-caret-right font_dot">
+                                </span>
+                                商家信息
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <span class="icon-caret-right font_dot">
+                                </span>
+                                促销活动
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <span class="icon-caret-right font_dot">
+                                </span>
+                                优惠券使用统计
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <span class="icon-caret-right font_dot">
+                                </span>
+                                商家人流分析
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="li_btm_bg">
+                    <a href="#menu-fk" data-toggle="collapse" class="gaik"><span class="glyphicon glyphicon-hdd span_size"></span>系统管理<span class="icon-angle-down span_fl_R"></span></a>
+                    <ul class="nav nav-list collapse second-menu" id="menu-fk">
+                        <li>
+                            <a href="#" class="xl_a">
+                                <span class="icon-caret-right font_dot">
+                                </span>
+                                场所管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <span class="icon-caret-right font_dot">
+                                </span>
+                                商家管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <span class="icon-caret-right font_dot">
+                                </span>
+                                用户组管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="xl_a">
+                                <span class="icon-caret-right font_dot">
+                                </span>
+                                用户管理
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-----------------------导航----结束--------------------------------------->
+    <div class="col-sm-9 col-md-10 pad_zero" style="background-color:#eee;">
+        <div class="container-fluid">
+            {{outlet}}
+        </div>
+    </div>
+</div>
