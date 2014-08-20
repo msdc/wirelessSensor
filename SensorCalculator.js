@@ -270,8 +270,6 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
     return averageDistance;
 };
 
-SensorDataCalculator.filterDataByAcc = function (sourceData,filterValue) {
-    var finalResult={};
 SensorDataCalculator.filterDataByAcc = function (sourceData, filterValue) {
     var finalResult = {};
     var tpPkg = sourceData.monitorPackage;
@@ -308,7 +306,7 @@ SensorDataCalculator.filterDataByAcc = function (sourceData, filterValue) {
     }
     //sourceData.monitoring=tpPkg;
     return finalResult;
-}
+};
 
 SensorDataCalculator.combineExtendData = function (monitorPkgNode) {
     var finalResult = {};
