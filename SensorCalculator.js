@@ -13,7 +13,7 @@ SensorDataCalculator.processCalculate = function (sourceData) {
     var dataObj;
     try {
         dataObj = JSON.parse(sourceData);
-        dataObj = SensorDataCalculator.filterDataByAcc(dataObj, '20');
+        dataObj = SensorDataCalculator.filterDataByAcc(dataObj, '5');
     }
     catch (e) {
         return;
@@ -35,8 +35,8 @@ SensorDataCalculator.processCalculate = function (sourceData) {
             if (!levelOneResult[point].beaconCalculatePosition) {
                 continue;
             }
-            var levelTwoResult = kmeans.GetClusteredPoint(levelOneResult[point]);
-            finalResult.push((levelTwoResult));
+            //var levelTwoResult = kmeans.GetClusteredPoint(levelOneResult[point]);
+            finalResult.push((levelOneResult[point]));
         }
     }
     return finalResult;

@@ -3,7 +3,7 @@
  */
 var redis = require('redis');
 var easypost = require('easypost');
-var sensorCalculator=require("./SensorCalculator.js");
+var sensorCalculator = require("./SensorCalculator.js");
 var redis_port = 6379,
     redis_host = "127.0.0.1";
 
@@ -13,7 +13,7 @@ function SendError(err, res) {
 }
 
 exports.GetSensorDataFromRedis = function (key, callback) {
-    var client = redis.createClient(redis_port,redis_host);
+    var client = redis.createClient(redis_port, redis_host);
 
     client.on("error", function (err) {
         client.quit();
@@ -28,7 +28,7 @@ exports.GetSensorDataFromRedis = function (key, callback) {
 };
 
 exports.saveToRedis = function (finalPoint) {
-    var client = redis.createClient(redis_port,redis_host);
+    var client = redis.createClient(redis_port, redis_host);
     client.on("error", function (err) {
         client.quit();
         console.log(err);
@@ -41,22 +41,22 @@ exports.saveToRedis = function (finalPoint) {
     client.quit();
 };
 
-exports.processDataFromSocket= function (io, socket, data) {
-    var client = redis.createClient(redis_port,redis_host);
+exports.processDataFromSocket = function (io, socket, data) {
+    var client = redis.createClient(redis_port, redis_host);
     client.on("error", function (err) {
         client.quit();
         console.log(err);
         return;
     });
     var serializeJsonData = JSON.stringify(data);
-    var redisKey=sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
+    var redisKey = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
     client.set(redisKey, serializeJsonData);
     client.quit();
-    var finalResult=sensorCalculator.processCalculate(serializeJsonData);
-    io.emit('result',finalResult);
+    var finalResult = sensorCalculator.processCalculate(serializeJsonData);
+    io.emit('result', finalResult);
 };
 
-exports.processDataFromHttp=function(req,res){
+exports.processDataFromHttp = function (req, res) {
     var client = redis.createClient(redis_port, redis_host);
     client.on("error", function (err) {
         if (err) {
@@ -65,7 +65,7 @@ exports.processDataFromHttp=function(req,res){
     });
 
     easypost.get(req, res, function (data) {
-        if(!data){
+        if (!data) {
             console.log('data is not defined.');
             client.quit();
             return;
@@ -87,10 +87,10 @@ exports.processDataFromHttp=function(req,res){
         client.set(keyBeforeCalculate, serializeJsonData);
 
         //save the data after calculated.
-        var finalResult=sensorCalculator.processCalculate(serializeJsonData);
-        var keyAfterCalculate=sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
-        client.set(keyAfterCalculate,JSON.stringify(finalResult));
-
+        var finalResult = sensorCalculator.processCalculate(serializeJsonData);
+        var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
+        client.set(keyAfterCalculate, JSON.stringify(finalResult));
+        client.expire(keyAfterCalculate,5000);
         client.quit();
 
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
@@ -102,7 +102,7 @@ exports.processDataFromHttp=function(req,res){
 /**
  * @说明 取redis中key中包含_Calculated的key进行描点操作
  * */
-exports.drawPointFromRedis=function(io, socket, data){
+exports.drawPointFromRedis = function (io, socket, data) {
     var client = redis.createClient(redis_port, redis_host);
     client.on("error", function (err) {
         console.log(err);
@@ -120,7 +120,7 @@ exports.drawPointFromRedis=function(io, socket, data){
         }
         reply.forEach(function (key) {
             client.get(key, function (err, reply) {
-                if(err){
+                if (err) {
                     console.error(err);
                 }
                 count++;
@@ -128,9 +128,9 @@ exports.drawPointFromRedis=function(io, socket, data){
                 if (count == keysLength || count > keysLength) {
                     client.quit();
                 }
-                var finalResult=JSON.parse(reply);
-                for(var point in finalResult){
-                    io.emit('result',finalResult[point]);
+                var finalResult = JSON.parse(reply);
+                for (var point in finalResult) {
+                    io.emit('result', finalResult[point]);
                 }
             });
         });
