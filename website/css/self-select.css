@@ -1,0 +1,40 @@
+﻿/********Base Style******/
+.select-box { position: relative; width: 120px; }
+    .select-box ul, li { list-style: none; margin: 0; padding: 0; }
+    .select-box div.select-open { height: 25px; line-height: 25px; padding-left: 8px; border: 1px solid #9f9d9d; cursor: pointer; overflow: hidden; background-color: #fff; }
+    .select-box div.static::before { display: block; content: ""; position: absolute !important; height: 23px; width: 25px; right: 1px; overflow: hidden; background-color: #9f9d9d; }
+    .select-box div.static::after { display: block; content: ""; position: absolute !important; top: 10px; right: 4px; border: 0px solid transparent; border-width: 8px 8px; border-top-color: #fff; }
+    .select-box div.hover::before { display: block; content: ""; position: absolute !important; height: 23px; width: 25px; right: 1px; overflow: hidden; background-color: #ccc; }
+    .select-box div.hover::after { display: block; content: ""; position: absolute !important; top: 10px; right: 4px; border: 0px solid transparent; border-width: 8px 8px; border-top-color: #808080; }
+    .select-box ul.select-options { border: 1px solid #9f9d9d;border-top:none; background-color: #fff; position: absolute; z-index: 999; min-width: 100%; max-height: 230px; overflow-y: auto; padding-bottom: 5px; }
+        .select-box ul.select-options li { cursor: default; white-space: nowrap; height: 25px; line-height: 25px; border-bottom: 1px dashed #868686; padding-left: 25px; padding-right: 5px; position: relative; cursor: pointer; }
+            .select-box ul.select-options li:hover { background-color: #ccc; }
+                .select-box ul.select-options li:hover::after { display: block; content: "√"; position: absolute !important; height: 25px; width: 25px; top: 2px; left: 5px; color: #9f9d9d; font-size: 20px; font-weight: bold; font-family: "微软雅黑"; }
+            .select-box ul.select-options li.selected { background-color: #efe8e8; }
+
+/********Theme Bule******/
+.select-bule div.select-open { border: 1px solid #4587ef; }
+.select-bule div.static::before { background-color: #868686; }
+.select-bule div.hover::before { background-color: #4587ef; }
+.select-bule ul.select-options { border: 1px solid #4587ef; border-top:none; background-color: #f9f9f9; }
+    .select-bule ul.select-options li { border-bottom: 1px dashed #4587ef; }
+        .select-bule ul.select-options li:hover::after { color: #4587ef; }
+        .select-bule ul.select-options li.selected { background-color: #bae5ee; }
+
+/********Theme Red******/
+.select-red div.select-open { border: 1px solid #DB552F; }
+.select-red div.static::before { background-color: #868686; }
+.select-red div.hover::before { background-color: #DB552F; }
+.select-red ul.select-options { border: 1px solid #DB552F; border-top:none; background-color: #f9f9f9; }
+    .select-red ul.select-options li { border-bottom: 1px dashed #DB552F; }
+        .select-red ul.select-options li:hover::after { color: #DB552F; }
+        .select-red ul.select-options li.selected { background-color: #f7aaaa; }
+        
+/********Theme Yellow******/
+.select-yellow div.select-open { border: 1px solid #f59b0c; }
+.select-yellow div.static::before { background-color: #868686; }
+.select-yellow div.hover::before { background-color: #f59b0c; }
+.select-yellow ul.select-options { border: 1px solid #f59b0c; border-top:none; background-color: #f9f9f9; }
+    .select-yellow ul.select-options li { border-bottom: 1px dashed #f59b0c; }
+        .select-yellow ul.select-options li:hover::after { color: #f59b0c; }
+        .select-yellow ul.select-options li.selected { background-color: #f59b0c; color:#fff;}
