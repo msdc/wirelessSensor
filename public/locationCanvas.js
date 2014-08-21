@@ -142,7 +142,7 @@ $(function () {
         posAB: function (j, fotData) {//人的坐标（更新N次）
             var that = this;
 
-            var tetronimo=canvasN.path("M 150 150 l 0 150 l 150 0");//路径
+            var tetronimo=canvasN.path("M 150 150 L 0 150 L 150 0");//路径
             tetronimo.attr({'href':'http://www.baidu.com','stroke-width':3,'stroke':'#ff7300'});
 
             var curr = fotData[j];
