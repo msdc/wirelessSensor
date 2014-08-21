@@ -87,7 +87,17 @@ GirdF.prototype={
                 that.girdArr[k[0]][k[1]]='sleep';
             }
             console.log('后台所需数据:',that.girdArr);
-            alert('ajax发送给后台。后续执行画线功能');
+            //alert('ajax发送给后台。后续执行画线功能');
+
+            $.ajax({
+                type: "post",
+                data:{data:that.girdArr},
+                url: 'http://www.baidu.com',
+                dataType: 'json',
+                success: function (data) {
+                    console.log('返回的：',data)
+                }
+            })
         })
     }
 }
