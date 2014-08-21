@@ -48,11 +48,22 @@ exports.processDataFromSocket = function (io, socket, data) {
         console.log(err);
         return;
     });
-    var serializeJsonData = JSON.stringify(data);
-    var redisKey = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
-    client.set(redisKey, serializeJsonData);
-    client.quit();
-    var finalResult = sensorCalculator.processCalculate(serializeJsonData);
+    if (!data) {
+        console.log('data is not defined.');
+        client.quit();
+        return;
+    }
+
+    //var data=JSON.parse(data);
+    if (!data.monitorPackage) {
+        console.log('数据格式错误！monitorPackage未指定！');
+        client.quit();
+        return;
+    }
+
+    var calculator=new Calculator(data,client);
+    var finalResult=calculator.kMeansClusterCalculator();
+
     io.emit('result', finalResult);
 };
 
@@ -138,8 +149,43 @@ function Calculator(originalData,redisClient){
     this.originalData=originalData||{};
 };
 
-Calculator.prototype.singleLineCalculator=function(){};
+/**
+*
+ * @说明 使用1维方法计算设备点的距离
+* */
+Calculator.prototype.singleLineCalculator=function(){
+    var data=this.originalData;
+    var client=this.redisClient;
 
+    var serializeJsonData = JSON.stringify(data);
+    var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
+
+    //save the data before calculate.
+    client.set(keyBeforeCalculate, serializeJsonData);
+
+    //save the data after calculated.
+    var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData);
+    if(finalResult.length>0) {
+        var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
+        client.set(keyAfterCalculate, JSON.stringify(finalResult));
+        client.expire(keyAfterCalculate, 120);
+    }
+
+    client.quit();
+    return finalResult;
+};
+
+/**
+ *
+ * @说明 保存计算前后的数据到redis.
+ * @param {Function} 点的计算方法
+* */
+Calculator.prototype.saveCalculateData=function(calculateMethod){};
+
+/**
+ *
+ * @说明  使用K-Means计算点
+* */
 Calculator.prototype.kMeansClusterCalculator=function(){
     var data=this.originalData;
     var client=this.redisClient;
@@ -159,4 +205,5 @@ Calculator.prototype.kMeansClusterCalculator=function(){
     }
 
     client.quit();
+    return finalResult;
 };
