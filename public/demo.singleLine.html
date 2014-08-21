@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="jquery.js"></script>
+    <script>
+        var ctx;
+        var centerPointX=0;
+        var centerPointY=300;
+        $(function(){
+            initCanvas();
+
+            var socket = io.connect('http://localhost:1338');
+
+            socket.on('welcome', function (data) {
+                //setInterval(function(){socket.emit('drawPointFromRedis',{});},1000);
+                socket.emit('drawPointFromRedis',{});
+                //socket.emit('sensorData',{});
+                console.log(data);
+            });
+
+            socket.on('result',function(data){
+                if(!data){return;}
+                setTimeout(function(){
+                    draw(centerPointX,centerPointY,ctx,data);
+                },2000);
+                console.log(data);
+            });
+
+            $('#btn_refresh').click(function(){
+                window.location.reload(true);
+            });
+        });
+
+        function initCanvas()
+        {
+            var canvas;
+            //var ctx;
+            var height = 600;
+            var width = 800;
+            //set the coordinate center point.
+            //var centerPointX=400;
+            //var centerPointY=300;
+
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            //draw x line.
+            ctx.beginPath();
+            ctx.moveTo(0,centerPointY);
+            ctx.lineTo(width,centerPointY);
+            ctx.stroke();
+        }
+
+        function draw(centerPointX,centerPointY,ctx,data) {
+            var point=data.beaconCalculatePosition;
+            ctx.save();
+            var x = centerPointX;
+            var y = point[0].x+centerPointY;
+            ctx.fillStyle = 'green';
+            ctx.translate(x, y);
+            ctx.beginPath();
+            ctx.arc(0, 0, 2, 0, Math.PI*2, true);
+            ctx.fill();
+            ctx.closePath();
+            ctx.restore();
+        }
+
+    </script>
+</head>
+<body>
+<div>
+    <canvas id="canvas" height="600" width="800">您的浏览器不支持canvas！</canvas>
+    <!--    <button type="button" id="btn_start">Draw Points</button>-->
+    <button type="button" id="btn_refresh">Refresh Canvas</button>
+</div>
+</body>
+</html>
