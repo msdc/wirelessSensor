@@ -149,6 +149,7 @@ MonitorPackageHandler.prototype.getAverageMonitorPackage=function(){
 };
 
 /**
+ *
  * @参数 indexArg0:第1个beacon的索引   indexArg1:第2个beacon的索引
 * */
 MonitorPackageHandler.prototype.getFinalDistance=function(monitorPackageHandler,monitorPackage,indexArg0,indexArg1){
