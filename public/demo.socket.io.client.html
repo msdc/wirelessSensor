@@ -15,8 +15,8 @@
             var socket = io.connect('http://localhost:1338');
 
             socket.on('welcome', function (data) {
-                //setInterval(function(){socket.emit('drawPointFromRedis',{});},1000);
-                socket.emit('drawPointFromRedis',{});
+                setInterval(function(){socket.emit('drawPointFromRedis',{});},4000);
+                //socket.emit('drawPointFromRedis',{});
                 //socket.emit('sensorData',{});
                 console.log(data);
             });

@@ -15,8 +15,8 @@
             var socket = io.connect('http://localhost:1338');
 
             socket.on('welcome', function (data) {
-                //setInterval(function(){socket.emit('drawPointFromRedis',{});},1000);
-                socket.emit('drawPointFromRedis',{});
+                setInterval(function(){socket.emit('drawPointFromRedis',{});},4000);
+                //socket.emit('drawPointFromRedis',{});
                 //socket.emit('sensorData',{});
                 console.log(data);
             });
@@ -55,14 +55,13 @@
         }
 
         function draw(centerPointX,centerPointY,ctx,data) {
-            var point=data.beaconCalculatePosition;
             ctx.save();
-            var x = centerPointX;
-            var y = point[0].x+centerPointY;
+            var x = Number(data);
+            var y = centerPointY;
             ctx.fillStyle = 'green';
             ctx.translate(x, y);
             ctx.beginPath();
-            ctx.arc(0, 0, 2, 0, Math.PI*2, true);
+            ctx.arc(0, 0, 5, 0, Math.PI*2, true);
             ctx.fill();
             ctx.closePath();
             ctx.restore();
