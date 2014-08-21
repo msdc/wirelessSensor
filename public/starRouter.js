@@ -1,210 +1,100 @@
-/**矩阵（2维数组） +中间路径***/
-var closelist=[],openlist=[];
-var gw=10,gh=10,gwh=14;
-var p_start=new Array(2),p_end=new Array(2);
-var s_path,n_path="";
-var num,bg,flag=0;
-var w=30,h=20;//行总数30，列总数20
-function GetRound(pos){
-    var a=[];
-    a[0]=(pos[0]+1)+","+(pos[1]-1);
-    a[1]=(pos[0]+1)+","+pos[1];
-    a[2]=(pos[0]+1)+","+(pos[1]+1);
-    a[3]=pos[0]+","+(pos[1]+1);
-    a[4]=(pos[0]-1)+","+(pos[1]+1);
-    a[5]=(pos[0]-1)+","+pos[1];
-    a[6]=(pos[0]-1)+","+(pos[1]-1);
-    a[7]=pos[0]+","+(pos[1]-1);
-    console.log('2维数组:',a);
-    return a;
+/** 矩阵（2维数组）存放起点和终点，无障碍点 返回“路径” ***/
+function GirdF(){
+    this.girdArr=[];
+    this.currFlag=0;
 }
-function GetF(arr){
-    var t,G,H,F;
-    for(var i=0;i<arr.length;i++){
-        t=arr[i].split(",");
-        t[0]=parseInt(t[0]);t[1]=parseInt(t[1]);
-        if(IsOutScreen([t[0],t[1]])||IsPass(arr[i])||InClose([t[0],t[1]])||IsStart([t[0],t[1]])||!IsInTurn([t[0],t[1]]))
-            continue;
-        if((t[0]-s_path[3][0])*(t[1]-s_path[3][1])!=0)
-            G=s_path[1]+gwh;
-        else
-            G=s_path[1]+gw;
-        if(InOpen([t[0],t[1]])){
-            if(G<openlist[num][1]){
-                openlist[num][0]=(G+openlist[num][2]);
-                openlist[num][1]=G;
-                openlist[num][4]=s_path[3];
+GirdF.prototype={
+    init:function(w,h){
+        //建筑物（如某个桌子之类的是障碍物。。ajax获取后，在生成的网格中进行画障碍物。故网格个数、每个的宽度都影响其坐标）
+        var that=this;
+        that.basicD(w,h);
+        that.girdArr=that.tDim(that.wL,that.hL);//动态的
+        that.createGird();//生成网格
+        that.evt();//网格相关事件
+    },
+    basicD:function(w,h){
+        this.wL=$('#imgA').attr('width')/(w||20);//行总数30，列总数20..w,h是宽 高；wL hL是总个数
+        this.hL=$('#imgA').attr('height')/(h||20);
+    },
+    tDim:function(m,g){//生成2维数组
+        var tArray = [];
+        for(var k=0;k<m;k++){
+            tArray[k]=[];
+            for(var j=0;j<g;j++){
+                tArray[k][j]="1";//默认都是路1，障碍为0
             }
-            else{G=openlist[num][1];}
         }
-        else{
-            H=(Math.abs(p_end[0]-t[0])+Math.abs(p_end[1]-t[1]))*gw;
-            F=G+H;
-            arr[i]=new Array();
-            arr[i][0]=F;arr[i][1]=G;arr[i][2]=H;arr[i][3]=[t[0],t[1]];arr[i][4]=s_path[3];
-            openlist[openlist.length]=arr[i];
+        return tArray;
+    },
+    createGird:function(){//生成网格
+        var that=this;
+        for(var i= 0,str='';i<that.hL;i++){
+            str+='<tr>';
+            for(var j=0;j<that.wL;j++){
+                str+=('<td serialNum="'+j+','+i+'"></td>');
+                var xpPStr=''+j+','+i;
+            }
+            str+='</tr>';
         }
-        if(maptt.rows[t[1]].cells[t[0]].style.backgroundColor!="#cccccc"&&maptt.rows[t[1]].cells[t[0]].style.backgroundColor!="#0000ff"&&maptt.rows[t[1]].cells[t[0]].style.backgroundColor!="#ff0000"&&maptt.rows[t[1]].cells[t[0]].style.backgroundColor!="#00ff00")
-        {
-            maptt.rows[t[1]].cells[t[0]].style.backgroundColor="#FF00FF";
-        }
+        $('#maptt').html(str);
+    },
+    evt:function(){//网格相关事件
+        var that=this;
+        $('#maptt td').click(function(){//暂不优化，先实现功能
+            var serialnum='',allTd=$('#maptt td'),Oelem=$(this);
+            switch(that.currFlag){
+                case 1:
+                    allTd.removeClass('mStart');
+                    serialnum=Oelem.addClass('mStart').attr('serialnum').split(',');
+                    break;
+                case 2:
+                    allTd.removeClass('mEnd');
+                    serialnum=Oelem.addClass('mEnd').attr('serialnum').split(',');
+                    break;
+                case 3:
+                    serialnum=Oelem.addClass('mSleep').attr('serialnum').split(',');
+                    break;
+            }
+        })
+
+        $('.cS1').unbind('click').click(function(){//设置起点
+            that.currFlag=1;
+        })
+        $('.cS2').unbind('click').click(function(){//设置终点
+            that.currFlag=2;
+        })
+        $('.cS3').unbind('click').click(function(){//设置障碍物
+            that.currFlag=3;
+        })
+        $('#searchLJ').unbind('click').click(function(){//开始查找。。。
+            var mStart=$('#maptt td.mStart'),mEnd=$('#maptt td.mEnd'),mSleep=$('#maptt td.mSleep');
+            if(mStart.length!=1||mStart.length!=1){//是否已经有起点 终点
+                alert('请选择起点、终点');
+            }
+            /*
+            for(var j=0;j< that.girdArr.length;j++){//清空girdArr所有值
+                var t2= that.girdArr[j];
+                for(var k=0;k<t2.length;k++){
+                    t2[k]=0;
+                }
+            }
+             */
+            var start=mStart.attr('serialnum').split(',');
+            var end=mEnd.attr('serialnum').split(',');
+
+            for(j=0;j<mSleep.length;j++){//mSleep障碍物的点一开始ajax获取到的。。
+                var k=mSleep.eq(j).attr('serialnum').split(',');
+                that.girdArr[k[0]][k[1]]=0;
+            }
+            console.log('后台所需数据:',that.girdArr);
+            //alert('ajax发送给后台。后续执行画线功能');
+
+
+            $.post("/saveGraphMatrix",{start:{x:start[0],y:start[1]},end:{x:end[0],y:end[1]},graphName:'firstTestGraph',graphMatrix:JSON.stringify(that.girdArr) }, function (result) {
+                console.log(result);
+            })
+        })
     }
-}
-function IsStart(arr){
-    if(arr[0]==p_start[0]&&arr[1]==p_start[1])
-        return true;
-    return false;
-}
-function IsInTurn(arr){
-    if(arr[0]>s_path[3][0]){
-        if(arr[1]>s_path[3][1]){
-            if(IsPass((arr[0]-1)+","+arr[1])||IsPass(arr[0]+","+(arr[1]-1)))
-                return false;
-        }
-        else if(arr[1]<s_path[3][1]){
-            if(IsPass((arr[0]-1)+","+arr[1])||IsPass(arr[0]+","+(arr[1]+1)))
-                return false;
-        }
-    }
-    else if(arr[0]<s_path[3][0]){
-        if(arr[1]>s_path[3][1]){
-            if(IsPass((arr[0]+1)+","+arr[1])||IsPass(arr[0]+","+(arr[1]-1)))
-                return false;
-        }
-        else if(arr[1]<s_path[3][1]){
-            if(IsPass((arr[0]+1)+","+arr[1])||IsPass(arr[0]+","+(arr[1]+1)))
-                return false;
-        }
-    }
-    return true;
-}
-function IsOutScreen(arr){
-    if(arr[0]<0||arr[1]<0||arr[0]>(w-1)||arr[1]>(h-1)){
-        return true;
-    }
-    return false;
-}
-function InOpen(arr){
-    var bool=false;
-    for(var i=0;i<openlist.length;i++){
-        if(arr[0]==openlist[i][3][0]&&arr[1]==openlist[i][3][1]){
-            bool=true;num=i;break;}
-    }
-    return bool;
-}
-function InClose(arr){
-    var bool=false;
-    for(var i=0;i<closelist.length;i++){
-        if((arr[0]==closelist[i][3][0])&&(arr[1]==closelist[i][3][1])){
-            bool=true;break;}
-    }
-    return bool;
-}
-function IsPass(pos){
-    if((";"+n_path+";").indexOf(";"+pos+";")!=-1)
-        return true;
-    return false;
-}
-function Sort(arr){
-    var temp;
-    for(var i=0;i<arr.length;i++){
-        if(arr.length==1)break;
-        if(arr[i][0]<=arr[i+1][0]){
-            temp=arr[i];
-            arr[i]=arr[i+1];
-            arr[i+1]=temp;
-        }
-        if((i+1)==(arr.length-1))
-            break;
-    }
-}
-function main(){
-    GetF(GetRound(s_path[3]));
-    Sort(openlist);
-    s_path=openlist[openlist.length-1];
-    closelist[closelist.length]=s_path;
-    openlist[openlist.length-1]=null;
-    if(openlist.length==0){alert("找不到路径");return;}
-    openlist.length=openlist.length-1;
-    if((s_path[3][0]==p_end[0])&&(s_path[3][1]==p_end[1])){
-        getPath();
-    }
-    else{
-        maptt.rows[s_path[3][1]].cells[s_path[3][0]].style.backgroundColor="#00ff00";
-        setTimeout("main()",100);
-    }
-}
-function getPath(){
-    var str="";
-    var t=closelist[closelist.length-1][4];
-    while(1){
-        str+=t.join(",")+";";
-        maptt.rows[t[1]].cells[t[0]].style.backgroundColor="#ffff00";
-        for(var i=0;i<closelist.length;i++){
-            if(closelist[i][3][0]==t[0]&&closelist[i][3][1]==t[1])
-                t=closelist[i][4];
-        }
-        if(t[0]==p_start[0]&&t[1]==p_start[1])
-            break;
-    }
-    alert(str);
-    console.log('路径：',str)
-}
-function setPos(){
-    var h=(Math.abs(p_end[0]-p_start[0])+Math.abs(p_end[1]-p_start[1]))*gw;
-    s_path=[h,0,h,p_start,p_start];
-}
-function set(id,arr){
-    switch(id){
-        case 1://一个起点
-            p_start=arr;
-            $('#maptt td').removeClass('mStart');
-            maptt.rows[arr[1]].cells[arr[0]].style.backgroundColor="#ff0000";//竟然根据颜色进行查证。需要修改。。
-            maptt.rows[arr[1]].cells[arr[0]].className='mStart';
-            break;
-        case 2://一个终点
-            $('#maptt td').removeClass('mEnd');
-            p_end=arr;maptt.rows[arr[1]].cells[arr[0]].style.backgroundColor="#0000ff";
-            maptt.rows[arr[1]].cells[arr[0]].className='mEnd';
-            break;
-        case 3://多个障碍
-            n_path+=arr.join(",")+";";maptt.rows[arr[1]].cells[arr[0]].style.backgroundColor="#cccccc";break;
-        default:
-            break;
-    }
-}
-function setflag(id){
-    flag=id;
 }
 
 
-$(function(){//代码需优化
-
-
-    var str='';
-    for(var i=0;i<h;i++){
-        str+='<tr>';
-        for(var j=0;j<w;j++){
-            str+=('<td onclick="set(flag,['+j+','+i+']);"></td>');
-        }
-        str+='</tr>';
-    }
-    $('#maptt').html(str);//生成网格
-
-
-    $('.cS1').click(function(){//设置起点
-        setflag(1);
-    })
-    $('.cS2').click(function(){//设置终点
-        setflag(2);
-    })
-    $('.cS3').click(function(){//设置障碍物
-        setflag(3);
-    })
-    $('#searchLJ').click(function(){//开始查找。。。
-        //需要判断是否已经点了起点 终点
-        setPos();
-        main();
-        $(this).attr('disabled',true);
-    })
-})
