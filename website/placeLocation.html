@@ -1,10 +1,79 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <title>场所管理 - 场所位置</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <link href="css/main.css" rel="stylesheet" />
 </head>
 <body>
+    <script type="text/x-handlebars" data-template-name="container">
+        <div class="nav_top">
+            <span class="glyphicon glyphicon-home col_blue"></span><span class="Mag2">></span><span class="col_blue">场所管理</span><span class="Mag2">></span><span class="col_black">场所位置</span>
+        </div>
+        <div class="nav_top2">
+            <div class="row nav_top2_con NoMgBoth">
+                <div class="col-sm-3 nav_top2_L">
+                    <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;场所位置
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+            <div class="nav_top2_body">
+                <div class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
+                        <label class="col-sm-6 control-label-left blackCol NopadLeft">西单大悦城</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label blueCol NopadLeft">位&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置</label>
+                        <label class="col-sm-6 control-label-left blackCol NopadLeft">未选中</label>
+                    </div>
 
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control border_radius" id="txtSearch" />
+                        </div>
+                        <div class="col-xs-2 col-sm-2">
+                            <button type="button" class="btn btn-primary" id="butSearch">搜索</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12" id="map-container">
+                            <iframe src="place-map.html"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script src="js/lib/jquery-1.10.2.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+
+    <script src="js/lib/handlebars-1.0.0.js"></script>
+    <script src="js/lib/ember.js"></script>
+    <script src="js/lib/ember-data.js"></script>
+
+    <script src="http://api.map.baidu.com/api?v=1.5&ak=QXfQvq9pd1R0k80QUBNjir5F"></script>
+
+
+    <script src="js/lib/common.js"></script>
+    <script src="js/app.js"></script>
+
+    <script src="js/page/place-location.js"></script>
+    <!--[if lt IE 9]>
+        <script src="js/lib/html5shiv.js"></script>
+        <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="js/main.js"></script>
 </body>
 </html>
