@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>商家管理 - 商家信息</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/x-handlebars" data-template-name="container">
+        <div class="nav_top">
+            <span class="glyphicon glyphicon-home col_blue"></span><span class="Mag2">></span><span class="col_blue">商家管理</span><span class="Mag2">></span><span class="col_black">商家信息</span>
+        </div>
+        <div class="nav_top2">
+            <div class="row nav_top2_con NoMgBoth">
+                <div class="col-sm-3 nav_top2_L">
+                    <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;商家信息
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+            <div class="nav_top2_body">
+                <div class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label blueCol NopadLeft">商家名称</label>
+                        <div class="col-sm-8 NopadLeft">
+                            <input type="text" class="form-control border_radius" placeholder="7—11">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label blueCol NopadLeft">场所描述</label>
+                        <div class="col-sm-8 NopadLeft">
+                            <textarea class="form-control border_radius" rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label blueCol NopadLeft">介绍图片</label>
+                        <div class="col-sm-8 NopadLeft">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div>
+                                        <img data-src="holder.js/100%x201" src="images/palceinfor_pic1.jpg" class="img-responsive img_border" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div>
+                                        <img data-src="holder.js/100%x201" src="images/palceinfor_pic2.jpg" class="img-responsive img_border" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div>
+                                        <img data-src="holder.js/100%x201" src="images/palceinfor_pic1.jpg" class="img-responsive img_border" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="img_border text-center pad_div">
+                                        <a href="#" class="add_more">
+                                            <span class="glyphicon glyphicon-plus plus_big"></span>
+                                            <br />
+                                            <p>添加更多</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+   
+    <script src="js/lib/jquery-1.10.2.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+
+    <script src="js/lib/handlebars-1.0.0.js"></script>
+    <script src="js/lib/ember.js"></script>
+    <script src="js/lib/ember-data.js"></script>
+
+    <script src="js/lib/common.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/page/merchans-info.js"></script>
+    <!--[if lt IE 9]>
+        <script src="js/lib/html5shiv.js"></script>
+        <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="js/main.js"></script>
+</body>
+</html>
