@@ -20,4 +20,8 @@ io.on('connection', function (socket) {
     socket.on('drawPointFromRedis', function (data) {
         sensor.drawPointFromRedis(io, socket, data);
     });
+
+    socket.on('drawSinglePointFromRedis', function (data) {
+        sensor.drawSinglePointFromRedis(io, socket, data);
+    });
 });

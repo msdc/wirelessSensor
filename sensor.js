@@ -92,7 +92,8 @@ exports.processDataFromHttp = function (req, res) {
         }
 
         var calculator=new Calculator(data,client);
-        calculator.kMeansClusterCalculator();
+        //calculator.kMeansClusterCalculator();
+        calculator.singleLineCalculator();
 
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
@@ -139,6 +140,38 @@ exports.drawPointFromRedis = function (io, socket, data) {
     });
 };
 
+exports.drawSinglePointFromRedis=function (io, socket, data) {
+    var client = redis.createClient(redis_port, redis_host);
+    client.on("error", function (err) {
+        console.log(err);
+        client.quit();
+        return;
+    });
+
+    var count = 0;
+    var keysLength = 0;
+    client.keys('*_*_Calculated', function (err, reply) {
+        keysLength = reply.length;
+        if (keysLength === 0) {
+            client.quit();
+            return;
+        }
+        reply.forEach(function (key) {
+            client.get(key, function (err, reply) {
+                if (err) {
+                    console.error(err);
+                }
+                count++;
+                console.log(key);
+                if (count == keysLength || count > keysLength) {
+                    client.quit();
+                }
+                io.emit('result', reply);
+            });
+        });
+    });
+};
+
 /**
  *
  * @说明 计算样本数据入口类
@@ -165,10 +198,10 @@ Calculator.prototype.singleLineCalculator=function(){
 
     //save the data after calculated.
     var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData);
-    if(finalResult.length>0) {
+    if(finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
-        client.set(keyAfterCalculate, JSON.stringify(finalResult));
-        client.expire(keyAfterCalculate, 120);
+        client.set(keyAfterCalculate, finalResult);
+        //client.expire(keyAfterCalculate, 120);
     }
 
     client.quit();
@@ -201,7 +234,7 @@ Calculator.prototype.kMeansClusterCalculator=function(){
     if(finalResult.length>0) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
-        client.expire(keyAfterCalculate, 120);
+        //client.expire(keyAfterCalculate, 120);
     }
 
     client.quit();

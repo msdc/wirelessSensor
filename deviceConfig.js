@@ -20,12 +20,10 @@ exports.uuidArr=function(){
 exports.singleSensorPointArray=function(){
     var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
     var singleSensorPoint=[];
-    singleSensorPoint[frontStr+"_0_1"]={x:0.00};
-    singleSensorPoint[frontStr+"_0_2"]={x:5.00};
-    singleSensorPoint[frontStr+"_0_3"]={x:10.00};
-    singleSensorPoint[frontStr+"_0_4"]={x:15.00};
-    singleSensorPoint[frontStr+"_0_5"]={x:20.00};
-    singleSensorPoint[frontStr+"_0_6"]={x:25.00};
+    singleSensorPoint[frontStr+"_0_3"]={x:0.00};
+    singleSensorPoint[frontStr+"_0_2"]={x:5.40};
+    singleSensorPoint[frontStr+"_0_7"]={x:8.40};
+    singleSensorPoint[frontStr+"_0_8"]={x:11.70};
 
     return singleSensorPoint;
 };

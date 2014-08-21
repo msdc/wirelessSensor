@@ -15,7 +15,7 @@
             var socket = io.connect('http://localhost:1338');
 
             socket.on('welcome', function (data) {
-                setInterval(function(){socket.emit('drawPointFromRedis',{});},4000);
+                setInterval(function(){socket.emit('drawSinglePointFromRedis',{});},4000);
                 //socket.emit('drawPointFromRedis',{});
                 //socket.emit('sensorData',{});
                 console.log(data);
@@ -56,7 +56,7 @@
 
         function draw(centerPointX,centerPointY,ctx,data) {
             ctx.save();
-            var x = Number(data);
+            var x = Number(data)*10;
             var y = centerPointY;
             ctx.fillStyle = 'green';
             ctx.translate(x, y);

@@ -24,16 +24,15 @@ MonitorPackageHandler.prototype.getBeaconDistance=function(beaconIndex){
     return null;
 };
 
-MonitorPackageHandler.prototype.getMinorsArray=function(monitorPackage){
-    var monitorPackage=monitorPackage;
+MonitorPackageHandler.prototype.getMinorsArray=function(){
+    var beaconArray=this.beaconArray;
     var minor=[];
-    for(var beaconPkgIndex in monitorPackage){
-        var beaconPKG=monitorPackage[beaconPkgIndex].beaconPKG;
-        for(var beaconIndex in beaconPKG){
-            var beaconObj=beaconPKG[beaconIndex];
-            minor.push(beaconObj.minor);
-        }
+
+    for(var beacon in beaconArray){
+        var beaconIndex=beacon.substr(-1,1);
+        minor.push(beaconIndex);
     }
+
     return minor;
 };
 
@@ -86,56 +85,93 @@ MonitorPackageHandler.prototype.getAccValue=function(monitorPackage,minorIndex){
 MonitorPackageHandler.prototype.getAverageMonitorPackage=function(){
     var monitorPackage=this.monitorPackage;
     var result=[];
-    var sumDistanceBeaconOne=0;
-    var sumDistanceBeaconTwo=0;
-    var sumDistanceBeaconThree=0;
-    var sumDistanceBeaconFour=0;
-    var sumDistanceBeaconFive=0;
-    var sumDistanceBeaconSix=0;
-    var beaconPkgCounts=0;//save counts of the monitorPackage.
-    for(var beaconPkgIndex in monitorPackage){
-        beaconPkgCounts++;
-        var beaconPKG=monitorPackage[beaconPkgIndex].beaconPKG;
-        for(var beaconIndex in beaconPKG){
-            var beaconObj=beaconPKG[beaconIndex];
 
-            var minor=Number(beaconObj.minor);
-            var acc=Number(beaconObj.acc);
-            switch(minor){
-                case 1:
-                    sumDistanceBeaconOne+=acc;
-                    break;
-                case 2:
-                    sumDistanceBeaconTwo+=acc;
-                    break;
-                case 3:
-                    sumDistanceBeaconThree+=acc;
-                    break;
-                case 4:
-                    sumDistanceBeaconFour+=acc;
-                    break;
-                case 5:
-                    sumDistanceBeaconFive+=acc;
-                    break;
-                case 6:
-                    sumDistanceBeaconSix+=acc;
-                    break;
+    var minors=this.getMinorsArray();
+
+    for(var minorIndex in minors){
+        var minor=Number(minors[minorIndex]);
+        var sumDistance=0;
+        var beaconPkgCounts=0;
+
+        for(var beaconPkgIndex in monitorPackage){
+            beaconPkgCounts++;
+            var beaconPKG=monitorPackage[beaconPkgIndex].beaconPKG;
+            for(var beaconIndex in beaconPKG){
+                var beaconObj=beaconPKG[beaconIndex];
+                var beaconMinor=Number(beaconObj.minor);
+                var acc=Number(beaconObj.acc);
+                if(beaconMinor===minor){
+                    sumDistance+=acc;
+                }
             }
         }
+
+        console.log("sumDistance"+minor+"="+sumDistance);
+        console.log("beaconPkgCounts"+minor+"="+beaconPkgCounts);
+        var accAverage=sumDistance/beaconPkgCounts;
+        console.log("accAverage"+minor+"="+accAverage);
+        var averageResult={"major": "0", "minor": ""+minor+"", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": accAverage};
+        result.push(averageResult);
     }
 
-    var averageResult={"major": "0", "minor": "1", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconOne/beaconPkgCounts};
-    result.push(averageResult);
-    averageResult={"major": "0", "minor": "2", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconTwo/beaconPkgCounts};
-    result.push(averageResult);
-    averageResult={"major": "0", "minor": "3", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconThree/beaconPkgCounts};
-    result.push(averageResult);
-    averageResult={"major": "0", "minor": "4", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconFour/beaconPkgCounts};
-    result.push(averageResult);
-    averageResult={"major": "0", "minor": "5", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconFive/beaconPkgCounts};
-    result.push(averageResult);
-    averageResult={"major": "0", "minor": "6", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconSix/beaconPkgCounts};
-    result.push(averageResult);
+//    var sumDistanceBeaconOne=0;
+//    var sumDistanceBeaconTwo=0;
+//    var sumDistanceBeaconThree=0;
+//    var sumDistanceBeaconFour=0;
+//    var sumDistanceBeaconFive=0;
+//    var sumDistanceBeaconSix=0;
+//    var beaconPkgCounts=0;//save counts of the monitorPackage.
+//    for(var beaconPkgIndex in monitorPackage){
+//        beaconPkgCounts++;
+//        var beaconPKG=monitorPackage[beaconPkgIndex].beaconPKG;
+//        for(var beaconIndex in beaconPKG){
+//            var beaconObj=beaconPKG[beaconIndex];
+//
+//            var minor=Number(beaconObj.minor);
+//            var acc=Number(beaconObj.acc);
+//            switch(minor){
+//                case 1:
+//                    sumDistanceBeaconOne+=acc;
+//                    break;
+//                case 2:
+//                    sumDistanceBeaconTwo+=acc;
+//                    break;
+//                case 3:
+//                    sumDistanceBeaconThree+=acc;
+//                    break;
+//                case 4:
+//                    sumDistanceBeaconFour+=acc;
+//                    break;
+//                case 5:
+//                    sumDistanceBeaconFive+=acc;
+//                    break;
+//                case 6:
+//                    sumDistanceBeaconSix+=acc;
+//                    break;
+//            }
+//        }
+//    }
+//
+//    console.log("sumDistanceBeaconOne="+sumDistanceBeaconOne);
+//    console.log("sumDistanceBeaconTwo="+sumDistanceBeaconTwo);
+//    console.log("sumDistanceBeaconThree="+sumDistanceBeaconThree);
+//    console.log("sumDistanceBeaconFour="+sumDistanceBeaconFour);
+//    console.log("sumDistanceBeaconFive="+sumDistanceBeaconFive);
+//    console.log("sumDistanceBeaconSix="+sumDistanceBeaconSix);
+//    console.log("beaconPkgCounts="+beaconPkgCounts);
+//
+//    var averageResult={"major": "0", "minor": "1", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconOne/beaconPkgCounts};
+//    result.push(averageResult);
+//    averageResult={"major": "0", "minor": "2", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconTwo/beaconPkgCounts};
+//    result.push(averageResult);
+//    averageResult={"major": "0", "minor": "3", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconThree/beaconPkgCounts};
+//    result.push(averageResult);
+//    averageResult={"major": "0", "minor": "4", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconFour/beaconPkgCounts};
+//    result.push(averageResult);
+//    averageResult={"major": "0", "minor": "5", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconFive/beaconPkgCounts};
+//    result.push(averageResult);
+//    averageResult={"major": "0", "minor": "6", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": sumDistanceBeaconSix/beaconPkgCounts};
+//    result.push(averageResult);
 
     var lastestCheckPoint=monitorPackage[monitorPackage.length-1].checkPoint;
 
@@ -316,7 +352,7 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
     //1.由样本数据求设备到每个beacon点的距离的平均值
     monitorPackage=monitorPackageHandler.getAverageMonitorPackage(monitorPackage);
     //获取beacon的数量
-    var minors=monitorPackageHandler.getMinorsArray(monitorPackage);
+    var minors=monitorPackageHandler.getMinorsArray();
     //2.求设备到两两beacon的距离值,如设备到beacon1,beacon2的距离，设备到beacon3,beacon4的距离
     var resultArray=monitorPackageHandler.getAverageDistance(monitorPackageHandler,monitorPackage,minors);
     //3.求设备到两两beacon的距离值的平均值
