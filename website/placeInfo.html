@@ -15,29 +15,74 @@
 <body>
     <script type="text/x-handlebars" data-template-name="container">
         <div class="nav_top">
-            <i class="glyphicon glyphicon-home col_blue"></i><span class="Mag2">></span><a href="#" class="col_blue">场所管理</a><span class="Mag2">></span><span class="col_black">场所信息</span>
+            <span class="glyphicon glyphicon-home col_blue"></span><span class="Mag2">></span><span class="col_blue">场所管理</span><span class="Mag2">></span><span class="col_black">场所信息</span>
         </div>
         <div class="nav_top2">
             <div class="row nav_top2_con NoMgBoth">
                 <div class="col-sm-3 nav_top2_L">
                     <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;场所信息
                 </div>
-                <ul class="col-sm-8 nav nav-tabs col-sm-offset-1" role="tablist">
-                    <li class="active"><a href="#information" role="tab" data-toggle="tab">基本信息</a></li>
-                    <li><a href="#merchants" role="tab" data-toggle="tab">商家</a></li>
-                    <li><a href="#equipment " role="tab" data-toggle="tab">定位设备</a></li>
-                    <li><a href="#position" role="tab" data-toggle="tab">场所位置</a></li>
-                    <li><a href="#map" role="tab" data-toggle="tab">场所地图</a></li>
-                </ul>
+                <div class="col-xs-2 col-sm-2">
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
             </div>
-            <div class="tab-content">
-                <div class="tab-pane active" id="information">111</div>
-                <div class="tab-pane" id="merchants">222</div>
-                <div class="tab-pane" id="equipment">333</div>
-                <div class="tab-pane" id="position">444</div>
-                <div class="tab-pane" id="map">555</div>
+            <div class="nav_top2_body">
+                <div class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
+                        <div class="col-sm-8 NopadLeft">
+                            <input type="text" class="form-control border_radius" placeholder="西单大悦城">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label blueCol NopadLeft">场所描述</label>
+                        <div class="col-sm-8 NopadLeft">
+                            <textarea class="form-control border_radius" rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label blueCol NopadLeft">介绍图片</label>
+                        <div class="col-sm-8 NopadLeft">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div>
+                                        <img data-src="holder.js/100%x201" src="images/palceinfor_pic1.jpg" class="img-responsive img_border" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div>
+                                        <img data-src="holder.js/100%x201" src="images/palceinfor_pic2.jpg" class="img-responsive img_border" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div>
+                                        <img data-src="holder.js/100%x201" src="images/palceinfor_pic1.jpg" class="img-responsive img_border" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="img_border text-center pad_div">
+                                        <a href="#" class="add_more">
+                                            <span class="glyphicon glyphicon-plus plus_big"></span>
+                                            <br />
+                                            <p>添加更多</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="foot_con">
+                            <p>© 2014. iSoftStone. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
     </script>
 
@@ -50,8 +95,7 @@
 
     <script src="js/lib/common.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/page/home.js"></script>
-
+    <script src="js/page/place-info.js"></script>
     <!--[if lt IE 9]>
         <script src="js/lib/html5shiv.js"></script>
         <script src="js/lib/respond.min.js"></script>

@@ -32,4 +32,9 @@
     //        $(this).parent("li").find("span.glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
     //    }
     //});
+
+    if (App.CurrentMenu != undefined)
+    {
+        $("#" + App.CurrentMenu).addClass("nav-active");
+    }
 });
