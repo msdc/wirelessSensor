@@ -4,18 +4,28 @@ var redis = require('redis');
 var redis_port = 6379,
     redis_host = "127.0.0.1";
 
-exports.findPath=function(graphMatrix,startNode,endNode){
+exports.findPath=function(req,res){
 //    var tpGrid=[
 //        [1,1,1,1],
 //        [0,1,1,0],
 //        [0,0,1,1]
 //    ];
-    var astar=astarModule.astar;
-    var gp= new astarModule.Graph(graphMatrix);
-    var startNode=gp.grid[startNode.x][startNode.y];
-    var endNode=gp.grid[endNode.x][endNode.y];
-    return astar.search(gp,startNode,endNode);
-    //return astar.search(graphNodes,startNode,endNode);
+    easypost.get(req, res, function (data) {
+        if (!data) {
+            console.log('data is not defined.');
+            res.send(500, "there is no data in the request body");
+        }
+        var graphMatrix=JSON.parse(data.graphMatrix);
+        var    startNode=data.start;
+        var    endNode=data.end;
+        var astar = astarModule.astar;
+        var gp = new astarModule.Graph(graphMatrix);
+        var startNode = gp.grid[startNode.x][startNode.y];
+        var endNode = gp.grid[endNode.x][endNode.y];
+        var result= astar.search(gp, startNode, endNode);
+        res.send(result);
+        //return astar.search(graphNodes,startNode,endNode);
+    });
 }
 
 exports.saveGraphMatrix=function(req,res){
@@ -33,9 +43,11 @@ exports.saveGraphMatrix=function(req,res){
                 }
             });
             var graphKey=data.graphName;
-            var graphMatrix=data.graphMatrix;
-            client.set(graphKey,matrix);
-            res.send("success saved the matrix");
+            var graphMatrix=JSON.parse(data.graphMatrix);
+            if(graphKey&&graphMatrix) {
+                client.set(graphKey, graphMatrix);
+                res.send("success saved the matrix");
+            }
         }
     });
 }

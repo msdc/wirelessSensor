@@ -89,14 +89,18 @@ GirdF.prototype={
             console.log('后台所需数据:',that.girdArr);
             //alert('ajax发送给后台。后续执行画线功能');
 
-            $.ajax({
-                type: "post",
-                data:JSON.stringify({"graphName":'1',"graphMatrix":that.girdArr }),
-                url: '192.168.100.189:1337/saveGraphMatrix',
-                dataType: 'json',
-                success: function (data) {
-                    console.log('返回的：',data)
-                }
+//            $.ajax({
+//                type: "post",
+//                data:JSON.stringify({graphName:'firstTestGraph',graphMatrix:that.girdArr }),
+//                url: '/saveGraphMatrix',
+//                dataType: 'json',
+//                success: function (data) {
+//                    console.log('返回的：',data)
+//                }
+//            })
+
+            $.post("/saveGraphMatrix",{graphName:'firstTestGraph',graphMatrix:JSON.stringify(that.girdArr) }, function (result) {
+                console.log(result);
             })
         })
     }
