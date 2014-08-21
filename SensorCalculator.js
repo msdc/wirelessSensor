@@ -24,8 +24,8 @@ MonitorPackageHandler.prototype.getBeaconDistance=function(beaconIndex){
     return null;
 };
 
-MonitorPackageHandler.prototype.getMinorsArray=function(){
-    var monitorPackage=this.monitorPackage;
+MonitorPackageHandler.prototype.getMinorsArray=function(monitorPackage){
+    var monitorPackage=monitorPackage;
     var minor=[];
     for(var beaconPkgIndex in monitorPackage){
         var beaconPKG=monitorPackage[beaconPkgIndex].beaconPKG;
@@ -35,6 +35,33 @@ MonitorPackageHandler.prototype.getMinorsArray=function(){
         }
     }
     return minor;
+};
+
+MonitorPackageHandler.prototype.getMinorGroups=function(minors){
+    var minors=minors;
+    var minorGroup=[];
+    for(var i=0;i<minors.length;i++){
+        for(var j=i+1;j<minors.length;j++){
+            var group=[];
+            group.push(minors[i]);
+            group.push(minors[j]);
+            minorGroup.push(group);
+        }
+    }
+    return minorGroup;
+};
+
+MonitorPackageHandler.prototype.getAverageDistance=function(monitorPackageHandler,monitorPackage,minors){
+    var monitorPackage=monitorPackage||{};
+    var monitorPackageHandler=monitorPackageHandler||{};
+    var minorGroup=this.getMinorGroups(minors);
+    var resultArray=[];
+    for(var groupIndex in minorGroup){
+        var group=minorGroup[groupIndex];
+        resultArray=resultArray.concat(monitorPackageHandler.getFinalDistance(monitorPackageHandler,monitorPackage,group[0],group[1]));
+    }
+
+    return resultArray;
 };
 
 MonitorPackageHandler.prototype.getAccValue=function(monitorPackage,minorIndex){
@@ -122,6 +149,7 @@ MonitorPackageHandler.prototype.getAverageMonitorPackage=function(){
 };
 
 /**
+ *
  * @参数 indexArg0:第1个beacon的索引   indexArg1:第2个beacon的索引
 * */
 MonitorPackageHandler.prototype.getFinalDistance=function(monitorPackageHandler,monitorPackage,indexArg0,indexArg1){
@@ -147,11 +175,34 @@ MonitorPackageHandler.prototype.getFinalDistance=function(monitorPackageHandler,
     var factor3=Math.pow((d1/d2),2)*Math.pow(b2,2)-Math.pow(b1,2);
 
     var result1=(-factor2+Math.sqrt(Math.pow(factor2,2)-4*factor1*factor3))/2*factor1;
-    resultArray.push(result1);
+    if(result1!==undefined&&!isNaN(result1)&&result1!==null){
+        resultArray.push(result1);
+    }
     var result2=(-factor2-Math.sqrt(Math.pow(factor2,2)-4*factor1*factor3))/2*factor1;
-    resultArray.push(result2);
+    if(result2!==undefined&&!isNaN(result2)&&result2!==null){
+        resultArray.push(result2);
+    }
 
     return resultArray;
+};
+
+MonitorPackageHandler.prototype.getArrayAverageValue=function(arrayObj){
+    var array=arrayObj||[];
+    var counts=0;
+    var sum=0;
+    var average=-1;
+    for(var arrIndex in array){
+        counts++;
+        var obj=array[arrIndex];
+        if(!isNaN(obj)){
+            sum+=Number(obj);
+        }
+    }
+
+    if(counts!=0){
+        average=sum/counts;
+    }
+    return average;
 };
 
 SensorDataCalculator.processCalculate = function (sourceData) {
@@ -258,14 +309,18 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
         return;
     }
 
+    //原始的样本数据
     var monitorPackage=dataObj.monitorPackage;
+
     var monitorPackageHandler=new MonitorPackageHandler(monitorPackage);
+    //1.由样本数据求设备到每个beacon点的距离的平均值
     monitorPackage=monitorPackageHandler.getAverageMonitorPackage(monitorPackage);
-
-    var resultArray=[];
-    resultArray=monitorPackageHandler.getFinalDistance(monitorPackageHandler,monitorPackage,1,2);
-
-    var averageDistance=SensorDataCalculator.getArrayAverageValue(resultArray);
+    //获取beacon的数量
+    var minors=monitorPackageHandler.getMinorsArray(monitorPackage);
+    //2.求设备到两两beacon的距离值,如设备到beacon1,beacon2的距离，设备到beacon3,beacon4的距离
+    var resultArray=monitorPackageHandler.getAverageDistance(monitorPackageHandler,monitorPackage,minors);
+    //3.求设备到两两beacon的距离值的平均值
+    var averageDistance=monitorPackageHandler.getArrayAverageValue(resultArray);
 
     return averageDistance;
 };

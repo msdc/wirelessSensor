@@ -80,20 +80,9 @@ exports.processDataFromHttp = function (req, res) {
             return;
         }
 
-        var serializeJsonData = JSON.stringify(data);
-        var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
+        var calculator=new Calculator(data,client);
+        calculator.kMeansClusterCalculator();
 
-        //save the data before calculate.
-        client.set(keyBeforeCalculate, serializeJsonData);
-
-        //save the data after calculated.
-        var finalResult = sensorCalculator.processCalculate(serializeJsonData);
-        if(finalResult.length>0) {
-            var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
-            client.set(keyAfterCalculate, JSON.stringify(finalResult));
-            client.expire(keyAfterCalculate, 120);
-            client.quit();
-        }
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
         res.end();
@@ -101,6 +90,7 @@ exports.processDataFromHttp = function (req, res) {
 };
 
 /**
+ *
  * @说明 取redis中key中包含_Calculated的key进行描点操作
  * */
 exports.drawPointFromRedis = function (io, socket, data) {
@@ -136,4 +126,37 @@ exports.drawPointFromRedis = function (io, socket, data) {
             });
         });
     });
+};
+
+/**
+ *
+ * @说明 计算样本数据入口类
+ * @param {Object} 原始的样本数据，Json对象  {Object} redisClient.
+* */
+function Calculator(originalData,redisClient){
+    this.redisClient=redisClient||{};
+    this.originalData=originalData||{};
+};
+
+Calculator.prototype.singleLineCalculator=function(){};
+
+Calculator.prototype.kMeansClusterCalculator=function(){
+    var data=this.originalData;
+    var client=this.redisClient;
+
+    var serializeJsonData = JSON.stringify(data);
+    var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
+
+    //save the data before calculate.
+    client.set(keyBeforeCalculate, serializeJsonData);
+
+    //save the data after calculated.
+    var finalResult = sensorCalculator.processCalculate(serializeJsonData);
+    if(finalResult.length>0) {
+        var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
+        client.set(keyAfterCalculate, JSON.stringify(finalResult));
+        client.expire(keyAfterCalculate, 120);
+    }
+
+    client.quit();
 };
