@@ -1,10 +1,275 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <title>场所管理 - 定位设备</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <link href="css/main.css" rel="stylesheet" />
 </head>
 <body>
+    <script type="text/x-handlebars" data-template-name="container">
+        <div class="nav_top">
+            <span class="glyphicon glyphicon-home col_blue"></span><span class="Mag2">></span><span class="col_blue">场所管理</span><span class="Mag2">></span><span class="col_black">定位设备</span>
+        </div>
+        <div class="nav_top2">
+            <div class="row nav_top2_con NoMgBoth">
+                <div class="col-sm-3 nav_top2_L">
+                    <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;定位设备
+                </div>
+            </div>
+            <div class="nav_top2_body">
+                <div class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
+                        <label class="col-sm-6 control-label-left blackCol NopadLeft">西单大悦城</label>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row row_bg_map">
+                        <div class="col-xs-9">
+                            <div class="whiteCol">定位列表</div>
+                        </div>
+                        <div class="col-xs-3 text-right">
+                            <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalEquipmentdistribution">设备分布</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalAddDevice">+添加</button>
+                        </div>
 
+                    </div>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-bordered row_delMg">
+                                <tr class="tr_bg">
+                                    <th class="whiteCol" style="border:none;">ID</th>
+                                    <th class="whiteCol" style="border:none;">名称</th>
+                                    <th class="whiteCol" style="border:none;">添加时间</th>
+                                    <th class="whiteCol" style="border:none;">下一次维护时间</th>
+                                    <th class="whiteCol" style="border:none;">状态</th>
+                                    <th class="whiteCol" style="border:none;">操作</th>
+                                </tr>
+                                <tr>
+                                    <td>0001</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>运行中</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>0002</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>故障</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>0003</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>运行中</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>0004</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>故障</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>0005</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>运行中</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>0006</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>故障</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>0007</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>运行中</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>0008</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>故障</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>0009</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>运行中</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>0010</td>
+                                    <td>crocs</td>
+                                    <td>2014-01-01</td>
+                                    <td>2014-09-01</td>
+                                    <td>故障</td>
+                                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                </tr>
+
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row report_con">
+                        <div class="col-xs-5">
+                            <div class="blackCol" style="line-height:40px;">正在显示1-10条&nbsp;&nbsp;共50条</div>
+                        </div>
+                        <div class="col-xs-7 text-right">
+                            <ul class="pagination">
+                                <li><a href="#">首页</a></li>
+                                <li><a href="#">&laquo;</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                                <li><a href="#">末页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Modal设备分布 -->
+    <div class="modal fade bs-example-modal-lg" id="modalEquipmentdistribution" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header nav_top2_L">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                    <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;设备分布</span>
+                </div>
+                <div class="modal_line_bule"></div>
+                <div class="modal-body">
+                    <div class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-1">
+                                <input type="text" class="form-control border_radius" placeholder="输入关键字" />
+                            </div>
+                            <div class="col-xs-2 col-sm-2">
+                                <button type="button" class="btn btn-primary">搜索</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-1 control-label blueCol col-sm-offset-1"><a class="glyphicon glyphicon-circle-arrow-left plus_big" href="#"></a></div>
+                            <div class="col-sm-1 control-label blueCol"><a class="glyphicon glyphicon-circle-arrow-right plus_big" href="#"></a></div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <div class="thumbnail border_radius">
+                                    <img data-src="holder.js/600x600" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <!-- Modal设备添加 -->
+    <div class="modal fade bs-example-modal-lg" id="modalAddDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header nav_top2_L">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                    <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;添加设备信息</span>
+                </div>
+                <div class="modal_line_bule"></div>
+                <div class="modal-body">
+                    <div class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label blueCol">场所名称</label>
+                            <label class="col-sm-2 control-label-left">西单大悦城</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label blueCol">设备名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control border_radius" id="validate_name" placeholder="crocs-1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label blueCol">设备编码</label>
+                            <div class="col-sm-9 control-label-left">
+                                <input type="text" class="form-control border_radius" id="Text1" placeholder="1234756">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label blueCol">标注状态</label>
+                            <label class="col-sm-2 control-label-left">已标注</label>
+                            <label class="col-sm-2 control-label blueCol">标记位置</label>
+                            <div class="col-sm-2"><i class="icon-map-marker icon-2x redCol"></i></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <div class="thumbnail border_radius">
+                                    <img data-src="holder.js/600x600" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <script src="js/lib/jquery-1.10.2.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+
+    <script src="js/lib/handlebars-1.0.0.js"></script>
+    <script src="js/lib/ember.js"></script>
+    <script src="js/lib/ember-data.js"></script>
+
+    <script src="js/lib/common.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/page/place-position%20.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="js/lib/html5shiv.js"></script>
+        <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="js/main.js"></script>
 </body>
 </html>
