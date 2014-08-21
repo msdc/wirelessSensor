@@ -13,15 +13,15 @@ GirdF.prototype={
         that.evt();//网格相关事件
     },
     basicD:function(w,h){
-        this.wL=$('#imgA').attr('width')/w;//行总数30，列总数20
-        this.hL=$('#imgA').attr('height')/h;
+        this.wL=$('#imgA').attr('width')/(w||20);//行总数30，列总数20..w,h是宽 高；wL hL是总个数
+        this.hL=$('#imgA').attr('height')/(h||20);
     },
     tDim:function(m,g){//生成2维数组
         var tArray = [];
         for(var k=0;k<m;k++){
             tArray[k]=[];
             for(var j=0;j<g;j++){
-                tArray[k][j]="";
+                tArray[k][j]="1";//默认都是路1，障碍为0
             }
         }
         return tArray;
@@ -71,35 +71,26 @@ GirdF.prototype={
             if(mStart.length!=1||mStart.length!=1){//是否已经有起点 终点
                 alert('请选择起点、终点');
             }
+            /*
             for(var j=0;j< that.girdArr.length;j++){//清空girdArr所有值
                 var t2= that.girdArr[j];
                 for(var k=0;k<t2.length;k++){
                     t2[k]=0;
                 }
             }
+             */
+            var start=mStart.attr('serialnum').split(',');
+            var end=mEnd.attr('serialnum').split(',');
 
-            var s=mStart.attr('serialnum').split(',');
-            that.girdArr[s[0]][s[1]]='start';
-            var s=mEnd.attr('serialnum').split(',');
-            that.girdArr[s[0]][s[1]]='end';
             for(j=0;j<mSleep.length;j++){//mSleep障碍物的点一开始ajax获取到的。。
                 var k=mSleep.eq(j).attr('serialnum').split(',');
-                that.girdArr[k[0]][k[1]]='sleep';
+                that.girdArr[k[0]][k[1]]=0;
             }
             console.log('后台所需数据:',that.girdArr);
             //alert('ajax发送给后台。后续执行画线功能');
 
-//            $.ajax({
-//                type: "post",
-//                data:JSON.stringify({graphName:'firstTestGraph',graphMatrix:that.girdArr }),
-//                url: '/saveGraphMatrix',
-//                dataType: 'json',
-//                success: function (data) {
-//                    console.log('返回的：',data)
-//                }
-//            })
 
-            $.post("/saveGraphMatrix",{graphName:'firstTestGraph',graphMatrix:JSON.stringify(that.girdArr) }, function (result) {
+            $.post("/saveGraphMatrix",{start:{x:start[0],y:start[1]},end:{x:end[0],y:end[1]},graphName:'firstTestGraph',graphMatrix:JSON.stringify(that.girdArr) }, function (result) {
                 console.log(result);
             })
         })
