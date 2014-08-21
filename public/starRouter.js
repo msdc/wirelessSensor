@@ -91,8 +91,8 @@ GirdF.prototype={
 
             $.ajax({
                 type: "post",
-                data:{data:that.girdArr},
-                url: 'http://www.baidu.com',
+                data:JSON.stringify({"graphName":'1',"graphMatrix":that.girdArr }),
+                url: '192.168.100.189:1337/saveGraphMatrix',
                 dataType: 'json',
                 success: function (data) {
                     console.log('返回的：',data)
