@@ -30,6 +30,7 @@ $(function () {
         evt: function () {
             var that = this;
             $('#addBZ').unbind('click').click(function () {
+                $('#maptt').html(' ').css({'zIndex':-10,opacity:'0'});
                 $('#raphaelTP').click(function (e) {
                     /** 如果有，则移动，如果没有，则添加 **/
                     if ($('.occupying').length) {//暂时不‘添加多个标注’
@@ -76,7 +77,7 @@ $(function () {
             that.evt();
         },
         sbPos: function () {//设备坐标（更新一次）
-            var uuidArr = configJson.uuidArr();
+            var uuidArr = configJson.uuidArr;
             for (var m in uuidArr) {
                 console.log('sbpos-XY:Source-PX:', uuidArr[m].x, uuidArr[m].y, ' zoomImg:', configJson.zoomImg);
                 var cX = parseFloat(uuidArr[m].x) / configJson.resolution * configJson.zoomImg;
@@ -140,6 +141,10 @@ $(function () {
         },
         posAB: function (j, fotData) {//人的坐标（更新N次）
             var that = this;
+
+            var tetronimo=canvasN.path("M 150 150 l 0 150 l 150 0");//路径
+            tetronimo.attr({'href':'http://www.baidu.com','stroke-width':3,'stroke':'#ff7300'});
+
             var curr = fotData[j];
             var cX = fotData[j].beaconCalculatePosition[0].x,
                 cY = fotData[j].beaconCalculatePosition[0].y;
@@ -168,8 +173,7 @@ $(function () {
     }
     new DrawPointer().coordinate();//设备坐标+坐标系
 
-
-    /**后台调用 start**/
+    /**ajax 后台调用 start**/
     var kTjFormat = [//后台返回的数据格式
         {
             "deviceID": "mobile1",
@@ -206,5 +210,5 @@ $(function () {
     ];
     var drawP1 = new DrawPointer();
     drawP1.formatData(kTjFormat);
-    /**后台调用 end**/
+    /**ajax 后台调用 end**/
 })
