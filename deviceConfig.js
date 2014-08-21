@@ -17,6 +17,19 @@ exports.uuidArr=function(){
     return pointSB;
 };
 
+exports.singleSensorPointArray=function(){
+    var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
+    var singleSensorPoint=[];
+    singleSensorPoint[frontStr+"_0_1"]={x:0.00};
+    singleSensorPoint[frontStr+"_0_2"]={x:5.00};
+    singleSensorPoint[frontStr+"_0_3"]={x:10.00};
+    singleSensorPoint[frontStr+"_0_4"]={x:15.00};
+    singleSensorPoint[frontStr+"_0_5"]={x:20.00};
+    singleSensorPoint[frontStr+"_0_6"]={x:25.00};
+
+    return singleSensorPoint;
+};
+
 /**
  var uuidArr=[//测试数据(固定值，设备坐标)
  {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_1',x:0.00,y:5.00},

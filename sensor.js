@@ -91,7 +91,7 @@ exports.processDataFromHttp = function (req, res) {
         if(finalResult.length>0) {
             var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
             client.set(keyAfterCalculate, JSON.stringify(finalResult));
-            client.expire(keyAfterCalculate, 60);
+            client.expire(keyAfterCalculate, 120);
             client.quit();
         }
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
