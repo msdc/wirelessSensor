@@ -365,7 +365,6 @@ module.exports = function () {
 
     return {
         astar: astar,
-        Graph: Graph,
-        GraphNode:GridNode
+        Graph: Graph
     };
 };
