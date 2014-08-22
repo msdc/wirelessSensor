@@ -200,7 +200,8 @@ Calculator.prototype.singleLineCalculator=function(){
     var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData);
     if(finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
-        client.set(keyAfterCalculate, finalResult);
+        var obj={result:finalResult};
+        client.set(keyAfterCalculate, JSON.stringify(obj));
         //client.expire(keyAfterCalculate, 120);
     }
 
