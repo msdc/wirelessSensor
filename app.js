@@ -12,10 +12,10 @@ app.use(express.static(__dirname + '/public'));
 app.post('/sensorData',sensor.processDataFromHttp);
 
 app.post("/saveGraphMatrix",navigation.saveGraphMatrix);
-
 app.get("/graphMatrix/:graphid",navigation.getGraphMatrix);
-
 app.post("/findPath",navigation.findPath);
+
+
 
 app.listen(1337, function () {
     console.log('Express server listening on port 1337');
