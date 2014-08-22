@@ -5,8 +5,7 @@ var RedisPool = require('sol-redis-pool');
 var easypost = require('easypost');
 var redisSettings = {
     host: "127.0.0.1",
-    port: 6379,
-    auth_pass: "dingbats"
+    port: 6379
 };
 
 // Configure the generic-pool settings.
@@ -28,7 +27,7 @@ myPool.on("destroy", function () {
 var place = function () {
 }
 
-place.add = function (req, res) {
+place.prototype.add = function (req, res) {
     myPool.acquire(function (err, client) {
         easypost.get(req, res, function (data) {
             if (!data) {
@@ -44,7 +43,7 @@ place.add = function (req, res) {
     });
 }
 
-place.get = function (req, res) {
+place.prototype.get = function (req, res) {
     myPool.acquire(function (err, client) {
         var result = [];
         client.keys("place_*", function (places) {
@@ -59,7 +58,7 @@ place.get = function (req, res) {
     });
 }
 
-place.del = function (req, res) {
+place.prototype.del = function (req, res) {
     var placeID = req.query.id;
     var placeName = req.query.name;
     myPool.acquire(function (err, client) {
@@ -71,43 +70,45 @@ place.del = function (req, res) {
 var seller = function () {
 }
 
-seller.add = function (req, res) {
+seller.prototype.add = function (req, res) {
 
 }
-seller.get = function (req, res) {
+seller.prototype.get = function (req, res) {
 
 }
-seller.getByPlace = function (req, res) {
+seller.prototype.getByPlace = function (req, res) {
 
 }
-seller.del = function (req, res) {
+seller.prototype.del = function (req, res) {
 
 }
 
 var beaconDevice = function () {
 }
 
-beaconDevice.add = function (req, res) {
+beaconDevice.prototype.add = function (req, res) {
 
 }
 
-beaconDevice.get = function (req, res) {
+beaconDevice.prototype.get = function (req, res) {
 
 }
 
-beaconDevice.del = function (req, res) {
+beaconDevice.prototype.del = function (req, res) {
 
 }
 
 var promotion = function () {
 }
 
-promotion.add = function (req, res) {
+promotion.prototype.add = function (req, res) {
 
 }
-promotion.get = function (req, res) {
+promotion.prototype.get = function (req, res) {
 
 }
-promotion.del = function (req, res) {
+promotion.prototype.del = function (req, res) {
 
 }
+
+exports.place= new place();
