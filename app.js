@@ -2,8 +2,7 @@
 var bodyParser = require('body-parser');
 var sensor=require('./sensor.js');
 var navigation=require('./AStarNavigation.js');
-var maintain=require('./maintainModule.js');
-
+var maintain=require('./webAPI/maintainModule.js');
 var device=require('./webAPI/devices.js');
 var app = express();
 
