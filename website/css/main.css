@@ -5,6 +5,7 @@ html { height: 100%; }
 body { height: 100%; margin: 0px; padding: 0px; background: #eee; color:#535353;}
 
 /****bootStrap****/
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {margin-left:-20px; position:inherit;}
 .btn:focus, .btn:active:focus, .btn.active:focus {outline:none;}
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {vertical-align:middle;}
 .navbar-toggle {margin-top:0;}
@@ -43,6 +44,7 @@ a:hover { text-decoration: none; }
 .whiteCol {color:#fff;}
 .login_a:link,.login_a:visited {color:#fff;}
 .report_con {border:1px solid #ddd;}
+.nav_top { height: 30px; line-height:30px; background-color: #ddd; color: #bebebe; border-bottom: 1px solid #b6b6b6; padding-left:10px; }
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 768px) { 
     #header { height: 160px; background: #1568c3; }
@@ -167,7 +169,7 @@ a:focus { outline:none; outline-offset:0;}
 .active { background-color: #eee; color: #545454; }
     .active ul { background-color: #272424; }
 
-.nav_top { height: 30px; line-height:30px; background-color: #ddd; color: #bebebe; border-bottom: 1px solid #b6b6b6; padding-left:10px; }
+
 .a_btn {border-radius:0; font-size:16px; margin:7px 15px 7px 0;}
 .btn-warning { background-color:#E87E04;}
 .span_size2 { font-size: 18px; margin: 15px; }
@@ -263,6 +265,9 @@ a:focus { outline:none; outline-offset:0;}
 .adview_a {background-color:#f3c500;display:inline-block; margin-right:15px;}
 .adview_a_bg3 {background-color:#01bf9d;}
 .adview_a_bg4 {background-color:#ff4724;}
+.adview_a:hover, .adview_a:focus, .adview_a:active, .adview_a.active, .open > .dropdown-toggle.adview_a {background-color:#d5ad00; color:#fff;}
+.adview_a_bg3:hover, .adview_a_bg3:focus, .adview_a_bg3:active, .adview_a_bg3.active, .open > .dropdown-toggle.adview_a_bg3 {background-color:#00a789; color:#fff;}
+.adview_a_bg4:hover, .adview_a_bg4:focus, .adview_a_bg4:active, .adview_a_bg4.active, .open > .dropdown-toggle.adview_a_bg4 {background-color:#dc2300; color:#fff;}
 .pagination > li > a, .pagination > li > span {padding:3px 12px;}
 
 
@@ -274,7 +279,7 @@ a:focus { outline:none; outline-offset:0;}
 .modal_line_bule { height:35px;background-color:#0866c6;}
 .form-horizontal .control-label-left { padding-top:7px;margin-bottom:0px;text-align:left;}
 
-.redCol { color:#d80519;}
+
 
 /*-------------人流分布----------------------*/
 .form-control_change { border-radius: 0; background-color: #fff; margin-top:3px; }=======
@@ -298,4 +303,8 @@ a:focus { outline:none; outline-offset:0;}
 
 /*----------------------在图-------------------------*/
 #map-container { height:100%;}
-iframe { width: 100%; height: 100%; border: none; }
+#map-container iframe { width: 100%; height: 100%; border: none; max-height: 600px; min-height:450px;}=======
+
+
+/*----------------创建新组------------------------------*/
+.tabwidth td:first-child {width:70%;}

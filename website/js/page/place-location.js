@@ -22,3 +22,10 @@ App.Router.map(function () {
 ***  Initialize  ***
 *******************/
 App.initialize();
+
+
+$(document).ready(function () {
+    $("#butSearch").click(function () {
+        iframeMap.window.searchLocal(document.getElementById("txtSearch").value);
+    });
+});
