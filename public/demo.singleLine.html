@@ -9,6 +9,11 @@
         var ctx;
         var centerPointX=0;
         var centerPointY=300;
+        var factor=40;//实际点的扩大比例
+        var beaconThreeDistance=0.00;
+        var beaconTwoDistance=5.40;
+        var beaconSevenDistance=8.40;
+        var beaconEightDistance=11.70;
         $(function(){
             initCanvas();
 
@@ -52,16 +57,61 @@
             ctx.moveTo(0,centerPointY);
             ctx.lineTo(width,centerPointY);
             ctx.stroke();
+
+            //绘制beacon3 点
+            drawBeaconPointOnLine(ctx,beaconThreeDistance);
+
+            //绘制beacon2 点
+            drawBeaconPointOnLine(ctx,beaconTwoDistance);
+
+            //绘制beacon7 点
+            drawBeaconPointOnLine(ctx,beaconSevenDistance);
+
+            //绘制beacon8 点
+            drawBeaconPointOnLine(ctx,beaconEightDistance);
         }
 
+        //绘制beacon点
+        function drawBeaconPointOnLine(ctx,beaconDefaultDistance){
+            ctx.beginPath();
+            ctx.moveTo(beaconDefaultDistance*factor,centerPointY);
+            ctx.lineTo(beaconDefaultDistance*factor,centerPointY-10);
+            ctx.stroke();
+        }
+
+        //描点的入口方法
         function draw(centerPointX,centerPointY,ctx,data) {
+            var data=JSON.parse(data);
+            var resultArray=data.result;
+            var distance=resultArray[0].distance;
+            switch(parseFloat(resultArray[0].beaconName)){
+                case 3:
+                    drawCalculatedPoint(ctx,distance,beaconThreeDistance);
+                    break;
+                case 2:
+                    drawCalculatedPoint(ctx,distance,beaconTwoDistance);
+                    break;
+                case 7:
+                    drawCalculatedPoint(ctx,distance,beaconSevenDistance);
+                    break;
+                case 8:
+                    drawCalculatedPoint(ctx,distance,beaconEightDistance);
+                    break;
+            }
+        }
+
+        //执行画点操作
+        function drawCalculatedPoint(ctx,distance,beaconDefaultDistance){
             ctx.save();
-            var x = Number(data)*10;
-            var y = centerPointY;
+
             ctx.fillStyle = 'green';
+
+            var x=(distance+beaconDefaultDistance)*factor;
+            var y=centerPointY;
+
             ctx.translate(x, y);
             ctx.beginPath();
-            ctx.arc(0, 0, 5, 0, Math.PI*2, true);
+            ctx.arc(0, 0, 4, 0, Math.PI*2, true);
             ctx.fill();
             ctx.closePath();
             ctx.restore();

@@ -4,6 +4,7 @@
 var trilateration = require("./Trilateration.js");
 var kmeans = require("./KMeansClustering.js");
 var deviceConfig=require('./deviceConfig.js');
+var defaultBeaconDistance='5';//两个beacon之间的固定距离
 
 function SensorDataCalculator() {};
 
@@ -94,22 +95,23 @@ MonitorPackageHandler.prototype.getAverageMonitorPackage=function(){
         var beaconPkgCounts=0;
 
         for(var beaconPkgIndex in monitorPackage){
-            beaconPkgCounts++;
             var beaconPKG=monitorPackage[beaconPkgIndex].beaconPKG;
             for(var beaconIndex in beaconPKG){
                 var beaconObj=beaconPKG[beaconIndex];
                 var beaconMinor=Number(beaconObj.minor);
                 var acc=Number(beaconObj.acc);
                 if(beaconMinor===minor){
+                    beaconPkgCounts++;//过滤后数据中剩余的每个beacon的样本数量
                     sumDistance+=acc;
                 }
             }
         }
 
-        console.log("sumDistance"+minor+"="+sumDistance);
-        console.log("beaconPkgCounts"+minor+"="+beaconPkgCounts);
+        //console.log("sumDistance"+minor+"="+sumDistance);
+        //console.log("beaconPkgCounts"+minor+"="+beaconPkgCounts);
+        if(beaconPkgCounts===0)continue;
         var accAverage=sumDistance/beaconPkgCounts;
-        console.log("accAverage"+minor+"="+accAverage);
+        //console.log("accAverage"+minor+"="+accAverage);
         var averageResult={"major": "0", "minor": ""+minor+"", "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", "beaconBLE": "", "acc": accAverage};
         result.push(averageResult);
     }
@@ -241,6 +243,32 @@ MonitorPackageHandler.prototype.getArrayAverageValue=function(arrayObj){
     return average;
 };
 
+MonitorPackageHandler.prototype.getClosestDistance=function(monitorPackageHandler,monitorPackage,beaconCount){
+    var monitorPackageHandler=monitorPackageHandler;
+    var result=[];
+    var beaconCount=Number(beaconCount);
+    if(beaconCount<2){beaconCount=2;}//默认最少两个beacon
+    if(monitorPackage.length<0){console.log('该样本数据不符合条件，已排除');return result;}
+    var beaconPKG=monitorPackage[0].beaconPKG;
+    if(beaconPKG.length<beaconCount){console.log('该样本数据不符合条件，已排除');return result;};
+    //按照acc的距离排序
+    if(beaconPKG){
+        beaconPKG.sort(function(a,b){
+            return parseFloat(a.acc)-parseFloat(b.acc);
+        });
+    }
+
+    //排序以后前两个beacon肯定是相邻的两个beacon，否则样本数据有问题
+    var betweenBeaconScope=Math.abs(parseFloat(beaconPKG[0].minor)-parseFloat(beaconPKG[1].minor));
+    if(betweenBeaconScope!=1){console.log('该样本数据不符合条件，已排除');return result;}
+
+    for(var i=0;i<beaconCount;i++){
+        result.push({beaconName:beaconPKG[i].minor,distance:beaconPKG[i].acc});
+    }
+
+    return result;
+};
+
 SensorDataCalculator.processCalculate = function (sourceData) {
     //var tpNDataArray = [];
     var finalResult = [];
@@ -332,10 +360,10 @@ SensorDataCalculator.getArrayAverageValue=function(arrayObj){
 };
 
 SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
-    var finalResult = [];
     var dataObj;
     try {
         dataObj = JSON.parse(sourceData);
+        dataObj = SensorDataCalculator.filterDataByAcc(dataObj, defaultBeaconDistance);
         if (!dataObj.deviceSerial||!dataObj.monitorPackage) {
             return;
         }
@@ -351,14 +379,19 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
     var monitorPackageHandler=new MonitorPackageHandler(monitorPackage);
     //1.由样本数据求设备到每个beacon点的距离的平均值
     monitorPackage=monitorPackageHandler.getAverageMonitorPackage(monitorPackage);
-    //获取beacon的数量
-    var minors=monitorPackageHandler.getMinorsArray();
-    //2.求设备到两两beacon的距离值,如设备到beacon1,beacon2的距离，设备到beacon3,beacon4的距离
-    var resultArray=monitorPackageHandler.getAverageDistance(monitorPackageHandler,monitorPackage,minors);
-    //3.求设备到两两beacon的距离值的平均值
-    var averageDistance=monitorPackageHandler.getArrayAverageValue(resultArray);
 
-    return averageDistance;
+    ////*****************************old method start******************************************////
+    //获取beacon的数量
+    //var minors=monitorPackageHandler.getMinorsArray();
+    //2.求设备到两两beacon的距离值,如设备到beacon1,beacon2的距离，设备到beacon3,beacon4的距离
+    //var resultArray=monitorPackageHandler.getAverageDistance(monitorPackageHandler,monitorPackage,minors);
+    //3.求设备到两两beacon的距离值的平均值
+    //var averageDistance=monitorPackageHandler.getArrayAverageValue(resultArray);
+    //return averageDistance;
+    ////******************************old method end*******************************************////
+
+    var result=monitorPackageHandler.getClosestDistance(monitorPackageHandler,monitorPackage,2);
+    return result;
 };
 
 SensorDataCalculator.filterDataByAcc = function (sourceData, filterValue) {
