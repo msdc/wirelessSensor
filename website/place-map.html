@@ -11,7 +11,6 @@
 </head>
 <body>
     <div id="container">
-
     </div>
     <script src="http://api.map.baidu.com/api?v=1.5&ak=QXfQvq9pd1R0k80QUBNjir5F"></script>
     <script>
@@ -23,13 +22,13 @@
             });
             map.addControl(new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL }));  //右上角，仅包含平移和缩放按钮
 
-            //document.getElementById("butSearch").onclick = function () {
-            //    var searchTxt = document.getElementById("txtSearch").value;
-            //    if (searchTxt != "") {
-            //        local.search(searchTxt);
-            //    }
-            //}
-        
+            function searchLocal(localText)
+            {
+                if (localText != undefined && localText != "")
+                {
+                    local.search(localText)
+                }
+            }
     </script>
 </body>
 </html>
