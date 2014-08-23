@@ -3,6 +3,7 @@
  */
 var RedisPool = require('sol-redis-pool');
 var easypost = require('easypost');
+var util=require('util');
 var redisSettings = {
     host: "127.0.0.1",
     port: 6379
@@ -21,7 +22,7 @@ myPool.on("error", function (reason) {
 })
 
 myPool.on("destroy", function () {
-    console.log(util.format(" Checking pool info after client destroyed: ", pool.availableObjectsCount(), pool.getPoolSize()));
+    console.log(util.format(" Checking pool info after client destroyed: ", myPool.availableObjectsCount(), myPool.getPoolSize()));
 })
 
 var place = function () {
@@ -30,8 +31,9 @@ var place = function () {
 place.prototype.add = function (req, res) {
     myPool.acquire(function (err, client) {
         easypost.get(req, res, function (data) {
-            if (!data) {
-                var tpkey = "place_" + data.name + "_" + data.Id;
+            if (data) {
+                var dataObj=JSON.parse(data);
+                var tpkey = "place_" + dataObj.name + "_" + dataObj.id;
                 client.set(tpkey, data);
                 res.send("success");
             }
