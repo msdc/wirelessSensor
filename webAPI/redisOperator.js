@@ -21,7 +21,7 @@ RedisOperator.prototype.Add=function(moduleName){
 
         easypost.get(req, res, function (data) {
             if (data) {
-                var dataObj=JSON.parse(data);
+                var dataObj=typeof (data)=="object"?data:JSON.parse(data);
                 var tpkey = moduleName+"_" + dataObj.name + "_" + dataObj.id;
                 client.set(tpkey, data);
                 res.send("success");
