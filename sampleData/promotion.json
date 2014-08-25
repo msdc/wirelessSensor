@@ -1,0 +1,24 @@
+{
+    "id": 1,
+    "name": "Crocs7.5折",
+    "seller": "Crocs",
+    "category": {
+        "id": 1,
+        "name": "折扣"
+    },
+    "tag": "时尚；青年",
+    "startDate": "2014-8-15",
+    "endDate": "2014-8-19",
+    "status": "待审批",
+    "images": [
+        {
+            "id": 1,
+            "url": "/images/placemap_pic.png"
+        },
+        {
+            "id": 2,
+            "url": "/images/placemap_pic.png"
+        }
+    ],
+    "desc": "fdsafdsafds"
+}

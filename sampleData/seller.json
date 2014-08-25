@@ -1,0 +1,23 @@
+{
+    "id": 1,
+    "name": "Crocs",
+    "logo": "/images/placemap_pic.png",
+    "category": {
+        "id": 1,
+        "name": "鞋"
+    },
+    "status": "已注册",
+    "promotionNumber": 3,
+    "tag": "时尚；青年",
+    "desc": "商品不错",
+    "images": [
+        {
+            "id": 1,
+            "url": "/images/placemap_pic.png"
+        },
+        {
+            "id": 2,
+            "url": "/images/placemap_pic.png"
+        }
+    ]
+}
