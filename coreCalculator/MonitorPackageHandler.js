@@ -262,4 +262,22 @@ MonitorPackageHandler.prototype.getClosestDistance=function(monitorPackageHandle
     return result;
 };
 
+MonitorPackageHandler.prototype.convertDistanceToPoint=function(distanceToBeacon,offset,monitorPackageHandler){
+    var beaconOneIndex=distanceToBeacon.beaconName;
+    var pointX=distanceToBeacon.distance+monitorPackageHandler.getBeaconDistance(beaconOneIndex);
+    var pointY;
+    if(parseFloat(offset.x)===0){//Y轴有偏移
+        pointY=offset.y;//X轴为横轴
+
+    }else if(parseFloat(offset.y)===0){//X轴有偏移
+        pointY=pointX;//X横轴转Y轴,此时Y轴为横轴,X轴有偏移量
+        pointX=offset.x;
+    }
+    var pointObj={x:pointX,y:pointY};
+    var location=[];
+    location.push(pointObj);
+    var resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+    return resultLocationData;
+};
+
 module.exports=MonitorPackageHandler;

@@ -131,22 +131,9 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData,offset,be
 
     var result=monitorPackageHandler.getClosestDistance(monitorPackageHandler,monitorPackage,2);
 
+    //距离当前设备 最近的两个Beacon.
     if(result.length===2){
-        var beaconOneIndex=result[0].beaconName;
-        var monitorPackageHandler=new MonitorPackageHandler();
-        var pointX=result[0].distance+monitorPackageHandler.getBeaconDistance(beaconOneIndex);
-        var pointY;
-        if(parseFloat(offset.x)===0){//Y轴有偏移
-            pointY=offset.y;//X轴为横轴
-
-        }else if(parseFloat(offset.y)===0){//X轴有偏移
-            pointY=pointX;//X横轴转Y轴,此时Y轴为横轴,X轴有偏移量
-            pointX=offset.x;
-        }
-        var pointObj={x:pointX,y:pointY};
-        var location=[];
-        location.push(pointObj);
-        var resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+        var resultLocationData=monitorPackageHandler.convertDistanceToPoint(result[0],offset,monitorPackageHandler);
         return resultLocationData;
     }
 
