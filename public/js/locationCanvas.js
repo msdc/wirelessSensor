@@ -3,28 +3,42 @@ define(function(require, exports, module) {
 		var raphaelTP = $('#raphaelTP');
 		var imgA = $('#imgA10086');
 		var canvasN,configJson,
-			rectW = 5, rectH = 5, radius = 8, sbW = 20, sbH = 20;//坐标系矩形宽高、画圆的半径 设备大小
+			rectW = 5, rectH = 5, radius = 8, sbW =16, sbH = 24;//坐标系矩形宽高、画圆的半径 设备大小
 		var rapAll = [];//存放页面rect元素的“画”对象
 
 		function DrawPointer() {}
 		DrawPointer.prototype = {
 			resetData:function(configJson){//初始化基本数据
 				var that=this;
+				console.log('configJson:',configJson);
 				that.rapAll=[];
-				
-				//new add  图片大小为画布大小...
+				configJson.scale=configJson.scale||5000;
+				configJson.PPI=96;
+				configJson.inchesM=0.0254;
+				configJson.zoomImg=1;
+				configJson.uuidArr=configJson.uuidArr;
 				configJson.canvas.w=configJson.bj_draw.w;
 				configJson.canvas.h=configJson.bj_draw.h;
 				
-				canvasN = Raphael('raphaelTP', configJson.canvas.w, configJson.canvas.h);
+				console.log('222configJson:',configJson);
 				configJson.resolution = configJson.scale * configJson.inchesM / configJson.PPI;//地图分辨率
-				
 				that.configJson=configJson;
-				configJson.zoomImg=1;
 				
+				canvasN = Raphael('raphaelTP', configJson.canvas.w, configJson.canvas.h);
 				imgA.attr({width: configJson.bj_draw.w, height: configJson.bj_draw.h, src: configJson.bj_draw.src});
 				raphaelTP.css({width: configJson.canvas.w + 'px', height: configJson.canvas.h + 'px'});
-
+		
+				that.evt();
+			},
+			sumA:function(callback){//提交‘标注
+				var configJson=this.configJson;
+				var sLeft = parseFloat($('.occupying:last').css('left')),
+					sTop = parseFloat($('.occupying:last').css('Top'));
+				var Odoc = raphaelTP.offset();
+				if(isNaN(sLeft)||isNaN(sTop)){alert('请选择标注的位置');return false;}
+				var pX = sLeft - Odoc.left, pY = sTop - Odoc.top;//当前坐标系上的坐标
+				callback&&callback(pX,pY,configJson);
+				return false;			
 			},
 			evt: function () {
 				var that = this;
@@ -43,49 +57,15 @@ define(function(require, exports, module) {
 						return false;
 					})
 				})
-				$('#submitBZ').unbind('click').click(function () {//暂时不‘添加多个标注’
-					var sLeft = parseFloat($('.occupying:last').css('left')),
-						sTop = parseFloat($('.occupying:last').css('Top'));
-					var Odoc = raphaelTP.offset();
-					if(isNaN(sLeft)||isNaN(sTop)){alert('请选择标注的位置');return false;}
-					console.log(sLeft - Odoc.left, sTop - Odoc.top);
-					var pX = sLeft - Odoc.left, pY = sTop - Odoc.top//当前坐标系上的坐标
-					alert('sumitServer:' + pX * configJson.resolution / configJson.zoomImg + '米*' + pY *configJson.resolution * configJson.zoomImg + '米 当前坐标系上的坐标' + pX + '*' + pY)
-					return false;
-				})
 			},
-			coordinate: function () {//坐标系（更新一次）
+			sbPos: function (uuidArr) {//设备坐标（更新一次）
 				var that = this;
 				var configJson=that.configJson;
-				
-				var xAxisWid = configJson.canvas.w / configJson.canvas.numX,
-					yAxisWid = configJson.canvas.h / configJson.canvas.numY;//9*9。+1从0.0点开始。。。。
-				for (var j = 0; j < configJson.canvas.numX; j++) {
-					for (var n = 0; n < configJson.canvas.numY; n++) {
-						;(function (n, j) {
-							var rect1 = canvasN.rect(n * xAxisWid, j * yAxisWid, rectW, rectH);//rect(x,y,w,h)
-							rect1.attr({"fill": "#fa0a0a"})  //填充色
-								.attr("stroke", "none")     //去掉底边;
-								.data("i", 'j=' + j + ' n=' + n)
-								.data("m", 'mobile1')
-								.click(function () {
-									console.log('坐标：', rect1.node.id)
-								});
-							rect1.node.id = 'A' + n * xAxisWid + '_' + j * yAxisWid;
-						})(n, j)
-					}
-				}
-			},
-			sbPos: function () {//设备坐标（更新一次）
-				var that = this;
-				var configJson=that.configJson;
-				var uuidArr = configJson.uuidArr;
-				
 				for (var m in uuidArr) {
 					var cX = parseFloat(uuidArr[m].x) / configJson.resolution * configJson.zoomImg;
 					var cY = parseFloat(uuidArr[m].y) / configJson.resolution * configJson.zoomImg;
 					console.log('sbpos-XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
-					var circle1 = canvasN.image('t1.png', cX, cY, sbW, sbW);//var circle1=canvasN.circle(cX,cY,radius);//圆
+					var circle1 = canvasN.image('t2.png', cX, cY, sbW, sbH);//var circle1=canvasN.circle(cX,cY,radius);//圆
 					circle1.attr({"fill": "blue"})  //填充色
 						.attr("stroke", "none")   //去掉边框
 						.data('dt', {x: cX, y: cY, 'deviceSerial': m})
@@ -114,6 +94,7 @@ define(function(require, exports, module) {
 				}
 				that.fotData = fotData;
 				console.log('format：', fotData);
+				that.delNode();//删除重复节点（即更新某人新位置）
 			},
 			delNode: function () {//删除页面已有的,更新新的。(原有的是该人的旧坐标，该人现更新为新坐标)
 				var that = this;
@@ -128,6 +109,7 @@ define(function(require, exports, module) {
 						}
 					}
 				}
+				that.circleD();
 			},
 			circleD: function () {//添加新节点
 				var that = this;
@@ -171,6 +153,6 @@ define(function(require, exports, module) {
 			}
 		}
 
-	exports.DrawPointer = DrawPointer;
+	exports.DrawPointer = new DrawPointer();
 	
 });

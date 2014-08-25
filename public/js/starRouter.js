@@ -11,15 +11,13 @@ define(function(require, exports, module) {
 	GirdF.prototype={
 	    resetData:function(configJson){
 		     var that=this;
-			//new add  图片大小为画布大小
-			configJson.canvas.w=configJson.bj_draw.w;
+			configJson.canvas.w=configJson.bj_draw.w;//new add  图片大小为画布大小
 			configJson.canvas.h=configJson.bj_draw.h;
 			
 			canvasN = Raphael('raphaelTP', configJson.canvas.w, configJson.canvas.h);
 			configJson.resolution = configJson.scale * configJson.inchesM / configJson.PPI;//地图分辨率
 			
 			that.configJson=configJson;
-			configJson.zoomImg=1;
 			
 			imgA.attr({width: configJson.bj_draw.w, height: configJson.bj_draw.h, src: configJson.bj_draw.src});
 			raphaelTP.css({width: configJson.canvas.w + 'px', height: configJson.canvas.h + 'px'});
@@ -32,13 +30,18 @@ define(function(require, exports, module) {
 					tArray[k][j]="1";//默认都是路1，障碍为0
 				}
 			}
-			return tArray;
+			this.girdArr=tArray;//生成网格对应的二维数组并设置每一项为1（路1，障碍为0），动态的
 		},
-		createGird:function(hL,zL){//生成网格
+		createGird:function(configJson,hL,zL){//生成网格
 			var that=this;
+			if(raphaelTP.find('svg').length>1){
+				raphaelTP.find('svg:first').remove();
+			}
+			that.resetData(configJson);
 			var tdH=imgA.attr('height')/zL;//hL纵向个数 zL横向个数 
 			var tdW=imgA.attr('width')/hL;
-			
+			$('#maptt').html('');
+			console.log(hL,zL)
 			for(var i= 0,str='';i<zL;i++){
 				str+='<tr>';
 				for(var j=0;j<hL;j++){
@@ -47,6 +50,8 @@ define(function(require, exports, module) {
 				str+='</tr>';
 			}
 			$('#maptt').html(str); 
+			that.evt();//网格相关事件
+			that.tDim(hL,zL);//生成2维数组
 		},
 		ajaxSubmit:function(parms,callback){
 		    var that=this;
@@ -76,13 +81,11 @@ define(function(require, exports, module) {
 		evt:function(){//网格相关事件
 			var that=this;
 			$('#gridStr').unbind('change').change(function(){	
-					var change=$(this).val().split(',');//下拉框的值
-					/**路径功能 start**/
-					that.createGird(change[0],change[1]);//生成网格。。行18 列20
-					that.girdArr=that.tDim(change[0],change[1]);//生成网格对应的二维数组并设置每一项为1（路1，障碍为0），动态的			
-					that.evt();
-			})
-					
+				var change=$(this).val().split(',');//下拉框的值
+				//增加障碍点
+				that.createGird(that.configJson,change[0],change[1]);//生成网格。。行18 列20	
+				return false;
+			})			
 			$('#maptt td').unbind('click').click(function(){
 				var serialnum='',allTd=$('#maptt td'),Oelem=$(this);
 				if($(this).hasClass('mStart')||$(this).hasClass('mEnd')||$(this).hasClass('mSleep')){//取消选择
@@ -116,7 +119,7 @@ define(function(require, exports, module) {
 			})
 		}
 	}
-    exports.GirdF=GirdF;
+    exports.GirdF=new GirdF();
 
 });
 
