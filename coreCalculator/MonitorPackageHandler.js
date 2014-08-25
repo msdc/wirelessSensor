@@ -1,11 +1,11 @@
 /**
  * Created by wang on 2014/8/25.
  */
-var deviceConfig=require('./deviceConfig.js');
+var deviceConfig=require('./DeviceConfig.js');
 
 function MonitorPackageHandler(monitorPackage){
     this.monitorPackage=monitorPackage||{};
-    this.beaconArray=deviceConfig.singleSensorPointArray();
+    this.beaconArray=DeviceConfig.singleSensorPointArray();
     this.prefixString='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_';
 }
 

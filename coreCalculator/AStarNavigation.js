@@ -1,4 +1,4 @@
-var astarModule = require("./astar.js")();
+var astarModule = require("./AStar.js")();
 var easypost = require('easypost');
 var redis = require('redis');
 var redis_port = 6379,

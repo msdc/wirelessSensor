@@ -1,7 +1,7 @@
 /**
  * Created by wang on 2014/8/20.
  */
-var calculator=require('../SensorCalculator.js');
+var calculator=require('../coreCalculator/SensorCalculator.js');
 var Testdata = {
     "deviceSerial": "F2LJMKYDDTWD",
     "deviceName": "Ning's iPhone",

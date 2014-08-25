@@ -1,4 +1,4 @@
-var sensorCalculator=require(".././SensorCalculator.js");
+var sensorCalculator=require("../coreCalculator/SensorCalculator.js");
 var fs=require("fs");
 //var findPath=require(".././AStarNavigation.js");
 //

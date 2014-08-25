@@ -1,7 +1,7 @@
 ﻿var express = require('express');
 var bodyParser = require('body-parser');
-var sensor=require('./sensor.js');
-var navigation=require('./AStarNavigation.js');
+var sensor=require('./coreCalculator/Sensor.js');
+var navigation=require('./coreCalculator/AStarNavigation.js');
 var maintain=require('./webAPI/maintainModule.js');
 var device=require('./webAPI/devices.js');
 var app = express();
@@ -19,6 +19,7 @@ app.get("/graphMatrix/:graphid",navigation.getGraphMatrix);
 app.post("/findPath",navigation.findPath);
 
 app.post("/place/add",maintain.place.add);
+app.delete("/place/del",maintain.place.del);
 app.post("/getDeviceList",device.getDeviceList);
 
 app.listen(1337, function () {
