@@ -1,7 +1,7 @@
 /**
  * Created by wang on 2014/8/25.
  */
-var deviceConfig=require('./DeviceConfig.js');
+var DeviceConfig=require('./DeviceConfig.js');
 
 function MonitorPackageHandler(monitorPackage){
     this.monitorPackage=monitorPackage||{};
