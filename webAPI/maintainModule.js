@@ -49,15 +49,16 @@ place.prototype.add = function (req, res) {
 place.prototype.get = function (req, res) {
     myPool.acquire(function (err, client) {
         var result = [];
-        client.keys("place_*", function (places) {
+        client.keys("place_*", function (err,places) {
             for (var plIndex in places) {
-                client.get(places[plIndex], function (place) {
+                client.get(places[plIndex], function (err,place) {
                     result.push(place);
                 });
             }
+
+            res.send(result);
+            myPool.release();
         });
-        res.send(result);
-        myPool.release();
     });
 }
 

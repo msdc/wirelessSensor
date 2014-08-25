@@ -38,15 +38,16 @@ RedisOperator.prototype.Get=function(moduleName){
     redisPool.acquire(function (err, client) {
         var result = [];
         var keyPart=moduleName+"_*";
-        client.keys(keyPart, function (list) {
+        client.keys(keyPart, function (err,list) {
             for (var index in list) {
-                client.get(list[index], function (item) {
+                client.get(list[index], function (err,item) {
                     result.push(item);
                 });
             }
+
+            res.send(result);
+            redisPool.release();
         });
-        res.send(result);
-        redisPool.release();
     });
 };
 
