@@ -98,7 +98,7 @@ SensorDataCalculator.getArrayAverageValue=function(arrayObj){
     return average;
 };
 
-SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
+SensorDataCalculator.processSingleLineCalculate = function (sourceData,offset,beaconPointArray) {
     var dataObj;
     try {
         dataObj = JSON.parse(sourceData);
@@ -115,7 +115,7 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
     //原始的样本数据
     var monitorPackage=dataObj.monitorPackage;
 
-    var monitorPackageHandler=new MonitorPackageHandler(monitorPackage);
+    var monitorPackageHandler=new MonitorPackageHandler(monitorPackage,beaconPointArray);
     //1.由样本数据求设备到每个beacon点的距离的平均值
     monitorPackage=monitorPackageHandler.getAverageMonitorPackage(monitorPackage);
 
@@ -130,7 +130,27 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
     ////******************************old method end*******************************************////
 
     var result=monitorPackageHandler.getClosestDistance(monitorPackageHandler,monitorPackage,2);
-    return result;
+
+    if(result.length===2){
+        var beaconOneIndex=result[0].beaconName;
+        var monitorPackageHandler=new MonitorPackageHandler();
+        var pointX=result[0].distance+monitorPackageHandler.getBeaconDistance(beaconOneIndex);
+        var pointY;
+        if(parseFloat(offset.x)===0){//Y轴有偏移
+            pointY=offset.y;//X轴为横轴
+
+        }else if(parseFloat(offset.y)===0){//X轴有偏移
+            pointY=pointX;//X横轴转Y轴,此时Y轴为横轴,X轴有偏移量
+            pointX=offset.x;
+        }
+        var pointObj={x:pointX,y:pointY};
+        var location=[];
+        location.push(pointObj);
+        var resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+        return resultLocationData;
+    }
+
+    return null;
 };
 
 SensorDataCalculator.filterDataByAcc = function (sourceData, filterValue) {

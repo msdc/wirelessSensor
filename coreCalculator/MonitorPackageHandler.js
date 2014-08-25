@@ -1,11 +1,9 @@
 /**
  * Created by wang on 2014/8/25.
  */
-var DeviceConfig=require('./DeviceConfig.js');
-
-function MonitorPackageHandler(monitorPackage){
+function MonitorPackageHandler(monitorPackage,beaconPointArray){
     this.monitorPackage=monitorPackage||{};
-    this.beaconArray=deviceConfig.singleSensorPointArray();
+    this.beaconArray=beaconPointArray;
     this.prefixString='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_';
 }
 
