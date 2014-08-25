@@ -20,7 +20,19 @@ app.post("/findPath",navigation.findPath);
 
 app.post("/place/add",maintain.place.add);
 app.delete("/place/del",maintain.place.del);
-app.post("/getDeviceList",device.getDeviceList);
+app.get("/place/get",maintain.place.get);
+
+app.post("/seller/add",maintain.seller.add);
+app.delete("/seller/del",maintain.seller.del);
+app.get("/seller/get",maintain.seller.get);
+
+app.post("/device/add",maintain.beaconDevice.add);
+app.delete("/device/del",maintain.beaconDevice.del);
+app.get("/device/get",maintain.beaconDevice.get);
+
+app.post("/promotion/add",maintain.promotion.add);
+app.delete("/promotion/del",maintain.promotion.del);
+app.get("/promotion/get",maintain.promotion.get);
 
 app.listen(1337, function () {
     console.log('Express server listening on port 1337');
