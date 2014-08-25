@@ -180,12 +180,12 @@ function moveMeans() {
  * @param
  * @api private
  * */
-function getMobilePostion() {
+function getMobilePosition() {
 
     var moved = moveMeans();
 
     if (moved) {
-        getMobilePostion();
+        getMobilePosition();
     }
 }
 
@@ -219,7 +219,7 @@ exports.GetClusteredPoint = function (sensorData) {
     means = initMeans(1);
 
     makeAssignments();
-    getMobilePostion();
+    getMobilePosition();
 
     var mobilePosition = {deviceID: sensorData.deviceID,
                           deviceSerial: sensorData.deviceSerial,
