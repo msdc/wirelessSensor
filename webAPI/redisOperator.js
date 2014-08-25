@@ -45,11 +45,21 @@ RedisOperator.prototype.Get=function(moduleName){
         }
         var result = [];
         var keyPart=moduleName+"_*";
+        if(req.query.id&&req.query.name){
+            keyPart=moduleName+"_"+req.query.name+"_"+req.query.id;
+        }
         var count=0;
         client.keys(keyPart, function (err,list) {
             if(err){
                 console.error(err);
             }
+
+            if(list.length===0){
+                res.send(result);
+                redisPool.release();
+                return;
+            }
+
             for (var index in list) {
                 count++;
                 client.get(list[index], function (err,item) {
