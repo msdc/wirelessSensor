@@ -98,7 +98,7 @@ SensorDataCalculator.getArrayAverageValue=function(arrayObj){
     return average;
 };
 
-SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
+SensorDataCalculator.processSingleLineCalculate = function (sourceData,offset,beaconPointArray) {
     var dataObj;
     try {
         dataObj = JSON.parse(sourceData);
@@ -115,7 +115,7 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
     //原始的样本数据
     var monitorPackage=dataObj.monitorPackage;
 
-    var monitorPackageHandler=new MonitorPackageHandler(monitorPackage);
+    var monitorPackageHandler=new MonitorPackageHandler(monitorPackage,beaconPointArray);
     //1.由样本数据求设备到每个beacon点的距离的平均值
     monitorPackage=monitorPackageHandler.getAverageMonitorPackage(monitorPackage);
 
@@ -130,7 +130,14 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData) {
     ////******************************old method end*******************************************////
 
     var result=monitorPackageHandler.getClosestDistance(monitorPackageHandler,monitorPackage,2);
-    return result;
+
+    //距离当前设备 最近的两个Beacon.
+    if(result.length>=0){
+        var resultLocationData=monitorPackageHandler.convertDistanceToPoint(result[0],offset,monitorPackageHandler);
+        return resultLocationData;
+    }
+
+    return null;
 };
 
 SensorDataCalculator.filterDataByAcc = function (sourceData, filterValue) {

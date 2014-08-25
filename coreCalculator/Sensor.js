@@ -6,8 +6,8 @@ var easypost = require('easypost');
 var sensorCalculator = require("./SensorCalculator.js");
 var redis_port = 6379,
     redis_host = "127.0.0.1";
-var offset=1.5;//实际的偏移量
-var MonitorPackageHandler=require('./MonitorPackageHandler.js');
+var offset={x:0,y:1.5};//实际的偏移量
+var deviceConfig=require('./DeviceConfig.js');
 
 function SendError(err, res) {
     console.error(err);
@@ -198,32 +198,17 @@ Calculator.prototype.singleLineCalculator=function(){
     //save the data before calculate.
     client.set(keyBeforeCalculate, serializeJsonData);
 
+    var beaconPointArray=deviceConfig.singleSensorPointArray();
     //save the data after calculated.
-    var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData);
+    var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData,offset,beaconPointArray);
     if(finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
-        var obj={result:finalResult};
-        client.set(keyAfterCalculate, JSON.stringify(obj));
+        client.set(keyAfterCalculate, JSON.stringify(finalResult));
         client.expire(keyAfterCalculate, 120);
     }
 
     client.quit();
-
-    //存入redis后，将数据继续处理并返回
-    //todo translate the distance to point.  finalResult=[{beaconName:2,distance:3},{{beaconName:3,distance:4}]
-    if(finalResult.length===2){
-        var beaconOneIndex=finalResult[0].beaconName;
-        var monitorPackageHandler=new MonitorPackageHandler();
-        var pointX=finalResult[0].distance+monitorPackageHandler.getBeaconDistance(beaconOneIndex);
-        var pointY=offset;
-        var pointObj={x:pointX,y:pointY};
-        var location=[];
-        location.push(pointObj);
-        var resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
-        return resultLocationData;
-    }
-
-    //return finalResult;
+    return finalResult;
 };
 
 /**

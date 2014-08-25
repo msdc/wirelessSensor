@@ -82,8 +82,8 @@
         //描点的入口方法
         function draw(centerPointX,centerPointY,ctx,data) {
             var data=JSON.parse(data);
-            var resultArray=data.result;
-            var distance=resultArray[0].distance;
+            var resultArray=data.location;//以X轴为横轴为例:[x:23,y:0]
+            var distance=resultArray[0].x;
             switch(parseFloat(resultArray[0].beaconName)){
                 case 3:
                     drawCalculatedPoint(ctx,distance,beaconThreeDistance);

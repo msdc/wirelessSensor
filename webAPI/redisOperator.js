@@ -15,6 +15,10 @@ RedisOperator.prototype.Add=function(moduleName){
     var res=this.res;
 
     redisPool.acquire(function (err, client) {
+        if(err){
+            console.error(err);
+        }
+
         easypost.get(req, res, function (data) {
             if (data) {
                 var dataObj=JSON.parse(data);
@@ -36,13 +40,32 @@ RedisOperator.prototype.Get=function(moduleName){
     var res=this.res;
 
     redisPool.acquire(function (err, client) {
+        if(err){
+            console.error(err);
+        }
         var result = [];
         var keyPart=moduleName+"_*";
+        if(req.query.id&&req.query.name){
+            keyPart=moduleName+"_"+req.query.name+"_"+req.query.id;
+        }
         var count=0;
         client.keys(keyPart, function (err,list) {
+            if(err){
+                console.error(err);
+            }
+
+            if(list.length===0){
+                res.send(result);
+                redisPool.release();
+                return;
+            }
+
             for (var index in list) {
                 count++;
                 client.get(list[index], function (err,item) {
+                    if(err){
+                        console.error(err);
+                    }
                     result.push(item);
                     if(count==list.length){
                         res.send(result);
@@ -62,8 +85,20 @@ RedisOperator.prototype.Del=function(moduleName){
     var id = req.query.id;
     var name = req.query.name;
     redisPool.acquire(function (err, client) {
-        client.del(moduleName+"_" + name + "_" + id);
-        redisPool.release();
+        if(err){
+            console.error(err);
+        }
+        var delKey=moduleName+"_" + name + "_" + id;
+        client.del(delKey,function(err,reply){
+            if(err){
+                console.error(err);
+            }
+            if(reply>0){
+                res.send("data deleted success!");
+            }
+            redisPool.release();
+        });
+
     });
 };
 

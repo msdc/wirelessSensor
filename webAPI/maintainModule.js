@@ -30,48 +30,18 @@ var place = function () {
 }
 
 place.prototype.add = function (req, res) {
-    myPool.acquire(function (err, client) {
-        easypost.get(req, res, function (data) {
-            if (data) {
-                var dataObj=JSON.parse(data);
-                var tpkey = "place_" + dataObj.name + "_" + dataObj.id;
-                client.set(tpkey, data);
-                res.send("success");
-            }
-            else {
-                res.send(500, "data format error");
-            }
-            myPool.release();
-        });
-    });
+    var redisOperator=new RedisOperator(myPool,req, res);
+    redisOperator.Add('place');
 }
 
 place.prototype.get = function (req, res) {
-    myPool.acquire(function (err, client) {
-        var result = [];
-        var count=0;
-        client.keys("place_*", function (err,places) {
-            for (var plIndex in places) {
-                count++;
-                client.get(places[plIndex], function (err,place) {
-                    result.push(place);
-                    if(count==places.length){
-                        res.send(result);
-                        myPool.release();
-                    }
-                });
-            }
-        });
-    });
+    var redisOperator=new RedisOperator(myPool,req, res);
+    redisOperator.Get('place');
 }
 
 place.prototype.del = function (req, res) {
-    var placeID = req.query.id;
-    var placeName = req.query.name;
-    myPool.acquire(function (err, client) {
-        client.del("place_" + placeName + "_" + placeID);
-        myPool.release();
-    });
+    var redisOperator=new RedisOperator(myPool,req, res);
+    redisOperator.Del('place');
 }
 
 var seller = function () {

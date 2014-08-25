@@ -3,6 +3,20 @@ wirelessSensor
 
 POC for wirelessSensor using nodejs
 
+it is using redis "sol-redis-pool" app pool. so you need to change the line in its index.js file.
+
+line 83 to line 89
+
+    // The destroy function is called when client connection needs to be closed.
+    poolSettings["destroy"] = function destroyClient(client) {
+        if (client) {
+            client.end();
+        }
+        self.emit("destroy", null);
+    }
+
+
+
 the raw data format is
 
 {

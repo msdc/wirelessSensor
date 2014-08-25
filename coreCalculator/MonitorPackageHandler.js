@@ -1,11 +1,9 @@
 /**
  * Created by wang on 2014/8/25.
  */
-var deviceConfig=require('./DeviceConfig.js');
-
-function MonitorPackageHandler(monitorPackage){
+function MonitorPackageHandler(monitorPackage,beaconPointArray){
     this.monitorPackage=monitorPackage||{};
-    this.beaconArray=DeviceConfig.singleSensorPointArray();
+    this.beaconArray=beaconPointArray;
     this.prefixString='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_';
 }
 
@@ -253,15 +251,29 @@ MonitorPackageHandler.prototype.getClosestDistance=function(monitorPackageHandle
         });
     }
 
-    //排序以后前两个beacon肯定是相邻的两个beacon，否则样本数据有问题
-    //var betweenBeaconScope=Math.abs(parseFloat(beaconPKG[0].minor)-parseFloat(beaconPKG[1].minor));
-    //if(betweenBeaconScope!=1){console.log('该样本数据不符合条件，已排除');return result;}
-
     for(var i=0;i<beaconCount;i++){
         result.push({beaconName:beaconPKG[i].minor,distance:beaconPKG[i].acc});
     }
 
     return result;
+};
+
+MonitorPackageHandler.prototype.convertDistanceToPoint=function(distanceToBeacon,offset,monitorPackageHandler){
+    var beaconOneIndex=distanceToBeacon.beaconName;
+    var pointX=distanceToBeacon.distance+monitorPackageHandler.getBeaconDistance(beaconOneIndex);
+    var pointY;
+    if(parseFloat(offset.x)===0){//Y轴有偏移
+        pointY=offset.y;//X轴为横轴
+
+    }else if(parseFloat(offset.y)===0){//X轴有偏移
+        pointY=pointX;//X横轴转Y轴,此时Y轴为横轴,X轴有偏移量
+        pointX=offset.x;
+    }
+    var pointObj={x:pointX,y:pointY};
+    var location=[];
+    location.push(pointObj);
+    var resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+    return resultLocationData;
 };
 
 module.exports=MonitorPackageHandler;
