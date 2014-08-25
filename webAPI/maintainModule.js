@@ -69,8 +69,16 @@ place.prototype.del = function (req, res) {
     var placeID = req.query.id;
     var placeName = req.query.name;
     myPool.acquire(function (err, client) {
-        client.del("place_" + placeName + "_" + placeID);
-        myPool.release();
+        var delKey="place_" + placeName + "_" + placeID;
+        client.del(delKey,function(err,reply){
+            if(err){
+                console.error(err);
+            }
+            if(reply>0){
+                res.send("data deleted success!");
+            }
+            myPool.release();
+        });
     });
 }
 
