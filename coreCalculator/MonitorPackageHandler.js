@@ -251,10 +251,6 @@ MonitorPackageHandler.prototype.getClosestDistance=function(monitorPackageHandle
         });
     }
 
-    //排序以后前两个beacon肯定是相邻的两个beacon，否则样本数据有问题
-    //var betweenBeaconScope=Math.abs(parseFloat(beaconPKG[0].minor)-parseFloat(beaconPKG[1].minor));
-    //if(betweenBeaconScope!=1){console.log('该样本数据不符合条件，已排除');return result;}
-
     for(var i=0;i<beaconCount;i++){
         result.push({beaconName:beaconPKG[i].minor,distance:beaconPKG[i].acc});
     }
