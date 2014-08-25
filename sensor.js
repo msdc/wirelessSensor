@@ -6,6 +6,8 @@ var easypost = require('easypost');
 var sensorCalculator = require("./SensorCalculator.js");
 var redis_port = 6379,
     redis_host = "127.0.0.1";
+var offset=1.5;//实际的偏移量
+var MonitorPackageHandler=require('./MonitorPackageHandler.js');
 
 function SendError(err, res) {
     console.error(err);
@@ -62,8 +64,8 @@ exports.processDataFromSocket = function (io, socket, data) {
     }
 
     var calculator=new Calculator(data,client);
-    var finalResult=calculator.kMeansClusterCalculator();
-
+    //var finalResult=calculator.kMeansClusterCalculator();
+    var finalResult=calculator.singleLineCalculator();
     io.emit('result', finalResult);
 };
 
@@ -202,11 +204,26 @@ Calculator.prototype.singleLineCalculator=function(){
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         var obj={result:finalResult};
         client.set(keyAfterCalculate, JSON.stringify(obj));
-        //client.expire(keyAfterCalculate, 120);
+        client.expire(keyAfterCalculate, 120);
     }
 
     client.quit();
-    return finalResult;
+
+    //存入redis后，将数据继续处理并返回
+    //todo translate the distance to point.  finalResult=[{beaconName:2,distance:3},{{beaconName:3,distance:4}]
+    if(finalResult.length===2){
+        var beaconOneIndex=finalResult[0].beaconName;
+        var monitorPackageHandler=new MonitorPackageHandler();
+        var pointX=finalResult[0].distance+monitorPackageHandler.getBeaconDistance(beaconOneIndex);
+        var pointY=offset;
+        var pointObj={x:pointX,y:pointY};
+        var location=[];
+        location.push(pointObj);
+        var resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+        return resultLocationData;
+    }
+
+    //return finalResult;
 };
 
 /**
@@ -235,7 +252,7 @@ Calculator.prototype.kMeansClusterCalculator=function(){
     if(finalResult.length>0) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
-        //client.expire(keyAfterCalculate, 120);
+        client.expire(keyAfterCalculate, 120);
     }
 
     client.quit();
