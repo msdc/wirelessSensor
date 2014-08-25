@@ -18,72 +18,62 @@
             <span class="glyphicon glyphicon-home col_blue"></span><span class="Mag2">></span><span class="col_blue">场所管理</span><span class="Mag2">></span><span class="col_black">场所信息</span>
         </div>
         <div class="nav_top2">
-            <div class="row nav_top2_con NoMgBoth">
-                <div class="col-sm-3 nav_top2_L">
-                    <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;场所信息
-                </div>
-                <div class="col-xs-2 col-sm-2">
-                    <button type="button" class="btn btn-primary">保存</button>
-                </div>
+            {{outlet}}
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="place">
+        <div class="row nav_top2_con NoMgBoth">
+            <div class="col-sm-3 nav_top2_L">
+                <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;场所信息
             </div>
-            <div class="nav_top2_body">
-                <div class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
-                        <div class="col-sm-8 NopadLeft">
-                            <input type="text" class="form-control border_radius" placeholder="西单大悦城">
-                        </div>
+            <div class="col-xs-2 col-sm-2">
+                <button type="button" class="btn btn-primary" {{action "save" }}>保存</button>
+            </div>
+        </div>
+        <div class="nav_top2_body">
+            <div class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
+                    <div class="col-sm-8 NopadLeft">
+                        {{view Ember.TextField class="form-control border_radius" placeholder="场所名称" valueBinding="name"}}
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-1 control-label blueCol NopadLeft">场所描述</label>
-                        <div class="col-sm-8 NopadLeft">
-                            <textarea class="form-control border_radius" rows="6"></textarea>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label blueCol NopadLeft">场所描述</label>
+                    <div class="col-sm-8 NopadLeft">
+                        {{view Ember.TextArea class="form-control border_radius" rows="6" valueBinding="desc" }}
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-1 control-label blueCol NopadLeft">介绍图片</label>
-                        <div class="col-sm-8 NopadLeft">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <div>
-                                        <img data-src="holder.js/100%x201" src="images/palceinfor_pic1.jpg" class="img-responsive img_border" />
-                                    </div>
-                                </div>
-                                <div class="col-xs-3">
-                                    <div>
-                                        <img data-src="holder.js/100%x201" src="images/palceinfor_pic2.jpg" class="img-responsive img_border" />
-                                    </div>
-                                </div>
-                                <div class="col-xs-3">
-                                    <div>
-                                        <img data-src="holder.js/100%x201" src="images/palceinfor_pic1.jpg" class="img-responsive img_border" />
-                                    </div>
-                                </div>
-                                <div class="col-xs-3">
-                                    <div class="img_border text-center pad_div">
-                                        <a href="#" class="add_more">
-                                            <span class="glyphicon glyphicon-plus plus_big"></span>
-                                            <br />
-                                            <p>添加更多</p>
-                                        </a>
-                                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label blueCol NopadLeft">介绍图片</label>
+                    <div class="col-sm-8 NopadLeft">
+                        <div class="row">
+                           {{view App.ImageView contentBinding=images}}
+                            <div class="col-xs-3">
+                                <div class="img_border text-center pad_div">
+                                    <a href="#" class="add_more">
+                                        <span class="glyphicon glyphicon-plus plus_big"></span>
+                                        <br />
+                                        <p>添加更多</p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br />
-                <br />
-                <br />
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="foot_con">
-                            <p>© 2014. iSoftStone. All Rights Reserved.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="image">
+        {{#each  view.content}}
+            <div class="col-xs-3">
+                <div>
+                    <img data-src="holder.js/100%x201" {{bind-attr src="url"}} class="img-responsive img_border" />
+                </div>
+            </div>
+        {{/each}}
     </script>
 
     <script src="js/lib/jquery-1.10.2.min.js"></script>
@@ -95,6 +85,7 @@
 
     <script src="js/lib/common.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/apidata.js"></script>
     <script src="js/page/place-info.js"></script>
     <!--[if lt IE 9]>
         <script src="js/lib/html5shiv.js"></script>
