@@ -18,7 +18,7 @@
             <span class="glyphicon glyphicon-home col_blue"></span><span class="Mag2">></span><span class="col_blue">场所管理</span><span class="Mag2">></span><span class="col_black">场所地图</span>
         </div>
         <div class="nav_top2">
-            {{outlet}}
+            {{view App.PlaceView }}
         </div>
     </script>
 
@@ -34,7 +34,7 @@
                 <div class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
-                        <label class="col-sm-6 control-label-left blackCol NopadLeft">{{name}}</label>
+                        <label class="col-sm-6 control-label-left blackCol NopadLeft">{{view.content.name}}</label>
                     </div>
                 </div>
                 <div class="container">
@@ -43,7 +43,7 @@
                             <div class="whiteCol">场所地图列表</div>
                         </div>
                         <div class="col-xs-2 text-right">
-                            <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalAddMap" {{action "insert" }}>+添加</button>
+                            <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalAddMap" {{action "insert" target="view.content" }}>+添加</button>
                         </div>
                     </div>
                     <div class="row">
@@ -54,21 +54,21 @@
                                     <th class="whiteCol" style="border:none;">地图</th>
                                     <th class="whiteCol" style="border:none;">操作</th>
                                 </tr>
-                                {{#each  maps}}
+                                {{#each item in view.content.maps}}
                                 <tr>
-                                    <td>{{name}}</td>
+                                    <td>{{item.name}}</td>
                                     <td>
-                                        <img {{bind-attr src="url" }} />
+                                        <img {{bind-attr src="item.url" }} />
                                     </td>
-                                    <td><button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action "detail" }}>查看</button>
-                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddMap"  {{action "update" }}>编辑</button>
-                                        <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action remove}}>删除</button></td>
+                                    <td><button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action "detail" id target="view.content"}}>查看</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" id data-target="#modalAddMap" {{action "update" target="view.content" }}>编辑</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action "remove" item target="view.content" }}>删除</button></td>
                                 </tr>
                                 {{/each}}
                             </table>
                         </div>
                     </div>
-                    <div class="row report_con">
+                    <!--<div class="row report_con">
                         <div class="col-xs-5">
                             <div class="blackCol" style="line-height:40px;">正在显示1-2条&nbsp;&nbsp;共50条</div>
                         </div>
@@ -85,7 +85,7 @@
                                 <li><a href="#">末页</a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
 
@@ -106,7 +106,7 @@
                         <div class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">场所名称</label>
-                                <label class="col-sm-2 control-label-left"></label>
+                                <label class="col-sm-2 control-label-left">{{view.content.placename}}</label>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-10 control-label-left col-sm-offset-2">
@@ -116,7 +116,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">地图名称</label>
                                 <div class="col-sm-9">
-                                    {{view Ember.TextField class="form-control border_radius" id="validate_name" placeholder="地图名称" }}
+                                    {{view Ember.TextField class="form-control border_radius" id="validate_name" placeholder="地图名称" valueBinding="view.content.mapname"}}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -127,18 +127,16 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" {{action "save" target="App.ModalController" }}>保存</button>
+                        <button type="button" class="btn btn-primary" {{action save target="App.ModalController" }}>保存</button>
                     </div>
                 </div>
             </div>
         </div>
     </script>
     <!-- Modal -->
-
 
 
     <script src="js/lib/jquery-1.10.2.min.js"></script>

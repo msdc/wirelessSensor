@@ -301,10 +301,13 @@ a:focus { outline:none; outline-offset:0;}
         margin-top:0px;
     }
 
-/*----------------------在图-------------------------*/
+/*----------------------地图-------------------------*/
 #map-container { height:100%;}
-#map-container iframe { width: 100%; height: 100%; border: none; max-height: 600px; min-height:450px;}=======
+#map-container iframe { width: 100%; height: 100%; border: none; max-height: 600px; min-height:450px;}
 
+/*----------------------SVG图-------------------------*/
+.bindDraw { height:100%;}
+.bindDraw iframe { width: 100%; height: 100%; border: none;}
 
 /*----------------创建新组------------------------------*/
 .tabwidth td:first-child {width:70%;}

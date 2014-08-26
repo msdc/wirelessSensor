@@ -29,3 +29,15 @@ $(document).ready(function () {
         iframeMap.window.searchLocal(document.getElementById("txtSearch").value);
     });
 });
+
+
+function getDevicePoint() {
+    var shopP = [{
+        "deviceID": "mobile1", "timePoint": "2013-12-23 00:00:00:0001", "deviceSerial": 'dS0',
+        "beaconCalculatePosition": [{ "x": "150", "y": "175" }]//单位是米
+    }, {
+        "deviceID": "mobile2", "timePoint": "2013-12-23 00:00:00:0885", "deviceSerial": 'dSl',
+        "beaconCalculatePosition": [{ "x": "639", "y": "639" }]
+    }];
+    return shopP;
+}
