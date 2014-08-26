@@ -3,12 +3,19 @@
 /*******************
 ***     View    ***
 *******************/
-App.ContainerView = Ember.View.extend({
-    templateName: 'container'
-});
-
 App.ImageView = Ember.View.extend({
     templateName: 'image'
+});
+
+App.TextFileView = Ember.TextField.extend({
+    classNames: ['hide'],
+    type: 'file',
+    attributeBindings: ['multiple'],
+    multiple: "multiple",
+    valueDidChange: function () {
+        var pic = this.get("value");
+        var valueId = this.get("content");
+    }.observes('value')
 });
 
 /*******************
@@ -39,6 +46,9 @@ App.PlaceController = Ember.ObjectController.extend({
             api.ms.insertplace(jsonStr, function (data) {
                 var d = data;
             });
+        },
+        upload: function () {
+            $("#fileImg").click();
         }
     },
     init: function () {
@@ -47,7 +57,7 @@ App.PlaceController = Ember.ObjectController.extend({
             _this.set('id', data.id);
             _this.set('name', data.name);
             _this.set('desc', data.desc);
-            _this.set('images', data.images);
+            _this.set('images', data.descImages);
         });
     }
 });

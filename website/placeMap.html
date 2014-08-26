@@ -41,11 +41,30 @@
                             <div class="whiteCol">场所地图列表</div>
                         </div>
                         <div class="col-xs-2 text-right">
-                            <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalAddMap">+添加</button>
+                            <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalAddMap" {{action "insert" }}>+添加</button>
                         </div>
                     </div>
                     <div class="row">
-                      
+                        <div class="table-responsive">
+                            <table class="table table-bordered row_delMg">
+                                <tr class="tr_bg">
+                                    <th class="whiteCol" style="border:none;">名称</th>
+                                    <th class="whiteCol" style="border:none;">地图</th>
+                                    <th class="whiteCol" style="border:none;">操作</th>
+                                </tr>
+                                {{#each  maps}}
+                                <tr>
+                                    <td>{{name}}</td>
+                                    <td>
+                                        <img {{bind-attr src="url" }} />
+                                    </td>
+                                    <td><button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action "detail" }}>查看</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddMap"  {{action "update" }}>编辑</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight" data-toggle="modal" data-target="#modalAddMap"  {{action remove}}>删除</button></td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                        </div>
                     </div>
                     <div class="row report_con">
                         <div class="col-xs-5">
@@ -67,79 +86,55 @@
                     </div>
                 </div>
             </div>
-    </script>
 
-    <script type="text/x-handlebars" data-template-name="map">
-        <div class="table-responsive">
-            <table class="table table-bordered row_delMg">
-                <tr class="tr_bg">
-                    <th class="whiteCol" style="border:none;">名称</th>
-                    <th class="whiteCol" style="border:none;">地图</th>
-                    <th class="whiteCol" style="border:none;">操作</th>
-                </tr>
-                <tr>
-                    <td>一楼</td>
-                    <td>
-                        <img src="images/placemap_pic.png" />
-                    </td>
-                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                </tr>
-                <tr>
-                    <td>二楼</td>
-                    <td>
-                        <img src="images/placemap_pic.png" />
-                    </td>
-                    <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                </tr>
-
-            </table>
-        </div>
+        {{view App.ModalView}}
     </script>
 
     <!-- Modal -->
-    <div class="modal fade bs-example-modal-lg" id="modalAddMap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header nav_top2_L">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
-                    <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;添加地图</span>
-                </div>
-                <div class="modal_line_bule"></div>
-                <div class="modal-body">
-                    <div class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label blueCol">场所名称</label>
-                            <label class="col-sm-2 control-label-left">西单大悦城</label>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 control-label-left col-sm-offset-2">
-                                <button type="button" class="btn btn-info">上传地图</button>
+    <script type="text/x-handlebars" data-template-name="modal">
+        <div class="modal fade bs-example-modal-lg" id="modalAddMap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header nav_top2_L">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                        <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;{{view.content.title}}</span>
+                    </div>
+                    <div class="modal_line_bule"></div>
+                    <div class="modal-body">
+                        <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">场所名称</label>
+                                <label class="col-sm-2 control-label-left"></label>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label blueCol">地图名称</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control border_radius" id="validate_name" placeholder="西单大悦城一层">
+                            <div class="form-group">
+                                <div class="col-sm-10 control-label-left col-sm-offset-2">
+                                    <button type="button" class="btn btn-info">上传地图</button>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-9 col-md-9 col-sm-offset-2">
-                                <div class="thumbnail border_radius">
-                                    <img data-src="holder.js/600x600" alt="...">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">地图名称</label>
+                                <div class="col-sm-9">
+                                    {{view Ember.TextField class="form-control border_radius" id="validate_name" placeholder="地图名称" }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-9 col-md-9 col-sm-offset-2">
+                                    <div class="thumbnail border_radius">
+                                        <img data-src="holder.js/600x600" alt="..." >
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">保存</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" {{action "save" target="App.ModalController" }}>保存</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!-- Modal -->
 
 
@@ -153,6 +148,7 @@
 
     <script src="js/lib/common.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/apidata.js"></script>
     <script src="js/page/place-map.js"></script>
 
     <!--[if lt IE 9]>
