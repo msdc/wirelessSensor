@@ -125,7 +125,7 @@ exports.drawPointFromRedis = function (io, socket, data) {
                     console.error(err);
                 }
                 count++;
-                console.log(key);
+                //console.log(key);
                 if (count == keysLength || count > keysLength) {
                     client.quit();
                 }
@@ -160,7 +160,7 @@ exports.drawSinglePointFromRedis=function (io, socket, data) {
                     console.error(err);
                 }
                 count++;
-                console.log(key);
+                //console.log(key);
                 if (count == keysLength || count > keysLength) {
                     client.quit();
                 }
@@ -212,7 +212,7 @@ function singleLineCalculator(data,client){
     if(finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
-        client.expire(keyAfterCalculate, 120);
+        //client.expire(keyAfterCalculate, 120);
     }
 
     client.quit();
@@ -237,7 +237,7 @@ function kMeansClusterCalculator(data,client){
     if(finalResult.length>0) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
-        client.expire(keyAfterCalculate, 120);
+        //client.expire(keyAfterCalculate, 120);
     }
 
     client.quit();
