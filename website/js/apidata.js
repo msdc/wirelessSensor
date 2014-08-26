@@ -14,7 +14,7 @@
                         callback(data);
                     },
                     error: function (xhr, status, error) {
-                        alert(status);
+                        callback(status);
                     }
                 });
             },
@@ -47,13 +47,13 @@
                     this.apiajax.ajax(this.apiajax.mergeurl("place/update"), "Post", json, callback);
                 },
                 getplace: function (callback) {
-                    this.apiajax.ajax("/resource/place.html", "Get", null, callback);
+                    this.apiajax.ajax(this.apiajax.mergeurl("place/get"), "Get", null, callback);
                 },
                 insertplacemap: function () { },
                 updateplacemap: function () { },
                 deleteplacemap: function () { },
-                getplacemaps: function () {
-
+                getplacemaps: function (callback) {
+                    this.apiajax.ajax(this.apiajax.mergeurl("place/get"), "Get", null, callback);
                 },
                 insertplacemerchant: function () { },
                 updateplacemerchant: function () { },

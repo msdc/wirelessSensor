@@ -28,6 +28,8 @@
                     <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;场所地图
                 </div>
             </div>
+            <div id="divAlert">
+            </div>
             <div class="nav_top2_body">
                 <div class="form-horizontal" role="form">
                     <div class="form-group">
@@ -60,7 +62,7 @@
                                     </td>
                                     <td><button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action "detail" }}>查看</button>
                                         <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddMap"  {{action "update" }}>编辑</button>
-                                        <button type="button" class="btn adview_a adview_a_bg4 margRight" data-toggle="modal" data-target="#modalAddMap"  {{action remove}}>删除</button></td>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action remove}}>删除</button></td>
                                 </tr>
                                 {{/each}}
                             </table>

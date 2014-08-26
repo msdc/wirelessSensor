@@ -47,9 +47,15 @@ App.PlaceController = Ember.ObjectController.extend({
     },
     init: function () {
         var _this = this;
-        api.ms.getplace(function (data) {
-            _this.set('name', data.name);
-            _this.set('maps', data.maps);
+        api.ms.getplacemaps(function (data) {
+            if (data == "error") {
+                $("#divAlert").alert("warning", "获取场所地图错误！")
+            }
+            else if (data.length > 0) {
+                var json = JSON.parse(data[0]);
+                _this.set('name', json.name);
+                _this.set('maps', json.maps);
+            }
         });
     }
 });
@@ -63,7 +69,7 @@ App.ModalController = Ember.ObjectController.create({
     save: function () {
         var json = {
             "id": 1,
-            "name": "一楼",
+            "name": "三楼",
             "url": "/images/placemap_pic.png",
             "matrixID": "place_floor_matrix",
             "matrixSize": {
@@ -81,7 +87,7 @@ App.ModalController = Ember.ObjectController.create({
             "scale": "1:10000"
         }
 
-        
+        App.PlaceController.reset("maps", [json]);
     },
     create: function (placename, mapname, map, act) {
         this.set("placename", placename);

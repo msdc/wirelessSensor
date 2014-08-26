@@ -41,11 +41,12 @@ App.PlaceController = Ember.ObjectController.extend({
     images: null,
     actions: {
         save: function () {
-            var json = { "id": 1, "name": "西单大悦城", "desc": "西单大悦城", "position": { "lat": 23.1231233, "lng": 34.2312323 }, "descImages": [{ "id": 1, "url": "/images/palceinfor_pic1.jpg" }, { "id": 2, "url": "/images/palceinfor_pic2.jpg" }, { "id": 3, "url": "/images/palceinfor_pic3.jpg" }], "maps": [{ "id": 1, "name": "一楼", "url": "/images/placemap_pic.png", "matrixID": "place_floor_matrix", "matrixSize": { "x": 800, "y": 900 }, "imageSize": { "width": 0, "height": 0 }, "canvasSize": { "width": 22, "height": 0 }, "scale": "1:10000" }, { "id": 2, "matrixID": "place_floor_matrix", "matrixSize": { "x": 800, "y": 900 }, "imageSize": { "width": 0, "height": 0 }, "canvasSize": { "width": 22, "height": 0 }, "scale": "1:10000" }] };
-            var jsonStr=JSON.stringify(json);
-            api.ms.insertplace(jsonStr, function (data) {
-                var d = data;
-            });
+            var json = { id: this.get("id"), name: this.get("name"), desc: this.get("desc"), descImages: this.get("images") };
+            var data=JSON.stringify(json);
+            //api.ms.updateplace(data, function (data) {
+            //    var d = data;
+            //});
+            $("#divAlert").alert("success", "场所信息保存成功！");
         },
         upload: function () {
             $("#fileImg").click();
@@ -54,10 +55,17 @@ App.PlaceController = Ember.ObjectController.extend({
     init: function () {
         var _this = this;
         api.ms.getplace(function (data) {
-            _this.set('id', data.id);
-            _this.set('name', data.name);
-            _this.set('desc', data.desc);
-            _this.set('images', data.descImages);
+            if (data == "error")
+            {
+                $("#divAlert").alert("warning","获取场所信息错误！")
+            }
+            else if (data.length > 0) {
+                var json = JSON.parse(data[0]);
+                _this.set('id', json.id);
+                _this.set('name', json.name);
+                _this.set('desc', json.desc);
+                _this.set('images', json.descImages);
+            }
         });
     }
 });
