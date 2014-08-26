@@ -51,29 +51,15 @@ RedisOperator.prototype.Get = function (moduleName) {
     }
     var count = 0;
     client.keys(keyPart, function (err, list) {
-        if (err) {
-            console.error(err);
-        }
-
-        if (list.length === 0) {
-            res.send(result);
-            return;
-        }
-
-        for (var index in list) {
-            count++;
-            client.get(list[index], function (err, item) {
-                if (err) {
-                    console.error(err);
-                }
+        list.forEach(function(key,pos){
+            client.get(key, function (err, item) {
                 result.push(item);
-                if (count == list.length) {
+                if (pos ==(list.length-1)) {
                     res.send(result);
+                    client.quit();
                 }
-                //redisPool.release();
-                client.quit();
             });
-        }
+        });
     });
     //client.quit();
 };
@@ -95,7 +81,7 @@ RedisOperator.prototype.Del = function (moduleName) {
             res.send("data deleted success!");
         }
     });
-    //client.quit();
+    client.quit();
 };
 
 module.exports = RedisOperator;
