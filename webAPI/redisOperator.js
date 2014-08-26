@@ -98,8 +98,4 @@ RedisOperator.prototype.Del = function (moduleName) {
     //client.quit();
 };
 
-RedisOperator.prototype.Close=function(){
-    this.client.end();
-}
-
 module.exports = RedisOperator;

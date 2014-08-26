@@ -20,13 +20,11 @@ var place = function () {
 place.prototype.add = function (req, res) {
     var redisOperator = new RedisOperator(client, req, res);
     redisOperator.Add('place');
-    //redisOperator.Close();
 }
 
 place.prototype.get = function (req, res) {
     var redisOperator = new RedisOperator(client, req, res);
     redisOperator.Get('place');
-    //redisOperator.Close();
 }
 
 place.prototype.del = function (req, res) {
