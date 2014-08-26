@@ -5,7 +5,7 @@
     <title>网格及坐标系demo</title>
 </head>
 <body>
-<script src="../../../../Users/ycdeng/Desktop/定位demo/js/sea.js"></script>
+<script src="../../../../Users/ycdeng/Desktop/demo26/js/sea.js"></script>
 <script>
   seajs.config({
     alias: {
@@ -41,7 +41,7 @@
 <style>
 textarea{width:300px;height:300px;}
 </style>
-<input type="button" id="startPos" value="开始定位222"/>
+<input type="button" id="startPos" value="初始化数据并开始定位222"/>
 
 
 
@@ -54,15 +54,15 @@ textarea{width:300px;height:300px;}
     <em class="cS1">设置起点</em><em class="cS2">设置终点</em><em class="cS3">设置障碍点</em>
     <input id="searchLJ" type="button" value="查找路径">
 </div>
-<div id="tips"></div>
 <p class="bzAdd">
     <input type="button" value="标注设备" id="addBZ"/>
     <input type="button" value="提交设备标注" id="submitBZ"/>
 </p>
 <div id="wrapRapGird">
+	<div id="tips"></div>
     <table id="maptt" cellspacing="0" cellpadding="0" border="0" bgcolor="#000000"></table><!--网格-->
     <div id="raphaelTP">
-        <img src="../../../../Users/ycdeng/Desktop/定位demo/2.jpg" id="imgA10086"/>
+        <img src="../../../../Users/ycdeng/Desktop/demo26/2.jpg" id="imgA10086"/>
     </div><!--坐标系+背景图片-->
 </div>
 <div id="q2">测试api</div>
@@ -71,8 +71,10 @@ textarea{width:300px;height:300px;}
 	
     #raphael1,#wrapRapGird{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;width:610px;height:610px;}
     #imgA10086{position:absolute;left:0px;top:0px;z-index:-10;}
-    #tips{display:none;z-index:10;max-width:300px;font-size:12px;line-height:1.2em;background:#fff;border-radius:8px;position:absolute;left:0px;top:0px;border:1px solid #ff7300;padding:5px;}
-    .occupying{display:none;background:url('../../../../Users/ycdeng/Desktop/定位demo/t2.png') no-repeat left top;width:16px;height:24px;position: absolute;left:0px;top:0px;}
+    #tips{display:none;z-index:10;max-width:300px;font-size:12px;line-height:1.2em;background:#fff;
+			border-radius:8px;position:absolute;left:100px;top:0px;border:1px solid #ff7300;padding:5px;
+	}
+    .occupying{display:none;background:url('t2.png') no-repeat left top;width:16px;height:24px;position: absolute;left:0px;top:0px;}
 
     /**table **/
     #maptt{border-collapse:collapse;position:absolute;left:0px;top:0px;z-index:-10;opacity:0;}
