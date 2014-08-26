@@ -308,3 +308,9 @@ a:focus { outline:none; outline-offset:0;}
 
 /*----------------创建新组------------------------------*/
 .tabwidth td:first-child {width:70%;}
+
+
+/*----------------警告栏------------------------------*/
+.alert { 
+    margin-bottom:0px;
+}
