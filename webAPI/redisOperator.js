@@ -37,10 +37,10 @@ RedisOperator.prototype.Add = function (moduleName) {
             var dataStr = typeof (data) == "string" ? data : JSON.stringify(data);
             var tpkey = moduleName + "_" + dataObj.name + "_" + dataObj.id;
             client.set(tpkey, dataStr);
-            res.send("success");
+            res.send({result:"success"});
         }
         else {
-            res.send(500, "data format error");
+            res.send(500, {error:"data format error"});
         }
     });
     client.quit();
