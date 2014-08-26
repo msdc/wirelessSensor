@@ -49,10 +49,17 @@
                     <label class="col-sm-1 control-label blueCol NopadLeft">介绍图片</label>
                     <div class="col-sm-8 NopadLeft">
                         <div class="row">
-                           {{view App.ImageView contentBinding=images}}
+                           {{#each  images}}
+                            <div class="col-xs-3">
+                                <div>
+                                    <img data-src="holder.js/100%x201" {{bind-attr src="url" }} class="img-responsive img_border" />
+                                </div>
+                            </div>
+                           {{/each}}
+                           {{view App.TextFileView id="fileImg" contentBinding=images}}
                             <div class="col-xs-3">
                                 <div class="img_border text-center pad_div">
-                                    <a href="#" class="add_more">
+                                    <a href="#" class="add_more" {{action "upload" }}>
                                         <span class="glyphicon glyphicon-plus plus_big"></span>
                                         <br />
                                         <p>添加更多</p>
@@ -64,16 +71,6 @@
                 </div>
             </div>
         </div>
-    </script>
-
-    <script type="text/x-handlebars" data-template-name="image">
-        {{#each  view.content}}
-            <div class="col-xs-3">
-                <div>
-                    <img data-src="holder.js/100%x201" {{bind-attr src="url"}} class="img-responsive img_border" />
-                </div>
-            </div>
-        {{/each}}
     </script>
 
     <script src="js/lib/jquery-1.10.2.min.js"></script>
