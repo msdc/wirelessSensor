@@ -3,10 +3,16 @@
  */
 var redis = require('redis');
 var RedisOperator = require('./redisOperator.js');
+
 var redisSettings = {
-    host: "127.0.0.1",
+    host: "192.168.1.120",
     port: 6379
 };
+
+//var redisSettings = {
+//    host: "127.0.0.1",
+//    port: 6379
+//};
 
 var client = redis.createClient(redisSettings.port, redisSettings.host);
 // Get connection errors for logging...

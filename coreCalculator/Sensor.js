@@ -63,9 +63,9 @@ exports.processDataFromSocket = function (io, socket, data) {
         return;
     }
 
-    var calculator=new Calculator(data,client);
+    //var calculator=new Calculator(data,client);
     //var finalResult=calculator.kMeansClusterCalculator();
-    var finalResult=calculator.singleLineCalculator();
+    var finalResult=singleLineCalculator(data,client);
     io.emit('result', finalResult);
 };
 
@@ -93,9 +93,9 @@ exports.processDataFromHttp = function (req, res) {
             return;
         }
 
-        var calculator=new Calculator(data,client);
+        //var calculator=new Calculator(data,client);
         //calculator.kMeansClusterCalculator();
-        calculator.singleLineCalculator();
+        calculator.singleLineCalculator(data,client);
 
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
@@ -103,10 +103,6 @@ exports.processDataFromHttp = function (req, res) {
     });
 };
 
-/**
- *
- * @说明 取redis中key中包含_Calculated的key进行描点操作
- * */
 exports.drawPointFromRedis = function (io, socket, data) {
     var client = redis.createClient(redis_port, redis_host);
     client.on("error", function (err) {
@@ -174,23 +170,35 @@ exports.drawSinglePointFromRedis=function (io, socket, data) {
     });
 };
 
-/**
- *
- * @说明 计算样本数据入口类
- * @param {Object} 原始的样本数据，Json对象  {Object} redisClient.
-* */
-function Calculator(originalData,redisClient){
-    this.redisClient=redisClient||{};
-    this.originalData=originalData||{};
-};
+exports.getRecentPoint=function(req,res){
+    var key=req.query.id;
+    var result=[];
+    var client=redis.createClient(redis_port,redis_host);
+    if(key){
+        client.get(key,function(data){
+            res.send(data);
+        })
+    }
+    else{
+        client.keys("*_*_Calculated",function(err,keys){
+           keys.forEach(function(item,pos){
+               client.get(item,function(err,data){
+                   result.push(data);
+                   if(pos==(keys.length-1)){
+                       res.send(result);
+                       client.quit();
+                   }
+               });
+           });
+        });
+    }
+}
 
 /**
 *
  * @说明 使用1维方法计算设备点的距离
 * */
-Calculator.prototype.singleLineCalculator=function(){
-    var data=this.originalData;
-    var client=this.redisClient;
+function singleLineCalculator(data,client){
 
     var serializeJsonData = JSON.stringify(data);
     var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
@@ -211,20 +219,12 @@ Calculator.prototype.singleLineCalculator=function(){
     return finalResult;
 };
 
-/**
- *
- * @说明 保存计算前后的数据到redis.
- * @param {Function} 点的计算方法
-* */
-Calculator.prototype.saveCalculateData=function(calculateMethod){};
 
 /**
  *
  * @说明  使用K-Means计算点
 * */
-Calculator.prototype.kMeansClusterCalculator=function(){
-    var data=this.originalData;
-    var client=this.redisClient;
+function kMeansClusterCalculator(data,client){
 
     var serializeJsonData = JSON.stringify(data);
     var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);

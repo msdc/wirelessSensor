@@ -3,8 +3,12 @@
     "uuid": "ES123654",
     "major": 2,
     "minor": 1,
-    "name": "Crocs",
     "createDate": "2014-01-01",
     "nextMaintainDate": "2014-09-01",
-    "status": "运行中"
+    "status": "运行中",
+    "position":{
+        "mapsID":"maps_1",
+        "x":12,
+        "y":13
+    }
 }

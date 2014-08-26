@@ -5,9 +5,16 @@ var easypost = require('easypost');
 var redis=require("redis");
 
 var redisSettings = {
-    host: "127.0.0.1",
+    host: "192.168.1.120",
     port: 6379
 };
+
+//var redisSettings = {
+//    host: "127.0.0.1",
+//    port: 6379
+//};
+
+
 
 function RedisOperator(redisClient, req, res) {
     this.client = redis.createClient(redisSettings.port,redisSettings.host);

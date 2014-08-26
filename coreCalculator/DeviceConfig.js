@@ -28,6 +28,15 @@ exports.singleSensorPointArray=function(){
     return singleSensorPoint;
 };
 
+exports.redisSettings=function()
+{
+    var obj={
+        host: "192.168.1.120",
+        port: 6379
+    };
+    return obj
+}
+
 /**
  var uuidArr=[//测试数据(固定值，设备坐标)
  {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_1',x:0.00,y:5.00},

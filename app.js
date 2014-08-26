@@ -12,6 +12,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/website'));
 
 app.post('/sensorData',sensor.processDataFromHttp);
+app.get("/getRecentPoint",sensor.getRecentPoint);
 
 app.post("/saveGraphMatrix",navigation.saveGraphMatrix);
 app.get("/getGraphMatrix/:graphid",navigation.getGraphMatrix);
