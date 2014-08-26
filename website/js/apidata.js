@@ -1,4 +1,4 @@
-﻿; (function ($) {
+﻿; var api = (function ($) {
     $.apidata = function () {
         $.extend(this, {
             ajax: function (url, type, data, callback) {
@@ -10,7 +10,9 @@
                     cache: false,
                     dataType: "json",
                     contentType: "application/json",
-                    success: callback(result),
+                    success: function (data) {
+                        callback(data);
+                    },
                     error: function (xhr, status, error) {
                         alert(status);
                     }
@@ -32,24 +34,42 @@
                     }
                 });
             },
+            headurl: "http://localhost:1337/",
+            mergeurl: function (url) {
+                return this.headurl + url;
+            },
             ms: {
-                updateplace:function(){
-
+                apiajax: this,
+                insertplace: function (json, callback) {
+                    this.apiajax.ajax(this.apiajax.mergeurl("place/add"), "Post", json, callback);
                 },
-                getplace: function () {
-
+                updateplace: function (json, callback) {
+                    this.apiajax.ajax(this.apiajax.mergeurl("place/update"), "Post", json, callback);
+                },
+                getplace: function (callback) {
+                    this.apiajax.ajax("/resource/place.html", "Get", null, callback);
                 },
                 insertplacemap: function () { },
                 updateplacemap: function () { },
-                deleteplacemap:function(){},
+                deleteplacemap: function () { },
                 getplacemaps: function () {
 
                 },
                 insertplacemerchant: function () { },
                 updateplacemerchant: function () { },
-                deleteplacemerchant:function(){},
+                deleteplacemerchant: function () { },
                 getplacemerchants: function () { }
             }
         });
     }
+
+    var  instance;
+    function singleton() {
+        if (instance === undefined || instance === null) {
+            instance = new $.apidata();
+        }
+        return instance;
+    }
+
+    return singleton();
 })(jQuery);

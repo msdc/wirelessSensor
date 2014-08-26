@@ -34,6 +34,9 @@ App.ApplicationView = Ember.View.extend({
 App.ApplicationController = Ember.ObjectController.extend({
     userName: "Wenxiang",
     actions: {
+        logout: function () {
+            alert("logout");
+        },
         exit: function () { alert("Exit"); }
     }
 });
