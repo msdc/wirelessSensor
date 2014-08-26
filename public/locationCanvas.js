@@ -23,7 +23,7 @@ define(function(require, exports, module) {
 				configJson.inchesM=0.0254;
 				
 				//configJson.zoomImg=1;
-				configJson.zoomImg={};
+				configJson.zoomImg={}
 				configJson.zoomImg.x=configJson.bj_draw.w/3100,
 				configJson.zoomImg.y=configJson.bj_draw.h/2500;//imgA10086的viewBOX 值
 				console.log('configJson.zoomImg:',configJson.zoomImg);
