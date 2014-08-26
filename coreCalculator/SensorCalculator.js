@@ -133,7 +133,7 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData,offset,be
 
     //距离当前设备 最近的两个Beacon.
     if(result.length>=0){
-        var resultLocationData=monitorPackageHandler.convertDistanceToPoint(result[0],offset,monitorPackageHandler);
+        var resultLocationData=monitorPackageHandler.convertDistanceToPoint(result[0],offset,monitorPackageHandler,dataObj);
         return resultLocationData;
     }
 

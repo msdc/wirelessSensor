@@ -258,7 +258,8 @@ MonitorPackageHandler.prototype.getClosestDistance=function(monitorPackageHandle
     return result;
 };
 
-MonitorPackageHandler.prototype.convertDistanceToPoint=function(distanceToBeacon,offset,monitorPackageHandler){
+MonitorPackageHandler.prototype.convertDistanceToPoint=function(distanceToBeacon,offset,monitorPackageHandler,originalData){
+    var data=originalData;
     var beaconOneIndex=distanceToBeacon.beaconName;
     var pointX=distanceToBeacon.distance+monitorPackageHandler.getBeaconDistance(beaconOneIndex);
     var pointY;
@@ -273,6 +274,42 @@ MonitorPackageHandler.prototype.convertDistanceToPoint=function(distanceToBeacon
     var location=[];
     location.push(pointObj);
     var resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+    return resultLocationData;
+};
+
+MonitorPackageHandler.prototype.getDistanceBetweenBeacon=function(beaconIndex1,beaconIndex2){
+    var beaconOneDistance=this.getBeaconDistance(beaconIndex1);
+    var beaconTwoDistance=this.getAverageDistance(beaconIndex2);
+    var betweenDistance=Math.abs(beaconOneDistance-beaconTwoDistance);
+    return betweenDistance;
+};
+
+MonitorPackageHandler.prototype.getMinBeaconDistance=function(beaconArray){
+    var min=0;
+    if(beaconArray.length>=2){
+        for(var index in beaconArray){
+            var beaconObj=beaconArray[index];
+            if(beaconObj.distance<min){
+                min = beaconObj.distance;
+            }
+        }
+    }
+    return min;
+};
+
+MonitorPackageHandler.prototype.fixationPointGenerator=function(beaconArray,presetDistance,originalData){
+    var data=originalData||{};
+    var location=[];
+    var resultLocationData;
+    if(beaconArray.length>=2){
+        var firstPointX=this.getMinBeaconDistance(beaconArray);
+        var distanceBetweenBeacon=this.getDistanceBetweenBeacon(beaconArray[0],beaconArray[1]);
+        var pointX=distanceBetweenBeacon/2+firstPointX;
+        var pointY=presetDistance;
+        location.push({x:pointX,y:pointY});
+        resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+    }
+
     return resultLocationData;
 };
 
