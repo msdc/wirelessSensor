@@ -3,7 +3,7 @@ define(function(require, exports, module) {
 		var raphaelTP = $('#raphaelTP');
 		var bxPoint=$('#bxPoint');
 		var imgA = $('#imgA10086'),maptt=$('#maptt');
-		var canvasN,configJson,
+		var canvasN,configJson,viewBOX_w=3100,viewBOX_h=2500,
 			rectW = 5, rectH = 5, radius = 8, sbW =16, sbH = 24;//坐标系矩形宽高、画圆的半径 设备大小
 		var rapAll = [];//存放页面rect元素的“画”对象
 
@@ -23,9 +23,9 @@ define(function(require, exports, module) {
 				configJson.inchesM=0.0254;
 				
 				//configJson.zoomImg=1;
-				configJson.zoomImg={};
-				configJson.zoomImg.x=configJson.bj_draw.w/3100,
-				configJson.zoomImg.y=configJson.bj_draw.h/2500;//imgA10086的viewBOX 值
+				configJson.zoomImg={}
+				configJson.zoomImg.x=configJson.bj_draw.w/viewBOX_w,
+				configJson.zoomImg.y=configJson.bj_draw.h/viewBOX_h;//imgA10086的viewBOX 值
 				console.log('configJson.zoomImg:',configJson.zoomImg);
 				
 				configJson.uuidArr=configJson.uuidArr;
