@@ -65,15 +65,6 @@ $(function(){
 		 console.log( "get sign: " ,data );
 	   }
 	});
-
-    $.ajax({
-        type: "get",
-        url: "/device/get"+'?uuid='+uuid+'&major='+major+'&minor='+minor,
-        dataType:'json',
-        success: function(data){
-            console.log( "get sign: " ,data );
-        }
-    });
 	
 //	$.ajax({
 //		type:'delete',
