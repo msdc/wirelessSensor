@@ -41,7 +41,7 @@ define(function(require, exports, module) {
 				
 				$('#wrapRapGird,#raphaelTP,#maptt,#bxPoint,#imgA10086,#imgA10086 svg').css({width: configJson.canvas.w + 'px', height: configJson.canvas.h + 'px'});
 				//#imgA10086 svg 无它设置则显示大小及位置出错。。如前面的：Raphael('bxPoint', configJson.canvas.w, configJson.canvas.h);
-
+			
 				that.evt();
 			},
 			sumA:function(callback){//提交‘标注

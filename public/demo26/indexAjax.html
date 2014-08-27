@@ -5,11 +5,8 @@
     <title>网格及坐标系demo</title>
 </head>
 <body>
-<script src="jquery.js"></script>
+<script src="jquery2.1.js"></script>
 <script>
-function qq(){
-	alert('9999')
-}
 $(function(){
 	$.post('http://127.0.0.1:1337/device/add',{
 			"BleMac": 1,
@@ -25,7 +22,7 @@ $(function(){
 				"y":13
 			}
 		},function(data){
-			console.log('add:',data.result);
+			console.log('add:',data);
 	})
 	$.post('http://127.0.0.1:1337/device/update',{
 			"BleMac": 1,
@@ -41,8 +38,18 @@ $(function(){
 				"y":13
 			}
 		},function(data){
-			console.log('update:',data.result);
+			console.log('update:',data);
 	})	
+
+	
+	$.ajax({
+	   type: "get",
+	   url: "http://127.0.0.1:1337/device/get",
+	   success: function(data){
+		 console.log( "getAll: " ,data );
+	   }
+	});	
+	/***
 	$.ajax({
 		type:'delete',
 		url:'http://127.0.0.1:1337/device/del',
@@ -60,15 +67,25 @@ $(function(){
 				"y":13
 			}
 		},
-		datatype:'json',
+		dataType:'json',
 		success:function(data){
-			console.log('delete:',data.result);
-		
+			console.log('delete:',data);
+		},
+		error:function(data){
+			console.log('deleteError:',data);
 		}
-	
 	})
+	**/
 })
 
+//data: "name=John&location=Boston",
+</script>
+<div id="q1">q1</div>
+<p>p</p>
+<script>
+$(function(){
+	$("p").appendTo($('#q1') );
+})
 </script>
 <iframe src="coordinateSystem.html" width="1200" height="800"></iframe>
 </body>

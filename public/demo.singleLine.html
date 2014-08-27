@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="./socket.io/socket.io.js"></script>
+    <!--<script src="./socket.io/socket.io.js"></script>-->
     <script src="jquery.js"></script>
     <script>
         var ctx;
@@ -16,7 +16,22 @@
         var beaconEightDistance=11.70;
         $(function(){
             initCanvas();
+            //setInterval(function(){
+                //http();
+            //},2000);
+            http();
+        });
 
+        function http() {
+            $.getJSON('./getRecentPoint',function(data){
+                for(var index in data){
+                    draw(centerPointX,centerPointY,ctx,data[index]);
+                    console.log(data[index]);
+                }
+            });
+        }
+
+        function socketIO(){
             var socket = io.connect('http://localhost:1338');
 
             socket.on('welcome', function (data) {
@@ -30,7 +45,7 @@
             socket.on('result',function(data){
                 if(!data){return;}
                 //setTimeout(function(){
-                    //draw(centerPointX,centerPointY,ctx,data);
+                //draw(centerPointX,centerPointY,ctx,data);
                 //},2000);
                 draw(centerPointX,centerPointY,ctx,data);
                 console.log(data);
@@ -39,7 +54,7 @@
             $('#btn_refresh').click(function(){
                 window.location.reload(true);
             });
-        });
+        }
 
         function initCanvas()
         {
