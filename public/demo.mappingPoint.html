@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<script src="./socket.io/socket.io.js"></script>-->
+    <script src="jquery.js"></script>
+    <script>
+        var ctx;
+        var centerPointX=0;
+        var centerPointY=300;
+        var factor=30;//实际点的扩大比例
+        var beaconThreeDistance=0.00;
+        var beaconTwoDistance=5.40;
+        var beaconSevenDistance=8.40;
+        var beaconEightDistance=11.70;
+        var mappingPoint01={x:2.7,y:1.5};
+        var mappingPoint02={x:6.9,y:1.5};
+        var mappingPoint03={x:9.9,y:1.5};
+        $(function(){
+            initCanvas();
+            getPointData();
+        });
+
+        function getPointData() {
+            $.getJSON('./getRecentPoint',function(data){
+                for(var index in data){
+                    draw(ctx,data[index]);
+                    console.log(data[index]);
+                }
+            });
+        }
+
+        function initCanvas()
+        {
+            var canvas;
+            //var ctx;
+            var height = 600;
+            var width = 800;
+            //set the coordinate center point.
+            //var centerPointX=400;
+            //var centerPointY=300;
+
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            //draw x line.
+            ctx.beginPath();
+            ctx.moveTo(0,centerPointY);
+            ctx.lineTo(width,centerPointY);
+            ctx.stroke();
+
+            //绘制beacon3 点
+            drawBeaconPointOnLine(ctx,beaconThreeDistance);
+
+            //绘制beacon2 点
+            drawBeaconPointOnLine(ctx,beaconTwoDistance);
+
+            //绘制beacon7 点
+            drawBeaconPointOnLine(ctx,beaconSevenDistance);
+
+            //绘制beacon8 点
+            drawBeaconPointOnLine(ctx,beaconEightDistance);
+
+            //绘制固定点
+            drawMappingPoint(ctx,mappingPoint01,false);
+            drawMappingPoint(ctx,mappingPoint02,false);
+            drawMappingPoint(ctx,mappingPoint03,false);
+        }
+
+        //绘制beacon点
+        function drawBeaconPointOnLine(ctx,beaconDefaultDistance){
+            ctx.beginPath();
+            ctx.moveTo(beaconDefaultDistance*factor,centerPointY);
+            ctx.lineTo(beaconDefaultDistance*factor,centerPointY-10);
+            ctx.stroke();
+        }
+
+        //绘制固定点
+        function drawMappingPoint(ctx,point,isFilled,fillStyle){
+            ctx.save();
+
+            if(fillStyle){
+                ctx.fillStyle=fillStyle;
+            }
+
+            var x=(point.x)*factor;
+            var y=centerPointY+point.y*factor;
+
+            ctx.translate(x, y);
+            ctx.beginPath();
+            ctx.arc(0, 0, 4, 0, Math.PI*2, true);
+            if(isFilled&&isFilled==true){
+                ctx.fill();
+            }else
+            {
+                ctx.stroke();
+            }
+            ctx.closePath();
+            ctx.restore();
+        }
+
+        //描点的入口方法
+        function draw(ctx,data) {
+            var data=JSON.parse(data);
+            var resultArray=data.location;//以X轴为横轴为例:[x:23,y:0]
+            var distance=resultArray[0].x;
+            switch(distance){
+                case mappingPoint01.x:
+                    drawMappingPoint(ctx,mappingPoint01,true,'green');
+                    break;
+                case mappingPoint02.x:
+                    drawMappingPoint(ctx, mappingPoint02,true,'green');
+                    break;
+                case mappingPoint03.x:
+                    drawMappingPoint(ctx,mappingPoint03,true,'green');
+                    break;
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div>
+    <canvas id="canvas" height="600" width="800">您的浏览器不支持canvas！</canvas>
+    <!--    <button type="button" id="btn_start">Draw Points</button>-->
+    <button type="button" id="btn_refresh">Refresh Canvas</button>
+</div>
+</body>
+</html>
