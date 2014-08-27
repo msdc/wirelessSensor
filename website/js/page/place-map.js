@@ -87,6 +87,7 @@ App.PlaceController = Ember.ObjectController.create({
         this.set("id", id);
         this.set('name', name);
         this.removeAll();
+        maps = maps || [];
         for (var i = 0; i < maps.length; i++) {
             this.get('maps').pushObject(App.MapModel.create({
                 id: maps[i].id,

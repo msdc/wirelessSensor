@@ -47,7 +47,7 @@ exports.saveGraphMatrix = function (req, res) {
             var graphMatrix = JSON.parse(data.graphMatrix);
             if (graphKey && graphMatrix) {
                 client.set(graphKey, graphMatrix);
-                res.send("success saved the matrix");
+                res.send({result:"success saved the matrix"});
             }
         }
     });
