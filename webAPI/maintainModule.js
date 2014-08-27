@@ -10,17 +10,17 @@ var place = function () {
 }
 
 place.prototype.add = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Add('place');
 }
 
 place.prototype.get = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Get('place');
 }
 
 place.prototype.del = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Del('place');
 }
 
@@ -28,18 +28,18 @@ var seller = function () {
 }
 
 seller.prototype.add = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Add('seller');
 }
 seller.prototype.get = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Get('seller');
 }
 seller.prototype.getByPlace = function (req, res) {
 
 }
 seller.prototype.del = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Del('seller');
 }
 
@@ -94,7 +94,7 @@ beaconDevice.prototype.get = function (req, res) {
     else {
         var result = [];
         client.keys(keyPart, function (err, list) {
-            if (!err & list && list.length > 0) {
+            if (!err && list && list.length > 0) {
                 list.forEach(function (key, pos) {
                     client.get(key, function (err, item) {
                         result.push(item);
@@ -114,7 +114,7 @@ beaconDevice.prototype.get = function (req, res) {
 }
 
 beaconDevice.prototype.del = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Del('device');
 }
 
@@ -122,15 +122,15 @@ var promotion = function () {
 }
 
 promotion.prototype.add = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Add('promotion');
 }
 promotion.prototype.get = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Get('promotion');
 }
 promotion.prototype.del = function (req, res) {
-    var redisOperator = new RedisOperator(client, req, res);
+    var redisOperator = new RedisOperator(req, res);
     redisOperator.Del('promotion');
 }
 
