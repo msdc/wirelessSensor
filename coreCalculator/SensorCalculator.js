@@ -4,6 +4,7 @@
 var trilateration = require("./Trilateration.js");
 var kmeans = require("./KMeansClustering.js");
 var MonitorPackageHandler=require('./MonitorPackageHandler.js');
+var config = require('./../config.js');
 
 function SensorDataCalculator() {};
 
@@ -148,7 +149,7 @@ SensorDataCalculator.mappingPointCalculate=function(sourceData,offset,beaconPoin
     var dataObj;
     try {
         dataObj = JSON.parse(sourceData);
-        dataObj = SensorDataCalculator.filterDataByAcc(dataObj, defaultBeaconDistance);
+        dataObj = SensorDataCalculator.filterDataByAcc(dataObj, config.defaultBeaconDistance);
         if (!dataObj.deviceSerial||!dataObj.monitorPackage) {
             return;
         }

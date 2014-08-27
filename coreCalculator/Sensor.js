@@ -92,8 +92,8 @@ exports.processDataFromHttp = function (req, res) {
 
         //var calculator=new Calculator(data,client);
         //calculator.kMeansClusterCalculator();
-        singleLineCalculator(data, client);
-        //mappingPointCalculator(data, client);
+        //singleLineCalculator(data, client);
+        mappingPointCalculator(data, client);
 
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
