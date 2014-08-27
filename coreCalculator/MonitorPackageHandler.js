@@ -308,7 +308,7 @@ MonitorPackageHandler.prototype.getMinBeaconDistance=function(beaconArray){
 MonitorPackageHandler.prototype.fixationPointGenerator=function(beaconArray,presetDistance,originalData){
     var data=originalData||{};
     var location=[];
-    var resultLocationData;
+    var resultLocationData=null;
     if(beaconArray.length>=2){
         var firstPointX=this.getMinBeaconDistance(beaconArray);
         var distanceBetweenBeacon=this.getDistanceBetweenBeacon(beaconArray[0],beaconArray[1]);
@@ -316,6 +316,56 @@ MonitorPackageHandler.prototype.fixationPointGenerator=function(beaconArray,pres
         var pointY=presetDistance;
         location.push({x:pointX,y:pointY});
         resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+    }
+
+    return resultLocationData;
+};
+
+MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,monitorPackageHandler,originalData){
+    var prefixString=this.prefixString;
+    var mappingPointArray=this.beaconArray;
+
+    var resultLocationData=null;
+
+    if(beaconArray.length>=2){
+        var firstBeaconName=prefixString+beaconArray[0].beaconName;
+        var pointArr=[];
+        for(var point in mappingPointArray){
+            if(point.indexOf(firstBeaconName)>-1){
+                pointArr[point]=mappingPointArray[point];
+            }
+        }
+
+        var location=[];
+        //pointArr的长度应该为1或者2
+        if(pointArr.length==1){
+            for(var point in pointArr){
+                location.push(pointArr[point]);
+            }
+            resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+        }
+        else if(pointArr.length==2){//如果有两个点，再根据距离最近的第2个的信息来确定点
+            var secondBeaconName=prefixString+beaconArray[1].beaconName;
+            var firstPointIndex='';
+            var count=0;
+            for(var point in pointArr){
+                count++;
+                if(count==1){
+                    firstPointIndex=point;
+                }
+
+                if(point.indexOf(secondBeaconName)>-1){
+                    location.push(pointArr[point]);
+                }
+            }
+
+            //如果点的数据有误，则默认取第一个
+            if(location.length==0){
+                location.push(pointArr[firstPointIndex]);
+            }
+
+            resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+         }
     }
 
     return resultLocationData;

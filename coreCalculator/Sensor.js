@@ -93,9 +93,8 @@ exports.processDataFromHttp = function (req, res) {
             return;
         }
 
-        //var calculator=new Calculator(data,client);
-        //calculator.kMeansClusterCalculator();
-        calculator.singleLineCalculator(data,client);
+        //kMeansClusterCalculator();
+        singleLineCalculator(data,client);
 
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
@@ -192,7 +191,7 @@ exports.getRecentPoint=function(req,res){
            });
         });
     }
-}
+};
 
 /**
 *
@@ -206,7 +205,7 @@ function singleLineCalculator(data,client){
     //save the data before calculate.
     client.set(keyBeforeCalculate, serializeJsonData);
 
-    var beaconPointArray=deviceConfig.singleSensorPointArray();
+    var beaconPointArray=deviceConfig.singleSensorPointArray();//直线模型beacon数组
     //save the data after calculated.
     var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData,offset,beaconPointArray);
     if(finalResult) {
@@ -217,8 +216,31 @@ function singleLineCalculator(data,client){
 
     client.quit();
     return finalResult;
-};
+}
 
+/**
+ *
+ * @说明 使用定点模型计算
+ * */
+function mappingPointCalculator(data,client){
+    var serializeJsonData = JSON.stringify(data);
+    var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
+
+    //save the data before calculate.
+    client.set(keyBeforeCalculate, serializeJsonData);
+
+    var beaconPointArray=deviceConfig.pointsMappingArray();//定点模型点映射数组
+    //save the data after calculated.
+    var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData,offset,beaconPointArray);
+    if(finalResult) {
+        var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
+        client.set(keyAfterCalculate, JSON.stringify(finalResult));
+        //client.expire(keyAfterCalculate, 120);
+    }
+
+    client.quit();
+    return finalResult;
+}
 
 /**
  *
@@ -242,4 +264,4 @@ function kMeansClusterCalculator(data,client){
 
     client.quit();
     return finalResult;
-};
+}

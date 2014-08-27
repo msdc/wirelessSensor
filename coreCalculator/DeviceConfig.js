@@ -28,6 +28,14 @@ exports.singleSensorPointArray=function(){
     return singleSensorPoint;
 };
 
+exports.pointsMappingArray=function(){
+    var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
+    var points=[];
+    points[frontStr+"_0_3"+frontStr+"_0_2"]={x:2.7,y:1.5};
+    points[frontStr+"_0_2"+frontStr+"_0_7"]={x:6.9,y:1.5};
+    points[frontStr+"_0_7"+frontStr+"_0_8"]={x:9.9,y:1.5};
+};
+
 exports.redisSettings=function()
 {
     var obj={

@@ -129,11 +129,48 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData,offset,be
     //return averageDistance;
     ////******************************old method end*******************************************////
 
+    //2.得到最近的2个beacon  返回值result中有beacon名称和距离beacon的acc距离值。
     var result=monitorPackageHandler.getClosestDistance(monitorPackageHandler,monitorPackage,2);
 
-    //距离当前设备 最近的两个Beacon.
+    //3.根据第2步结果 将直线模型的距离信息转换成点坐标.
     if(result.length>=0){
-        var resultLocationData=monitorPackageHandler.convertDistanceToPoint(result,offset,monitorPackageHandler,dataObj);
+        var resultLocationData=monitorPackageHandler.convertDistanceToPoint(result,offset,monitorPackageHandler,dataObj);//直线模型
+        return resultLocationData;
+    }
+
+    return null;
+};
+
+/**
+ *
+ * @说明 定点模型方案
+ * */
+SensorDataCalculator.mappingPointCalculate=function(sourceData,offset,beaconPointArray){
+    var dataObj;
+    try {
+        dataObj = JSON.parse(sourceData);
+        dataObj = SensorDataCalculator.filterDataByAcc(dataObj, defaultBeaconDistance);
+        if (!dataObj.deviceSerial||!dataObj.monitorPackage) {
+            return;
+        }
+    }
+    catch (e) {
+        console.log(e);
+        return;
+    }
+
+    //原始的样本数据
+    var monitorPackage=dataObj.monitorPackage;
+
+    var monitorPackageHandler=new MonitorPackageHandler(monitorPackage,beaconPointArray);
+    //1.由样本数据求设备到每个beacon点的距离的平均值
+    monitorPackage=monitorPackageHandler.getAverageMonitorPackage(monitorPackage);
+    //2.得到最近的2个beacon  返回值result中有beacon名称和距离beacon的acc距离值。
+    var result=monitorPackageHandler.getClosestDistance(monitorPackageHandler,monitorPackage,2);
+
+    //3.根据第2步结果 得到最终的映射点.
+    if(result.length>=0){
+        var resultLocationData=monitorPackageHandler.getMappingPoint(result,offset,monitorPackageHandler,dataObj);//定点模型
         return resultLocationData;
     }
 
