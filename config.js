@@ -28,17 +28,25 @@ exports.singleSensorPointArray = function () {
     return singleSensorPoint;
 };
 
-exports.redisSettings = function () {
-    var obj = {
-        host: "192.168.1.120",
+exports.redisSettings =  {
+//    var obj = {
+//        host: "192.168.1.120",
+//        port: 6379
+//    };
+    //var obj = {
+        host: "127.0.0.1",
         port: 6379
-    };
-    return obj
+    //};
+
+
 }
 
-exports.lineOffset = function () {
-    var offset = {x: 0, y: 1.5};//实际的偏移量
-    return offset;
+exports.lineOffset = {
+    //var offset = {
+        x: 0,
+        y: 1.5
+    //};//实际的偏移量
+    //return offset;
 }
 
 /**

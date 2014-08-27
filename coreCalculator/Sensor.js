@@ -4,8 +4,7 @@
 var redis = require('redis');
 var easypost = require('easypost');
 var sensorCalculator = require("./SensorCalculator.js");
-
-var config = require('./config.js');
+var config = require('./../config.js');
 
 function SendError(err, res) {
     console.error(err);
