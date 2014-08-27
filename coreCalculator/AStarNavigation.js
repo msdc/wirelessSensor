@@ -40,6 +40,7 @@ exports.saveGraphMatrix = function (req, res) {
             res.send(500, "there is no data in the request body");
         }
         else {
+            data=typeof (data)=="object"?data:JSON.parse(data);
             var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
             client.on("error", function (err) {
                 if (err) {
@@ -48,7 +49,7 @@ exports.saveGraphMatrix = function (req, res) {
                 }
             });
             var graphKey = data.graphName;
-            var graphMatrix = JSON.parse(data.graphMatrix);
+            var graphMatrix = data.graphMatrix;
             if (graphKey && graphMatrix) {
                 client.set(graphKey, graphMatrix);
                 res.send({result:"success saved the matrix"});
