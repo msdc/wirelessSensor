@@ -85,11 +85,13 @@ $(function(){
 				tArray[k][j]="1";//默认都是路1，障碍为0
 			}
 		}
-		this.girdArr=tArray;//生成网格对应的二维数组并设置每一项为1（路1，障碍为0），动态的
+		return tArray;//生成网格对应的二维数组并设置每一项为1（路1，障碍为0），动态的
 	};
 	var qArr=Dim(10,10);
-	$.post("/saveGraphMatrix",{graphName:'firstTestGraph',graphMatrix:JSON.stringify(qArr) }, function (result) {
-		console.log("Z000A: ",result);
+	$.post("/saveGraphMatrix",{graphName:'firstTestGraph',graphMatrix:JSON.stringify(qArr) }, function (data) {
+		if(data.result){
+			console.log("Z000A: ",data.result);
+		}
 	})
 	
 	
