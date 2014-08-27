@@ -54,10 +54,18 @@ $(function(){
 		}
 	   }
 	});
-
-
+	
 	var uuid='ES123654',major=2,minor=1;
 	var url='/device/del?uuid='+uuid+'&major='+major+'&minor='+minor;
+	$.ajax({
+	   type: "get",
+	   url: "/device/get",
+	   dataType:'json',
+	   success: function(data){
+		 console.log( "get sign: " ,data );
+	   }
+	});
+	
 	
 	$.ajax({
 		type:'delete',
@@ -70,7 +78,10 @@ $(function(){
 			console.log('deleteError:',data);
 		}
 	})
-
+	
+		
+	
+	
 })
 
 
