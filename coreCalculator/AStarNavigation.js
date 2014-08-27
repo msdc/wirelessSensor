@@ -16,15 +16,19 @@ exports.findPath = function (req, res) {
             console.log('data is not defined.');
             res.send(500, "there is no data in the request body");
         }
-        var graphMatrix = JSON.parse(data.graphMatrix);
-        var startNode = data.start;
-        var endNode = data.end;
-        var astar = astarModule.astar;
-        var gp = new astarModule.Graph(graphMatrix);
-        var start = gp.grid[startNode.x][startNode.y];
-        var end = gp.grid[endNode.x][endNode.y];
-        var result = astar.search(gp, start, end);
-        res.send(result);
+        else{
+            data=typeof (data)=="object"?data:JSON.parse(data);
+            var graphMatrix = data.graphMatrix;
+            var startNode = data.start;
+            var endNode = data.end;
+            var astar = astarModule.astar;
+            var gp = new astarModule.Graph(graphMatrix);
+            var start = gp.grid[startNode.x][startNode.y];
+            var end = gp.grid[endNode.x][endNode.y];
+            var result = astar.search(gp, start, end);
+            res.send(result);
+        }
+
         //return astar.search(graphNodes,startNode,endNode);
     });
 }
