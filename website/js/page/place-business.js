@@ -5,16 +5,19 @@
 *******************/
 App.PlaceView = Ember.View.extend({
     templateName: 'place',
-    contentBinding: 'App.PlaceController',
-    onRerender: function () {
-        this.rerender();
-    }.observes('content.sellers')
+    contentBinding: 'App.PlaceController'   
 });
 
 App.ModalView = Ember.View.extend({
     templateName: 'modal',
-    contentBinding: 'App.ModalController'
+    contentBinding: 'App.ModalController',
+    categorySelectView: Ember.Select.extend({
+        contentBinding: 'App.CategoryController',
+        optionValuePath: 'content.id',
+        optionLabelPath: 'content.title'
+    })
 });
+
 
 /*******************
 ***     Model    ***
@@ -31,6 +34,10 @@ App.SellerModel = Em.Object.extend({
     images:[]
 });
 
+App.CategoryModel = Em.Object.extend({
+    id: null,
+    name:null
+});
 
 /*******************
 ***    Router    ***
@@ -45,6 +52,7 @@ App.Router.map(function () {
 App.PlaceController = Ember.ArrayController.create({
     id:null,
     name: null,
+    removeItem:null,
     content: [],
     insert: function () {
         var sellers = this.get("content");
@@ -75,11 +83,13 @@ App.PlaceController = Ember.ArrayController.create({
     },
     remove: function () {
         $('#modalDelete').modal('hide')
+        var item = this.get("removeItem");
         api.ms.deleteplacemerchant(item, function () {
             if (arguments[0] == "error") {
                 $("#divAlert").alert("warning", "删除场所地图失败！  " + arguments[1].message);
             } else {
                 $("#divAlert").alert("success", "删除场所地图成功！  ");
+                this.get('content').removeObject(item);
             }
         });
     },
@@ -113,21 +123,15 @@ App.PlaceController = Ember.ArrayController.create({
 App.ModalController = Ember.ObjectController.create({
     title: null,
     id:null,
-    logo: null,
     name: null,
+    logo: null,
+    category: null,
+    status: null,
+    promotionNumber: null,
+    tag: null,
     desc: null,
-    images: null,
+    images: [],
     act: null,
-    categorys: [{
-        "id": 1,
-        "name": "鞋"
-    }, {
-        "id": 2,
-        "name": "衣服"
-    }, , {
-        "id": 3,
-        "name": "日用品"
-    }],
     save: function () {
         var _act = this.get("act");
 
@@ -173,9 +177,13 @@ App.ModalController = Ember.ObjectController.create({
     },
     create: function (act, item) {
         if (item != undefined) {
-            this.set("id",item.id)
+            this.set("id", item.id);
             this.set("logo", item.logo);
             this.set("name", item.name);
+            this.set("category", item.category);
+            this.set("status", item.status);
+            this.set("promotionNumber", item.promotionNumber);
+            this.set("tag", item.tag);
             this.set("desc", item.desc);
             this.set("images", item.images);
         }
@@ -189,6 +197,19 @@ App.ModalController = Ember.ObjectController.create({
     }
 });
 
+App.CategoryController = Ember.ArrayController.create({
+    content: [{
+        "id": 1,
+        "name": "鞋"
+    }, {
+        "id": 2,
+        "name": "衣服"
+    }, , {
+        "id": 3,
+        "name": "日用品"
+    }]
+});
+    
 
 /*******************
 ***  Initialize  ***
@@ -196,9 +217,9 @@ App.ModalController = Ember.ObjectController.create({
 App.initializer({
     name: "placebusiness",
     initialize: function () {
-        api.ms.getplacemaps(function () {
+        api.ms.getplace(function () {
             if (arguments[0] == "error") {
-                $("#divAlert").alert("warning", "获取场所地图失败！  " + arguments[1].message);
+                $("#divAlert").alert("warning", "获取场所失败！  " + arguments[1].message);
             } else if (arguments[0].length > 0) {
                 var data = arguments[0];
                 var json = JSON.parse(data[0]);
@@ -209,7 +230,6 @@ App.initializer({
                     } else if (arguments[0].length > 0) {
                         var mdata = arguments[0];
                         var mjson = JSON.parse(mdata[0]);
-
 
                         App.PlaceController.create(mjson, json.id, json.name);
                     }

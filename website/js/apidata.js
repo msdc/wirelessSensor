@@ -11,7 +11,12 @@
                     dataType: "json",
                     contentType: "application/json",
                     success: function (data) {
-                        callback(data);
+                        if (data.error != undefined) {
+                            callback("error", data);
+                        }
+                        else {
+                            callback(data);
+                        }
                     },
                     error: function (xhr, status, error) {
                         callback("error", error);
