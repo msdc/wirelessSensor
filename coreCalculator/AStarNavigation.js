@@ -1,8 +1,9 @@
 var astarModule = require("./AStar.js")();
 var easypost = require('easypost');
 var redis = require('redis');
-var redis_port = 6379,
-    redis_host = "127.0.0.1";
+var config=require("./../config.js");
+//var redis_port = 6379,
+//    redis_host = "127.0.0.1";
 
 exports.findPath = function (req, res) {
 //    var tpGrid=[
@@ -35,7 +36,7 @@ exports.saveGraphMatrix = function (req, res) {
             res.send(500, "there is no data in the request body");
         }
         else {
-            var client = redis.createClient(redis_port, redis_host);
+            var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
             client.on("error", function (err) {
                 if (err) {
                     res.send(500, {result: false, message: err});
@@ -54,7 +55,7 @@ exports.saveGraphMatrix = function (req, res) {
 
 exports.getGraphMatrix = function (req, res) {
     var graphID = req.param("graphid");
-    var client = redis.createClient(redis_port, redis_host);
+    var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     client.on("error", function (err) {
         if (err) {
             res.send(500, {result: false, message: err});

@@ -4,10 +4,7 @@
 var redis = require('redis');
 var easypost = require('easypost');
 var sensorCalculator = require("./SensorCalculator.js");
-var redis_port = 6379,
-    redis_host = "127.0.0.1";
-var offset={x:0,y:1.5};//实际的偏移量
-var deviceConfig=require('./DeviceConfig.js');
+var config = require('./../config.js');
 
 function SendError(err, res) {
     console.error(err);
@@ -15,7 +12,7 @@ function SendError(err, res) {
 }
 
 exports.GetSensorDataFromRedis = function (key, callback) {
-    var client = redis.createClient(redis_port, redis_host);
+    var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
 
     client.on("error", function (err) {
         client.quit();
@@ -30,7 +27,7 @@ exports.GetSensorDataFromRedis = function (key, callback) {
 };
 
 exports.saveToRedis = function (finalPoint) {
-    var client = redis.createClient(redis_port, redis_host);
+    var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     client.on("error", function (err) {
         client.quit();
         console.log(err);
@@ -44,7 +41,7 @@ exports.saveToRedis = function (finalPoint) {
 };
 
 exports.processDataFromSocket = function (io, socket, data) {
-    var client = redis.createClient(redis_port, redis_host);
+    var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     client.on("error", function (err) {
         client.quit();
         console.log(err);
@@ -65,12 +62,12 @@ exports.processDataFromSocket = function (io, socket, data) {
 
     //var calculator=new Calculator(data,client);
     //var finalResult=calculator.kMeansClusterCalculator();
-    var finalResult=singleLineCalculator(data,client);
+    var finalResult = singleLineCalculator(data, client);
     io.emit('result', finalResult);
 };
 
 exports.processDataFromHttp = function (req, res) {
-    var client = redis.createClient(redis_port, redis_host);
+    var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     client.on("error", function (err) {
         if (err) {
             SendError(err, res);
@@ -93,8 +90,9 @@ exports.processDataFromHttp = function (req, res) {
             return;
         }
 
-        //kMeansClusterCalculator();
-        singleLineCalculator(data,client);
+        //var calculator=new Calculator(data,client);
+        //calculator.kMeansClusterCalculator();
+        calculator.singleLineCalculator(data, client);
 
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
@@ -103,7 +101,7 @@ exports.processDataFromHttp = function (req, res) {
 };
 
 exports.drawPointFromRedis = function (io, socket, data) {
-    var client = redis.createClient(redis_port, redis_host);
+    var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     client.on("error", function (err) {
         console.log(err);
         client.quit();
@@ -137,8 +135,8 @@ exports.drawPointFromRedis = function (io, socket, data) {
     });
 };
 
-exports.drawSinglePointFromRedis=function (io, socket, data) {
-    var client = redis.createClient(redis_port, redis_host);
+exports.drawSinglePointFromRedis = function (io, socket, data) {
+    var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     client.on("error", function (err) {
         console.log(err);
         client.quit();
@@ -169,35 +167,35 @@ exports.drawSinglePointFromRedis=function (io, socket, data) {
     });
 };
 
-exports.getRecentPoint=function(req,res){
-    var key=req.query.id;
-    var result=[];
-    var client=redis.createClient(redis_port,redis_host);
-    if(key){
-        client.get(key,function(data){
+exports.getRecentPoint = function (req, res) {
+    var key = req.query.id;
+    var result = [];
+    var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
+    if (key) {
+        client.get(key, function (data) {
             res.send(data);
         })
     }
-    else{
-        client.keys("*_*_Calculated",function(err,keys){
-           keys.forEach(function(item,pos){
-               client.get(item,function(err,data){
-                   result.push(data);
-                   if(pos==(keys.length-1)){
-                       res.send(result);
-                       client.quit();
-                   }
-               });
-           });
+    else {
+        client.keys("*_*_Calculated", function (err, keys) {
+            keys.forEach(function (item, pos) {
+                client.get(item, function (err, data) {
+                    result.push(data);
+                    if (pos == (keys.length - 1)) {
+                        res.send(result);
+                        client.quit();
+                    }
+                });
+            });
         });
     }
 };
 
 /**
-*
+ *
  * @说明 使用1维方法计算设备点的距离
-* */
-function singleLineCalculator(data,client){
+ * */
+function singleLineCalculator(data, client) {
 
     var serializeJsonData = JSON.stringify(data);
     var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
@@ -205,10 +203,10 @@ function singleLineCalculator(data,client){
     //save the data before calculate.
     client.set(keyBeforeCalculate, serializeJsonData);
 
-    var beaconPointArray=deviceConfig.singleSensorPointArray();//直线模型beacon数组
+    var beaconPointArray = config.singleSensorPointArray();
     //save the data after calculated.
-    var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData,offset,beaconPointArray);
-    if(finalResult) {
+    var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData, config.lineOffset, beaconPointArray);
+    if (finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
         //client.expire(keyAfterCalculate, 120);
@@ -245,8 +243,8 @@ function mappingPointCalculator(data,client){
 /**
  *
  * @说明  使用K-Means计算点
-* */
-function kMeansClusterCalculator(data,client){
+ * */
+function kMeansClusterCalculator(data, client) {
 
     var serializeJsonData = JSON.stringify(data);
     var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
@@ -256,7 +254,7 @@ function kMeansClusterCalculator(data,client){
 
     //save the data after calculated.
     var finalResult = sensorCalculator.processCalculate(serializeJsonData);
-    if(finalResult.length>0) {
+    if (finalResult.length > 0) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
         //client.expire(keyAfterCalculate, 120);

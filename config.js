@@ -1,33 +1,42 @@
-exports.uuidArr=function(){
-    var pointSB=[];
-    var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
-        pointSB[frontStr+'_0_1']={x:0.00,y:6.00};
-        pointSB[frontStr+'_0_2']={x:5.40,y:0.00};
-        pointSB[frontStr+'_0_3']={x:0.00,y:0.00};
-        pointSB[frontStr+'_0_4']={x:5.40,y:6.00};
-        pointSB[frontStr+'_0_5']={x:4.10,y:2.80};
-        pointSB[frontStr+'_0_6']={x:-0.32,y:2.80};//-0.32墙。
+exports.uuidArr = function () {
+    var pointSB = [];
+    var frontStr = 'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
+    pointSB[frontStr + '_0_1'] = {x: 0.00, y: 6.00};
+    pointSB[frontStr + '_0_2'] = {x: 5.40, y: 0.00};
+    pointSB[frontStr + '_0_3'] = {x: 0.00, y: 0.00};
+    pointSB[frontStr + '_0_4'] = {x: 5.40, y: 6.00};
+    pointSB[frontStr + '_0_5'] = {x: 4.10, y: 2.80};
+    pointSB[frontStr + '_0_6'] = {x: -0.32, y: 2.80};//-0.32墙。
 
-    var singleSensorPoint=[];
-        singleSensorPoint[frontStr+"_0_7"]={x:0.00};
-        singleSensorPoint[frontStr+"_0_8"]={x:5.00};
-        singleSensorPoint[frontStr+"_0_9"]={x:10.00};
-        singleSensorPoint[frontStr+"_0_10"]={x:15.00};
+    var singleSensorPoint = [];
+    singleSensorPoint[frontStr + "_0_7"] = {x: 0.00};
+    singleSensorPoint[frontStr + "_0_8"] = {x: 5.00};
+    singleSensorPoint[frontStr + "_0_9"] = {x: 10.00};
+    singleSensorPoint[frontStr + "_0_10"] = {x: 15.00};
 
     return pointSB;
 };
 
-exports.singleSensorPointArray=function(){
-    var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
-    var singleSensorPoint=[];
-    singleSensorPoint[frontStr+"_0_3"]={x:0.00};
-    singleSensorPoint[frontStr+"_0_2"]={x:5.40};
-    singleSensorPoint[frontStr+"_0_7"]={x:8.40};
-    singleSensorPoint[frontStr+"_0_8"]={x:11.70};
+exports.singleSensorPointArray = function () {
+    var frontStr = 'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
+    var singleSensorPoint = [];
+    singleSensorPoint[frontStr + "_0_3"] = {x: 0.00};
+    singleSensorPoint[frontStr + "_0_2"] = {x: 5.40};
+    singleSensorPoint[frontStr + "_0_7"] = {x: 8.40};
+    singleSensorPoint[frontStr + "_0_8"] = {x: 11.70};
 
     return singleSensorPoint;
 };
 
+exports.redisSettings = {
+//    var obj = {
+//        host: "192.168.1.120",
+//        port: 6379
+//    };
+    //var obj = {
+    host: "127.0.0.1",
+    port: 6379
+}
 exports.pointsMappingArray=function(){
     var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
     var points=[];
@@ -36,13 +45,12 @@ exports.pointsMappingArray=function(){
     points[frontStr+"_0_7"+frontStr+"_0_8"]={x:9.9,y:1.5};
 };
 
-exports.redisSettings=function()
-{
-    var obj={
-        host: "192.168.1.120",
-        port: 6379
-    };
-    return obj
+exports.lineOffset = {
+    //var offset = {
+        x: 0,
+        y: 1.5
+    //};//实际的偏移量
+    //return offset;
 }
 
 /**
@@ -54,7 +62,7 @@ exports.redisSettings=function()
  {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_5',x:2.50,y:2.30},
  {pointSB:'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0_0_6',x:10.00,y:5.00}
  ];
- var uuidArr_L=uuidArr.length;deviceConfig.uuidArr()
+ var uuidArr_L=uuidArr.length;config.uuidArr()
  **/
 
 /**uuidArr = [{pointSB:'a0',x:2,y:2},{pointSB:'a1',x:20,y:30}];格式。。//,Cacc:'FE添加的mpgAjax中每个距离acc'

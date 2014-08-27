@@ -3,7 +3,6 @@
  */
 var trilateration = require("./Trilateration.js");
 var kmeans = require("./KMeansClustering.js");
-var defaultBeaconDistance='5';//两个beacon之间的固定距离
 var MonitorPackageHandler=require('./MonitorPackageHandler.js');
 
 function SensorDataCalculator() {};
@@ -102,7 +101,7 @@ SensorDataCalculator.processSingleLineCalculate = function (sourceData,offset,be
     var dataObj;
     try {
         dataObj = JSON.parse(sourceData);
-        dataObj = SensorDataCalculator.filterDataByAcc(dataObj, defaultBeaconDistance);
+        dataObj = SensorDataCalculator.filterDataByAcc(dataObj, '5');
         if (!dataObj.deviceSerial||!dataObj.monitorPackage) {
             return;
         }

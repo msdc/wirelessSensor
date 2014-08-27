@@ -3,21 +3,10 @@
  */
 var easypost = require('easypost');
 var redis=require("redis");
-
-var redisSettings = {
-    host: "192.168.1.120",
-    port: 6379
-};
-
-//var redisSettings = {
-//    host: "127.0.0.1",
-//    port: 6379
-//};
-
-
+var config=require("./../config.js");
 
 function RedisOperator(redisClient, req, res) {
-    this.client = redis.createClient(redisSettings.port,redisSettings.host);
+    this.client = redis.createClient(config.redisSettings.port,config.redisSettings.host);
     this.req = req || {};
     this.res = res || {};
 
@@ -56,17 +45,23 @@ RedisOperator.prototype.Get = function (moduleName) {
     if (req.query.id && req.query.name) {
         keyPart = moduleName + "_" + req.query.name + "_" + req.query.id;
     }
-    var count = 0;
+
     client.keys(keyPart, function (err, list) {
-        list.forEach(function(key,pos){
-            client.get(key, function (err, item) {
-                result.push(item);
-                if (pos ==(list.length-1)) {
-                    res.send(result);
-                    client.quit();
-                }
+        if(!err&list&&list.length>0) {
+            list.forEach(function (key, pos) {
+                client.get(key, function (err, item) {
+                    result.push(item);
+                    if (pos == (list.length - 1)) {
+                        res.send(result);
+                        client.quit();
+                    }
+                });
             });
-        });
+        }
+        else{
+            res.send({error:"There is no device",message:err});
+            client.quit();
+        }
     });
     //client.quit();
 };

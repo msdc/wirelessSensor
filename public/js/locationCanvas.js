@@ -23,9 +23,7 @@ define(function(require, exports, module) {
 				configJson.inchesM=0.0254;
 				
 				//configJson.zoomImg=1;
-				configJson.zoomImg={}
-				configJson.zoomImg.x=configJson.bj_draw.w/viewBOX_w,
-				configJson.zoomImg.y=configJson.bj_draw.h/viewBOX_h;//imgA10086的viewBOX 值
+				configJson.zoomImg=configJson.bj_draw.zoom;
 				console.log('configJson.zoomImg:',configJson.zoomImg);
 				
 				configJson.uuidArr=configJson.uuidArr;
@@ -129,8 +127,8 @@ define(function(require, exports, module) {
 				}
 
 				for (var m in uuidArr) {
-					var cX = parseFloat(uuidArr[m].x) / configJson.resolution * configJson.zoomImg.x;
-					var cY = parseFloat(uuidArr[m].y) / configJson.resolution * configJson.zoomImg.y;
+					var cX = parseFloat(uuidArr[m].x) / configJson.resolution * configJson.zoomImg;
+					var cY = parseFloat(uuidArr[m].y) / configJson.resolution * configJson.zoomImg;
 					console.log('sbpos-XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
 					var circle1 = canvasN.image(imgJ.src, cX, cY, imgJ.w, imgJ.h);//var circle1=canvasN.circle(cX,cY,radius);//圆
 					circle1.attr({"fill": "blue"})  //填充色
@@ -197,8 +195,8 @@ define(function(require, exports, module) {
 				var cX = fotData[j].beaconCalculatePosition[0].x,
 					cY = fotData[j].beaconCalculatePosition[0].y;
 				console.log('XY:source-M:', cX, cY);
-				cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg.x;
-				cY = parseFloat(cY) / configJson.resolution * configJson.zoomImg.y;
+				cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;
+				cY = parseFloat(cY) / configJson.resolution * configJson.zoomImg;
 				console.log('XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
 				var circle1 = canvasN.circle(cX, cY, radius);//圆
 				circle1.attr({"fill": "#f20bda"})  //填充色
@@ -250,8 +248,9 @@ define(function(require, exports, module) {
 		
 		DrawPointer.prototype.createGird=function(hL,zL){//生成网格
 			var that=this;
-			var tdH=(parseInt(imgA.css('height'))/hL)-2;//hL纵向个数 zL横向个数 
-			var tdW=(parseInt(imgA.css('width'))/zL)-2;
+			var tdH=parseInt(imgA.css('height'))/zL;//hL横向个数 纵向个数 zL
+			var tdW=parseInt(imgA.css('width'))/hL;
+			console.log(imgA.css('width'),imgA.css('height'),tdW,tdH,hL,zL)
 			$('#maptt').html('<table style="width:'+parseInt(imgA.css('width'))+'px;height:'+parseInt(imgA.css('height'))+'px;" cellspacing="0" cellpadding="0" border="0" id="tabBcoll"></table>');
 			for(var i= 0,str='';i<hL;i++){
 				str+='<tr>';
