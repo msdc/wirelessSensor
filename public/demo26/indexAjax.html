@@ -8,7 +8,7 @@
 <script src="jquery2.1.js"></script>
 <script>
 $(function(){
-	$.post('http://127.0.0.1:1337/device/add',{
+	$.post('/device/add',{
 			"BleMac": 1,
 			"uuid": "ES123654",
 			"major": 2,
@@ -24,7 +24,7 @@ $(function(){
 		},function(data){
 			console.log('add:',data);
 	})
-	$.post('http://127.0.0.1:1337/device/update',{
+	$.post('/device/update',{
 			"BleMac": 1,
 			"uuid": "ES123654",
 			"major": 2,
@@ -44,7 +44,7 @@ $(function(){
 	
 	$.ajax({
 	   type: "get",
-	   url: "http://127.0.0.1:1337/device/get",
+	   url: "/device/get",
 	   dataType:'json',
 	   success: function(data){
 		 console.log( "getAll: " ,data );
@@ -57,7 +57,7 @@ $(function(){
 
 
 	var uuid='ES123654',major=2,minor=1;
-	var url='http://127.0.0.1:1337/device/del?uuid='+uuid+'&major='+major+'&minor='+minor;
+	var url='/device/del?uuid='+uuid+'&major='+major+'&minor='+minor;
 	
 	$.ajax({
 		type:'delete',
