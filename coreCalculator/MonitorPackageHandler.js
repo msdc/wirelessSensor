@@ -333,40 +333,36 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
         var pointArr=[];
         for(var point in mappingPointArray){
             if(point.indexOf(firstBeaconName)>-1){
-                pointArr[point]=mappingPointArray[point];
+                var pointObj={key:point,location:mappingPointArray[point]};
+                pointArr.push(pointObj);
             }
         }
 
         var location=[];
         //pointArr的长度应该为1或者2
         if(pointArr.length==1){
-            for(var point in pointArr){
-                location.push(pointArr[point]);
-            }
+            location.push(pointArr[0].location);
         }
         else if(pointArr.length==2){//如果有两个点，再根据距离最近的第2个的信息来确定是哪个固定点
             var secondBeaconName=prefixString+beaconArray[1].beaconName;
-            var firstPointIndex='';
-            var count=0;
             for(var point in pointArr){
-                count++;
-                if(count==1){
-                    firstPointIndex=point;
-                }
-
                 if(point.indexOf(secondBeaconName)>-1){
-                    location.push(pointArr[point]);
+                    location.push(pointArr[point].location);
                 }
             }
 
             //如果点的数据有误，则默认取第一个
             if(location.length==0){
-                location.push(pointArr[firstPointIndex]);
+                location.push(pointArr[0].location);
             }
 
          }
 
         resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+        console.log('当前点计算完成!');
+    }else
+    {
+        console.log('当前点不合条件，已排除!');
     }
 
     return resultLocationData;
