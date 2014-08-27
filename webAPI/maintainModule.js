@@ -114,8 +114,33 @@ beaconDevice.prototype.get = function (req, res) {
 }
 
 beaconDevice.prototype.del = function (req, res) {
-    var redisOperator = new RedisOperator(req, res);
-    redisOperator.Del('device');
+    //var redisOperator = new RedisOperator(req, res);
+    //redisOperator.Del('device');
+    var moduleName = "device";
+    var uuid = req.query.uuid;
+    var major = req.query.major;
+    var minor = req.query.minor;
+
+    if(uuid&&major&&minor){
+        var delKey=moduleName + "_" + uuid + "_" + major + "_" + minor;
+        var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
+        // Get connection errors for logging...
+        client.on("error", function (reason) {
+            console.log("Connection Error:", reason);
+        });
+        client.del(delKey, function (err, reply) {
+            if (err) {
+                console.error(err);
+            }
+            if (reply > 0) {
+                res.send({message:"deleted!"});
+            }
+        });
+        client.quit();
+    }
+    else{
+        res.send({error:"lack of parameter"});
+    }
 }
 
 var promotion = function () {
