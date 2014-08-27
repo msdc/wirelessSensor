@@ -227,9 +227,9 @@ function mappingPointCalculator(data,client){
     //save the data before calculate.
     client.set(keyBeforeCalculate, serializeJsonData);
 
-    var beaconPointArray=deviceConfig.pointsMappingArray();//定点模型点映射数组
+    var beaconPointArray=config.pointsMappingArray();//定点模型点映射数组
     //save the data after calculated.
-    var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData,offset,beaconPointArray);
+    var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData,config.lineOffset,beaconPointArray);
     if(finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
