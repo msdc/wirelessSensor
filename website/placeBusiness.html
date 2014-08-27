@@ -43,7 +43,9 @@
                         <div class="whiteCol">商家列表</div>
                     </div>
                     <div class="col-xs-2 text-right">
-                        <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalAddBusiness" {{action "insert" target="view.content" }}>+添加</button>
+                        <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalAddBusiness" {{action "insert" target="view.content" }}>
+                            +添加
+                        </button>
                     </div>
                 </div>
                 <div class="row">
@@ -65,9 +67,13 @@
                                 <td>{{item.promotionNumber}}</td>
                                 <td>{{item.status}}</td>
                                 <td>
-                                    <!--<button type="button" class="btn adview_a margRight">查看</button>-->
-                                    <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddBusiness" {{action update item.id target="view.content" }}>编辑</button>
-                                    <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action sure item target="view.content" }}>删除</button>
+                                    <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal"
+                                            data-target="#modalAddBusiness" {{action update item.id target="view.content" }}>
+                                        编辑
+                                    </button>
+                                    <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action sure item target="view.content" }}>
+                                        删除
+                                    </button>
                                 </td>
                             </tr>
                             {{/each}}
@@ -75,23 +81,23 @@
                     </div>
                 </div>
                 <!--<div class="row report_con">
-                    <div class="col-xs-5">
-                        <div class="blackCol" style="line-height:40px;">正在显示1-2条&nbsp;&nbsp;共50条</div>
-                    </div>
-                    <div class="col-xs-7 text-right">
-                        <ul class="pagination">
-                            <li><a href="#">首页</a></li>
-                            <li><a href="#">&laquo;</a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                            <li><a href="#">末页</a></li>
-                        </ul>
-                    </div>
-                </div>-->
+                <div class="col-xs-5">
+                    <div class="blackCol" style="line-height:40px;">正在显示1-2条&nbsp;&nbsp;共50条</div>
+                </div>
+                <div class="col-xs-7 text-right">
+                    <ul class="pagination">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">&laquo;</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                        <li><a href="#">末页</a></li>
+                    </ul>
+                </div>
+            </div>-->
             </div>
         </div>
         {{view App.ModalView}}
@@ -100,7 +106,9 @@
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header nav_top2_L">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span>
+                        </button>
                         <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;提示</span>
                     </div>
                     <div class="modal_line_bule"></div>
@@ -111,7 +119,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" {{action remove target="view.content" }}>确认</button>
+                        <button type="button" class="btn btn-primary" {{action remove target="view.content" }}>
+                            确认
+                        </button>
                     </div>
                 </div>
             </div>
@@ -124,8 +134,12 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header nav_top2_L">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
-                        <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;{{view.content.title}}</span>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span>
+                        </button>
+                        <span>
+                            <i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;{{view.content.title}}
+                        </span>
                     </div>
                     <div class="modal_line_bule"></div>
                     <div id="modalAlert">
@@ -151,9 +165,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-1 control-label blueCol NopadLeft">商家类别</label>
-                                <div class="col-sm-8 NopadLeft">
-                                    {{view Ember.Select class="form-control form-control_change" prompt="--请选择--"  content="categorys" optionValuePath="category.id" optionLabelPath="category.name"}}
+                                <label class="col-sm-2 control-label blueCol">商家类别</label>
+                                <div class="col-sm-9">
+                                    {{view view.categorySelectView class="form-control form-control_change" prompt="--请选择--" valueBinding="view.content.category"}}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -175,7 +189,8 @@
                                         {{#each itme in view.content.images}}
                                         <div class="col-xs-3">
                                             <div>
-                                                <img data-src="holder.js/100%x201" {{bind-attr src="item.url" }} class="img-responsive img_border" />
+                                                <img data-src="holder.js/100%x201" {{bind-attr src="item.url" }}
+                                                     class="img-responsive img_border" />
                                             </div>
                                         </div>
                                         {{/each}}
@@ -196,7 +211,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" {{action save target="App.ModalController" }}>保存</button>
+                        <button type="button" class="btn btn-primary" {{action save target="App.ModalController" }}>
+                            保存
+                        </button>
                     </div>
                 </div>
             </div>
