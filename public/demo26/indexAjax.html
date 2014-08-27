@@ -65,19 +65,27 @@ $(function(){
 		 console.log( "get sign: " ,data );
 	   }
 	});
+
+    $.ajax({
+        type: "get",
+        url: "/device/get"+'?uuid='+uuid+'&major='+major+'&minor='+minor,
+        dataType:'json',
+        success: function(data){
+            console.log( "get sign: " ,data );
+        }
+    });
 	
-	
-	$.ajax({
-		type:'delete',
-		url:url,
-		dataType:'json',
-		success:function(data){
-			console.log('drive delete:',data);
-		},
-		error:function(data){
-			console.log('deleteError:',data);
-		}
-	})
+//	$.ajax({
+//		type:'delete',
+//		url:url,
+//		dataType:'json',
+//		success:function(data){
+//			console.log('drive delete:',data);
+//		},
+//		error:function(data){
+//			console.log('deleteError:',data);
+//		}
+//	})
 	
 		
 	

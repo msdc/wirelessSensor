@@ -80,7 +80,7 @@ RedisOperator.prototype.Del = function (moduleName) {
             console.error(err);
         }
         if (reply > 0) {
-            res.send("data deleted success!");
+            res.send({success:"data deleted!"});
         }
     });
     client.quit();

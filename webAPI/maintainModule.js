@@ -86,7 +86,7 @@ beaconDevice.prototype.get = function (req, res) {
     var keyPart = moduleName + "_*";
     if (uuid && major && minor) {
         keyPart = moduleName + "_" + uuid + "_" + major + "_" + minor;
-        client.get(tpkey, function (err, data) {
+        client.get(keyPart, function (err, data) {
             res.send(data);
             client.quit();
         });
@@ -133,7 +133,7 @@ beaconDevice.prototype.del = function (req, res) {
                 console.error(err);
             }
             if (reply > 0) {
-                res.send({message:"deleted!"});
+                res.send({result:"successful deleted!"});
             }
         });
         client.quit();
