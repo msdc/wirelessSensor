@@ -67,7 +67,7 @@ define(function(require, exports, module) {
 					console.log('开始标注.')
 					maptt.html(' ').css({'zIndex':-10,opacity:'0'});
 					$('#bxPoint').click(function (e) {
-						console.log('标注22')
+						console.log('标注22',$(this).offset().left,$(this).offset().top)
 						$('.occupying').css({left: e.pageX + 'px', top: e.pageY + 'px'}).show();
 						return false;
 					})
@@ -265,7 +265,6 @@ define(function(require, exports, module) {
 			var that=this;
 			$('#searchLJ').unbind('click').click(function(){//开始查找。。。
 				var mStart=$('#maptt td.mStart'),mEnd=$('#maptt td.mEnd'),mSleep=$('#maptt td.mSleep');
-				console.log(mStart.length,mEnd.length)
 				if(mStart.length!=1||mEnd.length!=1){//是否已经有起点 终点
 					alert('请选择起点、终点');
 					return  false;
@@ -279,11 +278,7 @@ define(function(require, exports, module) {
 					that.girdArr[k[0]][k[1]]=0;
 				}
 				console.log('后台所需数据:',that.girdArr);
-
-				$.post(parms.url,{start:{x:start[0],y:start[1]},end:{x:end[0],y:end[1]},graphName:parms.graphName||'firstTestGraph',graphMatrix:JSON.stringify(that.girdArr) }, function (result) {
-					console.log(result);
-					callback&&callback();
-				})
+				callback&&callback();
 			})
 		}	
 		
