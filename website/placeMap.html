@@ -24,70 +24,72 @@
 
     <script type="text/x-handlebars" data-template-name="place">
         <div class="row nav_top2_con NoMgBoth">
-                <div class="col-sm-3 nav_top2_L">
-                    <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;场所地图
+            <div class="col-sm-3 nav_top2_L">
+                <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;场所地图
+            </div>
+        </div>
+        <div id="divAlert">
+        </div>
+        <div class="nav_top2_body">
+            <div class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
+                    <label class="col-sm-6 control-label-left blackCol NopadLeft">{{view.content.name}}</label>
                 </div>
             </div>
-            <div id="divAlert">
-            </div>
-            <div class="nav_top2_body">
-                <div class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
-                        <label class="col-sm-6 control-label-left blackCol NopadLeft">{{view.content.name}}</label>
+            <div class="container">
+                <div class="row row_bg_map">
+                    <div class="col-xs-10">
+                        <div class="whiteCol">场所地图列表</div>
+                    </div>
+                    <div class="col-xs-2 text-right">
+                        <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalAddMap" {{action "insert" target="view.content" }}>+添加</button>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row row_bg_map">
-                        <div class="col-xs-10">
-                            <div class="whiteCol">场所地图列表</div>
-                        </div>
-                        <div class="col-xs-2 text-right">
-                            <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#modalAddMap" {{action "insert" target="view.content" }}>+添加</button>
-                        </div>
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-bordered row_delMg">
+                            <tr class="tr_bg">
+                                <th class="whiteCol" style="border:none;">名称</th>
+                                <th class="whiteCol" style="border:none;">地图</th>
+                                <th class="whiteCol" style="border:none;">操作</th>
+                            </tr>
+                            {{#each item in view.content.maps}}
+                            <tr>
+                                <td>{{item.name}}</td>
+                                <td>
+                                    <img {{bind-attr src="item.url" }} />
+                                </td>
+                                <td>
+                                    <!--<button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action detail item.id target="view.content"}}>查看</button>-->
+                                    <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddMap" {{action update item.id target="view.content" }}>编辑</button>
+                                    <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action sure item target="view.content" }}>删除</button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
                     </div>
-                    <div class="row">
-                        <div class="table-responsive">
-                            <table class="table table-bordered row_delMg">
-                                <tr class="tr_bg">
-                                    <th class="whiteCol" style="border:none;">名称</th>
-                                    <th class="whiteCol" style="border:none;">地图</th>
-                                    <th class="whiteCol" style="border:none;">操作</th>
-                                </tr>
-                                {{#each item in view.content.maps}}
-                                <tr>
-                                    <td>{{item.name}}</td>
-                                    <td>
-                                        <img {{bind-attr src="item.url" }} />
-                                    </td>
-                                    <td><!--<button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action detail item.id target="view.content"}}>查看</button>-->
-                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddMap" {{action update item.id target="view.content" }}>编辑</button>
-                                        <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action sure item target="view.content" }}>删除</button></td>
-                                </tr>
-                                {{/each}}
-                            </table>
-                        </div>
-                    </div>
-                    <!--<div class="row report_con">
-                        <div class="col-xs-5">
-                            <div class="blackCol" style="line-height:40px;">正在显示1-2条&nbsp;&nbsp;共50条</div>
-                        </div>
-                        <div class="col-xs-7 text-right">
-                            <ul class="pagination">
-                                <li><a href="#">首页</a></li>
-                                <li><a href="#">&laquo;</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                                <li><a href="#">末页</a></li>
-                            </ul>
-                        </div>
-                    </div>-->
                 </div>
+                <!--<div class="row report_con">
+                    <div class="col-xs-5">
+                        <div class="blackCol" style="line-height:40px;">正在显示1-2条&nbsp;&nbsp;共50条</div>
+                    </div>
+                    <div class="col-xs-7 text-right">
+                        <ul class="pagination">
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                            <li><a href="#">末页</a></li>
+                        </ul>
+                    </div>
+                </div>-->
             </div>
+        </div>
 
         {{view App.ModalView}}
 
@@ -137,6 +139,45 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">matrixID</label>
+                                <div class="col-sm-9">
+                                    {{view Ember.TextField class="form-control border_radius" id="validate_matrixID" placeholder="matrixID" valueBinding="view.content.matrixID"}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">matrixSize</label>
+                                <div class="col-sm-1">
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="x" valueBinding="view.content.matrixID.x"}}
+                                </div>
+                                <div class="col-sm-1">
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="y" valueBinding="view.content.matrixID.y"}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">imageSize</label>
+                                <div class="col-sm-1">
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="width" valueBinding="view.content.imageSize.width"}}
+                                </div>
+                                <div class="col-sm-1">
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="height" valueBinding="view.content.imageSize.width"}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">canvasSize</label>
+                                <div class="col-sm-1">
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="width" valueBinding="view.content.imageSize.width"}}
+                                </div>
+                                <div class="col-sm-1">
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="height" valueBinding="view.content.imageSize.width"}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">scale</label>
+                                <div class="col-sm-9">
+                                    {{view Ember.TextField class="form-control border_radius" id="validate_scale" placeholder="scale" valueBinding="view.content.scale"}}
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">地图名称</label>
                                 <div class="col-sm-9">
                                     {{view Ember.TextField class="form-control border_radius" id="validate_name" placeholder="地图名称" valueBinding="view.content.mapname"}}
@@ -145,7 +186,7 @@
                             <div class="form-group">
                                 <div class="col-sm-9 col-md-9 col-sm-offset-2">
                                     <div class="thumbnail border_radius">
-                                        <img data-src="holder.js/600x600" alt="..." >
+                                        <img data-src="holder.js/600x600" alt="...">
                                     </div>
                                 </div>
                             </div>
