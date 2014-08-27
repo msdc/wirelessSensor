@@ -324,6 +324,7 @@ MonitorPackageHandler.prototype.fixationPointGenerator=function(beaconArray,pres
 MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,monitorPackageHandler,originalData){
     var prefixString=this.prefixString;
     var mappingPointArray=this.beaconArray;
+    var data=originalData||{};
 
     var resultLocationData=null;
 
@@ -342,9 +343,8 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
             for(var point in pointArr){
                 location.push(pointArr[point]);
             }
-            resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
         }
-        else if(pointArr.length==2){//如果有两个点，再根据距离最近的第2个的信息来确定点
+        else if(pointArr.length==2){//如果有两个点，再根据距离最近的第2个的信息来确定是哪个固定点
             var secondBeaconName=prefixString+beaconArray[1].beaconName;
             var firstPointIndex='';
             var count=0;
@@ -364,8 +364,9 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
                 location.push(pointArr[firstPointIndex]);
             }
 
-            resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
          }
+
+        resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
     }
 
     return resultLocationData;

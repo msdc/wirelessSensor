@@ -93,6 +93,7 @@ exports.processDataFromHttp = function (req, res) {
         //var calculator=new Calculator(data,client);
         //calculator.kMeansClusterCalculator();
         singleLineCalculator(data, client);
+        //mappingPointCalculator(data, client);
 
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
@@ -229,7 +230,7 @@ function mappingPointCalculator(data,client){
 
     var beaconPointArray=config.pointsMappingArray();//定点模型点映射数组
     //save the data after calculated.
-    var finalResult = sensorCalculator.processSingleLineCalculate(serializeJsonData,config.lineOffset,beaconPointArray);
+    var finalResult = sensorCalculator.mappingPointCalculate(serializeJsonData,config.lineOffset,beaconPointArray);
     if(finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
