@@ -16,6 +16,11 @@ App.ModalView = Ember.View.extend({
     contentBinding: 'App.ModalController'
 });
 
+App.SelfTextView = Ember.TextField.extend({
+    attributeBindings: ['style'],
+    style: "width:70px"
+});
+
 /*******************
 ***     Model    ***
 *******************/
@@ -96,7 +101,26 @@ App.ModalController = Ember.ObjectController.create({
     mapname: null,
     url: null,
     maps: null,
+    matrixID: "place_floor_matrix",
+    matrixSize: {
+        x: 800,
+        y: 900
+    },
+    imageSize: {
+        width: 0,
+        height: 0
+    },
+    canvasSize: {
+        width: 22,
+        height: 0
+    },
+    scale: "1:10000",
     act: null,
+    check: function (field, val) {
+        if (val != null && val != undefined) {
+            this.set(field, val);
+        }
+    },
     save: function () {
         var _act = this.get("act");
 
@@ -121,7 +145,12 @@ App.ModalController = Ember.ObjectController.create({
             var map = {
                 id: id,
                 name: this.get("mapname"),
-                url: this.get("url") || "/images/placemap_pic.png"
+                url: this.get("url") || "/images/basic.svg",
+                matrixID: this.get("matrixID"),
+                matrixSize: this.get("matrixSize"),
+                imageSize: this.get("imageSize"),
+                canvasSize: this.get("canvasSize"),
+                scale: this.get("scale")
             };
             jsonPlace.maps.push(map);
 
@@ -172,9 +201,14 @@ App.ModalController = Ember.ObjectController.create({
 
         maps = maps || [];
         for (var i = 0; i < maps.length; i++) {
-            if(maps[i].id==mapid){
-                this.set("mapname", maps[i].name);
-                this.set("url", maps[i].url);
+            if (maps[i].id == mapid) {
+                this.check("mapname", maps[i].name);
+                this.check("url", maps[i].url);
+                this.check("matrixID", maps[i].matrixID);
+                this.check("imageSize", maps[i].imageSize);
+                this.check("imageSize", maps[i].imageSize);
+                this.check("canvasSize", maps[i].canvasSize);
+                this.check("scale", maps[i].scale);
                 break;
             }
         }
