@@ -17,6 +17,7 @@ exports.uuidArr = function () {
     return pointSB;
 };
 
+//模型二：直线模型的beacon距离
 exports.singleSensorPointArray = function () {
     var frontStr = 'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
     var singleSensorPoint = [];
@@ -39,6 +40,8 @@ exports.redisSettings = {
     host: "127.0.0.1",
     port: 6379
 }
+
+//模型三：固定点与beacon点的映射表
 exports.pointsMappingArray=function(){
     var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
     var points=[];
@@ -59,7 +62,7 @@ exports.lineOffset = {
     //return offset;
 };
 
-//默认过滤点的距离配置
+//默认过滤指定acc的距离配置
 exports.defaultBeaconDistance=5;
 
 /**
