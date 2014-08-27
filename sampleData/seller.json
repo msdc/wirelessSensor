@@ -10,6 +10,7 @@
     "promotionNumber": 3,
     "tag": "时尚；青年",
     "desc": "商品不错",
+    "location":{"x":11,"y":12},
     "images": [
         {
             "id": 1,

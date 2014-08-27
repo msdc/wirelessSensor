@@ -66,20 +66,33 @@ $(function(){
 	   }
 	});
 	
-	
-	$.ajax({
-		type:'delete',
-		url:url,
-		dataType:'json',
-		success:function(data){
-			console.log('drive delete:',data);
-		},
-		error:function(data){
-			console.log('deleteError:',data);
+//	$.ajax({
+//		type:'delete',
+//		url:url,
+//		dataType:'json',
+//		success:function(data){
+//			console.log('drive delete:',data);
+//		},
+//		error:function(data){
+//			console.log('deleteError:',data);
+//		}
+//	})
+	function Dim(m,g){//生成2维数组
+		var tArray = [];
+		for(var k=0;k<m;k++){
+			tArray[k]=[];
+			for(var j=0;j<g;j++){
+				tArray[k][j]="1";//默认都是路1，障碍为0
+			}
+		}
+		return tArray;//生成网格对应的二维数组并设置每一项为1（路1，障碍为0），动态的
+	};
+	var qArr=Dim(10,10);
+	$.post("/saveGraphMatrix",{graphName:'firstTestGraph',graphMatrix:JSON.stringify(qArr) }, function (data) {
+		if(data.result){
+			console.log("Z000A: ",data.result);
 		}
 	})
-	
-		
 	
 	
 })

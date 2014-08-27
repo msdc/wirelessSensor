@@ -9,9 +9,11 @@
         var ctx;
         var centerPointX=0;
         var centerPointY=300;
-        var factor=10;//实际点的扩大比例
+        var factor=30;//实际点的扩大比例
         var beaconThreeDistance=0.00;
+        var beaconSixDistance= 1.5;
         var beaconTwoDistance=5.40;
+        var beaconNineDistance=6.90;
         var beaconSevenDistance=8.40;
         var beaconEightDistance=11.70;
         $(function(){
@@ -20,6 +22,10 @@
                 //http();
             //},2000);
             http();
+
+            $('#btn_refresh').click(function(){
+                window.location.reload(true);
+            });
         });
 
         function http() {
@@ -50,10 +56,6 @@
                 draw(centerPointX,centerPointY,ctx,data);
                 console.log(data);
             });
-
-            $('#btn_refresh').click(function(){
-                window.location.reload(true);
-            });
         }
 
         function initCanvas()
@@ -78,8 +80,14 @@
             //绘制beacon3 点
             drawBeaconPointOnLine(ctx,beaconThreeDistance);
 
+            //绘制beacon6点
+            drawBeaconPointOnLine(ctx,beaconSixDistance);
+
             //绘制beacon2 点
             drawBeaconPointOnLine(ctx,beaconTwoDistance);
+
+            //绘制beacon9点
+            drawBeaconPointOnLine(ctx,beaconNineDistance);
 
             //绘制beacon7 点
             drawBeaconPointOnLine(ctx,beaconSevenDistance);
@@ -105,8 +113,14 @@
                 case 3:
                     drawCalculatedPoint(ctx,distance,beaconThreeDistance);
                     break;
+                case 6:
+                    drawCalculatedPoint(ctx,distance,beaconSixDistance);
+                    break;
                 case 2:
                     drawCalculatedPoint(ctx,distance,beaconTwoDistance);
+                    break;
+                case 9:
+                    drawCalculatedPoint(ctx,distance,beaconNineDistance);
                     break;
                 case 7:
                     drawCalculatedPoint(ctx,distance,beaconSevenDistance);

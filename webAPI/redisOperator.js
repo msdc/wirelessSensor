@@ -47,7 +47,7 @@ RedisOperator.prototype.Get = function (moduleName) {
     }
 
     client.keys(keyPart, function (err, list) {
-        if (!err & list && list.length > 0) {
+        if (!err && list && list.length > 0) {
             list.forEach(function (key, pos) {
                 client.get(key, function (err, item) {
                     result.push(item);
@@ -80,7 +80,7 @@ RedisOperator.prototype.Del = function (moduleName) {
             console.error(err);
         }
         if (reply > 0) {
-            res.send("data deleted success!");
+            res.send({success:"data deleted!"});
         }
     });
     client.quit();
