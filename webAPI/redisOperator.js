@@ -2,11 +2,11 @@
  * Created by wang on 2014/8/25.
  */
 var easypost = require('easypost');
-var redis=require("redis");
-var config=require("./../config.js");
+var redis = require("redis");
+var config = require("./../config.js");
 
-function RedisOperator(redisClient, req, res) {
-    this.client = redis.createClient(config.redisSettings.port,config.redisSettings.host);
+function RedisOperator(req, res) {
+    this.client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     this.req = req || {};
     this.res = res || {};
 
@@ -26,10 +26,10 @@ RedisOperator.prototype.Add = function (moduleName) {
             var dataStr = typeof (data) == "string" ? data : JSON.stringify(data);
             var tpkey = moduleName + "_" + dataObj.name + "_" + dataObj.id;
             client.set(tpkey, dataStr);
-            res.send({result:"success"});
+            res.send({result: "success"});
         }
         else {
-            res.send(500, {error:"data format error"});
+            res.send(500, {error: "data format error"});
         }
     });
     client.quit();
@@ -47,7 +47,7 @@ RedisOperator.prototype.Get = function (moduleName) {
     }
 
     client.keys(keyPart, function (err, list) {
-        if(!err&list&&list.length>0) {
+        if (!err & list && list.length > 0) {
             list.forEach(function (key, pos) {
                 client.get(key, function (err, item) {
                     result.push(item);
@@ -58,8 +58,8 @@ RedisOperator.prototype.Get = function (moduleName) {
                 });
             });
         }
-        else{
-            res.send({error:"There is no device",message:err});
+        else {
+            res.send({error: "There is no device", message: err});
             client.quit();
         }
     });
