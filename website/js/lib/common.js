@@ -49,6 +49,14 @@ Array.prototype.clone = function () {
     return [].concat(this);
 }
 
+Array.prototype.copy = function () {
+    var newArg = new Array();
+    for (var i = 0; i < this.length; i++) {
+        newArg.push(this[i]);
+    }
+    return newArg;
+}
+
 String.prototype.replaceAll = function (readllyDo, replaceWith, ignoreCase) {
     if (!RegExp.prototype.isPrototypeOf(readllyDo)) {
         return this.replace(new RegExp(readllyDo, ignoreCase ? "gi" : "g"), replaceWith);

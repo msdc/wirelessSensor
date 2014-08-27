@@ -18,7 +18,7 @@
             <span class="glyphicon glyphicon-home col_blue"></span><span class="Mag2">></span><span class="col_blue">场所管理</span><span class="Mag2">></span><span class="col_black">场所商家</span>
         </div>
         <div class="nav_top2">
-           {{view App.PlaceView}}
+            {{view App.PlaceView}}
         </div>
     </script>
 
@@ -34,6 +34,8 @@
                     <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
                     <label class="col-sm-6 control-label-left blackCol NopadLeft">{{view.content.name}}</label>
                 </div>
+            </div>
+            <div id="divAlert">
             </div>
             <div class="container">
                 <div class="row row_bg_map">
@@ -55,14 +57,18 @@
                                 <th class="whiteCol" style="border:none;">状态</th>
                                 <th class="whiteCol" style="border:none;">操作</th>
                             </tr>
-                            {{#each  view.content}}
+                            {{#each itme in view.content}}
                             <tr>
-                                <td>Crocs</td>
-                                <td>鞋</td>
-                                <td>时尚；青年</td>
-                                <td>5</td>
-                                <td>已注册</td>
-                                <td><button type="button" class="btn adview_a margRight">查看</button><button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddBusiness">编辑</button><button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.category.name}}</td>
+                                <td>{{item.tag}}</td>
+                                <td>{{item.promotionNumber}}</td>
+                                <td>{{item.status}}</td>
+                                <td>
+                                    <!--<button type="button" class="btn adview_a margRight">查看</button>-->
+                                    <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddBusiness" {{action update item.id target="view.content" }}>编辑</button>
+                                    <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action sure item target="view.content" }}>删除</button>
+                                </td>
                             </tr>
                             {{/each}}
                         </table>
@@ -88,6 +94,28 @@
                 </div>-->
             </div>
         </div>
+        {{view App.ModalView}}
+
+        <div class="modal fade bs-example-modal-sm" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header nav_top2_L">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                        <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;提示</span>
+                    </div>
+                    <div class="modal_line_bule"></div>
+                    <div id="modalAlert">
+                    </div>
+                    <div class="modal-body">
+                        <h4><b>是否删除此条数据？</b></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" {{action remove target="view.content" }}>确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </script>
 
     <!-- Modal -->
@@ -100,12 +128,14 @@
                         <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;{{view.content.title}}</span>
                     </div>
                     <div class="modal_line_bule"></div>
+                    <div id="modalAlert">
+                    </div>
                     <div class="modal-body">
                         <div class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">商家标示</label>
                                 <div class="col-sm-2">
-                                    <img src="images/placebusi_pic.jpg" class="img_border img-responsive" />
+                                    <img {{bind-attr src="view.content.logo" }} class="img_border img-responsive" />
                                 </div>
                                 <div class="col-sm-1">
                                     <button type="button" class="btn btn-info">上传</button>
@@ -117,34 +147,38 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">商家名称</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control border_radius" id="validate_name" placeholder="crocs">
+                                    {{view Ember.TextField class="form-control border_radius" id="validate_name" placeholder="商家名称" valueBinding="view.content.name"}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label blueCol NopadLeft">商家类别</label>
+                                <div class="col-sm-8 NopadLeft">
+                                    {{view Ember.Select class="form-control form-control_change" prompt="--请选择--"  content="categorys" optionValuePath="category.id" optionLabelPath="category.name"}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">商家标签</label>
+                                <div class="col-sm-9">
+                                    {{view Ember.TextField class="form-control border_radius" id="validate_tag" placeholder="商家标签" valueBinding="view.content.tag"}}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">商家描述</label>
                                 <div class="col-sm-9 control-label-left">
-                                    <textarea class="form-control border_radius" rows="6"></textarea>
+                                    {{view Ember.TextArea class="form-control border_radius" rows="6" valueBinding="view.content.desc" }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">商家展示</label>
                                 <div class="col-sm-9">
                                     <div class="row">
+                                        {{#each itme in view.content.images}}
                                         <div class="col-xs-3">
                                             <div>
-                                                <img data-src="holder.js/100%x201" src="images/palceinfor_pic1.jpg" class="img-responsive img_border" />
+                                                <img data-src="holder.js/100%x201" {{bind-attr src="item.url" }} class="img-responsive img_border" />
                                             </div>
                                         </div>
-                                        <div class="col-xs-3">
-                                            <div>
-                                                <img data-src="holder.js/100%x201" src="images/palceinfor_pic2.jpg" class="img-responsive img_border" />
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-3">
-                                            <div>
-                                                <img data-src="holder.js/100%x201" src="images/palceinfor_pic1.jpg" class="img-responsive img_border" />
-                                            </div>
-                                        </div>
+                                        {{/each}}
                                         <div class="col-xs-3">
                                             <div class="img_border text-center pad_div">
                                                 <a href="#" class="add_more">
@@ -162,7 +196,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary">保存</button>
+                        <button type="button" class="btn btn-primary" {{action save target="App.ModalController" }}>保存</button>
                     </div>
                 </div>
             </div>

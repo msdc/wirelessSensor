@@ -60,9 +60,9 @@
                                     <td>
                                         <img {{bind-attr src="item.url" }} />
                                     </td>
-                                    <td><button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action "detail" id target="view.content"}}>查看</button>
-                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" id data-target="#modalAddMap" {{action "update" target="view.content" }}>编辑</button>
-                                        <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action "remove" item target="view.content" }}>删除</button></td>
+                                    <td><!--<button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action detail item.id target="view.content"}}>查看</button>-->
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddMap" {{action update item.id target="view.content" }}>编辑</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action sure item target="view.content" }}>删除</button></td>
                                 </tr>
                                 {{/each}}
                             </table>
@@ -90,6 +90,27 @@
             </div>
 
         {{view App.ModalView}}
+
+        <div class="modal fade bs-example-modal-sm" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header nav_top2_L">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                        <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;提示</span>
+                    </div>
+                    <div class="modal_line_bule"></div>
+                    <div id="modalAlert">
+                    </div>
+                    <div class="modal-body">
+                        <h4><b>是否删除此条数据？</b></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" {{action remove target="view.content" }}>确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </script>
 
     <!-- Modal -->
@@ -102,6 +123,8 @@
                         <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;{{view.content.title}}</span>
                     </div>
                     <div class="modal_line_bule"></div>
+                    <div id="modalAlert">
+                    </div>
                     <div class="modal-body">
                         <div class="form-horizontal" role="form">
                             <div class="form-group">
