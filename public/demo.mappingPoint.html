@@ -11,15 +11,23 @@
         var centerPointY=300;
         var factor=30;//实际点的扩大比例
         var beaconThreeDistance=0.00;
+        var beaconSixDistance= 1.5;
         var beaconTwoDistance=5.40;
+        var beaconNineDistance=6.90;
         var beaconSevenDistance=8.40;
         var beaconEightDistance=11.70;
-        var mappingPoint01={x:2.7,y:1.5};
-        var mappingPoint02={x:6.9,y:1.5};
-        var mappingPoint03={x:9.9,y:1.5};
+        var mappingPoint01={x:0.70,y:1.50};
+        var mappingPoint02={x:3.40,y:1.50};
+        var mappingPoint03={x:6.10,y:1.50};
+        var mappingPoint04={x:7.60,y:1.50};
+        var mappingPoint05={x:10.00,y:1.50};
         $(function(){
             initCanvas();
             getPointData();
+
+            $('#btn_refresh').click(function(){
+                window.location.reload(true);
+            });
         });
 
         function getPointData() {
@@ -53,11 +61,17 @@
             //绘制beacon3 点
             drawBeaconPointOnLine(ctx,beaconThreeDistance);
 
+            //绘制beacon6点
+            drawBeaconPointOnLine(ctx,beaconSixDistance);
+
             //绘制beacon2 点
             drawBeaconPointOnLine(ctx,beaconTwoDistance);
 
             //绘制beacon7 点
             drawBeaconPointOnLine(ctx,beaconSevenDistance);
+
+            //绘制beacon9点
+            drawBeaconPointOnLine(ctx,beaconNineDistance);
 
             //绘制beacon8 点
             drawBeaconPointOnLine(ctx,beaconEightDistance);
@@ -66,6 +80,8 @@
             drawMappingPoint(ctx,mappingPoint01,false);
             drawMappingPoint(ctx,mappingPoint02,false);
             drawMappingPoint(ctx,mappingPoint03,false);
+            drawMappingPoint(ctx,mappingPoint04,false);
+            drawMappingPoint(ctx,mappingPoint05,false);
         }
 
         //绘制beacon点
@@ -114,6 +130,12 @@
                     break;
                 case mappingPoint03.x:
                     drawMappingPoint(ctx,mappingPoint03,true,'green');
+                    break;
+                case mappingPoint04.x:
+                    drawMappingPoint(ctx,mappingPoint04,true,'green');
+                    break;
+                case mappingPoint05.x:
+                    drawMappingPoint(ctx,mappingPoint05,true,'green');
                     break;
             }
         }
