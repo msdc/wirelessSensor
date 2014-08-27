@@ -47,7 +47,7 @@ RedisOperator.prototype.Get = function (moduleName) {
     }
 
     client.keys(keyPart, function (err, list) {
-        if (!err & list && list.length > 0) {
+        if (!err && list && list.length > 0) {
             list.forEach(function (key, pos) {
                 client.get(key, function (err, item) {
                     result.push(item);
