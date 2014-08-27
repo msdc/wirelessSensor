@@ -43,16 +43,6 @@ App.PlaceController = Ember.ObjectController.create({
     insert: function () {
         App.ModalController.create(this.get("id"), this.get("name"), null, this.get("maps"), "insert");
     },
-    //detail: function (id) {
-    //    var _maps = this.get("maps");
-    //    for (var i = 0; i < _maps.length; i++) {
-    //        if (_maps[i].id == id)
-    //        {
-    //            App.ModalController.create(this.get("id"), this.get("name"), id, this.get("maps"), "detail");
-    //            break;
-    //        }
-    //    }
-    //},
     update: function (id) {
         var _maps = this.get("maps");
         for (var i = 0; i < _maps.length; i++) {
@@ -83,10 +73,11 @@ App.PlaceController = Ember.ObjectController.create({
             this.get('maps').removeObject(arg[i]);
         }
     },
-    create: function (id,name,maps) {
+    create: function (id, name, maps) {
         this.set("id", id);
         this.set('name', name);
         this.removeAll();
+        maps = maps || [];
         for (var i = 0; i < maps.length; i++) {
             this.get('maps').pushObject(App.MapModel.create({
                 id: maps[i].id,
@@ -94,7 +85,7 @@ App.PlaceController = Ember.ObjectController.create({
                 url: maps[i].url
             }));
         }
-    }  
+    }
 });
 
 App.ModalController = Ember.ObjectController.create({
