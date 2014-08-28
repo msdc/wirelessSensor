@@ -81,6 +81,9 @@ RedisOperator.prototype.Del = function (moduleName) {
         }
         if (reply > 0) {
             res.send({success:"data deleted!"});
+        }else
+        {
+            res.send({error: "delete error,can't find this record.", message: err});
         }
     });
     client.quit();
