@@ -210,7 +210,7 @@ define(function(require, exports, module) {
 				var circle1 = canvasN.circle(cX, cY, radius);//圆
 				circle1.attr({"fill": "#f20bda"})  //填充色
 					.attr("stroke", "none")   //去掉边框
-					.data('dt' {x: cX, y: cY, deviceID: curr.deviceID, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
+					.data('dt',{x: cX, y: cY, deviceID: curr.deviceID, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
 					.hover(function (e) {
 						var dt = this.data('dt');
 						var str = '人物名称:' + dt.deviceID + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint + ' 设备编号=' + curr.deviceSerial;
@@ -246,6 +246,7 @@ define(function(require, exports, module) {
 				alert('请生成网格!');
 				return false;
 			}
+            console.log('设置表格障碍点',girdArr);
 			for(var k=0,L=girdArr.length;k<L;k++){
 				var currArr=girdArr[k];
 				for(var j=0;j<currArr.length;j++){
@@ -255,15 +256,16 @@ define(function(require, exports, module) {
 				}
 			}
 		};
-        DrawPointer.prototype.getBarriers=function(graphId,callback) {//	网格
+        DrawPointer.prototype.getBarriers=function(graphId,callback) {//	获取障碍点
             var that = this;
+            console.log('ajax获取障碍点');
             $.ajax({
                 type: "get",
                 url: '/getGraphMatrix/' + graphId||'graph',
                 contentType: 'application/text',
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data);
+                    console.log('获取障碍点',data);
                     if(data){
                         that.girdArr=data;
                         callback && callback();
@@ -311,7 +313,7 @@ define(function(require, exports, module) {
                     type: "post",
                     url: '/findPath',
                     contentType:'application/text',
-                    data:JSON.stringify({"start":{"x":start[0],"y":[1]},"end":{"x":end[0],"y":end[1]},"graphName":"graph","graphMatrix":girdArr }),
+                    data:JSON.stringify({"start":{"x":start[0],"y":[1]},"end":{"x":end[0],"y":end[1]},"graphName":"graph","graphMatrix":that.girdArr }),
                     dataType:'json',
                     success: function(data){
                         console.log('findPath:',data);
