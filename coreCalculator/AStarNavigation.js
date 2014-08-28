@@ -6,15 +6,11 @@ var config = require("./../config.js");
 //    redis_host = "127.0.0.1";
 
 exports.findPath = function (req, res) {
-//    var tpGrid=[
-//        [1,1,1,1],
-//        [0,1,1,0],
-//        [0,0,1,1]
-//    ];
     easypost.get(req, res, function (data) {
         if (!data) {
             console.log('data is not defined.');
-            res.send(500, "there is no data in the request body");
+            res.end(500, "there is no data in the request body");
+
         }
         else {
             data = typeof (data) == "object" ? data : JSON.parse(data);
@@ -26,13 +22,13 @@ exports.findPath = function (req, res) {
                 var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
                 client.on("error", function (err) {
                     if (err) {
-                        res.send(500, {result: false, message: err});
+                        res.end(500, {result: false, message: err});
                         return;
                     }
                 });
                 client.get(graphID, function (err, data) {
                     if (err) {
-                        res.send(500, {result: false, message: err});
+                        res.end(500, {result: false, message: err});
                         return;
                     }
                     graphMatrix = JSON.parse(data);
@@ -62,6 +58,7 @@ exports.saveGraphMatrix = function (req, res) {
         if (!data) {
             console.log('data is not defined.');
             res.send(500, "there is no data in the request body");
+
         }
         else {
             data = typeof (data) == "object" ? data : JSON.parse(data);
@@ -69,7 +66,7 @@ exports.saveGraphMatrix = function (req, res) {
             client.on("error", function (err) {
                 if (err) {
                     res.send(500, {result: false, message: err});
-                    return;
+
                 }
             });
             var graphKey = data.graphName;
