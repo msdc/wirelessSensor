@@ -28,14 +28,14 @@
                 <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;场所商家
             </div>
         </div>
+        <div id="divAlert">
+        </div>
         <div class="nav_top2_body">
             <div class="form-horizontal" role="form">
                 <div class="form-group">
                     <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
                     <label class="col-sm-6 control-label-left blackCol NopadLeft">{{view.content.name}}</label>
                 </div>
-            </div>
-            <div id="divAlert">
             </div>
             <div class="container">
                 <div class="row row_bg_map">
@@ -59,7 +59,7 @@
                                 <th class="whiteCol" style="border:none;">状态</th>
                                 <th class="whiteCol" style="border:none;">操作</th>
                             </tr>
-                            {{#each itme in view.content}}
+                            {{#each item in view.content}}
                             <tr>
                                 <td>{{item.name}}</td>
                                 <td>{{item.category.name}}</td>
@@ -168,11 +168,10 @@
                                 <label class="col-sm-2 control-label blueCol">商家展示</label>
                                 <div class="col-sm-9">
                                     <div class="row">
-                                        {{#each itme in view.content.images}}
+                                        {{#each view.content.images}}
                                         <div class="col-xs-3">
                                             <div>
-                                                <img data-src="holder.js/100%x201" {{bind-attr src="item.url" }}
-                                                     class="img-responsive img_border" />
+                                                <img data-src="holder.js/100%x201" {{bind-attr src="url" }} class="img-responsive img_border" />
                                             </div>
                                         </div>
                                         {{/each}}

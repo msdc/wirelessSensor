@@ -61,18 +61,17 @@ App.PlaceController = Ember.ObjectController.extend({
             else if (arguments[0].length > 0) {
                 var data = arguments[0];
                 var json = JSON.parse(data[0]);
-                if(json.id&&json.name&&json.desc,json.descImages) {
+                if (json.id && json.name && json.desc && json.descImages) {
                     _this.set('id', json.id);
                     _this.set('name', json.name);
                     _this.set('desc', json.desc);
                     _this.set('images', json.descImages);
                 }
-                else
-                {
+                else {
                     _this.set('id', 1);
                     _this.set('name', "软通动力一层展厅");
                     _this.set('desc', "用于软通动力展厅演示。");
-                    var descImages=[
+                    var descImages = [
                         {
                             "id": 1,
                             "url": "/images/palceinfor_pic1.jpg"
