@@ -15,7 +15,7 @@ App.ModalView = Ember.View.extend({
         contentBinding: 'App.CategoryController',
         optionValuePath: 'content.id',
         optionLabelPath: 'content.name'
-    })
+    })    
 });
 
 
@@ -104,17 +104,18 @@ App.PlaceController = Ember.ArrayController.create({
         if (id != undefined) { this.set("id", id); }
         if (name != undefined) { this.set('name', name); }
         this.removeAll();
+        sellers = sellers || [];
         for (var i = 0; i < sellers.length; i++) {
             this.get('content').pushObject(App.SellerModel.create({
                 id: sellers[i].id,
                 name: sellers[i].name,
-                //logo: sellers[i].logo,
-                //category: sellers[i].category,
-                //status: sellers[i].status,
-                //promotionNumber: sellers[i].promotionNumber,
-                //tag: sellers[i].tag,
-                //desc: sellers[i].desc,
-                //images: sellers[i].images
+                logo: sellers[i].logo,
+                category: App.CategoryController.getItem(sellers[i].category),
+                status: sellers[i].status,
+                promotionNumber: sellers[i].promotionNumber,
+                tag: sellers[i].tag,
+                desc: sellers[i].desc,
+                images: sellers[i].images
             }));
         }
     }
@@ -139,6 +140,10 @@ App.ModalController = Ember.ObjectController.create({
             id: this.get("id"),
             logo: this.get("logo") || "images/placebusi_pic.jpg",
             name: this.get("name"),
+            category: App.CategoryController.getItem(this.get("category")),
+            status: this.get("status"),
+            promotionNumber: this.get("promotionNumber"),
+            tag: this.get("tag"),
             desc: this.get("desc"),
             images: this.get("images") || [{ "id": 1, "url": "/images/placemap_pic.png" }, { "id": 2, "url": "/images/placemap_pic.png" }]
         };
@@ -170,8 +175,8 @@ App.ModalController = Ember.ObjectController.create({
             } else if (arguments[0].length > 0) {
                 var data = arguments[0];
                 var json = [];
-                for (var i = 0; i < mdata.length; i++) {
-                    json.push(JSON.parse(mdata[0]));
+                for (var i = 0; i < data.length; i++) {
+                    json.push(JSON.parse(data[i]));
                 }
                 App.PlaceController.create(json);
             }
@@ -179,15 +184,15 @@ App.ModalController = Ember.ObjectController.create({
     },
     create: function (act, item) {
         if (item != undefined) {
-            if (item.id != undefined) { this.set("id", item.id); }
-            if (item.id != undefined) { this.set("logo", item.logo); }
-            if (item.name != undefined) { this.set("name", item.name); }
-            if (item.category != undefined) { this.set("category", item.category); }
-            if (item.status != undefined) { this.set("status", item.status); }
-            if (item.promotionNumber != undefined) { this.set("promotionNumber", item.promotionNumber); }
-            if (item.tag != undefined) { this.set("tag", item.tag); }
-            if (item.desc != undefined) { this.set("desc", item.desc); }
-            if (item.images != undefined) { this.set("images", item.images); }
+            this.set("id", item.id);
+            this.set("logo", item.logo);
+            this.set("name", item.name);
+            this.set("category", item.category);
+            this.set("status", item.status);
+            this.set("promotionNumber", item.promotionNumber);
+            this.set("tag", item.tag);
+            this.set("desc", item.desc);
+            this.set("images", item.images);
         }
 
         this.set("act", act);
@@ -218,6 +223,21 @@ App.CategoryController = Ember.ArrayController.create({
                 name: cats[i].name
             }));
         }
+    },
+    getItem: function (item) {
+        var result = item;
+        var id = item;
+        if (typeof item === "object") {
+            id = item.id;
+        }
+        var controller = this.get("content");
+        for (var i = 0; i < controller.length; i++) {
+            if (id == controller[i].id) {
+                result = controller[i];
+                break;
+            }
+        }
+        return result;
     }
 });
     
@@ -242,7 +262,7 @@ App.initializer({
                     } else if (arguments[0].length > 0) {
                         var mdata = arguments[0];
                         for (var i = 0; i < mdata.length; i++) {
-                            business.push(JSON.parse(mdata[0]));
+                            business.push(JSON.parse(mdata[i]));
                         }
                     }
                     App.PlaceController.create(business, json.id, json.name);

@@ -18,19 +18,39 @@
             <span class="glyphicon glyphicon-home col_blue"></span><span class="Mag2">></span><span class="col_blue">商家管理</span><span class="Mag2">></span><span class="col_black">商家位置</span>
         </div>
         <div class="nav_top2">
-            <div class="row nav_top2_con NoMgBoth">
-                <div class="col-sm-3 nav_top2_L">
-                    <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;商家位置
-                </div>
-                <div class="col-xs-4 col-sm-4">
-                    <button type="button" class="btn btn-primary">标注商家位置</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary">保存</button>
-                </div>
+            {{outlet}}
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="business">
+        <div class="row nav_top2_con NoMgBoth">
+            <div class="col-sm-3 nav_top2_L">
+                <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;商家位置
             </div>
-            <div class="nav_top2_body">
-                <div class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-1 control-label blueCol NopadLeft">商家标志</label>
-                        <label class="col-sm-6 control-label-left blackCol NopadLeft">西单大悦城-7-11</label>
+            <div class="col-xs-4 col-sm-4">
+                <button type="button" class="btn btn-primary" {{action save}}>保存</button>
+            </div>
+        </div>
+        <div id="modalAlert">
+        </div>
+        <div class="nav_top2_body">
+            <div class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-1 control-label blueCol NopadLeft">商家标志</label>
+                    <div class="col-sm-1 control-label-left blackCol NopadLeft">
+                        <img {{bind-attr src="logo"}} class="img-responsive report_con" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label blueCol NopadLeft">商家名称</label>
+                    <label class="col-sm-2 control-label blueCol NopadLeft" style="text-align:left;">{{name}}</label>
+                    <div class="col-sm-2"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Labelposition">标注位置</button></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="thumbnail border_radius">
+                            <img data-src="holder.js/600x600" alt="...">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,6 +66,7 @@
 
     <script src="js/lib/common.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/apidata.js"></script>
     <script src="js/page/merchants-location.js"></script>
 
     <!--[if lt IE 9]>
