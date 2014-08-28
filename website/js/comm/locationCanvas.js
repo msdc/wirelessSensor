@@ -38,7 +38,7 @@ define(function(require, exports, module) {
 
 				canvasN = Raphael('bxPoint', configJson.canvas.w, configJson.canvas.h);
 				imgA.find('img').attr({width: configJson.bj_draw.w, height: configJson.bj_draw.h, src: configJson.bj_draw.src});
-				//imgA.find('svg').attr({width: configJson.bj_draw.w, height: configJson.bj_draw.h});
+                $('#imgA10086 object,#imgA10086 embed,#imgA10086 svg').attr({width: configJson.bj_draw.w, height: configJson.bj_draw.h});
 
 				$('#wrapRapGird,#raphaelTP,#maptt,#bxPoint,#imgA10086,#imgA10086 svg').css({width: configJson.canvas.w + 'px', height: configJson.canvas.h + 'px'});
 				//#imgA10086 svg 无它设置则显示大小及位置出错。。如前面的：Raphael('bxPoint', configJson.canvas.w, configJson.canvas.h);
@@ -49,6 +49,7 @@ define(function(require, exports, module) {
                     circle1.click(function (e) {
                         console.log('SS编辑',e.x,e.y,drawId);
                         $('#sb_'+drawId).remove();
+                        $('#sb_bj').remove();
                         var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left+$(document).scrollLeft(), e.y-$('#raphaelTP').offset().top+$(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
                         circle1.attr({"fill": "blue","stroke":"none"})  //填充色\去掉边框
                         circle1.node.id = 'sb_bj';
