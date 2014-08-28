@@ -24,19 +24,19 @@
         {
             "id": 1,
             "name": "一楼",
-            "url": "/images/placemap_pic.png",
+            "url": "/images/isoftstone.svg",
             "matrixID": "place_floor_matrix",
             "matrixSize": {
-                "x": 800,
-                "y": 900
+                "x": 124,
+                "y": 100
             },
             "imageSize": {
-                "width": 0,
-                "height": 0
+                "width": 3100,
+                "height": 2500
             },
             "canvasSize": {
-                "width": 22,
-                "height": 0
+                "width": 1240,
+                "height": 1000
             },
             "scale": "1:10000"
         },
