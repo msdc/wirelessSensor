@@ -1,7 +1,7 @@
 var astarModule = require("./AStar.js")();
 var easypost = require('easypost');
 var redis = require('redis');
-var config=require("./../config.js");
+var config = require("./../config.js");
 //var redis_port = 6379,
 //    redis_host = "127.0.0.1";
 
@@ -16,20 +16,44 @@ exports.findPath = function (req, res) {
             console.log('data is not defined.');
             res.send(500, "there is no data in the request body");
         }
-        else{
-            data=typeof (data)=="object"?data:JSON.parse(data);
+        else {
+            data = typeof (data) == "object" ? data : JSON.parse(data);
             var graphMatrix = data.graphMatrix;
             var startNode = data.start;
             var endNode = data.end;
-            var astar = astarModule.astar;
-            var gp = new astarModule.Graph(graphMatrix);
-            var start = gp.grid[startNode.x][startNode.y];
-            var end = gp.grid[endNode.x][endNode.y];
-            var result = astar.search(gp, start, end);
-            res.send(result);
+            var graphID = data.graphID;
+            if (!graphMatrix && graphID) {
+                var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
+                client.on("error", function (err) {
+                    if (err) {
+                        res.send(500, {result: false, message: err});
+                        return;
+                    }
+                });
+                client.get(graphID, function (err, data) {
+                    if (err) {
+                        res.send(500, {result: false, message: err});
+                        return;
+                    }
+                    graphMatrix = JSON.parse(data);
+                    var astar = astarModule.astar;
+                    var gp = new astarModule.Graph(graphMatrix);
+                    var start = gp.grid[startNode.x][startNode.y];
+                    var end = gp.grid[endNode.x][endNode.y];
+                    var result = astar.search(gp, start, end);
+                    res.send(result);
+                });
+                client.quit();
+            }
+            else {
+                var astar = astarModule.astar;
+                var gp = new astarModule.Graph(graphMatrix);
+                var start = gp.grid[startNode.x][startNode.y];
+                var end = gp.grid[endNode.x][endNode.y];
+                var result = astar.search(gp, start, end);
+                res.send(result);
+            }
         }
-
-        //return astar.search(graphNodes,startNode,endNode);
     });
 }
 
@@ -40,7 +64,7 @@ exports.saveGraphMatrix = function (req, res) {
             res.send(500, "there is no data in the request body");
         }
         else {
-            data=typeof (data)=="object"?data:JSON.parse(data);
+            data = typeof (data) == "object" ? data : JSON.parse(data);
             var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
             client.on("error", function (err) {
                 if (err) {
@@ -51,8 +75,8 @@ exports.saveGraphMatrix = function (req, res) {
             var graphKey = data.graphName;
             var graphMatrix = data.graphMatrix;
             if (graphKey && graphMatrix) {
-                client.set(graphKey,JSON.stringify(graphMatrix));
-                res.send({result:"success saved the matrix"});
+                client.set(graphKey, JSON.stringify(graphMatrix));
+                res.send({result: "success saved the matrix"});
             }
             client.quit();
         }
@@ -68,7 +92,7 @@ exports.getGraphMatrix = function (req, res) {
             return;
         }
     });
-    client.get(graphID, function (err,data) {
+    client.get(graphID, function (err, data) {
         res.send(JSON.parse(data));
     });
     client.quit();
