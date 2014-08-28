@@ -50,16 +50,16 @@ define(function (require, exports, module) {
                 circle1.click(function (e) {
                     console.log('SS编辑', e.x, e.y, drawId);
                     $('#sb_' + drawId).remove();
-                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left, e.y - $('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left+$(document).scrollLeft(), e.y - $('#raphaelTP').offset().top+$(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
                     circle1.attr({"fill": "blue", "stroke": "none"})  //填充色\去掉边框
                     circle1.node.id = 'sb_bj';
                 });//直接“标注”
             }
-            else if (cmd == 'create') {//'创建'
+            else{// if (cmd == 'create') {//'创建'..为了‘标注’去掉‘编辑’功能
                 circle1.click(function (e) {
                     console.log('SS创建', e.x, e.y);
                     $('#sb_bj').remove();
-                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left, e.y - $('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left+$(document).scrollLeft(), e.y - $('#raphaelTP').offset().top+$(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
                     circle1.attr({"fill": "blue", "stroke": "none"})  //填充色\去掉边框
                     circle1.node.id = 'sb_bj';
                 });//直接“标注”
