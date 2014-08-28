@@ -10,7 +10,7 @@ exports.findPath = function (req, res) {
         if (!data) {
             console.log('data is not defined.');
             res.end(500, "there is no data in the request body");
-
+            return;
         }
         else {
             data = typeof (data) == "object" ? data : JSON.parse(data);
@@ -18,6 +18,7 @@ exports.findPath = function (req, res) {
             var startNode = data.start;
             var endNode = data.end;
             var graphID = data.graphID;
+            var opt={closest:true};
             if (!graphMatrix && graphID) {
                 var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
                 client.on("error", function (err) {
@@ -33,20 +34,20 @@ exports.findPath = function (req, res) {
                     }
                     graphMatrix = JSON.parse(data);
                     var astar = astarModule.astar;
-                    var gp = new astarModule.Graph(graphMatrix);
+                    var gp = new astarModule.Graph(graphMatrix,{ diagonal: false });
                     var start = gp.grid[startNode.x][startNode.y];
                     var end = gp.grid[endNode.x][endNode.y];
-                    var result = astar.search(gp, start, end);
+                    var result = astar.search(gp, start, end,opt);
                     res.send(result);
                 });
                 client.quit();
             }
             else {
                 var astar = astarModule.astar;
-                var gp = new astarModule.Graph(graphMatrix);
+                var gp = new astarModule.Graph(graphMatrix,{ diagonal: false });
                 var start = gp.grid[startNode.x][startNode.y];
                 var end = gp.grid[endNode.x][endNode.y];
-                var result = astar.search(gp, start, end);
+                var result = astar.search(gp, start, end,opt);
                 res.send(result);
             }
         }
@@ -57,16 +58,16 @@ exports.saveGraphMatrix = function (req, res) {
     easypost.get(req, res, function (data) {
         if (!data) {
             console.log('data is not defined.');
-            res.send(500, "there is no data in the request body");
-
+            res.end(500, "there is no data in the request body");
+            return;
         }
         else {
             data = typeof (data) == "object" ? data : JSON.parse(data);
             var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
             client.on("error", function (err) {
                 if (err) {
-                    res.send(500, {result: false, message: err});
-
+                    res.end(500, {result: false, message: err});
+                    return;
                 }
             });
             var graphKey = data.graphName;
@@ -85,7 +86,7 @@ exports.getGraphMatrix = function (req, res) {
     var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     client.on("error", function (err) {
         if (err) {
-            res.send(500, {result: false, message: err});
+            res.end(500, {result: false, message: err});
             return;
         }
     });
