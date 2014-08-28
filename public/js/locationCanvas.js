@@ -293,7 +293,6 @@ define(function(require, exports, module) {
 				callback&&callback();
 			})
 		}
-
 	exports.DrawPointer = new DrawPointer();
 
 });
