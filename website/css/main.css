@@ -317,3 +317,5 @@ a:focus { outline:none; outline-offset:0;}
 .alert { 
     margin-bottom:0px;
 }
+
+.table-bordered img { max-width:200px;}

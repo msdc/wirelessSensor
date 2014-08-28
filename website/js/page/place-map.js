@@ -6,6 +6,10 @@
 App.PlaceView = Ember.View.extend({
     templateName: 'place',
     contentBinding: 'App.PlaceController',
+    mapView: Ember.View.extend({
+        templateName:'map',
+        contentBinding: 'App.MapController'
+    }),
     onRerender: function () {
         this.rerender();
     }.observes('content.maps')
@@ -43,8 +47,8 @@ App.Router.map(function () {
 App.PlaceController = Ember.ObjectController.create({
     id:null,
     name: null,
-    removeItem:null,
-    maps: [],
+    removeItem: null,
+    maps:[],
     insert: function () {
         App.ModalController.create(this.get("id"), this.get("name"), null, this.get("maps"), "insert");
     },
@@ -90,6 +94,7 @@ App.PlaceController = Ember.ObjectController.create({
                 url: maps[i].url
             }));
         }
+        App.MapController.create(maps);
     }
 });
 
@@ -218,6 +223,28 @@ App.ModalController = Ember.ObjectController.create({
             case "update": this.set("title", "编辑地图"); break;
             case "detail": this.set("title", "查看地图"); break;
             default: this.set("title", "添加地图");
+        }
+    }
+});
+
+App.MapController = Ember.ArrayController.create({
+    content: [],
+    removeAll: function () {
+        var content = this.get('content');
+        var arg = content || [].copy();
+        for (var i = 0; i < arg.length; i++) {
+            this.get('content').removeObject(arg[i]);
+        }
+    },
+    create: function (maps) {
+        this.removeAll();
+        maps = maps || [];
+        for (var i = 0; i < maps.length; i++) {
+            this.get("content").pushObject(App.MapModel.create({
+                id: maps[i].id,
+                name: maps[i].name,
+                url: maps[i].url
+            }));
         }
     }
 });
