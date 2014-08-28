@@ -14,7 +14,7 @@ App.ModalView = Ember.View.extend({
     categorySelectView: Ember.Select.extend({
         contentBinding: 'App.CategoryController',
         optionValuePath: 'content.id',
-        optionLabelPath: 'content.title'
+        optionLabelPath: 'content.name'
     })
 });
 
@@ -64,7 +64,7 @@ App.PlaceController = Ember.ArrayController.create({
         })
         var id = 1;
         if (sellers.length > 0) {
-            id = jsonPlace.maps[0].id + 1;
+            id = sellers[0].id + 1;
         }
         App.ModalController.create("insert", { id: id });
     },
@@ -108,13 +108,13 @@ App.PlaceController = Ember.ArrayController.create({
             this.get('content').pushObject(App.SellerModel.create({
                 id: sellers[i].id,
                 name: sellers[i].name,
-                logo: sellers[i].logo,
-                category: sellers[i].category,
-                status: sellers[i].status,
-                promotionNumber: sellers[i].promotionNumber,
-                tag: sellers[i].tag,
-                desc: sellers[i].desc,
-                images: sellers[i].images
+                //logo: sellers[i].logo,
+                //category: sellers[i].category,
+                //status: sellers[i].status,
+                //promotionNumber: sellers[i].promotionNumber,
+                //tag: sellers[i].tag,
+                //desc: sellers[i].desc,
+                //images: sellers[i].images
             }));
         }
     }
@@ -149,7 +149,7 @@ App.ModalController = Ember.ObjectController.create({
                     $("#modalAlert").alert("warning", "添加场所商家失败！  " + arguments[1].message);
                 } else {
                     $("#divAlert").alert("success", "添加场所商家成功！  ");
-                    $('#modalAddMap').modal('hide')
+                    $('#modalAddBusiness').modal('hide')
                 }
             });
         }
@@ -159,33 +159,35 @@ App.ModalController = Ember.ObjectController.create({
                     $("#modalAlert").alert("warning", "编辑场所商家失败！  " + arguments[1].message);
                 } else {
                     $("#divAlert").alert("success", "编辑场所商家成功！  ");
-                    $('#modalAddMap').modal('hide')
+                    $('#modalAddBusiness').modal('hide')
                 }
             });
         }
-
+       
         api.ms.getplacemerchants(function () {
             if (arguments[0] == "error") {
                 $("#divAlert").alert("warning", "获取场所商家失败！  " + arguments[1].message);
             } else if (arguments[0].length > 0) {
                 var data = arguments[0];
-                var json = JSON.parse(mdata[0]);
-
+                var json = [];
+                for (var i = 0; i < mdata.length; i++) {
+                    json.push(JSON.parse(mdata[0]));
+                }
                 App.PlaceController.create(json);
             }
         });
     },
     create: function (act, item) {
         if (item != undefined) {
-            this.set("id", item.id);
-            this.set("logo", item.logo);
-            this.set("name", item.name);
-            this.set("category", item.category);
-            this.set("status", item.status);
-            this.set("promotionNumber", item.promotionNumber);
-            this.set("tag", item.tag);
-            this.set("desc", item.desc);
-            this.set("images", item.images);
+            if (item.id != undefined) { this.set("id", item.id); }
+            if (item.id != undefined) { this.set("logo", item.logo); }
+            if (item.name != undefined) { this.set("name", item.name); }
+            if (item.category != undefined) { this.set("category", item.category); }
+            if (item.status != undefined) { this.set("status", item.status); }
+            if (item.promotionNumber != undefined) { this.set("promotionNumber", item.promotionNumber); }
+            if (item.tag != undefined) { this.set("tag", item.tag); }
+            if (item.desc != undefined) { this.set("desc", item.desc); }
+            if (item.images != undefined) { this.set("images", item.images); }
         }
 
         this.set("act", act);
@@ -198,16 +200,25 @@ App.ModalController = Ember.ObjectController.create({
 });
 
 App.CategoryController = Ember.ArrayController.create({
-    content: [{
-        "id": 1,
-        "name": "鞋"
-    }, {
-        "id": 2,
-        "name": "衣服"
-    }, , {
-        "id": 3,
-        "name": "日用品"
-    }]
+    content: [],
+    init: function () {
+        var cats = [{
+            id: 1,
+            name: "鞋"
+        }, {
+            id: 2,
+            name: "衣服"
+        }, {
+            id: 3,
+            name: "日用品"
+        }];
+        for (var i = 0; i < cats.length; i++) {
+            this.get("content").pushObject(App.CategoryModel.create({
+                id: cats[i].id,
+                name: cats[i].name
+            }));
+        }
+    }
 });
     
 
@@ -225,17 +236,18 @@ App.initializer({
                 var json = JSON.parse(data[0]);
                
                 api.ms.getplacemerchants(function () {
+                    var business = [];
                     if (arguments[0] == "error") {
                         $("#divAlert").alert("warning", "获取场所商家失败！  " + arguments[1].message);
                     } else if (arguments[0].length > 0) {
                         var mdata = arguments[0];
-                        var mjson = JSON.parse(mdata[0]);
-
-                        App.PlaceController.create(mjson, json.id, json.name);
+                        for (var i = 0; i < mdata.length; i++) {
+                            business.push(JSON.parse(mdata[0]));
+                        }
                     }
+                    App.PlaceController.create(business, json.id, json.name);
                 });
             }
-        });
-        
+        });        
     }
 });

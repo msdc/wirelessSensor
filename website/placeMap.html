@@ -48,26 +48,7 @@
                 </div>
                 <div class="row">
                     <div class="table-responsive">
-                        <table class="table table-bordered row_delMg">
-                            <tr class="tr_bg">
-                                <th class="whiteCol" style="border:none;">名称</th>
-                                <th class="whiteCol" style="border:none;">地图</th>
-                                <th class="whiteCol" style="border:none;">操作</th>
-                            </tr>
-                            {{#each item in view.content.maps}}
-                            <tr>
-                                <td>{{item.name}}</td>
-                                <td>
-                                    <img {{bind-attr src="item.url" }} />
-                                </td>
-                                <td>
-                                    <!--<button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action detail item.id target="view.content"}}>查看</button>-->
-                                    <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddMap" {{action update item.id target="view.content" }}>编辑</button>
-                                    <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action sure item target="view.content" }}>删除</button>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </table>
+                       {{view view.mapView}}
                     </div>
                 </div>
                 <!--<div class="row report_con">
@@ -115,6 +96,29 @@
         </div>
     </script>
 
+    <script type="text/x-handlebars" data-template-name="map">
+        <table class="table table-bordered row_delMg">
+            <tr class="tr_bg">
+                <th class="whiteCol" style="border:none;">名称</th>
+                <th class="whiteCol" style="border:none;">地图</th>
+                <th class="whiteCol" style="border:none;">操作</th>
+            </tr>
+            {{#each item in view.content}}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>
+                    <img {{bind-attr src="item.url" }} />
+                </td>
+                <td>
+                    <!--<button type="button" class="btn adview_a margRight" data-toggle="modal" data-target="#modalAddMap"  {{action detail item.id target="view.content"}}>查看</button>-->
+                    <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#modalAddMap" {{action update item.id target="App.PlaceController" }}>编辑</button>
+                    <button type="button" class="btn adview_a adview_a_bg4 margRight" {{action sure item target="App.PlaceController" }}>删除</button>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </script>
+
     <!-- Modal -->
     <script type="text/x-handlebars" data-template-name="modal">
         <div class="modal fade bs-example-modal-lg" id="modalAddMap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -147,28 +151,28 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">matrixSize</label>
                                 <div class="col-sm-1">
-                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="x" valueBinding="view.content.matrixID.x"}}
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixSizex" placeholder="x" valueBinding="view.content.matrixID.x"}}
                                 </div>
                                 <div class="col-sm-1">
-                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="y" valueBinding="view.content.matrixID.y"}}
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixSizexy" placeholder="y" valueBinding="view.content.matrixID.y"}}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">imageSize</label>
                                 <div class="col-sm-1">
-                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="width" valueBinding="view.content.imageSize.width"}}
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_imageSizeWidth" placeholder="width" valueBinding="view.content.imageSize.width"}}
                                 </div>
                                 <div class="col-sm-1">
-                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="height" valueBinding="view.content.imageSize.width"}}
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_imageSizeHeight" placeholder="height" valueBinding="view.content.imageSize.width"}}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label blueCol">canvasSize</label>
                                 <div class="col-sm-1">
-                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="width" valueBinding="view.content.imageSize.width"}}
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_canvasSizeWidth" placeholder="width" valueBinding="view.content.imageSize.width"}}
                                 </div>
                                 <div class="col-sm-1">
-                                    {{view App.SelfTextView class="form-control border_radius" id="validate_matrixID" placeholder="height" valueBinding="view.content.imageSize.width"}}
+                                    {{view App.SelfTextView class="form-control border_radius" id="validate_canvasSizeHeight" placeholder="height" valueBinding="view.content.imageSize.width"}}
                                 </div>
                             </div>
                             <div class="form-group">
