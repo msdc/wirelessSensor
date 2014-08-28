@@ -50,16 +50,16 @@ define(function (require, exports, module) {
                 circle1.click(function (e) {
                     console.log('SS编辑', e.x, e.y, drawId);
                     $('#sb_' + drawId).remove();
-                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left+$(document).scrollLeft(), e.y - $('#raphaelTP').offset().top+$(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
                     circle1.attr({"fill": "blue", "stroke": "none"})  //填充色\去掉边框
                     circle1.node.id = 'sb_bj';
                 });//直接“标注”
             }
-            else{// if (cmd == 'create') {//'创建'..为了‘标注’去掉‘编辑’功能
+            else {// if (cmd == 'create') {//'创建'..为了‘标注’去掉‘编辑’功能
                 circle1.click(function (e) {
                     console.log('SS创建', e.x, e.y);
                     $('#sb_bj').remove();
-                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left+$(document).scrollLeft(), e.y - $('#raphaelTP').offset().top+$(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
                     circle1.attr({"fill": "blue", "stroke": "none"})  //填充色\去掉边框
                     circle1.node.id = 'sb_bj';
                 });//直接“标注”
@@ -236,7 +236,7 @@ define(function (require, exports, module) {
         for (var k = 0; k < m; k++) {
             tArray[k] = [];
             for (var j = 0; j < g; j++) {
-                tArray[k][j] = "1";//默认都是路1，障碍为0
+                tArray[k][j] = 1;//默认都是路1，障碍为0
             }
         }
 
@@ -300,6 +300,17 @@ define(function (require, exports, module) {
     DrawPointer.prototype.ajaxSubmit = function (parms, callback) {//	网格
         var that = this;
         $('#searchLJ').unbind('click').click(function () {//开始查找。。。
+            that.girdArr = [];
+            if ($('#gridStr').val().length) {
+                var gridStr = $('#gridStr').val().split(',')
+                that.tDim(gridStr[0], gridStr[1]);
+            }
+            else {
+                alert('shuru grid num');
+                return;
+            }
+
+            console.log('new arr:', that.girdArr);
             var mStart = $('#maptt td.mStart'), mEnd = $('#maptt td.mEnd'), mSleep = $('#maptt td.mSleep');
             if (mStart.length != 1 || mEnd.length != 1) {//是否已经有起点 终点
                 alert('请选择起点、终点');
@@ -314,31 +325,31 @@ define(function (require, exports, module) {
                 that.girdArr[k[0]][k[1]] = 0;
             }
             console.log('后台所需数据:', that.girdArr);
-            var graph = new Graph(that.girdArr,{ diagonal: true });
-            var startNode = graph.grid[parseInt(start[0])][parseInt(start[1])];
-            var endNode = graph.grid[parseInt(end[0])][parseInt(end[1])];
-            var routeResult = astar.search(graph, startNode, endNode);
-            for (var i = 0; i < routeResult.length; i++) {
-                $('#F892975_' + routeResult[i].x + '_' + routeResult[i].y).css({backgroundColor: "#800CF2"});
-            }
-            callback && callback();
-//            $.ajax({
-//                type: "post",
-//                url: '/findPath',
-//                contentType: 'application/text',
-//                data: JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphName": "graph", "graphMatrix": that.girdArr }),
-//                dataType: 'json',
-//                success: function (data) {
-//                    console.log('findPath:', data);
-//                    if (data) {
-//                        var str = '';
-//                        for (var i = 0; i < data.length; i++) {
-//                            $('#F892975_' + data[i].x + '_' + data[i].y).css({backgroundColor: "#800CF2"});
-//                        }
-//                        callback && callback();
-//                    }
-//                }
-//            });
+//            var graph = new Graph(that.girdArr);
+//            var startNode = graph.grid[parseInt(start[0])][parseInt(start[1])];
+//            var endNode = graph.grid[parseInt(end[0])][parseInt(end[1])];
+//            var routeResult = astar.search(graph, startNode, endNode);
+//            for (var i = 0; i < routeResult.length; i++) {
+//                $('#F892975_' + routeResult[i].x + '_' + routeResult[i].y).css({backgroundColor: "#800CF2"});
+//            }
+//            callback && callback();
+            $.ajax({
+                type: "post",
+                url: '/findPath',
+                contentType: 'application/text',
+                data: JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphName": "graph", "graphMatrix": that.girdArr }),
+                dataType: 'json',
+                success: function (data) {
+                    console.log('findPath:', data);
+                    if (data) {
+                        var str = '';
+                        for (var i = 0; i < data.length; i++) {
+                            $('#F892975_' + data[i].x + '_' + data[i].y).css({backgroundColor: "#800CF2"});
+                        }
+                        callback && callback();
+                    }
+                }
+            });
         })
     }
 
