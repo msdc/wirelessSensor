@@ -209,6 +209,11 @@
 
 
 
+
+
+
+
+
 <div class="moveLay">
     <input type="button" id="pointOrGrid" value="启动“寻径”功能"/>
     <div class="setPoints">
@@ -233,6 +238,7 @@
 
 <script src="js/comm/sea.js"></script>
 <script>
+    window.isNoClkLay=false;//代表该页单击显示svg图。
     seajs.config({
         alias: {
             "jquery": "jquery.js"
@@ -250,11 +256,7 @@
 <style>
     #raphael1,#wrapRapGird,#maptt,#bxPoint,#imgA10086{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;}
     #imgA10086,#girdNext{position:absolute;left:0px;top:0px;z-index:-10;}
-
-    #tips{display:none;z-index:10;max-width:300px;font-size:12px;line-height:1.2em;background:#fff;
-        border-radius:8px;position:absolute;left:200px;top:0px;border:1px solid #ff7300;padding:5px;
-    }
-
+    #tips{display:none;z-index:10;max-width:300px;font-size:12px;line-height:1.2em;background:#fff;border-radius:8px;position:absolute;left:200px;top:0px;border:1px solid #ff7300;padding:5px;}
     #maptt{position:absolute;left:0px;top:0px;z-index:-10;opacity:0;}
     #maptt #tabBcoll{border-collapse:collapse;}
     #maptt #tabBcoll td{background:#fff;width:20px;height:20px;border:1px solid #000;}

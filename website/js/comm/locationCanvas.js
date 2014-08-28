@@ -44,23 +44,22 @@ define(function(require, exports, module) {
 				//#imgA10086 svg 无它设置则显示大小及位置出错。。如前面的：Raphael('bxPoint', configJson.canvas.w, configJson.canvas.h);
 
                 var circle1 = canvasN.rect(0, 0, configJson.canvas.w, configJson.canvas.h);//
-                circle1.attr({"fill": "#fff","fill-opacity":0.1}); //填充色
+                circle1.attr({"fill": "#fff","fill-opacity":0.8}); //填充色
                 if(cmd=='edit'){//'编辑命令'
                     circle1.click(function (e) {
                         console.log('SS编辑',e.x,e.y,drawId);
                         $('#sb_'+drawId).remove();
                         var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left, e.y-$('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
-                        circle1.attr({"fill": "blue"})  //填充色
-                            .attr("stroke", "none")   //去掉边框
+                        circle1.attr({"fill": "blue","stroke":"none"})  //填充色\去掉边框
                         circle1.node.id = 'sb_bj';
                     });//直接“标注”
                 }
                 else if(cmd=='create'){//'创建'
                     circle1.click(function (e) {
-                        console.log('SS创建',e.x,e.y,that.drPX);
+                        console.log('SS创建',e.x,e.y);
+                        $('#sb_bj').remove();
                         var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left, e.y-$('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
-                        circle1.attr({"fill": "blue"})  //填充色
-                            .attr("stroke", "none")   //去掉边框
+                        circle1.attr({"fill": "blue","stroke":"none"})  //填充色\去掉边框
                         circle1.node.id = 'sb_bj';
                     });//直接“标注”
                 }
