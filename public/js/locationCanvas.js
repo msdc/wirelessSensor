@@ -118,10 +118,10 @@ define(function(require, exports, module) {
 				var that = this,imgJ;
 				var configJson=that.configJson;
 				if(imgJson){
-					imgJ={src:imgJson.src||'t2.png',w:imgJson.w||sbW,h:imgJson.h||sbH}
+					imgJ={src:imgJson.src||'images/t2.png',w:imgJson.w||sbW,h:imgJson.h||sbH}
 				}
 				else{
-					imgJ={src:'t2.png',w:sbW,h:sbH}
+					imgJ={src:'images/t2.png',w:sbW,h:sbH}
 				}
 
 				for (var m in uuidArr) {
@@ -224,7 +224,9 @@ define(function(require, exports, module) {
 					tArray[k][j]="1";//默认都是路1，障碍为0
 				}
 			}
+
 			this.girdArr=tArray;//生成网格对应的二维数组并设置每一项为1（路1，障碍为0），动态的
+            console.log('this.girdArr:',this.girdArr);
 		};
 		
 		DrawPointer.prototype.barriers=function(barriers){//设置表格障碍点...
