@@ -314,23 +314,31 @@ define(function (require, exports, module) {
                 that.girdArr[k[0]][k[1]] = 0;
             }
             console.log('后台所需数据:', that.girdArr);
-            $.ajax({
-                type: "post",
-                url: '/findPath',
-                contentType: 'application/text',
-                data: JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphName": "graph", "graphMatrix": that.girdArr }),
-                dataType: 'json',
-                success: function (data) {
-                    console.log('findPath:', data);
-                    if (data) {
-                        var str = '';
-                        for (var i = 0; i < data.length; i++) {
-                            $('#F892975_' + data[i].x + '_' + data[i].y).css({backgroundColor: "#800CF2"});
-                        }
-                        callback && callback();
-                    }
-                }
-            });
+            var graph = new Graph(that.girdArr,{ diagonal: true });
+            var startNode = graph.grid[parseInt(start[0])][parseInt(start[1])];
+            var endNode = graph.grid[parseInt(end[0])][parseInt(end[1])];
+            var routeResult = astar.search(graph, startNode, endNode);
+            for (var i = 0; i < routeResult.length; i++) {
+                $('#F892975_' + routeResult[i].x + '_' + routeResult[i].y).css({backgroundColor: "#800CF2"});
+            }
+            callback && callback();
+//            $.ajax({
+//                type: "post",
+//                url: '/findPath',
+//                contentType: 'application/text',
+//                data: JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphName": "graph", "graphMatrix": that.girdArr }),
+//                dataType: 'json',
+//                success: function (data) {
+//                    console.log('findPath:', data);
+//                    if (data) {
+//                        var str = '';
+//                        for (var i = 0; i < data.length; i++) {
+//                            $('#F892975_' + data[i].x + '_' + data[i].y).css({backgroundColor: "#800CF2"});
+//                        }
+//                        callback && callback();
+//                    }
+//                }
+//            });
         })
     }
 

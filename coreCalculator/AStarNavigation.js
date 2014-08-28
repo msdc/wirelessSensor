@@ -18,7 +18,7 @@ exports.findPath = function (req, res) {
             var startNode = data.start;
             var endNode = data.end;
             var graphID = data.graphID;
-            var opt={closest:true};
+            var opt = {closest: true};
             if (!graphMatrix && graphID) {
                 var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
                 client.on("error", function (err) {
@@ -34,20 +34,20 @@ exports.findPath = function (req, res) {
                     }
                     graphMatrix = JSON.parse(data);
                     var astar = astarModule.astar;
-                    var gp = new astarModule.Graph(graphMatrix,{ diagonal: false });
+                    var gp = new astarModule.Graph(graphMatrix, { diagonal: false });
                     var start = gp.grid[startNode.x][startNode.y];
                     var end = gp.grid[endNode.x][endNode.y];
-                    var result = astar.search(gp, start, end,opt);
+                    var result = astar.search(gp, start, end, opt);
                     res.send(result);
                 });
                 client.quit();
             }
             else {
                 var astar = astarModule.astar;
-                var gp = new astarModule.Graph(graphMatrix,{ diagonal: false });
+                var gp = new astarModule.Graph(graphMatrix, { diagonal: false });
                 var start = gp.grid[startNode.x][startNode.y];
                 var end = gp.grid[endNode.x][endNode.y];
-                var result = astar.search(gp, start, end,opt);
+                var result = astar.search(gp, start, end, opt);
                 res.send(result);
             }
         }
