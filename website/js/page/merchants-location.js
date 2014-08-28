@@ -56,6 +56,11 @@ App.BusinessController = Ember.ObjectController.extend({
                 }
             }
         });
+    },
+    setLocation:function(obj){
+        if(obj){this.set("location",obj);}
+    },getLocation:function(){
+        this.get("location");
     }
 });
 
