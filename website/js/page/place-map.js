@@ -77,7 +77,7 @@ App.PlaceController = Ember.ObjectController.create({
     },
     removeAll: function () {
         var maps = this.get('maps');
-        var arg = maps || [].copy();
+        var arg = (maps || []).copy();
         for (var i = 0; i < arg.length; i++) {
             this.get('maps').removeObject(arg[i]);
         }
@@ -231,7 +231,7 @@ App.MapController = Ember.ArrayController.create({
     content: [],
     removeAll: function () {
         var content = this.get('content');
-        var arg = content || [].copy();
+        var arg = (content || []).copy();
         for (var i = 0; i < arg.length; i++) {
             this.get('content').removeObject(arg[i]);
         }
