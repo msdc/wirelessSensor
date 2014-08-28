@@ -258,6 +258,7 @@ define(function(require, exports, module) {
         DrawPointer.prototype.getBarriers=function(graphId,callback) {//	获取障碍点
             var that = this;
             console.log('ajax获取障碍点');
+            $('#maptt td').removeClass();
             $.ajax({
                 type: "get",
                 url: '/getGraphMatrix/' + graphId||'graph',
@@ -312,7 +313,7 @@ define(function(require, exports, module) {
                     type: "post",
                     url: '/findPath',
                     contentType:'application/text',
-                    data:JSON.stringify({"start":{"x":start[0],"y":[1]},"end":{"x":end[0],"y":end[1]},"graphName":"graph","graphMatrix":that.girdArr }),
+                    data:JSON.stringify({"start":{"x":start[0],"y":start[1]},"end":{"x":end[0],"y":end[1]},"graphName":"graph","graphMatrix":that.girdArr }),
                     dataType:'json',
                     success: function(data){
                         console.log('findPath:',data);
