@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
-		
-		var $ = require('jquery');  
+
+		var $ = require('jquery');
 		var raphaelTP = $('#raphaelTP');
 		var bxPoint=$('#bxPoint');
 		var imgA = $('#imgA10086'),maptt=$('#maptt');
@@ -10,77 +10,87 @@ define(function(require, exports, module) {
 
 		function DrawPointer() {
 			this.girdArr=[];//存放生成的网格二维数组
-			this.currFlag=0;//存放当前‘起点、终点、障碍点’标志		
+			this.currFlag=0;//存放当前‘起点、终点、障碍点’标志
 		}
 		DrawPointer.prototype = {
-			resetData:function(configJson){//初始化基本数据
+			resetData:function(configJson,cmd,drawId){//初始化基本数据
 				var that=this;
 				console.log('configJson:',configJson);
 				that.rapAll=[];
 				configJson.girdSize=configJson.girdSize||'20,20';
 				configJson.scale=configJson.scale||5000;
-				
+
 				configJson.PPI=96;
 				configJson.inchesM=0.0254;
-				
+
 				//configJson.zoomImg=1;
 				configJson.zoomImg=configJson.bj_draw.zoom;
 				console.log('configJson.zoomImg:',configJson.zoomImg);
-				
+
 				configJson.uuidArr=configJson.uuidArr;
 				configJson.canvas.w=configJson.bj_draw.w;
 				configJson.canvas.h=configJson.bj_draw.h;
-				
-				
+
+
 				configJson.resolution = configJson.scale * configJson.inchesM / configJson.PPI;//地图分辨率
 				that.configJson=configJson;
 				console.log('222configJson:',configJson,configJson.resolution);
-	
+
 				canvasN = Raphael('bxPoint', configJson.canvas.w, configJson.canvas.h);
 				imgA.find('img').attr({width: configJson.bj_draw.w, height: configJson.bj_draw.h, src: configJson.bj_draw.src});
 				//imgA.find('svg').attr({width: configJson.bj_draw.w, height: configJson.bj_draw.h});
-				
+
 				$('#wrapRapGird,#raphaelTP,#maptt,#bxPoint,#imgA10086,#imgA10086 svg').css({width: configJson.canvas.w + 'px', height: configJson.canvas.h + 'px'});
 				//#imgA10086 svg 无它设置则显示大小及位置出错。。如前面的：Raphael('bxPoint', configJson.canvas.w, configJson.canvas.h);
 
-				that.evt();
+                var circle1 = canvasN.rect(0, 0, configJson.canvas.w, configJson.canvas.h);//
+                circle1.attr({"fill": "#fff","fill-opacity":0.1}); //填充色
+                if(cmd=='edit'){//'编辑命令'
+                    circle1.click(function (e) {
+                        console.log('SS编辑',e.x,e.y,drawId);
+                        $('#sb_'+drawId).remove();
+                        var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left, e.y-$('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                        circle1.attr({"fill": "blue"})  //填充色
+                            .attr("stroke", "none")   //去掉边框
+                        circle1.node.id = 'sb_bj';
+                    });//直接“标注”
+                }
+                else if(cmd=='create'){//'创建'
+                    circle1.click(function (e) {
+                        console.log('SS创建',e.x,e.y,that.drPX);
+                        var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left, e.y-$('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                        circle1.attr({"fill": "blue"})  //填充色
+                            .attr("stroke", "none")   //去掉边框
+                        circle1.node.id = 'sb_bj';
+                    });//直接“标注”
+                }
+                //'设备分布'无‘标注’功能
+                that.evt();
 			},
 			sumA:function(callback){//提交‘标注
 				var configJson=this.configJson;
-				var sLeft = parseFloat($('.occupying:last').css('left')),
-					sTop = parseFloat($('.occupying:last').css('Top'));
 				var Odoc = raphaelTP.offset();
-				if(isNaN(sLeft)||isNaN(sTop)){alert('请选择标注的位置');return false;}
-				var pX = sLeft - Odoc.left, pY = sTop - Odoc.top;//当前坐标系上的坐标
+                if($('#sb_bj').length<1){
+                    alert('请选择标注的位置');return false;
+                }
+				//var pX = sLeft - Odoc.left, pY = sTop - Odoc.top;//当前坐标系上的坐标
+                var pX=$('#sb_bj').attr('x'),pY=$('#sb_bj').attr('y');
+                console.log('标注像素:',pX,pY);
 				callback&&callback(pX,pY,configJson);
-				return false;			
+				return false;
 			},
 			evt: function () {
 				var that = this;
 				var configJson=that.configJson;
-				
-				$('#addBZ').unbind('click').click(function () {
-				     if(maptt.find('td').length>0){
-						alert('当前网格化，请选择“障碍点”进行标注即可');
-						return false;
-					 }
-					console.log('开始标注.')
-					maptt.html(' ').css({'zIndex':-10,opacity:'0'});
-					$('#bxPoint').click(function (e) {
-						console.log('标注22',$(this).offset().left,$(this).offset().top)
-						$('.occupying').css({left: e.pageX + 'px', top: e.pageY + 'px'}).show();
-						return false;
-					})
-				})
-				
+
 				/****网格相关evt start***/
-				$('#gridStr').unbind('blur').blur(function(){	
+				$('#gridStr').unbind('blur').blur(function(){
 					configJson.girdSize=$(this).val();
 					var change=$(this).val().split(',');//输入框的值
-					that.createGird(change[0],change[1]);//生成网格。。行18 列20	
+					that.createGird(change[0],change[1]);//生成网格。。行18 列20
 					console.log('改变后原先的障碍点需要重新设置。');
 					return false;
-				})			
+				})
 				$('#maptt td').unbind('click').click(function(){
 					var serialnum='',allTd=$('#maptt td'),Oelem=$(this);
 					if($(this).hasClass('mStart')||$(this).hasClass('mEnd')||$(this).hasClass('mSleep')){//取消选择
@@ -111,7 +121,7 @@ define(function(require, exports, module) {
 				})
 				$('.cS3').unbind('click').click(function(){//设置障碍物
 					that.currFlag=3;return false;
-				})			
+				})
 				/****网格相关evt end***/
 			},
 			sbPos: function (uuidArr,imgJson) {//设备坐标（更新一次）
@@ -147,7 +157,7 @@ define(function(require, exports, module) {
 				var that = this;
 				var currData = that.source_Send = postData,
 					fotData = [];
-				console.log('need Format:',currData)	
+				console.log('need Format:',currData)
 				for(var i=0;i<currData.length;i++){
 					if((!!currData[i].deviceID)&&(!!currData[i].timePoint)&&(!!currData[i].beaconCalculatePosition)){//3个字段必须有
 						if((currData[i].beaconCalculatePosition.length>0)&&!!currData[i].beaconCalculatePosition[0].x&&(!!currData[i].beaconCalculatePosition[0].y)){
@@ -188,7 +198,7 @@ define(function(require, exports, module) {
 			posAB: function (j, fotData) {//人的坐标（更新N次）
 				var that = this;
 				var configJson=that.configJson;
-				
+
 				var curr = fotData[j];
 				var cX = fotData[j].beaconCalculatePosition[0].x,
 					cY = fotData[j].beaconCalculatePosition[0].y;
@@ -215,7 +225,7 @@ define(function(require, exports, module) {
 				that.rapAll.push(circle1);
 			}
 		}
-			
+
 		DrawPointer.prototype.tDim=function(m,g){//生成2维数组
 			var tArray = [];
 			for(var k=0;k<m;k++){
@@ -228,7 +238,7 @@ define(function(require, exports, module) {
 			this.girdArr=tArray;//生成网格对应的二维数组并设置每一项为1（路1，障碍为0），动态的
             console.log('this.girdArr:',this.girdArr);
 		};
-		
+
 		DrawPointer.prototype.barriers=function(barriers){//设置表格障碍点...
 			var girdArr=this.girdArr=barriers;//新网格。。
 			if(girdArr.length<1){
@@ -239,13 +249,13 @@ define(function(require, exports, module) {
 				var currArr=girdArr[k];
 				for(var j=0;j<currArr.length;j++){
 					if(currArr[j]=="0"){//默认都是路1，障碍为0
-						$('#F892975_'+k+'_'+j).addClass('mSleep');	
+						$('#F892975_'+k+'_'+j).addClass('mSleep');
 					}
 				}
 			}
 		};
-		
-		
+
+
 		DrawPointer.prototype.createGird=function(hL,zL){//生成网格
 			var that=this;
 			var tdH=parseInt(imgA.css('height'))/zL;//hL横向个数 纵向个数 zL
@@ -259,7 +269,7 @@ define(function(require, exports, module) {
 				}
 				str+='</tr>';
 			}
-			$('#maptt table').html(str); 
+			$('#maptt table').html(str);
 			that.evt();//网格相关事件
 			that.tDim(hL,zL);//生成2维数组
 		};
@@ -282,8 +292,8 @@ define(function(require, exports, module) {
 				console.log('后台所需数据:',that.girdArr);
 				callback&&callback();
 			})
-		}	
-		
+		}
+
 	exports.DrawPointer = new DrawPointer();
-	
+
 });
