@@ -44,23 +44,22 @@ define(function(require, exports, module) {
 				//#imgA10086 svg 无它设置则显示大小及位置出错。。如前面的：Raphael('bxPoint', configJson.canvas.w, configJson.canvas.h);
 
                 var circle1 = canvasN.rect(0, 0, configJson.canvas.w, configJson.canvas.h);//
-                circle1.attr({"fill": "#fff","fill-opacity":0.1}); //填充色
+                circle1.attr({"fill": "#fff","fill-opacity":0.2}); //填充色
                 if(cmd=='edit'){//'编辑命令'
                     circle1.click(function (e) {
                         console.log('SS编辑',e.x,e.y,drawId);
                         $('#sb_'+drawId).remove();
                         var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left, e.y-$('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
-                        circle1.attr({"fill": "blue"})  //填充色
-                            .attr("stroke", "none")   //去掉边框
+                        circle1.attr({"fill": "blue","stroke":"none"})  //填充色\去掉边框
                         circle1.node.id = 'sb_bj';
                     });//直接“标注”
                 }
                 else if(cmd=='create'){//'创建'
                     circle1.click(function (e) {
-                        console.log('SS创建',e.x,e.y,that.drPX);
+                        console.log('SS创建',e.x,e.y);
+                        $('#sb_bj').remove();
                         var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left, e.y-$('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
-                        circle1.attr({"fill": "blue"})  //填充色
-                            .attr("stroke", "none")   //去掉边框
+                        circle1.attr({"fill": "blue","stroke":"none"})  //填充色\去掉边框
                         circle1.node.id = 'sb_bj';
                     });//直接“标注”
                 }
@@ -210,7 +209,7 @@ define(function(require, exports, module) {
 				var circle1 = canvasN.circle(cX, cY, radius);//圆
 				circle1.attr({"fill": "#f20bda"})  //填充色
 					.attr("stroke", "none")   //去掉边框
-					.data('dt' {x: cX, y: cY, deviceID: curr.deviceID, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
+					.data('dt',{x: cX, y: cY, deviceID: curr.deviceID, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
 					.hover(function (e) {
 						var dt = this.data('dt');
 						var str = '人物名称:' + dt.deviceID + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint + ' 设备编号=' + curr.deviceSerial;
@@ -246,6 +245,7 @@ define(function(require, exports, module) {
 				alert('请生成网格!');
 				return false;
 			}
+            console.log('设置表格障碍点',girdArr);
 			for(var k=0,L=girdArr.length;k<L;k++){
 				var currArr=girdArr[k];
 				for(var j=0;j<currArr.length;j++){
@@ -255,15 +255,17 @@ define(function(require, exports, module) {
 				}
 			}
 		};
-        DrawPointer.prototype.getBarriers=function(graphId,callback) {//	网格
+        DrawPointer.prototype.getBarriers=function(graphId,callback) {//	获取障碍点
             var that = this;
+            console.log('ajax获取障碍点');
+            $('#maptt td').removeClass();
             $.ajax({
                 type: "get",
                 url: '/getGraphMatrix/' + graphId||'graph',
                 contentType: 'application/text',
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data);
+                    console.log('获取障碍点',data);
                     if(data){
                         that.girdArr=data;
                         callback && callback();
@@ -311,7 +313,7 @@ define(function(require, exports, module) {
                     type: "post",
                     url: '/findPath',
                     contentType:'application/text',
-                    data:JSON.stringify({"start":{"x":start[0],"y":[1]},"end":{"x":end[0],"y":end[1]},"graphName":"graph","graphMatrix":girdArr }),
+                    data:JSON.stringify({"start":{"x":start[0],"y":[1]},"end":{"x":end[0],"y":end[1]},"graphName":"graph","graphMatrix":that.girdArr }),
                     dataType:'json',
                     success: function(data){
                         console.log('findPath:',data);
