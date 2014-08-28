@@ -13,7 +13,7 @@ define(function(require, exports, module) {
 			this.currFlag=0;//存放当前‘起点、终点、障碍点’标志
 		}
 		DrawPointer.prototype = {
-			resetData:function(configJson,cmd,drawId){//初始化基本数据
+			resetData:function(configJson,cmd,drawId){//初始化基本数据..cmd创建、编辑命令。drawId设备id,以便删除或更新
 				var that=this;
 				console.log('configJson:',configJson);
 				that.rapAll=[];
@@ -44,12 +44,12 @@ define(function(require, exports, module) {
 				//#imgA10086 svg 无它设置则显示大小及位置出错。。如前面的：Raphael('bxPoint', configJson.canvas.w, configJson.canvas.h);
 
                 var circle1 = canvasN.rect(0, 0, configJson.canvas.w, configJson.canvas.h);//
-                circle1.attr({"fill": "#fff","fill-opacity":0.8}); //填充色
+                circle1.attr({"fill": "#fff","fill-opacity":0.2}); //填充色
                 if(cmd=='edit'){//'编辑命令'
                     circle1.click(function (e) {
                         console.log('SS编辑',e.x,e.y,drawId);
                         $('#sb_'+drawId).remove();
-                        var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left, e.y-$('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                        var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left+$(document).scrollLeft(), e.y-$('#raphaelTP').offset().top+$(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
                         circle1.attr({"fill": "blue","stroke":"none"})  //填充色\去掉边框
                         circle1.node.id = 'sb_bj';
                     });//直接“标注”
@@ -58,7 +58,7 @@ define(function(require, exports, module) {
                     circle1.click(function (e) {
                         console.log('SS创建',e.x,e.y);
                         $('#sb_bj').remove();
-                        var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left, e.y-$('#raphaelTP').offset().top, 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                        var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left+$(document).scrollLeft(), e.y-$('#raphaelTP').offset().top+$(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
                         circle1.attr({"fill": "blue","stroke":"none"})  //填充色\去掉边框
                         circle1.node.id = 'sb_bj';
                     });//直接“标注”
@@ -143,14 +143,14 @@ define(function(require, exports, module) {
 						.attr("stroke", "none")   //去掉边框
 						.data('dt', {x: cX, y: cY, 'deviceSerial': m})
 						.hover(function (e) {
-							var str = '设备名称:' + this.data('dt').deviceSerial + ' 坐标 X:' + this.data('dt').x + ' Y:' + this.data('dt').y;
+							var str = '名称:' + this.data('dt').deviceSerial + ' 坐标 X:' + this.data('dt').x + ' Y:' + this.data('dt').y;
 							$('#tips').html(str).show();
 						}, function () {
 							$('#tips').hide();
 						});
 					var dt = circle1.data('dt');
 					circle1.node.id = 'sb_' + dt.deviceSerial;
-					circle1.node.setAttribute('msg', '设备名称:' + dt.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y);
+					circle1.node.setAttribute('msg', '名称:' + dt.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y);
 				}
 			},
 			formatData: function (postData) {//格式化成可用数据
