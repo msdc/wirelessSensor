@@ -21,7 +21,7 @@ app.post("/findPath",navigation.findPath);
 app.post("/place/add",maintain.place.add);
 app.post("/place/update",maintain.place.add);
 app.delete("/place/del",maintain.place.del);
-app.get("/place/get",maintain.place.get);
+app.get("/place/get",maintain.place.get);//huoqu
 
 app.post("/seller/add",maintain.seller.add);
 app.post("/seller/update",maintain.seller.add);
