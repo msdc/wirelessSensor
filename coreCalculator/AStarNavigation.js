@@ -51,9 +51,10 @@ exports.saveGraphMatrix = function (req, res) {
             var graphKey = data.graphName;
             var graphMatrix = data.graphMatrix;
             if (graphKey && graphMatrix) {
-                client.set(graphKey, graphMatrix);
+                client.set(graphKey,JSON.stringify(graphMatrix));
                 res.send({result:"success saved the matrix"});
             }
+            client.quit();
         }
     });
 }
@@ -67,7 +68,8 @@ exports.getGraphMatrix = function (req, res) {
             return;
         }
     });
-    client.get(graphID, function (data) {
-        res.send(data);
+    client.get(graphID, function (err,data) {
+        res.send(JSON.parse(data));
     });
+    client.quit();
 }
