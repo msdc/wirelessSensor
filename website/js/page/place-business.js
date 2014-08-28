@@ -95,7 +95,7 @@ App.PlaceController = Ember.ArrayController.create({
     },
     removeAll: function () {
         var maps = this.get('content');
-        var arg = maps || [].copy();
+        var arg = (maps || []).copy();
         for (var i = 0; i < arg.length; i++) {
             this.get('content').removeObject(arg[i]);
         }
