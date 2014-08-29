@@ -68,6 +68,7 @@ exports.processDataFromSocket = function (io, socket, data) {
 
 exports.processDataFromHttp = function (req, res) {
     var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
+    var calMethod = req.params.calMethod || "mapping";
     client.on("error", function (err) {
         if (err) {
             SendError(err, res);
@@ -80,8 +81,6 @@ exports.processDataFromHttp = function (req, res) {
             client.quit();
             return;
         }
-
-        //var data=JSON.parse(data);
         if (!data.monitorPackage) {
             console.log('数据格式错误！monitorPackage未指定！');
             res.send({result: false, message: "数据格式错误！monitorPackage未指定！"});
@@ -90,10 +89,20 @@ exports.processDataFromHttp = function (req, res) {
             return;
         }
 
-        //var calculator=new Calculator(data,client);
-        //calculator.kMeansClusterCalculator();
-        //singleLineCalculator(data, client);
-        mappingPointCalculator(data, client);
+        switch (calMethod) {
+            case "trilateration":
+                kMeansClusterCalculator(data, client);
+                break;
+            case "singleLine":
+                singleLineCalculator(data, client);
+                break;
+            case "mapping":
+                mappingPointCalculator(data, client);
+                break;
+            default :
+                mappingPointCalculator(data, client);
+                break;
+        }
 
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
@@ -168,8 +177,9 @@ exports.drawSinglePointFromRedis = function (io, socket, data) {
     });
 };
 
-exports.getRecentPoint = function (req, res) {
+exports.getPoints = function (req, res) {
     var key = req.query.id;
+    var isOnlyRecent = req.params.onlyrecent;
     var result = [];
     var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     if (key) {
@@ -183,7 +193,12 @@ exports.getRecentPoint = function (req, res) {
                 client.get(item, function (err, data) {
                     result.push(data);
                     if (pos == (keys.length - 1)) {
-                        res.send(result);
+                        if (isOnlyRecent) {
+                            res.send(result[result.length - 1]);
+                        }
+                        else {
+                            res.send(result);
+                        }
                         client.quit();
                     }
                 });
@@ -221,17 +236,17 @@ function singleLineCalculator(data, client) {
  *
  * @说明 使用定点模型计算
  * */
-function mappingPointCalculator(data,client){
+function mappingPointCalculator(data, client) {
     var serializeJsonData = JSON.stringify(data);
     var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
 
     //save the data before calculate.
     client.set(keyBeforeCalculate, serializeJsonData);
 
-    var beaconPointArray=config.pointsMappingArray();//定点模型点映射数组
+    var beaconPointArray = config.pointsMappingArray();//定点模型点映射数组
     //save the data after calculated.
-    var finalResult = sensorCalculator.mappingPointCalculate(serializeJsonData,config.lineOffset,beaconPointArray);
-    if(finalResult) {
+    var finalResult = sensorCalculator.mappingPointCalculate(serializeJsonData, config.lineOffset, beaconPointArray);
+    if (finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
         //client.expire(keyAfterCalculate, 120);
