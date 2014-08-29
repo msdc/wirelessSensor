@@ -232,7 +232,7 @@ define(function(require, exports, module) {
 			for(var k=0;k<m;k++){
 				tArray[k]=[];
 				for(var j=0;j<g;j++){
-					tArray[k][j]="1";//默认都是路1，障碍为0
+					tArray[k][j]=1;//默认都是路1，障碍为0..“值”需要使用数字而非字符串
 				}
 			}
 
@@ -301,6 +301,16 @@ define(function(require, exports, module) {
 					alert('请选择起点、终点');
 					return  false;
 				}
+                that.girdArr = [];
+                that.tDim(gridStr[0], gridStr[1]);
+                if ($('#gridStr').val().length) {
+                    var gridStr = $('#gridStr').val().split(',')
+                    that.tDim(gridStr[0], gridStr[1]);
+                }
+                else {
+                    alert('请输入网格数量，eg:10,10');
+                    return false;
+                }
 
 				var start=mStart.attr('serialnum').split(',');
 				var end=mEnd.attr('serialnum').split(',');
