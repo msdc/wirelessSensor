@@ -302,9 +302,8 @@ define(function(require, exports, module) {
 					alert('请选择起点、终点');
 					return  false;
 				}
-                that.girdArr = [];
-                that.tDim(gridStr[0], gridStr[1]);
                 if ($('#gridStr').val().length) {
+                    that.girdArr = [];
                     var gridStr = $('#gridStr').val().split(',')
                     that.tDim(gridStr[0], gridStr[1]);
                 }
@@ -312,6 +311,7 @@ define(function(require, exports, module) {
                     alert('请输入网格数量，eg:10,10');
                     return false;
                 }
+
 
 				var start=mStart.attr('serialnum').split(',');
 				var end=mEnd.attr('serialnum').split(',');
