@@ -200,7 +200,7 @@ exports.getPoints = function (req, res) {
                                 res.send(JSON.parse(result[result.length - 1]));
                             }
                             else {
-                                res.send(JSON.parse(result));
+                                res.send(result);
                             }
                             client.quit();
                         }
