@@ -221,10 +221,11 @@ exports.GetClusteredPoint = function (sensorData) {
     makeAssignments();
     getMobilePosition();
 
-    var mobilePosition = {deviceID: sensorData.deviceID,
-                          deviceSerial: sensorData.deviceSerial,
-                          timePoint: sensorData.timePoint,
-                          beaconCalculatePosition: [{x: means[0].x, y: means[0].y}]
+    var mobilePosition = {deviceSerial: sensorData.deviceSerial,
+        deviceName: sensorData.deviceName,
+        location: [
+            {x: means[0].x, y: means[0].y}
+        ]
     };
 
     //reset global variable value for the next processCalculate.
