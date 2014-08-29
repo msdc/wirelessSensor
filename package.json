@@ -12,6 +12,7 @@
     "easypost": "^0.1.1",
     "express": "^4.8.5",
     "redis": "^0.12.0",
-    "socket.io": "^1.0.6"
+    "socket.io": "^1.0.6",
+    "connect-timeout":"1.2.2"
   }
 }
