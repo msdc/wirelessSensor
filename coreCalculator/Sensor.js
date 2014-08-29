@@ -189,22 +189,27 @@ exports.getPoints = function (req, res) {
     }
     else {
         client.keys("*_*_Calculated", function (err, keys) {
-            keys.sort();
-            keys.forEach(function (item, pos) {
-                client.get(item, function (err, data) {
-                    result.push(data);
-                    if (pos == (keys.length - 1)) {
-                        //result=result.sort(function(a,b){return a.checkPoint- b.checkPoint;});
-                        if (isOnlyRecent=="true") {
-                            res.send(JSON.parse(result[result.length - 1]));
+            if(keys.length>0) {
+                keys.sort();
+                keys.forEach(function (item, pos) {
+                    client.get(item, function (err, data) {
+                        result.push(data);
+                        if (pos == (keys.length - 1)) {
+                            //result=result.sort(function(a,b){return a.checkPoint- b.checkPoint;});
+                            if (isOnlyRecent == "true") {
+                                res.send(JSON.parse(result[result.length - 1]));
+                            }
+                            else {
+                                res.send(JSON.parse(result));
+                            }
+                            client.quit();
                         }
-                        else {
-                            res.send(result);
-                        }
-                        client.quit();
-                    }
+                    });
                 });
-            });
+            }
+            else{
+                res.send({result:"there is no data"});
+            }
         });
     }
 };
