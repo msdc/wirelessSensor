@@ -193,8 +193,8 @@ exports.getPoints = function (req, res) {
                 client.get(item, function (err, data) {
                     result.push(data);
                     if (pos == (keys.length - 1)) {
-                        if (isOnlyRecent) {
-                            res.send(result[result.length - 1]);
+                        if (isOnlyRecent=="true") {
+                            res.send(JSON.parse(result[result.length - 1]));
                         }
                         else {
                             res.send(result);
