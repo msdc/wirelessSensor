@@ -76,7 +76,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header nav_top2_L">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                <button type="button" class="close cancelNet" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
                 <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;设备分布</span>
             </div>
             <div class="modal_line_bule"></div>
@@ -103,9 +103,6 @@
                 </div>
 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">关闭</button>
-            </div>
         </div>
     </div>
 </div>
@@ -115,7 +112,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header nav_top2_L  cntBtn">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                <button type="button" class="close cancelNet" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
                 <span><i class="icon-inbox icon-large pull-left icon-border"></i><span class="tit">&nbsp;&nbsp;添加设备信息</span></span>
             </div>
             <div class="modal_line_bule"></div>
@@ -216,6 +213,7 @@
         <em class="cS1">设置起点</em><em class="cS2">设置终点</em><em class="cS3">设置障碍点</em>
         <input id="saveZ" type="button" value="保存障碍点">
         <input id="searchLJ" type="button" value="查找路径">
+        <input class="cancelNet" type="button" value="擦黑板">
     </div>
     <div id="wrapRapGird">
         <div id="tips"></div><!--设备或人提示信息 -->
@@ -263,8 +261,10 @@
 </style>
 
 <style>
-.modal-lg{width:1600px;}
-.wrapDriveDLE,.wrapDrivePOS{width:1300px;height:1100px;overflow:hidden;}
+.moveLay input{border-radius: 5px;padding: 5px;}
+.modal-lg{width:1275px;}
+.col-sm-offset-1{margin-left:0px;}
+.wrapDriveDLE,.wrapDrivePOS{width:1240px;height:1040px;overflow:hidden;}
 .form-horizontal .control-label{width:240px;}
 </style>
 </body>
