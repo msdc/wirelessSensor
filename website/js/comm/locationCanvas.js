@@ -54,15 +54,37 @@ define(function(require, exports, module) {
                         var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left+$(document).scrollLeft(), e.y-$('#raphaelTP').offset().top+$(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
                         circle1.attr({"fill": "blue","stroke":"none"})  //填充色\去掉边框
                         circle1.node.id = 'sb_bj';
+
+                        //merchantsLocation.html
+                        if($('#MVC_merchantsLocation').length){
+                            var pX=$('#sb_bj').attr('x'),pY=$('#sb_bj').attr('y');
+                            console.log('标注像素:',pX,pY);
+                            var x=pX * that.configJson.resolution /  that.configJson.zoomImg;
+                            var y=pY * that.configJson.resolution / cthat.onfigJson.zoomImg;
+                            $('#MVC_merchantsLocation').val(x+','+y);//x,y
+                            console.log('MVC_merchantsLocation:',$('#MVC_merchantsLocation').val())
+                            $('#MVC_merchantsLocation').click();
+                        }
                     });//直接“标注”
                 }
                 else if(cmd=='create'){//'创建'
                     circle1.click(function (e) {
-                        console.log('SS创建',e.x,e.y);
+                        console.log('SS创建',e.x,e.y,$('#sb_bj'));
                         $('#sb_bj').remove();
                         var circle1 = canvasN.image('images/t2.png', e.x-$('#raphaelTP').offset().left+$(document).scrollLeft(), e.y-$('#raphaelTP').offset().top+$(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
                         circle1.attr({"fill": "blue","stroke":"none"})  //填充色\去掉边框
                         circle1.node.id = 'sb_bj';
+
+                        //merchantsLocation.html
+                        if($('#MVC_merchantsLocation').length){
+                            var pX=$('#sb_bj').attr('x'),pY=$('#sb_bj').attr('y');
+                            console.log('标注像素:',pX,pY);
+                            var x=pX * that.configJson.resolution / that.configJson.zoomImg;
+                            var y=pY * that.configJson.resolution / that.configJson.zoomImg;
+                            $('#MVC_merchantsLocation').val(x+','+y);//x,y
+                            console.log('MVC_merchantsLocation:',$('#MVC_merchantsLocation').val())
+                            $('#MVC_merchantsLocation').click();
+                        }
                     });//直接“标注”
                 }
                 //'设备分布'无‘标注’功能
