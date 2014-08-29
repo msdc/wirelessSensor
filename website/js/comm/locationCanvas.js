@@ -32,7 +32,8 @@ define(function(require, exports, module) {
 				configJson.canvas.h=configJson.bj_draw.h;
 
 
-				configJson.resolution = configJson.scale * configJson.inchesM / configJson.PPI;//地图分辨率
+				//configJson.resolution = configJson.scale * configJson.inchesM / configJson.PPI;//地图分辨率
+                configJson.resolution=configJson.scale;//暂时写死..不使用地图分辨率..
 				that.configJson=configJson;
 				console.log('222configJson:',configJson,configJson.resolution);
 
