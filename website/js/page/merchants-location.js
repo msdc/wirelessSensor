@@ -12,6 +12,7 @@
 /*******************
 ***   Control    ***
 *******************/
+
 App.BusinessController = Ember.ObjectController.extend({
     id: null,
     name: null,
@@ -34,7 +35,6 @@ App.BusinessController = Ember.ObjectController.extend({
         var _this = this;
         //set default value
         _this.set('id', 1);
-
         api.ms.getplacemerchants(function () {
             if (arguments[0] == "error") {
                 $("#divAlert").alert("warning", "获取商家位置错误！ " + arguments[1].message)
@@ -53,17 +53,24 @@ App.BusinessController = Ember.ObjectController.extend({
                 }
                 if (json.location) {
                     _this.set('location', json.location);
+                    $('#MVC_merchantsLocation').val(json.location.x+','+json.location.y);
                 }
             }
+            $('body').delegate('#MVC_merchantsLocation',"click",function(){
+                console.log('改变:',$(this).val());
+                var val=$(this).val().split(',');
+                _this.setLocation({x:val[0],y:val[1]});
+                $(this).attr('location',{x:val[0],y:val[1]});
+            })
         });
     },
     setLocation:function(obj){
         if(obj){this.set("location",obj);}
-    },getLocation:function(){
-        this.get("location");
+    },
+    getLocation:function(){
+        return this.get("location");
     }
 });
-
 
 
 /*******************
