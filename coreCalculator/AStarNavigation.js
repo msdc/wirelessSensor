@@ -9,7 +9,8 @@ exports.findPath = function (req, res) {
     easypost.get(req, res, function (data) {
         if (!data) {
             console.log('data is not defined.');
-            res.end(500, "there is no data in the request body");
+            res.send(500, "there is no data in the request body");
+            res.end();
             return;
         }
         else {
@@ -23,13 +24,15 @@ exports.findPath = function (req, res) {
                 var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
                 client.on("error", function (err) {
                     if (err) {
-                        res.end(500, {result: false, message: err});
+                        res.send(500, {result: false, message: err});
+                        res.end();
                         return;
                     }
                 });
                 client.get(graphID, function (err, data) {
                     if (err) {
-                        res.end(500, {result: false, message: err});
+                        res.send(500, {result: false, message: err});
+                        res.end();
                         return;
                     }
                     graphMatrix = JSON.parse(data);
@@ -39,6 +42,7 @@ exports.findPath = function (req, res) {
                     var end = gp.grid[endNode.x][endNode.y];
                     var result = astar.search(gp, start, end, opt);
                     res.send(result);
+                    res.end();
                 });
                 client.quit();
             }
@@ -49,6 +53,7 @@ exports.findPath = function (req, res) {
                 var end = gp.grid[endNode.x][endNode.y];
                 var result = astar.search(gp, start, end, opt);
                 res.send(result);
+                res.end();
             }
         }
     });
@@ -58,7 +63,8 @@ exports.saveGraphMatrix = function (req, res) {
     easypost.get(req, res, function (data) {
         if (!data) {
             console.log('data is not defined.');
-            res.end(500, "there is no data in the request body");
+            res.send(500, "there is no data in the request body");
+            res.end();
             return;
         }
         else {
@@ -66,7 +72,8 @@ exports.saveGraphMatrix = function (req, res) {
             var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
             client.on("error", function (err) {
                 if (err) {
-                    res.end(500, {result: false, message: err});
+                    res.send(500, {result: false, message: err});
+                    res.end();
                     return;
                 }
             });
@@ -75,6 +82,7 @@ exports.saveGraphMatrix = function (req, res) {
             if (graphKey && graphMatrix) {
                 client.set(graphKey, JSON.stringify(graphMatrix));
                 res.send({result: "success saved the matrix"});
+                res.end();
             }
             client.quit();
         }
@@ -86,12 +94,14 @@ exports.getGraphMatrix = function (req, res) {
     var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
     client.on("error", function (err) {
         if (err) {
-            res.end(500, {result: false, message: err});
+            res.send(500, {result: false, message: err});
+            res.end();
             return;
         }
     });
     client.get(graphID, function (err, data) {
         res.send(JSON.parse(data));
+        res.end();
     });
     client.quit();
 }
