@@ -32,11 +32,15 @@ App.ApplicationView = Ember.View.extend({
 ***   Control    ***
 *******************/
 App.ApplicationController = Ember.ObjectController.extend({
-    userName: "Wenxiang",
+    userName: "Welcome,Test Users",
     actions: {
         logout: function () {
             alert("logout");
+            location.href='login.html';
         },
-        exit: function () { alert("Exit"); }
+        exit: function () {
+            alert("Exit");
+            location.href='login.html';
+        }
     }
 });
