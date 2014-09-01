@@ -227,7 +227,7 @@ define(function(require, exports, module) {
 				var cX = fotData[j].location[0].x,
 					cY = fotData[j].location[0].y;
 				console.log('XY:source-M:', cX, cY);
-				cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;
+				cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;//cx是SVG上的px
 				cY = parseFloat(cY) / configJson.resolution * configJson.zoomImg;
 				console.log('XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
 				var circle1 = canvasN.circle(cX, cY, radius);//圆
