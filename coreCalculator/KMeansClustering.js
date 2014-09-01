@@ -221,10 +221,14 @@ exports.GetClusteredPoint = function (sensorData) {
     makeAssignments();
     getMobilePosition();
 
+    //坐标转换
+    var x=(Math.abs(means[0].x)*100)/1.05;
+    var y=(Math.abs(means[0].y)*100)/1.05;
+
     var mobilePosition = {deviceSerial: sensorData.deviceSerial,
         deviceName: sensorData.deviceName,
         location: [
-            {x: means[0].x, y: means[0].y}
+            {x: x, y: y}
         ]
     };
 

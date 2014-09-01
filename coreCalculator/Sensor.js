@@ -277,7 +277,7 @@ function kMeansClusterCalculator(data, client) {
 
     //save the data after calculated.
     var finalResult = sensorCalculator.processCalculate(serializeJsonData);
-    if (finalResult.length > 0) {
+    if (finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
         //client.expire(keyAfterCalculate, 120);
