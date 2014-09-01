@@ -38,8 +38,8 @@ exports.findPath = function (req, res) {
                     graphMatrix = JSON.parse(data);
                     var astar = astarModule.astar;
                     var gp = new astarModule.Graph(graphMatrix, { diagonal: false });
-                    var start = gp.grid[startNode.x][startNode.y];
-                    var end = gp.grid[endNode.x][endNode.y];
+                    var start = gp.grid[parseInt(startNode.x)][parseInt(startNode.y)];
+                    var end = gp.grid[parseInt(endNode.x)][parseInt(endNode.y)];
                     var result = astar.search(gp, start, end, opt);
                     res.send(result);
                     res.end();
@@ -49,8 +49,8 @@ exports.findPath = function (req, res) {
             else {
                 var astar = astarModule.astar;
                 var gp = new astarModule.Graph(graphMatrix, { diagonal: false });
-                var start = gp.grid[startNode.x][startNode.y];
-                var end = gp.grid[endNode.x][endNode.y];
+                var start = gp.grid[parseInt(startNode.x)][parseInt(startNode.y)];
+                var end = gp.grid[parseInt(endNode.x)][parseInt(endNode.y)];
                 var result = astar.search(gp, start, end, opt);
                 res.send(result);
                 res.end();
