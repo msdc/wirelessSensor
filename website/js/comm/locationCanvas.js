@@ -183,8 +183,8 @@ define(function(require, exports, module) {
 					fotData = [];
 				console.log('need Format:',currData)
 				for(var i=0;i<currData.length;i++){
-					if((!!currData[i].deviceID)&&(!!currData[i].timePoint)&&(!!currData[i].beaconCalculatePosition)){//3个字段必须有
-						if((currData[i].beaconCalculatePosition.length>0)&&!!currData[i].beaconCalculatePosition[0].x&&(!!currData[i].beaconCalculatePosition[0].y)){
+					if((!!currData[i].deviceID)&&(!!currData[i].timePoint)&&(!!currData[i].location)){//3个字段必须有
+						if((currData[i].location.length>0)&&!!currData[i].location[0].x&&(!!currData[i].location[0].y)){
 							 fotData.push(currData[i]);
 						}
 					}
@@ -224,8 +224,8 @@ define(function(require, exports, module) {
 				var configJson=that.configJson;
 
 				var curr = fotData[j];
-				var cX = fotData[j].beaconCalculatePosition[0].x,
-					cY = fotData[j].beaconCalculatePosition[0].y;
+				var cX = fotData[j].location[0].x,
+					cY = fotData[j].location[0].y;
 				console.log('XY:source-M:', cX, cY);
 				cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;
 				cY = parseFloat(cY) / configJson.resolution * configJson.zoomImg;
