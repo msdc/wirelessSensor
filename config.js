@@ -45,11 +45,11 @@ exports.redisSettings = {
 exports.pointsMappingArray=function(){
     var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
     var points=[];
-    points[frontStr + "_0_3"+frontStr + "_0_6"]={x:29.36,y:12.02};
-    points[frontStr + "_0_6"+frontStr + "_0_2"]={x:29.68,y:16.67};
-    points[frontStr + "_0_2"+frontStr + "_0_9"]={x:29.63,y:20.40};
-    points[frontStr + "_0_9"+frontStr + "_0_7"]={x:28.76,y:23.00};
-    points[frontStr + "_0_7"+frontStr + "_0_8"]={x:25.90,y:23.42};
+    points[frontStr + "_0_3"+frontStr + "_0_6"]={x:458.09,y:2207.61};
+    points[frontStr + "_0_6"+frontStr + "_0_2"]={x:918.09,y:2202.85};
+    points[frontStr + "_0_2"+frontStr + "_0_9"]={x:1360.95,y:2200.00};
+    points[frontStr + "_0_9"+frontStr + "_0_7"]={x:1728.57,y:2192.38};
+    points[frontStr + "_0_7"+frontStr + "_0_8"]={x:2279.04,y:2197.14};
 
     return points;
 };
@@ -64,6 +64,13 @@ exports.lineOffset = {
 
 //默认过滤指定acc的距离配置
 exports.defaultBeaconDistance=5;
+
+//各个模型所对应方法的名称
+exports.methodName={
+    trilateration:"trilateration",
+    singleLine:"singleLine",
+    mapping:"mapping"
+};
 
 /**
  var uuidArr=[//测试数据(固定值，设备坐标)
