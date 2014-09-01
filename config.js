@@ -1,18 +1,12 @@
 exports.uuidArr = function () {
     var pointSB = [];
     var frontStr = 'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
-    pointSB[frontStr + '_0_1'] = {x: 0.00, y: 6.00};
-    pointSB[frontStr + '_0_2'] = {x: 5.40, y: 0.00};
-    pointSB[frontStr + '_0_3'] = {x: 0.00, y: 0.00};
-    pointSB[frontStr + '_0_4'] = {x: 5.40, y: 6.00};
-    pointSB[frontStr + '_0_5'] = {x: 4.10, y: 2.80};
-    pointSB[frontStr + '_0_6'] = {x: -0.32, y: 2.80};//-0.32墙。
-
-    var singleSensorPoint = [];
-    singleSensorPoint[frontStr + "_0_7"] = {x: 0.00};
-    singleSensorPoint[frontStr + "_0_8"] = {x: 5.00};
-    singleSensorPoint[frontStr + "_0_9"] = {x: 10.00};
-    singleSensorPoint[frontStr + "_0_10"] = {x: 15.00};
+    pointSB[frontStr + "_0_3"] = {x: 3.87, y: 24.20};
+    pointSB[frontStr + "_0_6"] = {x: 8.20, y: 24.23};
+    pointSB[frontStr + "_0_2"] = {x: 11.35, y: 24.28};
+    pointSB[frontStr + "_0_9"] = {x: 15.58, y: 24.23};
+    pointSB[frontStr + "_0_7"] = {x: 2.58, y: 20.90};
+    pointSB[frontStr + "_0_8"] = {x: 24.69, y: 24.23};//-0.32墙。
 
     return pointSB;
 };
@@ -21,12 +15,12 @@ exports.uuidArr = function () {
 exports.singleSensorPointArray = function () {
     var frontStr = 'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
     var singleSensorPoint = [];
-    singleSensorPoint[frontStr + "_0_3"] = {x: 0.00};
-    singleSensorPoint[frontStr + "_0_6"] = {x: 1.50};
-    singleSensorPoint[frontStr + "_0_2"] = {x: 5.40};
-    singleSensorPoint[frontStr + "_0_9"] = {x: 6.90};
-    singleSensorPoint[frontStr + "_0_7"] = {x: 8.40};
-    singleSensorPoint[frontStr + "_0_8"] = {x: 11.70};
+    singleSensorPoint[frontStr + "_0_3"] = {x: 3.87};
+    singleSensorPoint[frontStr + "_0_6"] = {x: 8.20};
+    singleSensorPoint[frontStr + "_0_2"] = {x: 11.35};
+    singleSensorPoint[frontStr + "_0_9"] = {x: 15.58};
+    singleSensorPoint[frontStr + "_0_7"] = {x: 20.58};
+    singleSensorPoint[frontStr + "_0_8"] = {x: 24.69};
 
     return singleSensorPoint;
 };
@@ -53,11 +47,11 @@ exports.pointsMappingArray=function(){
 
     return points;
 };
-
+//单位为米
 exports.lineOffset = {
     //var offset = {
         x: 0,
-        y: 1.5
+        y: 24.23
     //};//实际的偏移量
     //return offset;
 };

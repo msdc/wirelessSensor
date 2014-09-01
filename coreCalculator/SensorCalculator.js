@@ -10,7 +10,7 @@ function SensorDataCalculator() {};
 
 SensorDataCalculator.processCalculate = function (sourceData) {
     //var tpNDataArray = [];
-    var finalResult = [];
+    var finalResult =null;
     var dataObj;
     try {
         dataObj = JSON.parse(sourceData);
@@ -32,16 +32,18 @@ SensorDataCalculator.processCalculate = function (sourceData) {
     var levelOneResult = trlCal.getCalResult(dataObj);
     //聚类计算
     if (levelOneResult && levelOneResult.length > 0) {
+        //判断计算后的点是否符合要求
         for (var point in levelOneResult) {
             if (!levelOneResult[point].beaconCalculatePosition) {
-                continue;
+                return null;
             }
-            var levelTwoResult = kmeans.GetClusteredPoint(levelOneResult[point]);
-            //finalResult.push((levelOneResult[point]));
-            finalResult.push(levelTwoResult);
         }
+
+        var finalResult = kmeans.GetClusteredPoint(levelOneResult[point]);
+        return finalResult;
+
     }
-    return finalResult;
+    return null;
     /*    trlCal.cleanZeroKey(function (pointDt) {
      for (var point in pointDt) {
      if (!pointDt[point].beaconCalculatePosition) break;//skip incorrect data in redis.
