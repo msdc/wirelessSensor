@@ -73,7 +73,7 @@ a:hover { text-decoration: none; }
 @media (min-width: 1200px) { 
     .col-md-2::before { display: block; content: ""; position: fixed!important; top: 0; bottom: 0; width: 16.66%; overflow: hidden; z-index: -1; background-color: #282828; }
 }
-.header_L { padding:16px 15px 0 0;}
+.header_L { padding:16px 15px 0 42px;}
 .table-responsive .table2 tr .red {color:#f00;}
 .margin_top { margin-left: 15px; }
     .margin_top .btn_change, .margin_top .btn_change_current { border-radius: 0; background-color: #044f87; color: #0769b2; border: none; font-weight: bold; }
