@@ -208,7 +208,7 @@ define(function (require, exports, module) {
             var cX = fotData[j].location[0].x,
                 cY = fotData[j].location[0].y;
             console.log('XY:source-M:', cX, cY);
-            cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;
+            cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;//cX单位是px,resolution为1px等于多少mm
             cY = parseFloat(cY) / configJson.resolution * configJson.zoomImg;
             console.log('XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
             var circle1 = canvasN.circle(cX, cY, radius);//圆
