@@ -1,5 +1,4 @@
 define(function (require, exports, module) {
-
     var $ = require('jquery');
     var raphaelTP = $('#raphaelTP');
     var bxPoint = $('#bxPoint');
@@ -7,7 +6,7 @@ define(function (require, exports, module) {
     var canvasN, configJson, viewBOX_w = 3100, viewBOX_h = 2500,
         rectW = 5, rectH = 5, radius = 8, sbW = 16, sbH = 24;//坐标系矩形宽高、画圆的半径 设备大小
     var rapAll = [];//存放页面rect元素的“画”对象
-
+    var sRect=[],eRect=[];
     function DrawPointer() {
         this.girdArr = [];//存放生成的网格二维数组
         this.currFlag = 0;//存放当前‘起点、终点、障碍点’标志
@@ -164,7 +163,7 @@ define(function (require, exports, module) {
             var that = this;
             var currData = that.source_Send = postData,
                 fotData = [];
-            console.log('need Format:', currData)
+            console.log('need Format2:', currData)
             for (var i = 0; i < currData.length; i++) {
                 if ((!!currData[i].deviceSerial) && (!!currData[i].location)) {//3个字段必须有
                     if ((currData[i].location.length > 0) && !!currData[i].location[0].x && (!!currData[i].location[0].y)) {
@@ -205,12 +204,11 @@ define(function (require, exports, module) {
         posAB: function (j, fotData) {//人的坐标（更新N次）
             var that = this;
             var configJson = that.configJson;
-
             var curr = fotData[j];
             var cX = fotData[j].location[0].x,
                 cY = fotData[j].location[0].y;
             console.log('XY:source-M:', cX, cY);
-            cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;
+            cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;//cX单位是px,resolution为1px等于多少mm
             cY = parseFloat(cY) / configJson.resolution * configJson.zoomImg;
             console.log('XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
             var circle1 = canvasN.circle(cX, cY, radius);//圆
@@ -339,7 +337,7 @@ define(function (require, exports, module) {
                 type: "post",
                 url: '/findPath',
                 contentType: 'application/text',
-                data: JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphName": "graph", "graphMatrix": that.girdArr }),
+                data: JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphID": "graph", "graphMatrix": that.girdArr }),
                 dataType: 'json',
                 success: function (data) {
                     console.log('findPath:', data);
