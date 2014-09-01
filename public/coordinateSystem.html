@@ -16,20 +16,22 @@
   seajs.use(['pointX']);
 	
 </script>
-<input type="button" id="pointOrGrid" value="启动“寻径”功能"/>
-<div class="setPoints">
-	请选择网格数量：<input value="124,100" id="gridStr"/>
-    <em class="cS1">设置起点</em><em class="cS2">设置终点</em><em class="cS3">设置障碍点</em><br/>
-    graphId：<input id="graphId" value=""><br/>
-    <input id="saveZ" type="button" value="保存障碍点">
-    <input id="searchLJ" type="button" value="查找路径">
-
-</div>
 <p class="bzAdd">
-    <input type="button" value="标注设备" id="addBZ"/>
+    在非网格状态下，直接点击画布，进行标注设备或人的坐标：
     <input type="button" value="提交设备标注" id="submitBZ"/>
-    <input type="button" value="获取障碍点" id="getZ9"/>
+    <input type="button" value="获取场所“人”坐标" id="getCsP"/><span class="pMsg"></span>
 </p>
+
+<div class="wrp3"><input type="button" id="pointOrGrid" value="开启“寻径”功能"/></div>
+<div class="setPoints">
+	请选择网格数量：<input value="124,100" class="bor12" id="gridStr"/>
+    <em class="cS1">设置起点</em><em class="cS2">设置终点</em><em class="cS3">设置障碍点</em><br/>
+    graphId：<input id="graphId" class="bor12" value="graph" /><input type="button" value="获取障碍点" id="getZ9"/><input id="saveZ" type="button" value="保存障碍点" /><br/>
+    <input id="searchLJ" type="button" value="查找路径"/>
+    <input class="cancelNet" type="button" value="擦黑板">
+</div>
+
+
 <div id="wrapRapGird">
 	<div id="tips"></div><!--设备或人提示信息 -->
 	<div class="occupying"></div><!--标注 -->
@@ -44,9 +46,8 @@
     </div><!--坐标系+背景图片 end-->
 
 </div>
-<div id="q2">测试api</div>
 <style>
-    body,html{margin:0;padding:0;}
+    body,html{margin:0;padding:0;font-family: '微软雅黑';}
 	#raphaelTP{position:relative;left:0px;top:0px;}
     #raphael1,#wrapRapGird,#maptt,#bxPoint,#imgA10086{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;}
     #imgA10086,#girdNext{position:absolute;left:0px;top:0px;z-index:-10;}
@@ -63,6 +64,12 @@
     #maptt #tabBcoll td.mSleep{background: #18990c;}
     .setPoints{display:none;}
     .setPoints em{margin:0px 5px;color:#cc0000;cursor:pointer;font-style:normal;}
+     input{border-radius: 5px;padding: 5px;border:0px;cursor:pointer;}
+     input.bor12{border:1px solid #0088cc;}
+    .setPoints{border: 1px solid #ff7300;padding: 10px;border-radius: 5px;width: 1220px;margin: 10px auto;}
+    .pMsg{padding:3px;}
+    .bzAdd,.wrp3{width: 1240px; margin: 0 auto;text-align: left;margin-bottom:10px;}
+    .bzAdd{margin-top:20px;}
 </style>
 </body>
 </html>
