@@ -339,7 +339,7 @@ define(function (require, exports, module) {
                 type: "post",
                 url: '/findPath',
                 contentType: 'application/text',
-                data: JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphName": "graph", "graphMatrix": that.girdArr }),
+                data: JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphID": "graph", "graphMatrix": that.girdArr }),
                 dataType: 'json',
                 success: function (data) {
                     console.log('findPath:', data);
