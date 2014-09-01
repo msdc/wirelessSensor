@@ -4,7 +4,9 @@ var sensor=require('./coreCalculator/Sensor.js');
 var navigation=require('./coreCalculator/AStarNavigation.js');
 var maintain=require('./webAPI/maintainModule.js');
 var app = express();
+var timeout = require('connect-timeout');
 
+app.use(timeout("10s"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({limit:'50mb'}));
 app.use(bodyParser.json({ type: 'application/vnd.api+json',limit:'50mb' }));
