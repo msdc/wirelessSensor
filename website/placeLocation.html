@@ -34,12 +34,12 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-1 control-label blueCol NopadLeft">位&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置</label>
-                        <label class="col-sm-6 control-label-left blackCol NopadLeft">未选中</label>
+                        <label class="col-sm-6 control-label-left blackCol NopadLeft" id="qcnt">未选中</label>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <input type="text" class="form-control border_radius" id="txtSearch" value="西单大悦城" />
+                            <input type="text" class="form-control border_radius" id="txtSearch" />
                         </div>
                         <div class="col-xs-2 col-sm-2">
                             <button class="btn btn-primary" id="butSearch">搜索</button>
@@ -75,11 +75,10 @@
 
     <script src="js/main.js"></script>
     <script>
-        var map = new BMap.Map("container");
-        map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
-        map.addEventListener("click", function(){
-            alert("您点击了地图。");
-        });
+        setInterval(function(){//临时。。。
+           var q= $("#iframeMap").contents().find(".BMap_bubble_title p").text().slice(0,-3);
+            $('#qcnt').html(q);
+        },30)
     </script>
 </body>
 </html>
