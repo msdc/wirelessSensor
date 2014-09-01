@@ -277,6 +277,11 @@ MonitorPackageHandler.prototype.convertDistanceToPoint=function(beaconArray,offs
         pointY=pointX;//X横轴转Y轴,此时Y轴为横轴,X轴有偏移量
         pointX=offset.x;
     }
+
+    //换算成像素
+    pointX=(pointX*100)/1.05;
+    pointY=(pointY*100)/1.05;
+
     var pointObj={x:pointX,y:pointY,closestBeaconName:firstBeaconIndex};
     var location=[];
     location.push(pointObj);
