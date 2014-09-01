@@ -166,8 +166,8 @@ define(function (require, exports, module) {
                 fotData = [];
             console.log('need Format:', currData)
             for (var i = 0; i < currData.length; i++) {
-                if ((!!currData[i].deviceID) && (!!currData[i].timePoint) && (!!currData[i].beaconCalculatePosition)) {//3个字段必须有
-                    if ((currData[i].beaconCalculatePosition.length > 0) && !!currData[i].beaconCalculatePosition[0].x && (!!currData[i].beaconCalculatePosition[0].y)) {
+                if ((!!currData[i].deviceSerial) && (!!currData[i].location)) {//3个字段必须有
+                    if ((currData[i].location.length > 0) && !!currData[i].location[0].x && (!!currData[i].location[0].y)) {
                         fotData.push(currData[i]);
                     }
                 }
@@ -180,7 +180,7 @@ define(function (require, exports, module) {
             var that = this;
             for (var m = 0; m < that.rapAll.length; m++) {//已有的node
                 for (var k = 0; k < that.fotData.length; k++) {//新来的
-                    if (that.fotData[k].deviceID == that.rapAll[m].node.getAttribute('id')) {//删除某个节点。
+                    if (that.fotData[k].deviceSerial == that.rapAll[m].node.getAttribute('id')) {//删除某个节点。
                         that.rapAll[m].remove();//删除svg上的位置
                         that.rapAll.splice(m, 1);//删除数组内已存该节点
                         m--;
@@ -207,8 +207,8 @@ define(function (require, exports, module) {
             var configJson = that.configJson;
 
             var curr = fotData[j];
-            var cX = fotData[j].beaconCalculatePosition[0].x,
-                cY = fotData[j].beaconCalculatePosition[0].y;
+            var cX = fotData[j].location[0].x,
+                cY = fotData[j].location[0].y;
             console.log('XY:source-M:', cX, cY);
             cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;
             cY = parseFloat(cY) / configJson.resolution * configJson.zoomImg;
@@ -216,17 +216,17 @@ define(function (require, exports, module) {
             var circle1 = canvasN.circle(cX, cY, radius);//圆
             circle1.attr({"fill": "#f20bda"})  //填充色
                 .attr("stroke", "none")   //去掉边框
-                .data('dt', {x: cX, y: cY, deviceID: curr.deviceID, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
+                .data('dt', {x: cX, y: cY, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
                 .hover(function (e) {
                     var dt = this.data('dt');
-                    var str = '人物名称:' + dt.deviceID + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint + ' 设备编号=' + curr.deviceSerial;
+                    var str =curr.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint +' ' ;
                     $('#tips').html(str).show();
                 }, function () {
                     $('#tips').hide();
                 });
             var dt = circle1.data('dt');
-            circle1.node.id = curr.deviceID;
-            circle1.node.setAttribute('msg', '名称:' + dt.deviceID + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint + ' 设备编号=' + curr.deviceSerial);
+            circle1.node.id = curr.deviceSerial;
+            circle1.node.setAttribute('msg', curr.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint +' ');
             var anim2 = Raphael.animation({"fill": "#000"}, Math.random() * 1500 + 300);
             circle1.animate(anim2.repeat(Infinity));//动画效果
             that.rapAll.push(circle1);
