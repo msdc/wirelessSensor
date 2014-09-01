@@ -68,7 +68,7 @@ exports.processDataFromSocket = function (io, socket, data) {
 
 exports.processDataFromHttp = function (req, res) {
     var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
-    var calMethod = req.params.calMethod || "mapping";
+    var calMethod = req.params.calMethod || config.methodName.mapping;
     client.on("error", function (err) {
         if (err) {
             SendError(err, res);
@@ -90,13 +90,13 @@ exports.processDataFromHttp = function (req, res) {
         }
 
         switch (calMethod) {
-            case "trilateration":
+            case config.methodName.trilateration:
                 kMeansClusterCalculator(data, client);
                 break;
-            case "singleLine":
+            case config.methodName.singleLine:
                 singleLineCalculator(data, client);
                 break;
-            case "mapping":
+            case config.methodName.mapping:
                 mappingPointCalculator(data, client);
                 break;
             default :
@@ -281,6 +281,55 @@ function kMeansClusterCalculator(data, client) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
         //client.expire(keyAfterCalculate, 120);
+    }
+
+    client.quit();
+    return finalResult;
+}
+
+/**
+ *
+ * @说明 该方法是三种模型的通用方法 存储数据时用的是redis中的集合 集合key的形式为：deviceSerial_methodName
+ * */
+function commonCalculator(data,client,methodName,cb){
+    var serializeJsonData = JSON.stringify(data);
+    var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
+    var dataBeforeCalculate={};
+    dataBeforeCalculate[keyBeforeCalculate]=serializeJsonData;
+
+    //define the key of the sets.
+    var keyOfSets=sensorCalculator.getListsKey(data.deviceSerial,methodName);
+    //save the data before calculate.
+    client.sadd(keyOfSets,JSON.stringify(dataBeforeCalculate));
+
+    var finalResult=null;
+    var beaconPointArray=null;
+
+    switch(methodName){
+        case config.methodName.trilateration:
+            finalResult=cb(serializeJsonData);
+            break;
+        case config.methodName.singleLine:
+            beaconPointArray = config.singleSensorPointArray();//直线模型
+            finalResult=cb(serializeJsonData, config.lineOffset, beaconPointArray);
+            break;
+        case config.methodName.mapping:
+            beaconPointArray=config.pointsMappingArray();//定点模型点映射数组
+            finalResult=cb(serializeJsonData, config.lineOffset, beaconPointArray);
+            break;
+        default :
+            beaconPointArray=config.pointsMappingArray();//定点模型点映射数组
+            finalResult=cb(serializeJsonData, config.lineOffset, beaconPointArray);
+            break;
+
+    }
+
+    if (finalResult) {
+        var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
+        var dataAfterCalculate={};
+        dataAfterCalculate[keyAfterCalculate]=JSON.stringify(finalResult);
+        //save the data after calculated.
+        client.sadd(keyOfSets,JSON.stringify(dataAfterCalculate));
     }
 
     client.quit();

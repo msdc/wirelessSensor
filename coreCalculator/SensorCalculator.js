@@ -315,4 +315,12 @@ SensorDataCalculator.combine = function (inputArray, totalNum, chooseNum) {//产
     return outputArray;
 };
 
+SensorDataCalculator.getListsKey=function(deviceSerial,methodName){
+    var key=null;
+    if(deviceSerial&&methodName){
+        key = deviceSerial+"_"+methodName;
+    }
+    return key;
+};
+
 module.exports = SensorDataCalculator;
