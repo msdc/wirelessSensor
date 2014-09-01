@@ -68,7 +68,7 @@ exports.processDataFromSocket = function (io, socket, data) {
 
 exports.processDataFromHttp = function (req, res) {
     var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
-    var calMethod = req.params.calMethod || "mapping";
+    var calMethod = req.params.calMethod || config.methodName.mapping;
     client.on("error", function (err) {
         if (err) {
             SendError(err, res);
@@ -90,13 +90,13 @@ exports.processDataFromHttp = function (req, res) {
         }
 
         switch (calMethod) {
-            case "trilateration":
+            case config.methodName.trilateration:
                 kMeansClusterCalculator(data, client);
                 break;
-            case "singleLine":
+            case config.methodName.singleLine:
                 singleLineCalculator(data, client);
                 break;
-            case "mapping":
+            case config.methodName.mapping:
                 mappingPointCalculator(data, client);
                 break;
             default :
