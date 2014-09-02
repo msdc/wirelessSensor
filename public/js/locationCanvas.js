@@ -286,9 +286,9 @@ define(function (require, exports, module) {
         var tdW = parseInt(imgA.css('width')) / hL-1;
         console.log('sdf:',imgA.css('width'), imgA.css('height'), tdW, tdH, hL, zL);//124 100
         $('#maptt').html('<table style="width:' + parseInt(imgA.css('width')) + 'px;height:' + parseInt(imgA.css('height')) + 'px;" cellspacing="0" cellpadding="0" border="0" id="tabBcoll"></table>');
-        for (var i = 0, str = ''; i < zL; i++) {
+        for (var i = 1, str = ''; i <= zL; i++) {
             str += '<tr>';
-            for (var j = 0; j < hL; j++) {
+            for (var j = 1; j <= hL; j++) {
                 str += ('<td title="'+i+","+j+'" id="F892975_' + j + '_' + i + '" style="height:' + tdH + 'px;width:' + tdW + 'px" serialNum="' + j + ',' + i + '"></td>');
             }
             str += '</tr>';
