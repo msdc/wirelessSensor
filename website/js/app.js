@@ -35,10 +35,10 @@ App.ApplicationController = Ember.ObjectController.extend({
     userName: "Welcome,Test Users",
     actions: {
         logout: function () {
-            location.href='placeUsermanagement.html';
+            location.href='index.html';
         },
         exit: function () {
-            location.href='placeUsermanagement.html';
+            location.href='index.html';
         }
     }
 });
