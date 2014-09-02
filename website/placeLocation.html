@@ -76,8 +76,14 @@
     <script src="js/main.js"></script>
     <script>
         setInterval(function(){//临时。。。
-           var q= $("#iframeMap").contents().find(".BMap_bubble_title p").text().slice(0,-3);
-            $('#qcnt').html(q);
+           var Op=$("#iframeMap").contents();
+           var qTit= Op.find(".BMap_bubble_title p").text().slice(0,-3)+',';
+           var qTit2= Op.find(".BMap_bubble_content table tr").eq(0).text()+',';
+           var qTit3= Op.find(".BMap_bubble_content table tr").eq(1).text();
+           var L=qTit+qTit2+qTit3;
+           if(L!==',,'){
+                $('#qcnt').html(qTit+qTit2+qTit3);
+           }
         },30)
     </script>
 </body>
