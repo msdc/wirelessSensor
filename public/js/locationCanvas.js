@@ -282,13 +282,13 @@ define(function (require, exports, module) {
 
     DrawPointer.prototype.createGird = function (hL, zL) {//生成网格
         var that = this;
-        var tdH = parseInt(imgA.css('height')) / zL;//hL横向个数 纵向个数 zL
-        var tdW = parseInt(imgA.css('width')) / hL;
-        console.log(imgA.css('width'), imgA.css('height'), tdW, tdH, hL, zL)
+        var tdH = parseInt(imgA.css('height')) / zL-1;//hL横向个数 纵向个数 zL
+        var tdW = parseInt(imgA.css('width')) / hL-1;
+        console.log('sdf:',imgA.css('width'), imgA.css('height'), tdW, tdH, hL, zL);//124 100
         $('#maptt').html('<table style="width:' + parseInt(imgA.css('width')) + 'px;height:' + parseInt(imgA.css('height')) + 'px;" cellspacing="0" cellpadding="0" border="0" id="tabBcoll"></table>');
-        for (var i = 0, str = ''; i < hL; i++) {
+        for (var i = 0, str = ''; i < zL; i++) {
             str += '<tr>';
-            for (var j = 0; j < zL; j++) {
+            for (var j = 0; j < hL; j++) {
                 str += ('<td title="'+i+","+j+'" id="F892975_' + j + '_' + i + '" style="height:' + tdH + 'px;width:' + tdW + 'px" serialNum="' + j + ',' + i + '"></td>');
             }
             str += '</tr>';

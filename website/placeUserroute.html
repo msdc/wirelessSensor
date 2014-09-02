@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-    <title>场所管理 - 场所人流分布</title>
+    <title>场所管理 - 场所人流分布-用户线路图</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <!--[if IE 7]>
@@ -82,13 +82,13 @@
                                     定位设备
                                 </a>
                             </li>
-                            <li class="nav-active">
+                            <li>
                                 <a href="placePassenger.html" class="xl_a">
                                     <i class="icon-caret-right font_dot"></i>
                                     场所人流分布
                                 </a>
                             </li>
-                            <li>
+                            <li class="nav-active">
                                 <a href="placeUserbehasta.html" class="xl_a">
                                     <i class="icon-caret-right font_dot"></i>
                                     用户行为统计
@@ -115,62 +115,68 @@
         <div class="col-sm-9 col-md-10 pad_zero" style="background-color: #f3f3f3; overflow: hidden;">
             <div class="container-fluid pad_zero">
                 <div class="nav_top">
-                    <i class="glyphicon glyphicon-home col_blue"></i><span class="Mag2">></span><a href="#" class="col_blue">场所管理</a><span class="Mag2">></span><span class="col_black">场所人流分布</span>
+                    <i class="glyphicon glyphicon-home col_blue"></i><span class="Mag2">></span><a href="#" class="col_blue">场所管理</a><span class="Mag2">></span><span class="col_black">用户行为统计</span>
                 </div>
                 <div class="nav_top2">
                     <div class="row nav_top2_con NoMgBoth">
                         <div class="col-xs-4 col-sm-4 col-lg-3 nav_top2_L">
-                            <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;场所人流分布
-                        </div>                       
+                            <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;用户行为详情
+                        </div>
                     </div>
                     <div class="nav_top2_body">
                         <div class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
-                                <label class="col-sm-6 control-label-left blackCol NopadLeft">西单大悦城</label>
-                            </div>                                        
-                        </div>
-                        <div class="container">
-                               <div class="row row_bg_map">
-                                   
-                                   <lable class="whiteCol col-xs-1 NopadRight">开始日期</lable>
-                                   <div class="col-xs-2 NopadLeft">
-                                        <input class="form-control form-control_change" id="validate_startDate" placeholder="" />
-                                   </div>
-                                   <lable class="whiteCol col-xs-1 NopadRight">结束日期</lable>
-                                   <div class="col-xs-2 NopadLeft">
-                                        <input class="form-control form-control_change" id="validate_endDate" placeholder="" />
-                                   </div>
-                                   <div class="col-xs-2 text-right">
-                                       <button type="button" class="btn btn-info marg_btm3">搜索</button>
-                                   </div>
-                               </div>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <img src="images/passenger_pic.png" class="img-responsive" />
-                                    </div>
-                                </div>
-                                                             
-                        </div>
-                        <br />
-                        
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="foot_con">
-                                    <p>© 2014. iSoftStone. All Rights Reserved.</p>
+                                <label class="col-sm-1 control-label blueCol NopadLeft">用户id:</label>
+                                <label class="col-sm-1 control-label-left blackCol NopadLeft">1234</label>
+                                <label class="col-sm-1 control-label blueCol NopadLeft">用户名称:</label>
+                                <label class="col-sm-1 control-label-left blackCol NopadLeft">张三</label>
+                                <div class="col-xs-2 text-right">
+                                    <button type="button" class="btn btn-info ">用户线路图</button>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <button type="button" class="btn btn-primary">动态演示</button>
+                                </div>
+                            </div>
+                            
+                            <div class="row margTop">
+                                <div class="col-sm-12">
+                                    <div class="thumbnail border_radius">
+                                        <img src="images/p3.jpg"/>
+                                    </div>
+                                </div>
 
+                            </div>
+
+
+                        </div>
                     </div>
 
+
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="foot_con">
+                                <p>© 2014. iSoftStone. All Rights Reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
+
             </div>
         </div>
     </div>
 
-   
+
+
     <script src="js/lib/jquery-1.10.2.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
     <script src="js/lib/common.js"></script>
@@ -183,6 +189,5 @@
     <![endif]-->
 
     <script src="js/page/passenger.js"></script>
-
 </body>
 </html>
