@@ -289,7 +289,7 @@ define(function (require, exports, module) {
         for (var i = 1, str = ''; i <= zL; i++) {
             str += '<tr>';
             for (var j = 1; j <= hL; j++) {
-                str += ('<td title="'+i+","+j+'" id="F892975_' + j + '_' + i + '" style="height:' + tdH + 'px;width:' + tdW + 'px" serialNum="' + j + ',' + i + '"></td>');
+                str += ('<td title="'+j+","+i+'" id="F892975_' + j + '_' + i + '" style="height:' + tdH + 'px;width:' + tdW + 'px" serialNum="' + j + ',' + i + '"></td>');
             }
             str += '</tr>';
         }
