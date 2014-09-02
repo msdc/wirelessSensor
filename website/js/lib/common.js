@@ -145,6 +145,6 @@ Date.prototype.dateDiff = function (interval, endTime) {
 
 $(function(){
     $('.login_a').click(function(){
-        location.href='placeUsermanagement.html';
+        location.href='index.html';
     })
 })

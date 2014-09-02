@@ -31,12 +31,12 @@
             <div class="col-sm-6 alignRight signin-color">
                 <a href="findpassword.html">忘记密码</a>
             </div>
-            <div class="quick">快捷入口:<a href="/placeInfo.html">场所管理</a><a href="/merchantsInfo.html">商家管理</a> <a href="/coordinateSystem.html">网格化</a> </div>
+            <div class="quick">快捷入口:<a href="/systemPlace.html">系统管理</a><a href="/placeInfo.html">场所管理</a><a href="/merchantsInfo.html">商家管理</a> <a href="/coordinateSystem.html">网格化</a> </div>
         </div>
         </div>
     <style>
         .quick{clear: both; color: #fff;text-align:left;}
-        .quick a{margin:0 5px;color:#fff;}
+        .quick a{margin:0 3px;color:#fff;}
         .quick a:hover{text-decoration: underline;}
     </style>
 <script src="js/lib/jquery-1.10.2.min.js"></script>
@@ -45,7 +45,7 @@
         console.log('用户名或密码都输入则进入“场所管理”');
         console.log('不输入用户名或密码则进入“商家管理”');
         $('#login').click(function(){
-            location.href='placeUsermanagement.html';
+            location.href='systemPlace.html';
             /**
             var user=$('#user'),password=$('#password');
             console.log(user.val().length,password.val().length)
