@@ -196,8 +196,11 @@
                         <div class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-sm-1 control-label blueCol NopadLeft">搜索条件</label>
-                                
+                                <div class="col-sm-2 NopadLeft">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddPlace">添加场所</button>
+                                </div>
                             </div>
+                            
                             <div class="form-group">
                                 <div class="col-sm-5">
                                     <input class="form-control border_radius"></input>
@@ -221,8 +224,8 @@
                                             <td>3</td>
                                             <td>20</td>
                                             <td>
-                                                <button type="button" class="btn adview_a margRight">查看</button>
-                                                <a href="html_systemMerchantsManagement.html" class="btn adview_a adview_a_bg3 margRight">编辑</a>
+                                                <a href="html_systemMerchantsManagement.html" class="btn adview_a margRight">查看</a>
+                                                <a  class="btn adview_a adview_a_bg3 margRight">编辑</a>
                                                 <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
                                         </tr>
                                         <tr>
@@ -364,23 +367,41 @@
             <div class="modal-content">
                 <div class="modal-header nav_top2_L">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
-                    <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;创建新场所</span>
+                    <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;添加新商家</span>
                 </div>
                 <div class="modal_line_bule"></div>
                 <div class="modal-body">
                     <div class="form-horizontal" role="form">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label blueCol">场所名称</label>
+                            <label class="col-sm-2 control-label blueCol">商家所在场所</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control border_radius" id="validate_name" placeholder="">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label blueCol">商家名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control border_radius" id="Text1" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label blueCol">商家图标</label>
+                            <div class="col-sm-2">
+                                <button class="btn btn-primary">上传</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">商家描述</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control border_radius" rows="6"></textarea>
+                                </div>
+                            </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <a href="html_systemPlaceManagement.html" class="btn btn-primary">创建</a>
+                    <a href="html_systemPlaceManagement.html" class="btn btn-primary">保存</a>
                 </div>
             </div>
         </div>
