@@ -21,7 +21,7 @@
                 renderOptions: { map: map }
             });
             map.addControl(new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL }));  //右上角，仅包含平移和缩放按钮
-
+            local.search("软通");
             function searchLocal(localText)
             {
                 if (localText != undefined && localText != "")
