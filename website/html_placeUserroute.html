@@ -14,74 +14,245 @@
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
-    <script type="text/x-handlebars" data-template-name="container">
-        <div class="nav_top">
-            <i class="glyphicon glyphicon-home col_blue"></i><span class="Mag2">></span><a href="#" class="col_blue">场所管理</a><span class="Mag2">></span><span class="col_black">用户行为统计</span>
-        </div>
-        <div class="nav_top2">
-            <div class="row nav_top2_con NoMgBoth">
-                <div class="col-xs-4 col-sm-4 col-lg-3 nav_top2_L">
-                    <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;用户行为详情
+    <!-----------------------头部----开始--------------------------------------->
+    <div id="header">
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                <div class="header_L">
+                    <a href="ad_index.html">
+                        <img src="images/logo.png" />
+                    </a>
                 </div>
             </div>
-            <div class="nav_top2_body">
-                <div class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-1 control-label blueCol NopadLeft">用户id:</label>
-                        <label class="col-sm-1 control-label-left blackCol NopadLeft">1234</label>
-                        <label class="col-sm-1 control-label blueCol NopadLeft">用户名称:</label>
-                        <label class="col-sm-1 control-label-left blackCol NopadLeft">张三</label>
-                        <div class="col-xs-2 text-right">
-                            <button type="button" class="btn btn-info ">用户线路图</button>
-                        </div>
-                    </div>
+        </div>
+        <div class="navbar-right">
+            <ul class="nav nav-pills margTop">
+                <li><i class="glyphicon glyphicon-user whiteCol"></i></li>
+                <li>
+                    <p class="whiteCol row_delMg">IBEACONS</p>
+                    <div><a href="#" class="login_a">注销</a><span class="whiteCol Mag2">|</span><a href="#" class="login_a">退出</a></div>
+                </li>
+
+            </ul>
+            <button class="navbar-toggle collapsed btn_bg" data-target="#navbar-menu" data-toggle="collapse" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar bar_bg"></span>
+                <span class="icon-bar bar_bg"></span>
+                <span class="icon-bar bar_bg"></span>
+            </button>
+        </div>
+    </div>
+    <!-----------------------头部----结束--------------------------------------->
+    <div class="row row_delMg">
+        <!-----------------------导航----开始--------------------------------------->
+        <div class="col-sm-3 col-md-2 row_bg pad_zero">
+            <div class="menu_tips">NAVIGATION</div>
+            <div id="navbar-menu" class="navbar-collapse collapse">
+                <ul class="nav">
+                    <li class="li_btm_bg">
+                        <a href="#menu-app" class="gaik"><span class="glyphicon glyphicon-inbox span_size"></span>场所管理</a>
+                        <ul class="nav nav-list collapse second-menu in" id="menu-app">
+                            <li>
+                                <a href="html_placeInfo.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    基本信息
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_placeLocation.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    场所位置
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_placeMap.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    场所地图
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_placeBusiness.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    场所商家
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_placePosition.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    定位设备
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_placePassenger.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    场所人流分布
+                                </a>
+                            </li>
+                            <li class="nav-active">
+                                <a href="html_placeUserbehasta.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    用户行为统计
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_placeUsermanagement.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    用户管理
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_placeUsersmanagement.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    用户组管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="li_btm_bg">
+                        <a href="#menu-hd" class="gaik"><span class="glyphicon glyphicon-lock span_size"></span>商家管理</a>
+                        <ul class="nav nav-list collapse second-menu in" id="menu-hd">
+                            <li>
+                                <a href="html_merchantsInfo.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    基本信息
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_merchantsLocation.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    商家位置
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_merchantsPromotionactivity.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    促销活动
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_merchantsCoupons.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    优惠券
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_merchantsDiscount.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    优惠券使用统计
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_merchantsPassenger.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    商家人流分析
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="li_btm_bg">
+                        <a href="#menu-fk" class="gaik"><span class="glyphicon glyphicon-hdd span_size"></span>系统管理</a>
+                        <ul class="nav nav-list collapse second-menu in" id="menu-fk">
+                            <li>
+                                <a href="html_systemPlace.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    场所管理
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_systemMerchants.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    商家管理
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_systemUsersmanagement.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    用户组管理
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_systemUsermanagement.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    用户管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-----------------------导航----结束--------------------------------------->
+        <div class="col-sm-9 col-md-10 pad_zero" style="background-color: #f3f3f3; overflow: hidden;">
+            <div class="container-fluid pad_zero">
+                <div class="nav_top">
+                    <i class="glyphicon glyphicon-home col_blue"></i><span class="Mag2">></span><a href="#" class="col_blue">场所管理</a><span class="Mag2">></span><span class="col_black">用户行为统计</span>
                 </div>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <button type="button" class="btn btn-primary">动态演示</button>
+                <div class="nav_top2">
+                    <div class="row nav_top2_con NoMgBoth">
+                        <div class="col-xs-4 col-sm-4 col-lg-3 nav_top2_L">
+                            <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;用户行为详情
                         </div>
                     </div>
-
-                    <div class="row margTop">
-                        <div class="col-sm-12">
-                            <div class="thumbnail border_radius">
-                                <img data-src="holder.js/600x600" alt="...">
+                    <div class="nav_top2_body">
+                        <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label blueCol NopadLeft">用户id:</label>
+                                <label class="col-sm-1 control-label-left blackCol NopadLeft">1234</label>
+                                <label class="col-sm-1 control-label blueCol NopadLeft">用户名称:</label>
+                                <label class="col-sm-1 control-label-left blackCol NopadLeft">张三</label>
+                                <div class="col-xs-2 text-right">
+                                    <button type="button" class="btn btn-info ">用户线路图</button>
+                                </div>
                             </div>
                         </div>
 
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <button type="button" class="btn btn-primary">动态演示</button>
+                                </div>
+                            </div>
+
+                            <div class="row margTop">
+                                <div class="col-sm-12">
+                                    <div class="thumbnail border_radius">
+                                        <img data-src="holder.js/600x600" alt="...">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="foot_con">
+                                <p>© 2014. iSoftStone. All Rights Reserved.</p>
+                            </div>
+                        </div>
                     </div>
 
 
                 </div>
-            </div>
 
-            <br />
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="foot_con">
-                        <p>© 2014. iSoftStone. All Rights Reserved.</p>
-                    </div>
-                </div>
             </div>
         </div>
-    </script>
+    </div>
 
 
 
     <script src="js/lib/jquery-1.10.2.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
-
-    <script src="js/lib/handlebars-1.0.0.js"></script>
-    <script src="js/lib/ember.js"></script>
-    <script src="js/lib/ember-data.js"></script>
-
     <script src="js/lib/common.js"></script>
     <script src="js/lib/bootstrap-datetimepicker.min.js"></script>
     <script src="js/lib/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/page/place-userroute.js"></script>
+
     <!--[if lt IE 9]>
         <script src="js/lib/html5shiv.js"></script>
         <script src="js/lib/respond.min.js"></script>

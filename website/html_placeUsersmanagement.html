@@ -87,8 +87,14 @@
                                     场所人流分布
                                 </a>
                             </li>
+                             <li>
+                                <a href="html_placeUserbehasta.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    用户行为统计
+                                </a>
+                            </li>
                             <li>
-                                <a href="#" class="xl_a">
+                                <a href="html_placeUsermanagement.html" class="xl_a">
                                     <i class="icon-caret-right font_dot"></i>
                                     用户管理
                                 </a>
@@ -123,13 +129,19 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="xl_a">
+                                <a href="html_merchantsCoupons.html" class="xl_a">
+                                    <i class="icon-caret-right font_dot"></i>
+                                    优惠券
+                                </a>
+                            </li>
+                            <li>
+                                <a href="html_merchantsDiscount.html" class="xl_a">
                                     <i class="icon-caret-right font_dot"></i>
                                     优惠券使用统计
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="xl_a">
+                                <a href="html_merchantsPassenger.html" class="xl_a">
                                     <i class="icon-caret-right font_dot"></i>
                                     商家人流分析
                                 </a>
@@ -140,25 +152,25 @@
                         <a href="#menu-fk" class="gaik"><span class="glyphicon glyphicon-hdd span_size"></span>系统管理</a>
                         <ul class="nav nav-list collapse second-menu in" id="menu-fk">
                             <li>
-                                <a href="#" class="xl_a">
+                                <a href="html_systemPlace.html" class="xl_a">
                                     <i class="icon-caret-right font_dot"></i>
                                     场所管理
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="xl_a">
+                                <a href="html_systemMerchants.html" class="xl_a">
                                     <i class="icon-caret-right font_dot"></i>
                                     商家管理
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="xl_a">
+                                <a href="html_systemUsersmanagement.html" class="xl_a">
                                     <i class="icon-caret-right font_dot"></i>
                                     用户组管理
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="xl_a">
+                                <a href="html_systemUsermanagement.html" class="xl_a">
                                     <i class="icon-caret-right font_dot"></i>
                                     用户管理
                                 </a>
@@ -939,6 +951,118 @@
     </div>
     </div>
     <!-- Modal -->
+
+    <!-- Modal 编辑用户-->
+    <div class="modal fade bs-example-modal-lg" id="editeuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header nav_top2_L">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                    <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;编辑用户</span>
+                </div>
+                <div class="modal_line_bule whiteCol line_ht pad_L_twty">用户信息</div>
+                <div class="modal-body">
+                        <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol"><span style="color:#f00;">*</span>&nbsp;用户名</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control border_radius" id="Text4" placeholder="请填写用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol"><span style="color:#f00;">*</span>&nbsp;真实姓名</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control border_radius" id="Text10" placeholder="请填写用户真实姓名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol"><span style="color:#f00;">*</span>&nbsp;邮箱</label>
+                                <div class="col-sm-4">
+                                    <input type="email" class="form-control border_radius" id="Email1" placeholder="请填有效邮箱地址">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol"><span style="color:#f00;">*</span>&nbsp;选择用户组</label>
+                                <div class="col-sm-4">
+                                    <select class="col-sm-2 form-control border_radius">
+                                        <option>----请选择----</option>
+                                        <option>管理员</option>
+                                        <option>运维人员</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol"><span style="color:#f00;">*</span>&nbsp;设置密码</label>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control border_radius" id="Password1" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol"><span style="color:#f00;">*</span>&nbsp;再次输入密码</label>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control border_radius" id="Password2" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">公司名称</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control border_radius" id="Text12" placeholder="">
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">联系电话</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control border_radius" id="Text13" placeholder="">
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">传真</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control border_radius" id="Text14" placeholder="">
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">联系地址</label>
+                                <div class="col-sm-2">
+                                    <select  class="form-control border_radius" placeholder="所在省份">
+                                        <option>北京</option>
+                                        <option>上海</option>
+                                        <option>广州</option>
+                                        <option>海南</option>
+                                    </select>
+                                </div>
+                                 <div class="col-sm-2">
+                                    <select  class="form-control border_radius" placeholder="所在城市">
+                                        <option>北京</option>
+                                        <option>上海</option>
+                                        <option>广州</option>
+                                        <option>海南</option>
+                                    </select>
+                                </div>
+                                 <div class="col-sm-4">
+                                    <select  class="form-control border_radius" placeholder="填写详细地址">
+                                        <option>北京</option>
+                                        <option>上海</option>
+                                        <option>广州</option>
+                                        <option>海南</option>
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">邮政编码</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control border_radius" id="Text15" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="js/lib/jquery-1.10.2.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
