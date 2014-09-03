@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>初始化</title>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/initialization.js"></script>
+</head>
+<body>
+
+<div id="container" style="margin-left: auto; margin-right: auto;width: 800px;">
+    <h2>数据初始化</h2>
+    <hr>
+    <table style="border: 1px solid #f9f2f4; width: 100%">
+        <thead>
+        <tr>
+            <td>序号</td>
+            <td>说明</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>自动获取项目最新代码并执行自动部署操作</td>
+            <td><button id="auto_deploy" name="auto_deploy">自动部署</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>初始化系统数据，此操作会清空redis中原有数据并恢复到初始状态</td>
+            <td><button id="data_init" name="data_init">初始化</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/initialization.js"></script>
+</body>
+</html>
