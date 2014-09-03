@@ -127,9 +127,6 @@ a:hover { text-decoration: none; }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {background-color:#0866c6;color:#fff;border:none;}
 .nav-tabs {border-bottom:none;}
 
-.nav-active a { background-color: #fff; font-size: 14px; }
-.nav-active i { color: #0866c6; }
-
 a:focus { outline:none; outline-offset:0;}
 .tab-content {background-color:#f3f3f3;}
 /*--------------------------首页结束-------------------------*/
@@ -201,33 +198,16 @@ a:focus { outline:none; outline-offset:0;}
 .self_popover { position: absolute; z-index: 1000; left: 0; top: 0; }
 
 /*------------------------- 广告报表---------完------------------*/
-
-
-
-
-
-
-/*数据图*/
-.demo-container { box-sizing: border-box; height: 450px; }
-.demo-placeholder { clear: both; width: 100%; height: 100%; font-size: 14px; line-height: 1.2em; }
-
-.demo-placelegend { width: 100%; }
-    .demo-placelegend table { float: right; margin-right: 30px; }
-
-.demo-container *, .demo-container *::before, .demo-container *::after { box-sizing: content-box; -moz-box-sizing: content-box; /* Firefox */ -webkit-box-sizing: content-box; /* Safari */ }
-
-
 .nav > li > a.xl_a { padding-left: 20px; }
     .nav > li > a.xl_a:link, .nav > li > a.xl_a:visited { color: #333;}
     .nav > li > a.xl_a:hover { background-color:#fff; }
-.nav > li.active > a.xl_a:link, .nav > li.active > a.xl_a:visited { font-size: 16px; color: #545454; font-weight: bold; }
+.nav > li.nav-active > a.xl_a:link, .nav > li.nav-active > a.xl_a:visited { background-color: #0866c6;  font-size: 14px; color: #fff; }
 
+.nav-active i { color: #dbdbdb; }
 
 /*-----------------------------------------上传文件-------------------*/
 .clear_pad input[type='file'] { display: none; }
 .btnfile { border: 1px solid #ccc; background-color: #fff; border-radius: 0px 0px; }
-
-
 
 
 /*---------404-----------------*/
@@ -286,11 +266,8 @@ a:focus { outline:none; outline-offset:0;}
 .redCol { color:#d80519;}
 
 /*----------------------登录和找回密码-------------------------*/
-.sf-bule { background-color:#0866c6;}
-.sf-content { 
-    margin:60px auto;
-    width:300px;
-}
+.sf-bule { background-color:#0866c6;padding-top:150px;}
+.sf-content { margin:0 auto;width:300px;}
     .sf-content .form-group { text-align:center;}
     .sf-content .form-group .form-control,.sf-content .form-group button { border-radius:0px; height:40px; width:100%;}
     .sf-content .control-label { color:#fff; font-size:30px; font-weight:normal;}
@@ -312,6 +289,15 @@ a:focus { outline:none; outline-offset:0;}
 /*----------------创建新组------------------------------*/
 .tabwidth td:first-child {width:70%;}
 
+/*----------------商家人流分布-------------------------*/
+.analysis_search {background-color:#f9f9f9; padding:15px;border:1px solid #ccc;}
+.tabwidth td:first-child {width:70%;}
+
+
+/*-------------场所管理--用户行为统计----------------*/
+
+.line_ht {line-height:40px;}
+.font_sz {font-size:18px;}
 
 /*----------------警告栏------------------------------*/
 .alert { 

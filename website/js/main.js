@@ -22,8 +22,22 @@ jQuery.fn.extend({
             case "danger": alertOut.addClass("alert-danger"); head = "危险"; break;
         }
         alertOut.append('<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>')
+            .append('<span>5</span>秒后自动关闭！&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
             .append('<strong>' + head + '！</strong>')
             .append("&nbsp;&nbsp;" + message)
             .appendTo(this);
+
+        function Countdown(num) {
+            alertOut.children("span").text(num);
+            if (num >= 0) {
+                setTimeout(function () {
+                    Countdown(num);
+                }, 1000);
+            } else {
+                alertOut.remove();
+            }
+            num--;
+        }
+        Countdown(5);
     }
 });

@@ -13,883 +13,799 @@
     <link href="css/main.css" rel="stylesheet" />
 </head>
 <body>
-    <!-----------------------头部----开始--------------------------------------->
-    <div id="header">
-        <div class="navbar-header">
-            <div class="navbar-brand">
-                <div class="header_L">
-                    <a href="ad_index.html">
-                        <img src="images/logo.png" />
-                    </a>
+    <script type="text/x-handlebars" data-template-name="container">
+        <div class="nav_top">
+            <i class="glyphicon glyphicon-home col_blue"></i><span class="Mag2">></span><a href="#" class="col_blue">场所管理</a><span class="Mag2">></span><span class="col_black">用户组管理</span>
+        </div>
+        <div class="nav_top2">
+            <div class="row nav_top2_con NoMgBoth">
+                <div class="col-xs-4 col-sm-4 col-lg-3 nav_top2_L">
+                    <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;用户组管理
                 </div>
             </div>
-        </div>
-        <div class="navbar-right">
-            <ul class="nav nav-pills margTop">
-                <li><i class="glyphicon glyphicon-user whiteCol"></i></li>
-                <li>
-                    <p class="whiteCol row_delMg">IBEACONS</p>
-                    <div><a href="#" class="login_a">注销</a><span class="whiteCol Mag2">|</span><a href="#" class="login_a">退出</a></div>
-                </li>
-
-            </ul>
-            <button class="navbar-toggle collapsed btn_bg" data-target="#navbar-menu" data-toggle="collapse" type="button">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar bar_bg"></span>
-                <span class="icon-bar bar_bg"></span>
-                <span class="icon-bar bar_bg"></span>
-            </button>
-        </div>
-    </div>
-    <!-----------------------头部----结束--------------------------------------->
-    <div class="row row_delMg">
-        <!-----------------------导航----开始--------------------------------------->
-        <div class="col-sm-3 col-md-2 row_bg pad_zero">
-            <div class="menu_tips">NAVIGATION</div>
-            <div id="navbar-menu" class="navbar-collapse collapse">
-                <ul class="nav">
-                    <li class="li_btm_bg">
-                        <a href="#menu-app" class="gaik"><span class="glyphicon glyphicon-inbox span_size"></span>场所管理</a>
-                        <ul class="nav nav-list collapse second-menu in" id="menu-app">
-                            <li>
-                                <a href="placeInfo.html" class="xl_a">
-                                    <i class="icon-caret-right font_dot"></i>
-                                    基本信息
-                                </a>
-                            </li>
-                            <li>
-                                <a href="placeLocation.html" class="xl_a">
-                                    <i class="icon-caret-right font_dot"></i>
-                                    场所位置
-                                </a>
-                            </li>
-                            <li>
-                                <a href="placeMap.html" class="xl_a">
-                                    <i class="icon-caret-right font_dot"></i>
-                                    场所地图
-                                </a>
-                            </li>
-                            <li>
-                                <a href="placeBusiness.html" class="xl_a">
-                                    <i class="icon-caret-right font_dot"></i>
-                                    场所商家
-                                </a>
-                            </li>
-                            <li>
-                                <a href="placePosition.html" class="xl_a">
-                                    <i class="icon-caret-right font_dot"></i>
-                                    定位设备
-                                </a>
-                            </li>
-                            <li>
-                                <a href="placePassenger.html" class="xl_a">
-                                    <i class="icon-caret-right font_dot"></i>
-                                    场所人流分布
-                                </a>
-                            </li>
-                            <li>
-                                <a href="placeUserbehasta.html" class="xl_a">
-                                    <i class="icon-caret-right font_dot"></i>
-                                    用户行为统计
-                                </a>
-                            </li>
-                            <li>
-                                <a href="placeUsermanagement.html" class="xl_a">
-                                    <i class="icon-caret-right font_dot"></i>
-                                    用户管理
-                                </a>
-                            </li>
-                            <li class="nav-active">
-                                <a href="placeUsersmanagement.html" class="xl_a">
-                                    <i class="icon-caret-right font_dot"></i>
-                                    用户组管理
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-----------------------导航----结束--------------------------------------->
-        <div class="col-sm-9 col-md-10 pad_zero" style="background-color: #f3f3f3; overflow: hidden;">
-            <div class="container-fluid pad_zero">
-                <div class="nav_top">
-                    <i class="glyphicon glyphicon-home col_blue"></i><span class="Mag2">></span><a href="#" class="col_blue">场所管理</a><span class="Mag2">></span><span class="col_black">用户组管理</span>                </div>
-                <div class="nav_top2">
-                    <div class="row nav_top2_con NoMgBoth">
-                        <div class="col-xs-4 col-sm-4 col-lg-3 nav_top2_L">
-                            <span class="icon-inbox icon-large pull-left icon-border margTop margRight"></span>&nbsp;&nbsp;用户组管理
+            <div class="nav_top2_body">
+                <div class="container">
+                    <div class="row row_bg_map">
+                        <div class="col-xs-10">
+                            <div class="whiteCol">用户组列表</div>
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#creatusers">+创建新组</button>
                         </div>
                     </div>
-                    <div class="nav_top2_body">
-                        <div class="container">
-                            <div class="row row_bg_map">
-                                <div class="col-xs-10">
-                                    <div class="whiteCol">用户组列表</div>
-                                </div>
-                                <div class="col-xs-2 text-right">
-                                    <button type="button" class="btn btn-info marg_btm3" data-toggle="modal" data-target="#creatusers">+创建新组</button>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-bordered row_delMg">
+                                <tr class="tr_bg">
+                                    <th class="whiteCol" style="border: none;">组ID</th>
+                                    <th class="whiteCol" style="border: none;">组名</th>
+                                    <th class="whiteCol" style="border: none;">现有用户数</th>
+                                    <th class="whiteCol" style="border: none;">操作</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>管理员</td>
+                                    <td>1</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>运维人员</td>
+                                    <td>2</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>广告组</td>
+                                    <td>57</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>开发者</td>
+                                    <td>14</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>开发者</td>
+                                    <td>14</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>开发者</td>
+                                    <td>14</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>开发者</td>
+                                    <td>14</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>开发者</td>
+                                    <td>14</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>开发者</td>
+                                    <td>14</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>开发者</td>
+                                    <td>14</td>
+                                    <td>
+                                        <button type="button" class="btn adview_a margRight">编辑组名</button>
+                                        <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
+                                        <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row report_con">
+                        <div class="col-xs-5">
+                            <div class="blackCol" style="line-height: 40px;">正在显示1-2条&nbsp;&nbsp;共50条</div>
+                        </div>
+                        <div class="col-xs-7 text-right">
+                            <ul class="pagination">
+                                <li><a href="#">首页</a></li>
+                                <li><a href="#">&laquo;</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                                <li><a href="#">末页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="foot_con">
+                            <p>© 2014. iSoftStone. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade bs-example-modal-lg" id="creatusers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header nav_top2_L">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                        <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;创建新组</span>
+                    </div>
+                    <div class="modal_line_bule"></div>
+                    <div class="modal-body">
+                        <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label blueCol">用户组名称</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control border_radius" id="validate_name" placeholder="crocs">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered row_delMg">
-                                        <tr class="tr_bg">
-                                            <th class="whiteCol" style="border: none;">组ID</th>
-                                            <th class="whiteCol" style="border: none;">组名</th>
-                                            <th class="whiteCol" style="border: none;">现有用户数</th>
-                                            <th class="whiteCol" style="border: none;">操作</th>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>管理员</td>
-                                            <td>1</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>运维人员</td>
-                                            <td>2</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
-                                                <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>广告组</td>
-                                            <td>57</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
-                                                <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>开发者</td>
-                                            <td>14</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
-                                                <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>开发者</td>
-                                            <td>14</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
-                                                <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>开发者</td>
-                                            <td>14</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
-                                                <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td>开发者</td>
-                                            <td>14</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
-                                                <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>开发者</td>
-                                            <td>14</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
-                                                <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>9</td>
-                                            <td>开发者</td>
-                                            <td>14</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
-                                                <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>10</td>
-                                            <td>开发者</td>
-                                            <td>14</td>
-                                            <td>
-                                                <button type="button" class="btn adview_a margRight">编辑组名</button>
-                                                <button type="button" class="btn adview_a adview_a_bg3 margRight" data-toggle="modal" data-target="#permission">编辑组权限</button>
-                                                <button type="button" class="btn adview_a adview_a_bg4 margRight">删除</button></td>
-                                        </tr>
+                                <div class="col-xs-10 row_bg_map pad_zero" style="margin-left: 7.333%;">
+                                    <div class="col-xs-8">
+                                        <div class="whiteCol">权限设置</div>
+                                    </div>
 
-
-                                    </table>
                                 </div>
                             </div>
-                            <div class="row report_con">
-                                <div class="col-xs-5">
-                                    <div class="blackCol" style="line-height: 40px;">正在显示1-2条&nbsp;&nbsp;共50条</div>
+                            <div class="row">
+                                <div class="col-xs-10  pad_zero" style="margin-left: 7.333%;">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered row_delMg tabwidth">
+                                            <tr class="tr_bg">
+                                                <th class="whiteCol" style="border: none;">广告权限设置</th>
+                                                <th class="whiteCol" style="border: none;">是</th>
+                                                <th class="whiteCol" style="border: none;">否</th>
+                                            </tr>
+                                            <tr>
+                                                <td>查看/编辑自己创建的广告</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="inlineRadio1" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="inlineRadio2" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>查看/编辑所有广告</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio1" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio2" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>创建广告</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio3" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio4" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>审批广告</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio5" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio6" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table class="table table-bordered row_delMg tabwidth">
+                                            <tr class="tr_bg">
+                                                <th class="whiteCol" style="border: none;">APP权限设置</th>
+                                                <th class="whiteCol" style="border: none;">是</th>
+                                                <th class="whiteCol" style="border: none;">否</th>
+                                            </tr>
+                                            <tr>
+                                                <td>查看/编辑自己注册的APP</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio7" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio8" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>查看/编辑所有APP</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio9" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio10" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>注册APP/添加广告位</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio11" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio12" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>审批APP</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio13" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio14" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table class="table table-bordered row_delMg tabwidth">
+                                            <tr class="tr_bg">
+                                                <th class="whiteCol" style="border: none;">报表权限设置</th>
+                                                <th class="whiteCol" style="border: none;">是</th>
+                                                <th class="whiteCol" style="border: none;">否</th>
+                                            </tr>
+                                            <tr>
+                                                <td>查看广告报表</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio15" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio16" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>查看APP报表</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio17" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio18" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table class="table table-bordered row_delMg tabwidth">
+                                            <tr class="tr_bg">
+                                                <th class="whiteCol" style="border: none;">系统设置</th>
+                                                <th class="whiteCol" style="border: none;">是</th>
+                                                <th class="whiteCol" style="border: none;">否</th>
+                                            </tr>
+                                            <tr>
+                                                <td>管理用户</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio23" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio24" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>管理用户组</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio25" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio26" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>管理APP类别</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio27" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio28" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>管理年龄段划分</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio29" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio30" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="col-xs-7 text-right">
-                                    <ul class="pagination">
-                                        <li><a href="#">首页</a></li>
-                                        <li><a href="#">&laquo;</a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&raquo;</a></li>
-                                        <li><a href="#">末页</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="foot_con">
-                                    <p>© 2014. iSoftStone. All Rights Reserved.</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade bs-example-modal-lg" id="creatusers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header nav_top2_L">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
-                    <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;创建新组</span>
-                </div>
-                <div class="modal_line_bule"></div>
-                <div class="modal-body">
-                    <div class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label blueCol">用户组名称</label>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control border_radius" id="validate_name" placeholder="crocs">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-10 row_bg_map pad_zero" style="margin-left: 7.333%;">
-                                <div class="col-xs-8">
-                                    <div class="whiteCol">权限设置</div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-10  pad_zero" style="margin-left: 7.333%;">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered row_delMg tabwidth">
-                                        <tr class="tr_bg">
-                                            <th class="whiteCol" style="border: none;">广告权限设置</th>
-                                            <th class="whiteCol" style="border: none;">是</th>
-                                            <th class="whiteCol" style="border: none;">否</th>
-                                        </tr>
-                                        <tr>
-                                            <td>查看/编辑自己创建的广告</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="inlineRadio1" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="inlineRadio2" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>查看/编辑所有广告</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio1" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio2" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>创建广告</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio3" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio4" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>审批广告</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio5" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio6" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                    </table>
-                                    <table class="table table-bordered row_delMg tabwidth">
-                                        <tr class="tr_bg">
-                                            <th class="whiteCol" style="border: none;">APP权限设置</th>
-                                            <th class="whiteCol" style="border: none;">是</th>
-                                            <th class="whiteCol" style="border: none;">否</th>
-                                        </tr>
-                                        <tr>
-                                            <td>查看/编辑自己注册的APP</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio7" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio8" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>查看/编辑所有APP</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio9" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio10" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>注册APP/添加广告位</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio11" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio12" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>审批APP</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio13" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio14" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                    </table>
-                                    <table class="table table-bordered row_delMg tabwidth">
-                                        <tr class="tr_bg">
-                                            <th class="whiteCol" style="border: none;">报表权限设置</th>
-                                            <th class="whiteCol" style="border: none;">是</th>
-                                            <th class="whiteCol" style="border: none;">否</th>
-                                        </tr>
-                                        <tr>
-                                            <td>查看广告报表</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio15" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio16" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>查看APP报表</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio17" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio18" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                    </table>
-                                    <table class="table table-bordered row_delMg tabwidth">
-                                        <tr class="tr_bg">
-                                            <th class="whiteCol" style="border: none;">系统设置</th>
-                                            <th class="whiteCol" style="border: none;">是</th>
-                                            <th class="whiteCol" style="border: none;">否</th>
-                                        </tr>
-                                        <tr>
-                                            <td>管理用户</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio23" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio24" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>管理用户组</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio25" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio26" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>管理APP类别</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio27" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio28" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>管理年龄段划分</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio29" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio30" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                    </table>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">创建新组</button>
-            </div>
-        </div>
-    </div>
-    </div>
-    <!-- Modal -->
-
-    <!-- Modal 编辑组权限-->
-    <div class="modal fade bs-example-modal-lg" id="permission" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header nav_top2_L">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
-                    <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;编辑组权限</span>
-                </div>
-                <div class="modal_line_bule"></div>
-                <div class="modal-body">
-                    <div class="form-horizontal" role="form">
-                        <div class="row">
-                            <div class="col-xs-10 row_bg_map pad_zero" style="margin-left: 7.333%;">
-                                <div class="col-xs-8">
-                                    <div class="whiteCol">权限设置：开发者</div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-10  pad_zero" style="margin-left: 7.333%;">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered row_delMg tabwidth">
-                                        <tr class="tr_bg">
-                                            <th class="whiteCol" style="border: none;">广告权限设置</th>
-                                            <th class="whiteCol" style="border: none;">是</th>
-                                            <th class="whiteCol" style="border: none;">否</th>
-                                        </tr>
-                                        <tr>
-                                            <td>查看/编辑自己创建的广告</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio19" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio20" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>查看/编辑所有广告</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio21" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio22" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>创建广告</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio31" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio32" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>审批广告</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio33" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio34" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                    </table>
-                                    <table class="table table-bordered row_delMg tabwidth">
-                                        <tr class="tr_bg">
-                                            <th class="whiteCol" style="border: none;">APP权限设置</th>
-                                            <th class="whiteCol" style="border: none;">是</th>
-                                            <th class="whiteCol" style="border: none;">否</th>
-                                        </tr>
-                                        <tr>
-                                            <td>查看/编辑自己注册的APP</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio35" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio36" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>查看/编辑所有APP</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio37" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio38" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>注册APP/添加广告位</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio39" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio40" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>审批APP</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio41" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio42" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                    </table>
-                                    <table class="table table-bordered row_delMg tabwidth">
-                                        <tr class="tr_bg">
-                                            <th class="whiteCol" style="border: none;">报表权限设置</th>
-                                            <th class="whiteCol" style="border: none;">是</th>
-                                            <th class="whiteCol" style="border: none;">否</th>
-                                        </tr>
-                                        <tr>
-                                            <td>查看广告报表</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio43" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio44" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>查看APP报表</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio45" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio46" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                    </table>
-                                    <table class="table table-bordered row_delMg tabwidth">
-                                        <tr class="tr_bg">
-                                            <th class="whiteCol" style="border: none;">系统设置</th>
-                                            <th class="whiteCol" style="border: none;">是</th>
-                                            <th class="whiteCol" style="border: none;">否</th>
-                                        </tr>
-                                        <tr>
-                                            <td>管理用户</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio47" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="self" id="Radio48" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>管理用户组</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio49" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="all" id="Radio50" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>管理APP类别</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio51" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="creat" id="Radio52" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                        <tr>
-                                            <td>管理年龄段划分</td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio53" value="option1">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="approve" id="Radio54" value="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                       </tr>
-                                    </table>
-                            </div>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary">创建新组</button>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">提交</button>
+        </div>
+        <!-- Modal -->
+        <!-- Modal 编辑组权限-->
+        <div class="modal fade bs-example-modal-lg" id="permission" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header nav_top2_L">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                        <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;编辑组权限</span>
+                    </div>
+                    <div class="modal_line_bule"></div>
+                    <div class="modal-body">
+                        <div class="form-horizontal" role="form">
+                            <div class="row">
+                                <div class="col-xs-10 row_bg_map pad_zero" style="margin-left: 7.333%;">
+                                    <div class="col-xs-8">
+                                        <div class="whiteCol">权限设置：开发者</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-10  pad_zero" style="margin-left: 7.333%;">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered row_delMg tabwidth">
+                                            <tr class="tr_bg">
+                                                <th class="whiteCol" style="border: none;">广告权限设置</th>
+                                                <th class="whiteCol" style="border: none;">是</th>
+                                                <th class="whiteCol" style="border: none;">否</th>
+                                            </tr>
+                                            <tr>
+                                                <td>查看/编辑自己创建的广告</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio19" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio20" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>查看/编辑所有广告</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio21" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio22" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>创建广告</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio31" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio32" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>审批广告</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio33" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio34" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table class="table table-bordered row_delMg tabwidth">
+                                            <tr class="tr_bg">
+                                                <th class="whiteCol" style="border: none;">APP权限设置</th>
+                                                <th class="whiteCol" style="border: none;">是</th>
+                                                <th class="whiteCol" style="border: none;">否</th>
+                                            </tr>
+                                            <tr>
+                                                <td>查看/编辑自己注册的APP</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio35" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio36" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>查看/编辑所有APP</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio37" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio38" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>注册APP/添加广告位</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio39" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio40" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>审批APP</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio41" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio42" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table class="table table-bordered row_delMg tabwidth">
+                                            <tr class="tr_bg">
+                                                <th class="whiteCol" style="border: none;">报表权限设置</th>
+                                                <th class="whiteCol" style="border: none;">是</th>
+                                                <th class="whiteCol" style="border: none;">否</th>
+                                            </tr>
+                                            <tr>
+                                                <td>查看广告报表</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio43" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio44" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>查看APP报表</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio45" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio46" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table class="table table-bordered row_delMg tabwidth">
+                                            <tr class="tr_bg">
+                                                <th class="whiteCol" style="border: none;">系统设置</th>
+                                                <th class="whiteCol" style="border: none;">是</th>
+                                                <th class="whiteCol" style="border: none;">否</th>
+                                            </tr>
+                                            <tr>
+                                                <td>管理用户</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio47" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="self" id="Radio48" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>管理用户组</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio49" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="all" id="Radio50" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>管理APP类别</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio51" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="creat" id="Radio52" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>管理年龄段划分</td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio53" value="option1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="approve" id="Radio54" value="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary">提交</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    <!-- Modal -->
+        <!-- Modal -->
+    </script>
+
+   
 
     <script src="js/lib/jquery-1.10.2.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
+
+    <script src="js/lib/handlebars-1.0.0.js"></script>
+    <script src="js/lib/ember.js"></script>
+    <script src="js/lib/ember-data.js"></script>
+
     <script src="js/lib/common.js"></script>
-
-
+    <script src="js/app.js"></script>
+    <script src="js/page/place-usersmanagement.js"></script>
     <!--[if lt IE 9]>
         <script src="js/lib/html5shiv.js"></script>
         <script src="js/lib/respond.min.js"></script>
     <![endif]-->
-
+    <script src="js/main.js"></script>
 </body>
 </html>

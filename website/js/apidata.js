@@ -39,7 +39,7 @@
                     }
                 });
             },
-            headurl: "http://localhost:1337/",
+            headurl: "",
             mergeurl: function (url) {
                 return this.headurl + url;
             },
