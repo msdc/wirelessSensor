@@ -41,8 +41,8 @@ app.post("/promotion/update",maintain.promotion.add);
 app.delete("/promotion/del",maintain.promotion.del);
 app.get("/promotion/get",maintain.promotion.get);
 
-app.get("/deploy",initializer.webDeploy);
-app.get("/dataInit",initializer.dataInit);
+app.get("/init/deploy",initializer.webDeploy);
+app.get("/init/dataInit",initializer.dataInit);
 
 app.listen(1337, function () {
     console.log('Express server listening on port 1337');
