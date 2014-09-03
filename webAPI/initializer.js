@@ -1,16 +1,79 @@
 /**
  * Created by wang on 2014/9/3.
  */
-
+var redis=require('redis');
+var config = require("./../config.js");
 var spawn=require('child_process').spawn;
+var initData=require('./initializationData.js');
 exports.webDeploy=function(req,res){
     var linuxShell=spawn("/www/wls/restartnodejs");
-    linuxShell.on('close',function(code){
-        res.send({success:true});
+
+    linuxShell.on("error",function(err){
+        res.send({success:false,message:err.message});
         res.end();
+        return;
+    });
+
+    linuxShell.on('exit',function(code){
+        res.send({success:true,message:code});
+        res.end();
+        return;
     });
 };
 
 exports.dataInit=function(req,res){
+   var client=redis.createClient(config.redisSettings.port,config.redisSettings.host);
 
+    client.on("error", function (err) {
+        console.log("Connection Error:", err);
+        client.quit();
+        res.send({success: false, message: err.message});
+        res.end();
+        return;
+    });
+
+    client.flushdb(function(err,result){
+        if(result&&result==="OK"){
+            place_initializer(client);
+            beaconDevice_Initializer(client);
+            seller_Initializer(client);
+            matrix_Initializer(client);
+            client.quit();
+            res.send({success:true,message:null});
+            res.end();
+        }else
+        {
+            client.quit();
+            res.send({success:false,message:null});
+            res.end();
+        }
+    });
 };
+
+function place_initializer(redisClient){
+   var client=redisClient;
+   var placeData=initData.place;
+   var tpkey = "place" + "_" + placeData.name + "_" + placeData.id;
+   client.set(tpkey,JSON.stringify(placeData));
+}
+
+function beaconDevice_Initializer(redisClient){
+    var client = redisClient;
+    var beaconDeviceData = initData.device;
+    var tpkey = "device" + "_" + beaconDeviceData.uuid + "_" + beaconDeviceData.major + "_" + beaconDeviceData.minor;
+    client.set(tpkey,JSON.stringify(beaconDeviceData));
+}
+
+function seller_Initializer(redisClient){
+    var client = redisClient;
+    var sellerData=initData.seller;
+    var tpkey = "seller" + "_" + sellerData.name + "_" + sellerData.id;
+    client.set(tpkey,JSON.stringify(sellerData));
+}
+
+function matrix_Initializer(redisClient){
+    var client = redisClient;
+    var matrixData=initData.matrix;
+    var matrixKey='place_floor_matrix';
+    client.set(matrixKey,JSON.stringify(matrixData));
+}
