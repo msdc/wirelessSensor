@@ -5,6 +5,7 @@ var navigation=require('./coreCalculator/AStarNavigation.js');
 var maintain=require('./webAPI/maintainModule.js');
 var app = express();
 var timeout = require('connect-timeout');
+var initializer=require('./webAPI/initializer.js');
 
 app.use(timeout("10s"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,6 +40,9 @@ app.post("/promotion/add",maintain.promotion.add);
 app.post("/promotion/update",maintain.promotion.add);
 app.delete("/promotion/del",maintain.promotion.del);
 app.get("/promotion/get",maintain.promotion.get);
+
+app.get("/init/deploy",initializer.webDeploy);
+app.get("/init/dataInit",initializer.dataInit);
 
 app.listen(1337, function () {
     console.log('Express server listening on port 1337');
