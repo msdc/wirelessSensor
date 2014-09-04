@@ -44,7 +44,7 @@ exports.pointsMappingArray=function(){
     points[frontStr + "_0_3"+frontStr + "_0_6"]={x:450.00,y:2225.00};
     points[frontStr + "_0_6"+frontStr + "_0_2"]={x:900.00,y:2225.00};
     points[frontStr + "_0_2"+frontStr + "_0_9"]={x:1350.00,y:2225.00};
-    points[frontStr + "_0_9"+frontStr + "_0_7"]={x:1725.00,y:2225.00};
+    points[frontStr + "_0_9"+frontStr + "_0_8"]={x:1725.00,y:2225.00};
     points[frontStr + "_0_7"+frontStr + "_0_8"]={x:2725.00,y:2150.00};
 
     return points;
