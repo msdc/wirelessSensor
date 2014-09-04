@@ -7,7 +7,7 @@ var app = express();
 var timeout = require('connect-timeout');
 var initializer=require('./webAPI/initializer.js');
 
-app.use(timeout("10s"));
+app.use(timeout("30s"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({limit:'50mb'}));
 app.use(bodyParser.json({ type: 'application/vnd.api+json',limit:'50mb' }));

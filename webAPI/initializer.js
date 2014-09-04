@@ -19,6 +19,8 @@ exports.webDeploy=function(req,res){
         res.end();
         return;
     });
+
+    res.send({success:true,message:"OK"});
 };
 
 exports.dataInit=function(req,res){
