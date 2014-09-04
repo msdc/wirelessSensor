@@ -46,7 +46,7 @@ define(function (require, exports, module) {
             //#imgA10086 svg 无它设置则显示大小及位置出错。。如前面的：Raphael('bxPoint', configJson.canvas.w, configJson.canvas.h);
 
             var circle1 = canvasN.rect(0, 0, configJson.canvas.w, configJson.canvas.h);//
-            circle1.attr({"fill": "#fff", "fill-opacity": 0.2}); //填充色
+            circle1.attr({"fill": "#fff", "fill-opacity": 0.2,"stroke":"none"}); //填充色
             if (cmd == 'edit') {//'编辑命令'
                 circle1.click(function (e) {
                     console.log('SS编辑', e.x, e.y, drawId);
