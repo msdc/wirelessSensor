@@ -53,29 +53,38 @@ exports.dataInit=function(req,res){
 };
 
 function place_initializer(redisClient){
-   var client=redisClient;
-   var placeData=initData.place;
-   var tpkey = "place" + "_" + placeData.name + "_" + placeData.id;
-   client.set(tpkey,JSON.stringify(placeData));
+    var client = redisClient;
+    var places = initData.places();
+    for (var index in places) {
+        var placeData = places[index];
+        var tpkey = "place" + "_" + placeData.name + "_" + placeData.id;
+        client.set(tpkey, JSON.stringify(placeData));
+    }
 }
 
 function beaconDevice_Initializer(redisClient){
     var client = redisClient;
-    var beaconDeviceData = initData.device;
-    var tpkey = "device" + "_" + beaconDeviceData.uuid + "_" + beaconDeviceData.major + "_" + beaconDeviceData.minor;
-    client.set(tpkey,JSON.stringify(beaconDeviceData));
+    var beaconDevices = initData.beaconDevices();
+    for (var index in beaconDevices) {
+        var beaconDeviceData = beaconDevices[index];
+        var tpkey = "device" + "_" + beaconDeviceData.uuid + "_" + beaconDeviceData.major + "_" + beaconDeviceData.minor;
+        client.set(tpkey, JSON.stringify(beaconDeviceData));
+    }
 }
 
 function seller_Initializer(redisClient){
     var client = redisClient;
-    var sellerData=initData.seller;
-    var tpkey = "seller" + "_" + sellerData.name + "_" + sellerData.id;
-    client.set(tpkey,JSON.stringify(sellerData));
+    var sellers = initData.sellers();
+    for (var index in sellers) {
+        var sellerData = sellers[index];
+        var tpkey = "seller" + "_" + sellerData.name + "_" + sellerData.id;
+        client.set(tpkey, JSON.stringify(sellerData));
+    }
 }
 
 function matrix_Initializer(redisClient){
     var client = redisClient;
-    var matrixData=initData.matrix;
-    var matrixKey='graph';
-    client.set(matrixKey,JSON.stringify(matrixData));
+    var matrixData = initData.matrix;
+    var matrixKey = 'graph';
+    client.set(matrixKey, JSON.stringify(matrixData));
 }
