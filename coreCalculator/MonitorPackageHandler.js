@@ -281,11 +281,11 @@ MonitorPackageHandler.prototype.convertDistanceToPoint=function(beaconArray,offs
     //换算成像素
     pointX=(pointX*100)/1.05;
     pointY=(pointY*100)/1.05;
-
     var pointObj={x:pointX,y:pointY,closestBeaconName:firstBeaconIndex};
     var location=[];
     location.push(pointObj);
-    var resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+    var timePoint=(new Date()).getTime();//点计算完成的时间戳
+    var resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location,timePoint:timePoint};
     console.log('当前点计算完成!');
     return resultLocationData;
 };
@@ -363,7 +363,8 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
 
          }
 
-        resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location};
+        var timePoint=(new Date()).getTime();//点计算完成的时间戳
+        resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location,timePoint:timePoint};
         console.log('当前点计算完成!');
     }else
     {

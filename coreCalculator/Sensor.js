@@ -225,6 +225,7 @@ function singleLineCalculator(data, client) {
 
     //save the data before calculate.
     client.set(keyBeforeCalculate, serializeJsonData);
+    client.expire(keyBeforeCalculate, 120);
 
     var beaconPointArray = config.singleSensorPointArray();
     //save the data after calculated.
@@ -249,6 +250,7 @@ function mappingPointCalculator(data, client) {
 
     //save the data before calculate.
     client.set(keyBeforeCalculate, serializeJsonData);
+    client.expire(keyBeforeCalculate, 120);
 
     var beaconPointArray = config.pointsMappingArray();//定点模型点映射数组
     //save the data after calculated.
@@ -274,6 +276,7 @@ function kMeansClusterCalculator(data, client) {
 
     //save the data before calculate.
     client.set(keyBeforeCalculate, serializeJsonData);
+    client.expire(keyBeforeCalculate, 120);
 
     //save the data after calculated.
     var finalResult = sensorCalculator.processCalculate(serializeJsonData);
@@ -294,13 +297,13 @@ function kMeansClusterCalculator(data, client) {
 function commonCalculator(data,client,methodName,cb){
     var serializeJsonData = JSON.stringify(data);
     var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
-    var dataBeforeCalculate={};
-    dataBeforeCalculate[keyBeforeCalculate]=serializeJsonData;
 
-    //define the key of the sets.
-    var keyOfSets=sensorCalculator.getListsKey(data.deviceSerial,methodName);
     //save the data before calculate.
-    client.sadd(keyOfSets,JSON.stringify(dataBeforeCalculate));
+    client.set(keyBeforeCalculate, serializeJsonData);
+    client.expire(keyBeforeCalculate, 120);
+
+    //the key of the sets
+    var keyOfSets=sensorCalculator.getListsKey(data.deviceSerial,methodName);
 
     var finalResult=null;
     var beaconPointArray=null;
