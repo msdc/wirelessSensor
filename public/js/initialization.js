@@ -41,7 +41,7 @@ $(function(){
     });
 });
 
-var successMsg="命令执行成功！";
+var successMsg="命令执行成功！请刷新相关页面！";
 var errorMsg="操作失败！错误信息：";
 
 function showResult(msg){
@@ -49,5 +49,5 @@ function showResult(msg){
     resultDiv.html(msg);
     setTimeout(function(){
         resultDiv.html('');
-    },1500);
+    },2500);
 }
