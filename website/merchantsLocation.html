@@ -28,7 +28,7 @@
                 <span class="icon-lock icon-large pull-left icon-border icon-merchants margTop margRight"></span>&nbsp;&nbsp;商家位置
             </div>
             <div class="col-xs-4 col-sm-4">
-                <button type="button" class="btn btn-primary" {{action save}}>保存</button>
+                <button type="button" id="wpsModi" class="btn btn-primary" {{action save}}>保存</button>
             </div>
         </div>
         <div id="modalAlert">
@@ -45,11 +45,12 @@
                     <label class="col-sm-1 control-label blueCol NopadLeft">商家名称</label>
                     <label class="col-sm-2 control-label blueCol NopadLeft" style="text-align:left;">{{name}}</label>
                     <div class="col-sm-2"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Labelposition">标注位置</button></div>
+
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <div class="thumbnail border_radius wrapDrivePOS">
-
+                        <div class="thumbnail border_radius wrapDrivePOS2">
+                            <object type="image/svg+xml" data="images/isoftstone.svg" width="1240" height="1000"></object>
                         </div><!--wrapDrivePOS end-->
                     </div>
                 </div>
@@ -77,13 +78,49 @@
     <script src="js/main.js"></script>
 
 
+    <!-- Modal设备分布 -->
+    <div class="modal fade bs-example-modal-lg" id="Labelposition" tabindex="-1" role="dialog" aria-labelledby="Labelposition" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header nav_top2_L">
+                    <button type="button" class="close cancelNet" data-dismiss="modal"><span aria-hidden="true" class="icon-remove"></span><span class="sr-only">Close</span></button>
+                    <span><i class="icon-inbox icon-large pull-left icon-border"></i>&nbsp;&nbsp;标注商家</span>
+                </div>
+                <div class="modal_line_bule"></div>
+                <div class="modal-body">
+                    <div class="form-horizontal" role="form">
+                        <div class="form-group" style="display:none;">
+                            <div class="col-sm-1 control-label blueCol col-sm-offset-1"><a class="glyphicon glyphicon-circle-arrow-left plus_big" href="#"></a></div>
+                            <div class="col-sm-1 control-label blueCol"><a class="glyphicon glyphicon-circle-arrow-right plus_big" href="#"></a></div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1 bindDraw">
+                                <div class="thumbnail border_radius wrapDrivePOS"> </div><!--wrapDrivePOS end-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"  id="tempSave">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
 
 
 
-
-
+<div class="moveStatic"></div>
+<style>
+    .wrapDrivePOS2{position:relative;}
+    .moveStatic{position: absolute;left:0px;top:0px;background:#fff;width:16px;height:24px;background:url('images/t2.png') no-repeat;}
+    .wrapDrivePOS2 img{position:relative;left:0px;top:0px;}
+    .thumbnail{padding:0px}
+    .nav_top2_body .thumbnail{overflow:scroll;}
+</style>
 <div class="moveLay">
-
     <div id="wrapRapGird">
         <div id="tips"></div><!--设备或人提示信息 -->
         <div id="raphaelTP">
@@ -128,7 +165,17 @@
 
     #MVC_merchantsLocation{position:absolute;left:999em;}
 </style>
-
+    <style>
+        /**额外加的样式**/
+        .moveLay input{border-radius: 5px;padding: 5px;}
+        .modal-lg{width:1275px;}
+        .col-sm-offset-1{margin-left:0px;}
+        .wrapDriveDLE,.wrapDrivePOS{width:1240px;height:1040px;overflow:hidden;}
+        .form-horizontal .control-label{width:auto;text-align: left;padding-left:15px;}
+        .col-sm-2 {width: 500px;}
+        .t35 .form-horizontal .form-group .control-label{width:auto;}
+        .t35 .form-horizontal .form-group { width: 300px; margin-left: 0px;}
+    </style>
 <input id="MVC_merchantsLocation" type="button"/>
 
 </body>
