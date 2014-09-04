@@ -73,7 +73,7 @@
                 updateplacemerchant: function (json, callback) {
                     this.apiajax.ajax(this.apiajax.mergeurl("seller/update"), "Post", json, callback);
                 },
-                deleteplacemerchant: function (item, itemcallback) {
+                deleteplacemerchant: function (item, callback) {
                     var url = "seller/del?id=" + item.id + "&name=" + item.name;
                     this.apiajax.ajax(this.apiajax.mergeurl(url), "Delete", null, callback);
                 },

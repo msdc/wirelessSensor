@@ -56,6 +56,7 @@ App.Router.map(function () {
 *******************/
 App.ActivityController = Ember.ArrayController.create({
     content: [],
+    removeItem: null,
     insert: function () {
         var activities = this.get("content");
         activities.sort(function (x, y) {
@@ -79,12 +80,20 @@ App.ActivityController = Ember.ArrayController.create({
             }
         }
     },
-    remove: function (item) {
+    sure: function (item) {
+        $('#modalDelete').modal('show')
+        this.set("removeItem", item);
+    },
+    remove: function () {
+        $('#modalDelete').modal('hide')
+        var _this = this;
+        var item = this.get("removeItem");
         api.ms.deletepromotion(item, function () {
             if (arguments[0] == "error") {
                 $("#divAlert").alert("warning", "删除促销活动失败！  " + arguments[1].message);
             } else {
                 $("#divAlert").alert("success", "删除促销活动成功！  ");
+                _this.get('content').removeObject(item);
             }
         });
     },

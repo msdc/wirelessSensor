@@ -67,11 +67,14 @@ App.PlaceController = Ember.ObjectController.create({
     },
     remove: function () {
         $('#modalDelete').modal('hide')
-        api.ms.deleteplacemap(this.get("removeItem"), function () {
+        var _this = this;
+        var item = this.get("removeItem");
+        api.ms.deleteplacemap(item, function () {
             if (arguments[0] == "error") {
                 $("#divAlert").alert("warning", "删除场所地图失败！  " + arguments[1].message);
             } else {
                 $("#divAlert").alert("success", "删除场所地图成功！  ");
+                _this.get('content').removeObject(item);
             }
         });
     },
@@ -261,7 +264,7 @@ App.initializer({
             } else if (arguments[0].length > 0) {
                 var data = arguments[0];
                 var json = JSON.parse(data[0]);
-                App.PlaceController.create(json.id, json.name, json.maps);
+                App.PlaceController.create(json.id, "软通动力一层展厅", json.maps);//json.name
             }
         });
     }

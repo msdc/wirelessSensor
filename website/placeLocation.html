@@ -30,7 +30,7 @@
                 <div class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="col-sm-1 control-label blueCol NopadLeft">场所名称</label>
-                        <label class="col-sm-6 control-label-left blackCol NopadLeft">软通</label>
+                        <label class="col-sm-6 control-label-left blackCol NopadLeft">软通动力一层展厅</label>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-1 control-label blueCol NopadLeft">位&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置</label>
@@ -39,7 +39,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <input type="text" class="form-control border_radius" id="txtSearch" value="软通" />
+                            <input type="text" class="form-control border_radius" id="txtSearch" value="软通动力一层展厅" />
                         </div>
                         <div class="col-xs-2 col-sm-2">
                             <button class="btn btn-primary" id="butSearch">搜索</button>
@@ -47,7 +47,10 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12" id="map-container">
-                            <iframe src="place-map.html" name="iframeMap" id="iframeMap" ></iframe>
+                            <div class="report_con">
+                                <iframe src="place-map.html" name="iframeMap" id="iframeMap"></iframe>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -76,14 +79,17 @@
     <script src="js/main.js"></script>
     <script>
         setInterval(function(){//临时。。。
-           var Op=$("#iframeMap").contents();
-           var qTit= Op.find(".BMap_bubble_title p").text().slice(0,-3)+',';
-           var qTit2= Op.find(".BMap_bubble_content table tr").eq(0).text()+',';
-           var qTit3= Op.find(".BMap_bubble_content table tr").eq(1).text();
-           var L=qTit+qTit2+qTit3;
-           if(L!==',,'){
-                $('#qcnt').html(qTit+qTit2+qTit3);
-           }
+            var Op = $("#iframeMap").contents();
+            var trget=Op.find(".BMap_bubble_title p");
+            if (trget.length > 0) {
+                var qTit = "名称：" + Op.find(".BMap_bubble_title p").attr("title") + '<br/>';
+                var qTit2 = Op.find(".BMap_bubble_content table tr").eq(0).text() + '<br/>';
+                var qTit3 = Op.find(".BMap_bubble_content table tr").eq(1).text();
+                var L = qTit + qTit2 + qTit3;
+                if (L !== ',,') {
+                    $('#qcnt').html(qTit + qTit2 + qTit3);
+                }
+            }
         },30)
     </script>
 </body>
