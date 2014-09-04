@@ -43,6 +43,7 @@ app.get("/promotion/get",maintain.promotion.get);
 
 app.get("/init/deploy",initializer.webDeploy);
 app.get("/init/dataInit",initializer.dataInit);
+app.get("/init/clear_calculated",initializer.clearCalculatedData);
 
 app.listen(1337, function () {
     console.log('Express server listening on port 1337');

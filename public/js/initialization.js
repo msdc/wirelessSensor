@@ -5,6 +5,7 @@
 $(function(){
     var btn_auto_deploy=$('#auto_deploy');
     var btn_data_init=$('#data_init');
+    var btn_clear_calculated=$('#clear_calculated');
 
     btn_auto_deploy.click(function(){
         $.get('/init/deploy',function(data){
@@ -25,6 +26,17 @@ $(function(){
            {
                showResult(errorMsg+data.message);
            }
+        });
+    });
+
+    btn_clear_calculated.click(function(){
+        $.get('/init/clear_calculated',function(data){
+            if(data.success===true){
+                showResult(successMsg);
+            }else
+            {
+                showResult(errorMsg+data.message);
+            }
         });
     });
 });
