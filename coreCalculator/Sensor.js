@@ -256,7 +256,7 @@ function mappingPointCalculator(data, client) {
     if (finalResult) {
         var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
         client.set(keyAfterCalculate, JSON.stringify(finalResult));
-        //client.expire(keyAfterCalculate, 120);
+        client.expire(keyAfterCalculate, 120);
     }
 
     client.quit();
