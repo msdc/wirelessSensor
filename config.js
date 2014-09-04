@@ -39,11 +39,11 @@ exports.redisSettings = {
 exports.pointsMappingArray=function(){
     var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
     var points=[];
-    points[frontStr + "_0_3"+frontStr + "_0_6"]={x:458.09,y:2207.61};
-    points[frontStr + "_0_6"+frontStr + "_0_2"]={x:918.09,y:2202.85};
-    points[frontStr + "_0_2"+frontStr + "_0_9"]={x:1360.95,y:2200.00};
-    points[frontStr + "_0_9"+frontStr + "_0_7"]={x:1728.57,y:2192.38};
-    points[frontStr + "_0_7"+frontStr + "_0_8"]={x:2279.04,y:2197.14};
+    points[frontStr + "_0_3"+frontStr + "_0_6"]={x:450.00,y:2225.00};
+    points[frontStr + "_0_6"+frontStr + "_0_2"]={x:900.00,y:2225.00};
+    points[frontStr + "_0_2"+frontStr + "_0_9"]={x:1350.00,y:2225.00};
+    points[frontStr + "_0_9"+frontStr + "_0_7"]={x:1725.00,y:2225.00};
+    points[frontStr + "_0_7"+frontStr + "_0_8"]={x:2725.00,y:2150.00};
 
     return points;
 };
