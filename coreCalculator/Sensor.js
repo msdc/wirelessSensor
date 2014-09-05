@@ -97,10 +97,10 @@ exports.processDataFromHttp = function (req, res) {
                 singleLineCalculator(data, client);
                 break;
             case config.methodName.mapping:
-                mappingPointCalculator(data, client);
+                commonCalculator(data, client,config.methodName.mapping,sensorCalculator.mappingPointCalculate);
                 break;
             default :
-                mappingPointCalculator(data, client);
+                commonCalculator(data, client,config.methodName.mapping,sensorCalculator.mappingPointCalculate);
                 break;
         }
 
@@ -178,37 +178,95 @@ exports.drawSinglePointFromRedis = function (io, socket, data) {
 };
 
 exports.getPoints = function (req, res) {
-    var key = req.query.id;
+    var deviceSerial = req.query.deviceSerial;
     var isOnlyRecent = req.params.onlyrecent;
-    var result = [];
     var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
-    if (key) {
-        client.get(key, function (data) {
-            res.send(data);
-        })
-    }
-    else {
-        client.keys("*_*_Calculated", function (err, keys) {
-            if(keys.length>0) {
-                keys.sort();
-                keys.forEach(function (item, pos) {
-                    client.get(item, function (err, data) {
-                        result.push(data);
-                        if (pos == (keys.length - 1)) {
-                            //result=result.sort(function(a,b){return a.checkPoint- b.checkPoint;});
-                            if (isOnlyRecent == "true") {
-                                res.send(JSON.parse(result[result.length - 1]));
-                            }
-                            else {
-                                res.send(result);
-                            }
-                            client.quit();
+    var recentTimePoint;//最近的时间戳
+    var recentLocation;//最新的点
+    var resultPoints = [];
+
+    if (deviceSerial) {
+        //the key of the sets
+        var keyOfSets = sensorCalculator.getListsKey(deviceSerial, config.methodName.mapping);
+        client.smembers(keyOfSets, function (err, members) {
+            if (members.length > 0) {
+                members.forEach(function (item, index) {
+                    var calculatedData = JSON.parse(item);
+                    if (index == 0) {
+                        recentTimePoint = calculatedData.timePoint;//初始化时间戳
+                        recentLocation = calculatedData;//初始化最新的点
+                    } else {
+                        if (recentTimePoint < calculatedData.timePoint) {
+                            recentLocation = calculatedData;
+                        }
+                    }
+                    resultPoints.push(calculatedData);
+                    //遍历完成
+                    if (index == (members.length - 1)) {
+                        client.quit();
+                        if (isOnlyRecent == "true"){
+                            res.send(recentLocation);
+                        }else{
+                            res.send(resultPoints);
+                        }
+                    }
+                });
+            } else {
+                client.quit();
+                res.send({result: "there is no data"});
+                res.end();
+            }
+        });
+    } else {
+        var keyPart = "*_" + config.methodName.mapping;
+        client.keys(keyPart, function (err, listKeys) {
+
+            if (listKeys.length > 0) {
+                var location=[];//所有设备的最新的坐标
+                listKeys.forEach(function (listKey, listIndex) {
+                    var deviceRecentTimePoint;//每个设备中最新的时间点
+                    var deviceRecentLocation;//每个设备中最新的点坐标
+
+                    client.smembers(listKey, function (err, members) {
+
+                        if (members.length > 0) {
+                            members.forEach(function (item, index) {
+                                var calculatedData = JSON.parse(item);
+                                if (index == 0) {
+                                    deviceRecentTimePoint = calculatedData.timePoint;//初始化时间戳
+                                    deviceRecentLocation = calculatedData;//初始化最新的点
+                                } else {
+                                    if (deviceRecentTimePoint < calculatedData.timePoint) {
+                                        deviceRecentLocation = calculatedData;
+                                    }
+                                }
+
+                                resultPoints.push(calculatedData);
+
+                                if (index === (members.length - 1)) {
+
+                                    location.push(deviceRecentLocation);
+
+                                    if (listIndex === (listKeys.length - 1)) {
+                                        client.quit();
+                                        if (isOnlyRecent == "true"){
+                                            res.send(location);
+                                        }else
+                                        {
+                                            res.send(resultPoints);
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                            return;
                         }
                     });
                 });
-            }
-            else{
-                res.send({result:"there is no data"});
+            } else {
+                client.quit();
+                res.send({result: "there is no data"});
+                res.end();
             }
         });
     }
@@ -296,11 +354,11 @@ function kMeansClusterCalculator(data, client) {
  * */
 function commonCalculator(data,client,methodName,cb){
     var serializeJsonData = JSON.stringify(data);
-    var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
+    //var keyBeforeCalculate = sensorCalculator.getKeyBeforeCalculate(data.deviceSerial);
 
     //save the data before calculate.
-    client.set(keyBeforeCalculate, serializeJsonData);
-    client.expire(keyBeforeCalculate, 120);
+    //client.set(keyBeforeCalculate, serializeJsonData);
+    //client.expire(keyBeforeCalculate, 120);
 
     //the key of the sets
     var keyOfSets=sensorCalculator.getListsKey(data.deviceSerial,methodName);
@@ -328,11 +386,8 @@ function commonCalculator(data,client,methodName,cb){
     }
 
     if (finalResult) {
-        var keyAfterCalculate = sensorCalculator.getKeyAfterCalculate(data.deviceSerial);
-        var dataAfterCalculate={};
-        dataAfterCalculate[keyAfterCalculate]=JSON.stringify(finalResult);
         //save the data after calculated.
-        client.sadd(keyOfSets,JSON.stringify(dataAfterCalculate));
+        client.sadd(keyOfSets,JSON.stringify(finalResult));
     }
 
     client.quit();
