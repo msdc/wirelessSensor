@@ -225,11 +225,13 @@ exports.GetClusteredPoint = function (sensorData) {
     var x=(Math.abs(means[0].x)*100)/1.05;
     var y=(Math.abs(means[0].y)*100)/1.05;
 
+    var timePoint=(new Date()).getTime();//点计算完成的时间戳
     var mobilePosition = {deviceSerial: sensorData.deviceSerial,
         deviceName: sensorData.deviceName,
         location: [
             {x: x, y: y}
-        ]
+        ],
+        timePoint:timePoint
     };
 
     //reset global variable value for the next processCalculate.
