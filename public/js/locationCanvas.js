@@ -6,7 +6,12 @@ define(function (require, exports, module) {
     var canvasN, configJson, viewBOX_w = 3100, viewBOX_h = 2500,
         rectW = 5, rectH = 5, radius = 8, sbW = 16, sbH = 24;//坐标系矩形宽高、画圆的半径 设备大小
     var rapAll = [];//存放页面rect元素的“画”对象
-    var sRect=[],eRect=[];
+    var taskJson={
+        sRect:[],//起点，共2个数组元素
+        eRect:[],//终点，共2个数组元素
+        isRect:false,//是否画矩形
+        isClsRect:false//是否清除矩形障碍物
+    };
     function DrawPointer() {
         this.girdArr = [];//存放生成的网格二维数组
         this.currFlag = 0;//存放当前‘起点、终点、障碍点’标志
@@ -81,53 +86,97 @@ define(function (require, exports, module) {
             callback && callback(pX, pY, configJson);
             return false;
         },
+        setRect:function(serialnum){//矩形
+            var hasQ=taskJson.sRect;
+            if(hasQ.length&&hasQ.length==2){//已有起点
+                taskJson.eRect.push(parseInt(serialnum[0]),parseInt(serialnum[1]));//终点
+                var sMin=Math.min(taskJson.sRect[0],taskJson.eRect[0]),sMax=Math.max(taskJson.sRect[0],taskJson.eRect[0]),
+                    eMin=Math.min(taskJson.sRect[1],taskJson.eRect[1]),eMax=Math.max(taskJson.sRect[1],taskJson.eRect[1]);
+                for(var m=sMin;m<=sMax;m++){
+                    for(var n=eMin;n<=eMax;n++){
+                        if(taskJson.isClsRect){
+                            $('#F892975_'+m+'_'+n).removeClass();
+                        }
+                        else{
+                           $('#F892975_'+m+'_'+n).addClass('mSleep');
+                        }
+                    }
+                }
+                taskJson.sRect=[];
+                taskJson.eRect=[];
+            }
+            else{
+                taskJson.sRect.push(parseInt(serialnum[0]),parseInt(serialnum[1]));//起点
+            }
+        },
         evt: function () {
             var that = this;
             var configJson = that.configJson;
-
             /****网格相关evt start***/
+            that.ajaxSubmit();//查找最近路线
             $('#gridStr').unbind('blur').blur(function () {
                 configJson.girdSize = $(this).val();
                 var change = $(this).val().split(',');//输入框的值
                 that.createGird(change[0], change[1]);//生成网格。。行18 列20
                 console.log('改变后原先的障碍点需要重新设置。');
                 return false;
-            })
+            });
             $('#maptt td').unbind('click').click(function () {
-                var serialnum = '', allTd = $('#maptt td'), Oelem = $(this);
-                if ($(this).hasClass('mStart') || $(this).hasClass('mEnd') || $(this).hasClass('mSleep')) {//取消选择
-                    $(this).removeClass();
-                    return;
+                var serialnum =[], allTd = $('#maptt td'), Oelem = $(this);
+                if(!taskJson.isClsRect){//非清除矩形障碍点
+                    if (Oelem.hasClass('mStart') || Oelem.hasClass('mEnd') || Oelem.hasClass('mSleep')) {//取消选择
+                        Oelem.removeClass();
+                        return false;
+                    }
                 }
                 switch (that.currFlag) {
                     case 1:
                         allTd.removeClass('mStart');
-                        serialnum = Oelem.addClass('mStart').attr('serialnum').split(',');
+                        Oelem.addClass('mStart').attr('serialnum').split(',');
                         break;
                     case 2:
                         allTd.removeClass('mEnd');
-                        serialnum = Oelem.addClass('mEnd').attr('serialnum').split(',');
+                        Oelem.addClass('mEnd').attr('serialnum').split(',');
                         break;
                     case 3:
                         serialnum = Oelem.addClass('mSleep').attr('serialnum').split(',');
+                        console.log('isRect:',taskJson.isRect)
+                        if(taskJson.isRect){//矩形设置。
+                           that.setRect(serialnum);//设置障碍点
+                        }
                         break;
                 }
                 return false;
-            })
+            });
 
+            /******不合并start*******/
             $('.cS1').unbind('click').click(function () {//设置起点
                 that.currFlag = 1;
+                taskJson={isRect:false,sRect:[],eRect:[],isClsRect:false};
                 return false;
-            })
+            });
             $('.cS2').unbind('click').click(function () {//设置终点
                 that.currFlag = 2;
+                taskJson={isRect:false,sRect:[],eRect:[],isClsRect:false};
                 return false;
-            })
+            });
             $('.cS3').unbind('click').click(function () {//设置障碍物
                 that.currFlag = 3;
+                taskJson={isRect:false,sRect:[],eRect:[],isClsRect:false};
                 return false;
-            })
-            that.ajaxSubmit();//查找最近路线
+            });
+            $('.cS4').unbind('click').click(function () {//设置矩形障碍物
+                that.currFlag = 3;
+                taskJson={isRect:true,sRect:[],eRect:[],isClsRect:false};
+                return false;
+            });
+            $('.cS5').unbind('click').click(function () {//清除矩形障碍物
+                that.currFlag = 3;
+                taskJson={isRect:true,sRect:[],eRect:[],isClsRect:true};
+                return false;
+            });
+            /******不合并end*******/
+
             /****网格相关evt end***/
         },
         sbPos: function (uuidArr, imgJson) {//设备坐标（更新一次）
@@ -269,7 +318,7 @@ define(function (require, exports, module) {
         $('#maptt td').removeClass();
         $.ajax({
             type: "get",
-            url: '/getGraphMatrix/' + graphId || 'graph',
+            url: '/getGraphMatrix/' + (graphId || 'graph'),
             contentType: 'application/text',
             dataType: 'json',
             success: function (data) {
@@ -309,10 +358,9 @@ define(function (require, exports, module) {
                 that.tDim(gridStr[0], gridStr[1]);
             }
             else {
-                alert('shuru grid num');
+                alert('请输入网格数量');
                 return;
             }
-
             console.log('new arr:', that.girdArr);
             var mStart = $('#maptt td.mStart'), mEnd = $('#maptt td.mEnd'), mSleep = $('#maptt td.mSleep');
             if (mStart.length != 1 || mEnd.length != 1) {//是否已经有起点 终点
