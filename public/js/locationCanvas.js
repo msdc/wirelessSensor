@@ -52,12 +52,16 @@ define(function (require, exports, module) {
 
             var circle1 = canvasN.rect(0, 0, configJson.canvas.w, configJson.canvas.h);//
             circle1.attr({"fill": "#fff", "fill-opacity": 0.2,"stroke":"none"}); //填充色
-            if (cmd == 'edit') {//'编辑命令'
+            if (cmd == 'edit') {//'编辑命令'..编辑时会传过来drawId。。
+                /**eg:
+                 drwaA.resetData(configJson,'edit',ID);//初始化配置文件..id以便删除，更新
+                 drwaA.sbPos(sbJson);
+                **/
                 circle1.click(function (e) {
                     console.log('SS编辑', e.x, e.y, drawId);
                     $('#sb_' + drawId).remove();
-                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
-                    circle1.attr({"fill": "blue", "stroke": "none"})  //填充色\去掉边框
+                    var circle1 = canvasN.image('images/t2.png', e.x - raphaelTP.offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                    circle1.attr({"fill": "blue", "stroke": "none"});  //填充色\去掉边框
                     circle1.node.id = 'sb_bj';
                 });//直接“标注”
             }
@@ -65,8 +69,8 @@ define(function (require, exports, module) {
                 circle1.click(function (e) {
                     console.log('SS创建', e.x, e.y);
                     $('#sb_bj').remove();
-                    var circle1 = canvasN.image('images/t2.png', e.x - $('#raphaelTP').offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
-                    circle1.attr({"fill": "blue", "stroke": "none"})  //填充色\去掉边框
+                    var circle1 = canvasN.image('images/t2.png', e.x - raphaelTP.offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                    circle1.attr({"fill": "blue", "stroke": "none"});  //填充色\去掉边框
                     circle1.node.id = 'sb_bj';
                 });//直接“标注”
             }
@@ -75,12 +79,10 @@ define(function (require, exports, module) {
         },
         sumA: function (callback) {//提交‘标注
             var configJson = this.configJson;
-            var Odoc = raphaelTP.offset();
             if ($('#sb_bj').length < 1) {
                 alert('请选择标注的位置');
                 return false;
             }
-            //var pX = sLeft - Odoc.left, pY = sTop - Odoc.top;//当前坐标系上的坐标
             var pX = $('#sb_bj').attr('x'), pY = $('#sb_bj').attr('y');
             console.log('标注像素:', pX, pY);
             callback && callback(pX, pY, configJson);
@@ -112,7 +114,7 @@ define(function (require, exports, module) {
         evt: function () {
             var that = this;
             var configJson = that.configJson;
-            /****网格相关evt start***/
+            /********网格相关evt start*******/
             that.ajaxSubmit();//查找最近路线
             $('#gridStr').unbind('blur').blur(function () {
                 configJson.girdSize = $(this).val();
@@ -140,7 +142,7 @@ define(function (require, exports, module) {
                         break;
                     case 3:
                         serialnum = Oelem.addClass('mSleep').attr('serialnum').split(',');
-                        console.log('isRect:',taskJson.isRect)
+                        //console.log('isRect:',taskJson.isRect)
                         if(taskJson.isRect){//矩形设置。
                            that.setRect(serialnum);//设置障碍点
                         }
@@ -177,7 +179,7 @@ define(function (require, exports, module) {
             });
             /******不合并end*******/
 
-            /****网格相关evt end***/
+            /********网格相关evt end*******/
         },
         sbPos: function (uuidArr, imgJson) {//设备坐标（更新一次）
             var that = this, imgJ;
@@ -192,20 +194,21 @@ define(function (require, exports, module) {
             for (var m in uuidArr) {
                 var cX = parseFloat(uuidArr[m].x) / configJson.resolution * configJson.zoomImg;
                 var cY = parseFloat(uuidArr[m].y) / configJson.resolution * configJson.zoomImg;
+                var msg='';
                 console.log('sbpos-XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
                 var circle1 = canvasN.image(imgJ.src, cX, cY, imgJ.w, imgJ.h);//var circle1=canvasN.circle(cX,cY,radius);//圆
                 circle1.attr({"fill": "blue"})  //填充色
                     .attr("stroke", "none")   //去掉边框
                     .data('dt', {x: cX, y: cY, 'deviceSerial': m})
                     .hover(function (e) {
-                        var str = '设备名称:' + this.data('dt').deviceSerial + ' 坐标 X:' + this.data('dt').x + ' Y:' + this.data('dt').y;
-                        $('#tips').html(str).show();
+                        msg = '设备名称:' + this.data('dt').deviceSerial + ' 坐标 X:' + this.data('dt').x + ' Y:' + this.data('dt').y;
+                        $('#tips').html(msg).show();
                     }, function () {
                         $('#tips').hide();
                     });
                 var dt = circle1.data('dt');
                 circle1.node.id = 'sb_' + dt.deviceSerial;
-                circle1.node.setAttribute('msg', '设备名称:' + dt.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y);
+                circle1.node.setAttribute('msg', msg);
             }
         },
         formatData: function (postData) {//格式化成可用数据
@@ -242,7 +245,7 @@ define(function (require, exports, module) {
         circleD: function () {//添加新节点
             var that = this;
             var fotData = that.fotData;
-            if (!that.fotData || this.fotData.length < 1) {
+            if (!fotData || fotData.length < 1) {
                 console.log('no data');
                 return;
             }
@@ -255,25 +258,27 @@ define(function (require, exports, module) {
             var configJson = that.configJson;
             var curr = fotData[j];
             var cX = fotData[j].location[0].x,
-                cY = fotData[j].location[0].y;
+                cY = fotData[j].location[0].y,
+                msg='';
+
             console.log('XY:source-M:', cX, cY);
             cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;//cX单位是px,resolution为1px等于多少mm
             cY = parseFloat(cY) / configJson.resolution * configJson.zoomImg;
             console.log('XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
             var circle1 = canvasN.circle(cX, cY, radius);//圆
-            circle1.attr({"fill": "#f20bda"})  //填充色
-                .attr("stroke", "none")   //去掉边框
-                .data('dt', {x: cX, y: cY, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
-                .hover(function (e) {
-                    var dt = this.data('dt');
-                    var str =curr.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint +' ' ;
-                    $('#tips').html(str).show();
-                }, function () {
-                    $('#tips').hide();
-                });
+                circle1.attr({"fill": "#f20bda"})  //填充色
+                    .attr("stroke", "none")   //去掉边框
+                    .data('dt', {x: cX, y: cY, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
+                    .hover(function (e) {
+                        var dt = this.data('dt');
+                        msg =curr.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint +' ' ;
+                        $('#tips').html(msg).show();
+                    }, function () {
+                        $('#tips').hide();
+                    });
             var dt = circle1.data('dt');
             circle1.node.id = curr.deviceSerial;
-            circle1.node.setAttribute('msg', curr.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint +' ');
+            circle1.node.setAttribute('msg',msg);
             var anim2 = Raphael.animation({"fill": "#000"}, Math.random() * 1500 + 300);
             circle1.animate(anim2.repeat(Infinity));//动画效果
             that.rapAll.push(circle1);
@@ -334,7 +339,7 @@ define(function (require, exports, module) {
 
     DrawPointer.prototype.createGird = function (hL, zL) {//生成网格
         var that = this;
-        var tdH = parseInt(imgA.css('height')) / zL-1;//hL横向个数 纵向个数 zL
+        var tdH = parseInt(imgA.css('height')) / zL-1;//hL横向个数 纵向个数 zL...1px:border
         var tdW = parseInt(imgA.css('width')) / hL-1;
         console.log('sdf:',imgA.css('width'), imgA.css('height'), tdW, tdH, hL, zL);//124 100
         $('#maptt').html('<table style="width:' + parseInt(imgA.css('width')) + 'px;height:' + parseInt(imgA.css('height')) + 'px;" cellspacing="0" cellpadding="0" border="0" id="tabBcoll"></table>');
@@ -393,7 +398,6 @@ define(function (require, exports, module) {
                 success: function (data) {
                     console.log('findPath:', data);
                     if (data) {
-                        var str = '';
                         for (var i = 0; i < data.length; i++) {
                             $('#F892975_' + data[i].x + '_' + data[i].y).css({backgroundColor: "#800CF2"});
                         }
