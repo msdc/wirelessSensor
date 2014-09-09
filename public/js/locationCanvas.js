@@ -178,7 +178,13 @@ define(function (require, exports, module) {
                 return false;
             });
             /******不合并end*******/
-
+            $("body").delegate(".cancelNet", "click", function(){
+                $('#pointOrGrid').data('gird','false');
+                $('.setPoints').hide();
+                $('#maptt').html('').css({'zIndex':-10,opacity:'0'});
+                $(this).data('gird','false').val('擦黑板');
+                $('#pointOrGrid').click();
+            })//网格'擦黑板'功能
             /********网格相关evt end*******/
         },
         sbPos: function (uuidArr, imgJson) {//设备坐标（更新一次）
@@ -202,7 +208,9 @@ define(function (require, exports, module) {
                     .data('dt', {x: cX, y: cY, 'deviceSerial': m})
                     .hover(function (e) {
                         msg = '设备名称:' + this.data('dt').deviceSerial + ' 坐标 X:' + this.data('dt').x + ' Y:' + this.data('dt').y;
-                        $('#tips').html(msg).show();
+                        var x=e.x - raphaelTP.offset().left + $(document).scrollLeft(),
+                            y= e.y - $('#raphaelTP').offset().top + $(document).scrollTop();
+                        $('#tips').html(msg).show().css({left:x+'px',top:y+'px'});
                     }, function () {
                         $('#tips').hide();
                     });
@@ -272,7 +280,9 @@ define(function (require, exports, module) {
                     .hover(function (e) {
                         var dt = this.data('dt');
                         msg =curr.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint +' ' ;
-                        $('#tips').html(msg).show();
+                        var x=e.x - raphaelTP.offset().left + $(document).scrollLeft(),
+                            y= e.y - $('#raphaelTP').offset().top + $(document).scrollTop();
+                        $('#tips').html(msg).show().css({left:x+'px',top:y+'px'});
                     }, function () {
                         $('#tips').hide();
                     });
@@ -282,6 +292,12 @@ define(function (require, exports, module) {
             var anim2 = Raphael.animation({"fill": "#000"}, Math.random() * 1500 + 300);
             circle1.animate(anim2.repeat(Infinity));//动画效果
             that.rapAll.push(circle1);
+        },
+        posWay:function(dataFn){//人物路线。。
+           $('#route').remove();//删除过去某个人的路线
+            var tetronimo=canvasN.path(dataFn);
+            tetronimo.attr({'stroke-width':3,'stroke':'#ff7300'});//测试画路线。。
+            tetronimo.node.id = 'route';
         }
     }
 

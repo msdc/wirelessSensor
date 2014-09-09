@@ -16,8 +16,11 @@
   seajs.use(['pointX']);
 	
 </script>
+<div id="presonList"><em>路线查询：</em>
+    <div><strong userId="1">宋悦</strong><strong userId="2">王笑奕</strong></div>
+</div>
 <p class="bzAdd">
-    在非网格状态下，直接点击画布，进行标注设备或人的坐标：
+    在非网格状态下，直接点击画布，标注设备的坐标：
     <input type="button" value="提交设备标注" id="submitBZ"/>
     <input type="button" value="获取场所“人”坐标" id="getCsP"/><span class="pMsg"></span>
 </p>
@@ -70,6 +73,10 @@
     .pMsg{padding:3px;}
     .bzAdd,.wrp3{width: 1240px; margin: 0 auto;text-align: left;margin-bottom:10px;}
     .bzAdd{margin-top:20px;}
+
+    #presonList{border: 1px solid #01bf9d;width: 90px;height: 400px;position: fixed;top: 200px;left: 0px;font-size: 12px;font-family: '微软雅黑';}
+    #presonList strong{padding:0px 5px;cursor:pointer;}
+
 </style>
 </body>
 </html>
