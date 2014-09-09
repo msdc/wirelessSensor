@@ -12,11 +12,24 @@ define(function (require, exports, module) {
         isRect:false,//是否画矩形
         isClsRect:false//是否清除矩形障碍物
     };
+    var interId,totalP=0;//人物定时器..totalP统计多少次没有人的的坐标
+
+    function ajaxT(obj){
+        $.ajax({
+            type: obj.type,
+            url: obj.url,
+            data:obj.data,
+            contentType:'application/text',
+            dataType:'json',
+            success: function(daT2){
+                obj.fn(daT2);
+            }
+        })
+    }
     function DrawPointer() {
         this.girdArr = [];//存放生成的网格二维数组
         this.currFlag = 0;//存放当前‘起点、终点、障碍点’标志
     }
-
     DrawPointer.prototype = {
         resetData: function (configJson, cmd, drawId) {//初始化基本数据
             var that = this;
@@ -35,7 +48,6 @@ define(function (require, exports, module) {
             configJson.uuidArr = configJson.uuidArr;
             configJson.canvas.w = configJson.bj_draw.w;
             configJson.canvas.h = configJson.bj_draw.h;
-
 
             //configJson.resolution = configJson.scale * configJson.inchesM / configJson.PPI;//地图分辨率
             configJson.resolution=configJson.scale;//暂时写死..不使用地图分辨率
@@ -115,14 +127,14 @@ define(function (require, exports, module) {
             var that = this;
             var configJson = that.configJson;
             /********网格相关evt start*******/
-            that.ajaxSubmit();//查找最近路线
-            $('#gridStr').unbind('blur').blur(function () {
+
+            $('#gridStr').unbind('blur').blur(function () {//改变网格数量
                 configJson.girdSize = $(this).val();
                 var change = $(this).val().split(',');//输入框的值
                 that.createGird(change[0], change[1]);//生成网格。。行18 列20
                 console.log('改变后原先的障碍点需要重新设置。');
                 return false;
-            });
+            });//改变网格数量
             $('#maptt td').unbind('click').click(function () {
                 var serialnum =[], allTd = $('#maptt td'), Oelem = $(this);
                 if(!taskJson.isClsRect){//非清除矩形障碍点
@@ -178,13 +190,40 @@ define(function (require, exports, module) {
                 return false;
             });
             /******不合并end*******/
-            $("body").delegate(".cancelNet", "click", function(){
-                $('#pointOrGrid').data('gird','false');
+            $('.cancelNet').unbind('click').click(function(){//'擦黑板'
+                $('#pointOrGrid').attr('gird','false');
                 $('.setPoints').hide();
                 $('#maptt').html('').css({'zIndex':-10,opacity:'0'});
-                $(this).data('gird','false').val('擦黑板');
+                $(this).attr('gird','false').val('擦黑板');
                 $('#pointOrGrid').click();
             })//网格'擦黑板'功能
+
+            $('#getZ9').unbind('click').click(function(){//获取障碍点
+                that.getBarriers();
+                return false;
+            })//获取障碍点
+            $('#saveZ').unbind('click').click(function(){//保存障碍点
+                that.savaBarriers();
+                return false;
+            })//保存障碍点
+            $('#searchLJ').unbind('click').click(function () {//开始查找。。。查找最近路径
+                that.ajaxSubmit();
+                return false;
+            })//查找最近路径
+            $('#getCsP').unbind('click').data('close',1).click(function(){
+                var clo=$(this).data('close');
+                if(clo==1){
+                    interId=setInterval(function(){
+                        that.psonFun();
+                    },200);
+                    $(this).data('close',0).val('关闭获取“人”坐标');
+                }
+                else {
+                    clearInterval(interId);
+                    $(this).data('close',1).val('获取场所“人”坐标');
+                    totalP=0;
+                }
+            })//获取场所“人”坐标
             /********网格相关evt end*******/
         },
         sbPos: function (uuidArr, imgJson) {//设备坐标（更新一次）
@@ -312,7 +351,7 @@ define(function (require, exports, module) {
 
         this.girdArr = tArray;//生成网格对应的二维数组并设置每一项为1（路1，障碍为0），动态的
         console.log('this.girdArr:', this.girdArr);
-    };
+    };//生成2维数组
 
     DrawPointer.prototype.barriers = function () {//设置表格障碍点...
         var girdArr = this.girdArr;//新网格。。
@@ -332,26 +371,48 @@ define(function (require, exports, module) {
                 }
             }
         }
-    };
-    DrawPointer.prototype.getBarriers = function (graphId, callback) {//	获取障碍点
+        return false;
+    };//设置表格障碍点...
+    DrawPointer.prototype.getBarriers = function (callback) {//	获取障碍点
         var that = this;
-        console.log('ajax获取障碍点');
+        console.log('ajax获取障碍点 start');
         $('#maptt td').removeClass();
-        $.ajax({
-            type: "get",
-            url: '/getGraphMatrix/' + (graphId || 'graph'),
-            contentType: 'application/text',
-            dataType: 'json',
-            success: function (data) {
+        var obj={
+            type: "get",  url: '/getGraphMatrix/'+($('#graphId').val()||'graph'),
+            fn:function(data){
                 console.log('获取障碍点', data);
                 if (data) {
-                    that.girdArr = data;
-                    callback && callback();
+                    that.girdArr=data;
+                    that.barriers();//将ajax获取的障碍点放到网格上
                 }
-
             }
-        });
-    };
+        }
+        ajaxT(obj);
+        return false;
+    };//获取障碍点
+    DrawPointer.prototype.savaBarriers=function(callback){//保存障碍点
+        var that = this;//var girdArr=drwaA.girdArr;//需要判断是否已经生成网格。
+        var gridStr = $('#gridStr').val().split(',')
+        that.tDim(gridStr[0], gridStr[1]);
+        console.log('saveF:',that.girdArr);
+        var mSleep=$('#maptt td.mSleep');
+        for(j=0;j<mSleep.length;j++){//mSleep障碍物的点一开始ajax获取到的。。
+            var k=mSleep.eq(j).attr('serialnum').split(',');
+            that.girdArr[k[0]][k[1]]=0;
+        }
+        console.log('save:',that.girdArr);
+
+        var obj={
+            type: "post",  url: '/saveGraphMatrix',
+            data:JSON.stringify({"graphName":$('#graphId').val()||"graph","graphMatrix":that.girdArr }),
+            fn:function(data){
+                console.log('saveGraphMatrix:',data);
+                alert(data.result);
+                callback&&callback();
+            }
+        }
+        ajaxT(obj);
+    }//保存障碍点
 
     DrawPointer.prototype.createGird = function (hL, zL) {//生成网格
         var that = this;
@@ -369,61 +430,67 @@ define(function (require, exports, module) {
         $('#maptt table').html(str);
         that.evt();//网格相关事件
         that.tDim(hL, zL);//生成2维数组
-    };
-    DrawPointer.prototype.ajaxSubmit = function (parms, callback) {//	网格
+    };//生成网格
+    DrawPointer.prototype.ajaxSubmit = function (callback) {//	网格..查找路径
         var that = this;
-        $('#searchLJ').unbind('click').click(function () {//开始查找。。。
-            that.girdArr = [];
-            if ($('#gridStr').val().length) {
-                var gridStr = $('#gridStr').val().split(',')
-                that.tDim(gridStr[0], gridStr[1]);
-            }
-            else {
-                alert('请输入网格数量');
-                return;
-            }
-            console.log('new arr:', that.girdArr);
-            var mStart = $('#maptt td.mStart'), mEnd = $('#maptt td.mEnd'), mSleep = $('#maptt td.mSleep');
-            if (mStart.length != 1 || mEnd.length != 1) {//是否已经有起点 终点
-                alert('请选择起点、终点');
-                return  false;
-            }
+        that.girdArr = [];
+        if ($('#gridStr').val().length) {
+            var gridStr = $('#gridStr').val().split(',');
+            that.tDim(gridStr[0], gridStr[1]);
+        }
+        else {
+            alert('请输入网格数量'); return;
+        }
+        console.log('new arr:', that.girdArr);
+        var mStart = $('#maptt td.mStart'), mEnd = $('#maptt td.mEnd'), mSleep = $('#maptt td.mSleep');
+        if (mStart.length != 1 || mEnd.length != 1) {//是否已经有起点 终点
+            alert('请选择起点、终点');
+            return  false;
+        }
 
-            var start = mStart.attr('serialnum').split(',');
-            var end = mEnd.attr('serialnum').split(',');
+        var start = mStart.attr('serialnum').split(',');
+        var end = mEnd.attr('serialnum').split(',');
 
-            for (j = 0; j < mSleep.length; j++) {//mSleep障碍物的点一开始ajax获取到的。。
-                var k = mSleep.eq(j).attr('serialnum').split(',');
-                that.girdArr[k[0]][k[1]] = 0;
-            }
-            console.log('后台所需数据:', that.girdArr);
-//            var graph = new Graph(that.girdArr);
-//            var startNode = graph.grid[parseInt(start[0])][parseInt(start[1])];
-//            var endNode = graph.grid[parseInt(end[0])][parseInt(end[1])];
-//            var routeResult = astar.search(graph, startNode, endNode);
-//            for (var i = 0; i < routeResult.length; i++) {
-//                $('#F892975_' + routeResult[i].x + '_' + routeResult[i].y).css({backgroundColor: "#800CF2"});
-//            }
-//            callback && callback();
-            $.ajax({
-                type: "post",
-                url: '/findPath',
-                contentType: 'application/text',
-                data: JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphID": "graph", "graphMatrix": that.girdArr }),
-                dataType: 'json',
-                success: function (data) {
-                    console.log('findPath:', data);
-                    if (data) {
-                        for (var i = 0; i < data.length; i++) {
-                            $('#F892975_' + data[i].x + '_' + data[i].y).css({backgroundColor: "#800CF2"});
-                        }
-                        callback && callback();
+        for (j = 0; j < mSleep.length; j++) {//mSleep障碍物的点一开始ajax获取到的。。
+            var k = mSleep.eq(j).attr('serialnum').split(',');
+            that.girdArr[k[0]][k[1]] = 0;
+        }
+        console.log('后台所需数据:', that.girdArr);
+        var obj={
+            type: "post",  url: '/findPath',
+            data:JSON.stringify({"start": {"x": start[0], "y": start[1]}, "end": {"x": end[0], "y": end[1]}, "graphID": "graph", "graphMatrix": that.girdArr }),
+            fn:function(data){
+                console.log('findPath:', data);
+                if (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        $('#F892975_' + data[i].x + '_' + data[i].y).css({backgroundColor: "#800CF2"});
                     }
+                    callback && callback();
                 }
-            });
-        })
-    }
-
+            }
+        }
+        ajaxT(obj);
+    }//	网格..查找路径
+    DrawPointer.prototype.psonFun=function(){//获取人坐标
+        var that=this;
+        var obj={
+            type: "get",  url: '/getPoints/true',
+            fn:function(data){
+                var shopP=[];
+                if(data.result=='there is no data'){
+                    $('.pMsg').html('no person pointXY:there is no data:'+(++totalP));
+                    return false;
+                }
+                if(!(data instanceof Array)){
+                    shopP.push(data);
+                }else{
+                    shopP= data;
+                }
+                that.formatData(shopP);//人。。【可多次调用】
+            }
+        }
+        ajaxT(obj);
+    }//获取人坐标
 
     exports.DrawPointer = new DrawPointer();
 

@@ -16,8 +16,20 @@
   seajs.use(['pointX']);
 	
 </script>
-<div id="presonList"><em>路线查询：</em>
-    <div><strong userId="1">宋悦</strong><strong userId="2">王笑奕</strong></div>
+
+<div id="screenList">
+    <div class="routeSearch">
+        <h4>路线查询：</h4>
+        <div class="tit"><strong userId="1">宋悦</strong><strong userId="2">王笑奕</strong></div>
+    </div><!--路线查询 end-->
+    <div class="totalTime">
+        <h4>停留时间：</h4>
+        <div class="titScreen">
+            <strong userId="宋悦">1号屏幕</strong><strong userId="王笑奕">2号屏幕</strong>
+            <strong userId="白矾">3号屏幕</strong>
+        </div>
+        <p>存放相关内容</p>
+    </div><!--停留时间 end-->
 </div>
 <p class="bzAdd">
     在非网格状态下，直接点击画布，标注设备的坐标：
@@ -74,9 +86,10 @@
     .bzAdd,.wrp3{width: 1240px; margin: 0 auto;text-align: left;margin-bottom:10px;}
     .bzAdd{margin-top:20px;}
 
-    #presonList{border: 1px solid #01bf9d;width: 90px;height: 400px;position: fixed;top: 200px;left: 0px;font-size: 12px;font-family: '微软雅黑';}
-    #presonList strong{padding:0px 5px;cursor:pointer;}
-
+    #screenList{padding:5px;border: 1px solid #01bf9d;height: 400px; overflow-y:scroll;position: fixed;top: 200px;left: 0px;font-size: 12px;font-family: '微软雅黑';left: auto;top:0px;right:0px;width:200px;z-index:1000;}
+    #screenList strong{padding:0px 5px;cursor:pointer;}
+    #screenList .routeSearch{padding-bottom:20px;}
+    #screenList h4{font-weight:bold;color:#cc0000;font-size:14px;margin:0px;margin-bottom: 15px;}
 </style>
 </body>
 </html>
