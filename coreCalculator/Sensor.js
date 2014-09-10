@@ -457,7 +457,10 @@ exports.getRemainTime=function(req,res){
                                }
                            });
                        }else{
-                           return;
+                           if(listIndex==(listKeys.length-1)){
+                               client.quit();
+                               res.send(resultArray);
+                           }
                        }
                    });
                });
@@ -519,7 +522,10 @@ exports.getRemainTime=function(req,res){
                                }
                            });
                        }else{
-                           return;
+                           if(listIndex==(listKeys.length-1)){
+                               client.quit();
+                               res.send(resultArray);
+                           }
                        }
                    });
                });
