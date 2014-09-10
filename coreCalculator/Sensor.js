@@ -434,7 +434,31 @@ exports.getRemainTime=function(req,res){
        var keyPart = "*_" + config.methodName.mapping;
        client.keys(keyPart, function (err, listKeys) {
            if (listKeys.length > 0) {
-
+               listKeys.forEach(function (listKey, listIndex){
+                   var deviceSerialString=listKey.substring(0,listKey.indexOf('_'));//当前的设备号
+                   client.smembers(listKey, function (err, members){
+                       if (members.length > 0) {
+                           members.forEach(function (item, index) {
+                               var calculatedData = JSON.parse(item);
+                               //同一个位置 时间累加
+                               if(calculatedData.location[0].valueOf()==screenArray[screenName].valueOf()){
+                                   if(calculatedData.remainTime!=null){
+                                       remainTime=remainTime+calculatedData.remainTime;
+                                   }
+                               }
+                               if(index==(members.length-1)){
+                                   resultArray.push({screenName:screenName,remainTime:remainTime,deviceSerial:deviceSerialString});
+                                   if(listIndex==(listKeys.length-1)){
+                                       client.quit();
+                                       res.send(resultArray);
+                                   }
+                               }
+                           });
+                       }else{
+                           return;
+                       }
+                   });
+               });
            }else{
                client.quit();
                res.send({result: "there is no data"});
@@ -442,6 +466,36 @@ exports.getRemainTime=function(req,res){
            }
        });
    }else if(deviceSerial){
+       //the key of the sets
+       var keyOfSets = sensorCalculator.getListsKey(deviceSerial, config.methodName.mapping);
 
+       client.smembers(keyOfSets, function (err, members){
+           if(members.length>0){
+               for(var screenIndex in screenArray) {
+                   //不同的屏幕
+                   var compareFactor = screenArray[screenIndex].valueOf();
+
+                   members.forEach(function (item, index) {
+                       var calculatedData = JSON.parse(item);
+
+                       if(compareFactor==calculatedData.location[0].valueOf()){
+                           if (calculatedData.remainTime != null) {
+                               remainTime = remainTime + calculatedData.remainTime;
+                           }
+                       }
+
+                       if (index === (members.length - 1)) {
+                           client.quit();
+                           resultArray.push({screenName: screenIndex, remainTime: remainTime, deviceSerial: deviceSerial});
+                           res.send(resultArray);
+                       }
+                   });
+               }
+           }else{
+               client.quit();
+               res.send({result:"there is no data."});
+               res.end();
+           }
+       });
    }
 };
