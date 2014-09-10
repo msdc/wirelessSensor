@@ -49,6 +49,19 @@ exports.pointsMappingArray=function(){
 
     return points;
 };
+
+exports.screensArray=function(){
+    var screens=[];
+    screens["01"]={x:340.00,y:1977.00};
+    screens["02"]={x:340.00,y:2022.00};
+    screens["03"]={x:450.00,y:2225.00};
+    screens["04"]={x:900.00,y:2225.00};
+    screens["05"]={x:1350.00,y:2225.00};
+    screens["06"]={x:1725.00,y:2225.00};
+    screens["07"]={x:2725.00,y:2150.00};
+    return screens;
+};
+
 //单位为米
 exports.lineOffset = {
     //var offset = {
