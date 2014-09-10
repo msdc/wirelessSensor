@@ -12,20 +12,43 @@ define(function (require, exports, module) {
         isRect:false,//是否画矩形
         isClsRect:false//是否清除矩形障碍物
     };
-    var interId,totalP=0;//人物定时器..totalP统计多少次没有人的的坐标
+    var interId,totalP= 0,totF=0;//人物定时器..totalP统计多少次没有人的的坐标.totF 获取所有人路线的统计
 
     function ajaxT(obj){
         $.ajax({
-            type: obj.type,
-            url: obj.url,
-            data:obj.data,
-            contentType:'application/text',
-            dataType:'json',
+            type: obj.type,url: obj.url,data:obj.data,contentType:'application/text',dataType:'json',
             success: function(daT2){
                 obj.fn(daT2);
             }
         })
     }
+
+    function pHTML(data){
+        var shopP=[],strD='';
+        console.log('获取某屏 停留时间:',data.result);
+        if(data.result=='there is no data'){return false;}
+        if(!(data instanceof Array)){shopP.push(data);}else{shopP= data;}
+
+        for(var j=0;j<shopP.length;j++){
+            var curr=shopP[j];
+            strD+='screenName'+curr[i].screenName+'user:'+curr[i].deviceSerial+'停留'+curr[i].timePoint+'<br/>';
+        }
+        $('#screenList .cntUser').html(strD);
+    }
+
+    Array.prototype.unique = function(){
+        var result=[];
+        var o=[];
+        for(var i=0;i<this.length;i++){
+            var v=this[i];
+            if(!o[v]){
+                o[v] = true;
+                result.push(v);
+            }
+        }
+        return result;
+    }
+
     function DrawPointer() {
         this.girdArr = [];//存放生成的网格二维数组
         this.currFlag = 0;//存放当前‘起点、终点、障碍点’标志
@@ -210,11 +233,11 @@ define(function (require, exports, module) {
                 that.ajaxSubmit();
                 return false;
             })//查找最近路径
-            $('#getCsP').unbind('click').data('close',1).click(function(){
+            $('#getCsP').unbind('click').data('close',1).click(function(){//获取场所“人”坐标
                 var clo=$(this).data('close');
                 if(clo==1){
                     interId=setInterval(function(){
-                        that.psonFun();
+                        that.psonFun();//获取场所“人”坐标
                     },200);
                     $(this).data('close',0).val('关闭获取“人”坐标');
                 }
@@ -224,6 +247,54 @@ define(function (require, exports, module) {
                     totalP=0;
                 }
             })//获取场所“人”坐标
+            $("body").delegate("#getPInp", "click", function(){//获取所有人“人”列表
+               that.getAllPerson();
+            })//获取所有人“人”列表
+            $("body").delegate("#screenList .routeSearch strong", "click", function(){//获取某人走过的路线
+                var userId=$(this).attr('userId');
+                var obj={
+                    type: "get",  url: '/getPoints/false',
+                    data:JSON.stringify({"deviceSerial":userId}),// data:JSON.stringify({"deviceSerial":userId}),
+                    fn:function(data){
+                        var shopP=[],routeArr=[],routeString='';
+                        console.log('单个人:',data.result)
+                        if(data.result=='there is no data'){return false;}
+                        if(!(data instanceof Array)){shopP.push(data);}else{shopP= data;}
+                        //转为路径。
+                        for(var j=0;j<shopP.length;j++){
+                            var curr=shopP[j].location;
+                            if(shopP[j].location){
+                                routeArr.push({x:curr.x,y:curr.y,timePoint:shopP[j].timePoint});
+                                if(routeArr.length==1){
+                                    routeString='M '+curr.x+' '+curr.y;
+                                }
+                                else{
+                                    routeString+=' L '+curr.x+' '+curr.y;
+                                }
+                            }
+                        }
+                        console.log('此人的路线：',routeArr);// drwaA.posWay('M 150 150 L 200 250 L 130 0 L 400 350 L 200 300');//路线..T
+                        if(routeString.length){
+                            that.posWay(routeArr);//路线..T
+                        }
+                    }
+                }
+                ajaxT(obj);
+            })//获取某人走过的路线
+
+            $("body").delegate("#screenList .totalTime .titScreen strong", "click", function(){//获取某屏 停留时间
+                var screen=$(this).attr('screen');
+                $('#screenList .cntUser').html('');
+                var obj={
+                    type: "get",  url: '/getRemainTime',
+                    data:JSON.stringify({"screenName":screen}),
+                    fn:function(data){
+                        pHTML(data);
+                    }
+                }
+                ajaxT(obj);
+            })//获取某屏 停留时间
+
             /********网格相关evt end*******/
         },
         sbPos: function (uuidArr, imgJson) {//设备坐标（更新一次）
@@ -324,6 +395,17 @@ define(function (require, exports, module) {
                         $('#tips').html(msg).show().css({left:x+'px',top:y+'px'});
                     }, function () {
                         $('#tips').hide();
+                    })
+                    .click(function(e){
+                        $('#screenList .cntUser').html('');
+                        var obj={
+                            type: "get",  url: '/getRemainTime',
+                            data:JSON.stringify({"deviceSerial":this.data('dt').deviceSerial}),//
+                            fn:function(data){
+                                pHTML(data);
+                            }
+                        }
+                        ajaxT(obj);
                     });
             var dt = circle1.data('dt');
             circle1.node.id = curr.deviceSerial;
@@ -478,7 +560,7 @@ define(function (require, exports, module) {
             fn:function(data){
                 var shopP=[];
                 if(data.result=='there is no data'){
-                    $('.pMsg').html('no person pointXY:there is no data:'+(++totalP));
+                    $('.pMsg').html('no person pointXY data:'+(++totalP));
                     return false;
                 }
                 if(!(data instanceof Array)){
@@ -490,7 +572,42 @@ define(function (require, exports, module) {
             }
         }
         ajaxT(obj);
-    }//获取人坐标
+    },//获取人坐标
+    DrawPointer.prototype.getAllPerson=function(){//获取所有人坐标（注意：包含每个人的多次坐标）
+        var that=this;
+        var obj={
+            type: "get",  url: '/getPoints/false',
+            fn:function(data){
+                var shopP=[],deviceSerial=[],shtml='';
+                var data=eval(data);//额外加的。
+                if(data.result=='there is no data'){
+                    $('#screenList .routeSearch .cnt .tit').html(data.result+(++totF));
+                    return false;
+                }
+                if(!(data instanceof Array)){
+                    shopP.push(data);
+                }else{
+                    shopP= data;
+                }
+                for(var k=0;k<shopP.length;k++){//额外加的。每项字符串转json
+                    shopP[k]=eval('('+shopP[k]+')');
+                }
+                console.log('二次eval:',shopP);
+
+                for(var m=0;m<shopP.length;m++){
+                    deviceSerial.push(shopP[m].deviceSerial);
+                }
+                console.log('ajax-res:',shopP);
+                shopP=deviceSerial.unique();//只有deviceSerial
+                console.log('res:',shopP);
+                for(var j=0;j<shopP.length;j++){
+                    shtml+='<strong userId="'+shopP[j]+'">'+shopP[j]+'</strong>';//只有deviceSerial
+                }
+                $('#screenList .routeSearch .cnt').html(shtml);
+            }
+        }
+        ajaxT(obj);
+    }
 
     exports.DrawPointer = new DrawPointer();
 
