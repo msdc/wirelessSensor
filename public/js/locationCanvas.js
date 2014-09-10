@@ -25,13 +25,13 @@ define(function (require, exports, module) {
 
     function pHTML(data){
         var shopP=[],strD='';
-        console.log('获取某屏 停留时间:',data.result);
+        console.log('获取某屏 停留时间:',data);
         if(data.result=='there is no data'){return false;}
         if(!(data instanceof Array)){shopP.push(data);}else{shopP= data;}
 
         for(var j=0;j<shopP.length;j++){
             var curr=shopP[j];
-            strD+='screenName'+curr[i].screenName+'user:'+curr[i].deviceSerial+'停留'+curr[i].timePoint+'<br/>';
+            strD+='screenName:'+(curr.screenName||'')+' user:'+(curr.deviceSerial||'')+' 停留：'+(parseInt(curr.remainTime)/1000||0)+'分钟<br/>';
         }
         $('#screenList .cntUser').html(strD);
     }
@@ -87,6 +87,11 @@ define(function (require, exports, module) {
 
             var circle1 = canvasN.rect(0, 0, configJson.canvas.w, configJson.canvas.h);//
             circle1.attr({"fill": "#fff", "fill-opacity": 0.2,"stroke":"none"}); //填充色
+            circle1.node.id = 'layZheZhao';
+            var zhezhao = canvasN.rect(0, 0, configJson.canvas.w, configJson.canvas.h);//
+            zhezhao.attr({"fill": "#fff", "fill-opacity": 0.2,"stroke":"none"}); //填充色
+            zhezhao.node.id = 'zhezhao';//遮罩层，挡住标注开启、关闭
+
             if (cmd == 'edit') {//'编辑命令'..编辑时会传过来drawId。。
                 /**eg:
                  drwaA.resetData(configJson,'edit',ID);//初始化配置文件..id以便删除，更新
@@ -95,18 +100,18 @@ define(function (require, exports, module) {
                 circle1.click(function (e) {
                     console.log('SS编辑', e.x, e.y, drawId);
                     $('#sb_' + drawId).remove();
-                    var circle1 = canvasN.image('images/t2.png', e.x - raphaelTP.offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
-                    circle1.attr({"fill": "blue", "stroke": "none"});  //填充色\去掉边框
-                    circle1.node.id = 'sb_bj';
+                    var circle2 = canvasN.image('images/t2.png', e.x - raphaelTP.offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                    circle2.attr({"fill": "blue", "stroke": "none"});  //填充色\去掉边框
+                    circle2.node.id = 'sb_bj';
                 });//直接“标注”
             }
             else {// if (cmd == 'create') {//'创建'..为了‘标注’去掉‘编辑’功能
                 circle1.click(function (e) {
                     console.log('SS创建', e.x, e.y);
                     $('#sb_bj').remove();
-                    var circle1 = canvasN.image('images/t2.png', e.x - raphaelTP.offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
-                    circle1.attr({"fill": "blue", "stroke": "none"});  //填充色\去掉边框
-                    circle1.node.id = 'sb_bj';
+                    var circle2 = canvasN.image('images/t2.png', e.x - raphaelTP.offset().left + $(document).scrollLeft(), e.y - $('#raphaelTP').offset().top + $(document).scrollTop(), 16, 24);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                    circle2.attr({"fill": "blue", "stroke": "none"});  //填充色\去掉边框
+                    circle2.node.id = 'sb_bj';
                 });//直接“标注”
             }
             //'设备分布'无‘标注’功能
@@ -150,6 +155,17 @@ define(function (require, exports, module) {
             var that = this;
             var configJson = that.configJson;
             /********网格相关evt start*******/
+            $('#bzStart').unbind('click').click(function(){//标注开启、关闭 （遮罩层，挡住标注开启、关闭）
+                var start=$(this).attr('start');
+                if(start==1){
+                    $(this).attr('start',0).val('标注开启');
+                    $('#zhezhao').show();
+                }
+                else{
+                    $(this).attr('start',1).val('标注关闭');
+                    $('#zhezhao').hide();
+                }
+            })//标注开启、关闭 （遮罩层，挡住标注开启、关闭）
 
             $('#gridStr').unbind('blur').blur(function () {//改变网格数量
                 configJson.girdSize = $(this).val();
@@ -252,47 +268,81 @@ define(function (require, exports, module) {
             })//获取所有人“人”列表
             $("body").delegate("#screenList .routeSearch strong", "click", function(){//获取某人走过的路线
                 var userId=$(this).attr('userId');
+                $('.onceDelRout').remove();
                 var obj={
                     type: "get",  url: '/getPoints/false',
-                    data:JSON.stringify({"deviceSerial":userId}),// data:JSON.stringify({"deviceSerial":userId}),
+                    data:{"deviceSerial":userId},
                     fn:function(data){
-                        var shopP=[],routeArr=[],routeString='';
+                        var shopP=[],routeArr=[],routeString='',singleTxtRoute='';
                         console.log('单个人:',data.result)
                         if(data.result=='there is no data'){return false;}
                         if(!(data instanceof Array)){shopP.push(data);}else{shopP= data;}
                         //转为路径。
+
+                        shopP.sort(function(a,b){
+                            return a.timePoint-b.timePoint
+                        });
                         for(var j=0;j<shopP.length;j++){
-                            var curr=shopP[j].location;
+                            var curr=shopP[j].location[0];//[0]新加的;
                             if(shopP[j].location){
-                                routeArr.push({x:curr.x,y:curr.y,timePoint:shopP[j].timePoint});
+                                var cX = parseInt(parseFloat(curr.x) / configJson.resolution * configJson.zoomImg);//cX单位是px,resolution为1px等于多少mm
+                                var cY = parseInt(parseFloat(curr.y) / configJson.resolution * configJson.zoomImg);
+                                routeArr.push({x:cX,y:cY,timePoint:shopP[j].timePoint});
+                                var nDate=new Date(shopP[j].timePoint);
+                                var y=nDate.getFullYear(),m=nDate.getMonth()+ 1,d=nDate.getDate(),
+                                    h=nDate.getHours(),m2=nDate.getMinutes(),s2=nDate.getSeconds();
+                                singleTxtRoute+='<span msg="直接画线，数据已处理" pxy="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+' 名称：'+shopP[j].deviceSerial+' 坐标:'+cX+','+cY+'</span><br/>';
+
                                 if(routeArr.length==1){
-                                    routeString='M '+curr.x+' '+curr.y;
+                                    routeString='M '+cX+' '+cY;
                                 }
                                 else{
-                                    routeString+=' L '+curr.x+' '+curr.y;
+                                    routeString+=' L '+cX+' '+cY;
                                 }
                             }
                         }
-                        console.log('此人的路线：',routeArr);// drwaA.posWay('M 150 150 L 200 250 L 130 0 L 400 350 L 200 300');//路线..T
+                        console.log('此人的路线：',routeArr);
                         if(routeString.length){
-                            that.posWay(routeArr);//路线..T
+                            $('.singleTxtRoute').html(singleTxtRoute);
+                            that.posWay(routeString);//路线..T
+                            //画完下后再加 “圆点”，再次发请求时，需要清除。。。。？？？？？？？？？？？？？？？？？
+                            for(var m=0;m<shopP.length;m++){
+                                for(var n=0;n<shopP.length;n++){
+                                    if(m==n){continue;}
+                                    var sour=shopP[m].location[0].x+','+shopP[m].location[0].y;
+                                    var curr=shopP[n].location[0].x+','+shopP[n].location[0].y;
+                                    if(sour==curr){
+                                        shopP.splice(m, 1);//删除数组内已存该位置。
+                                        m--;
+                                        n--;
+                                        m = m < 0 ? 0 : m;
+                                        n = n < 0 ? 0 : n;
+                                    }
+                                }
+                            }
+                            console.log('forD：',shopP);
+                            that.formatData(shopP);
+                        }
+                        else{
+                            $('.singleTxtRoute').html('');
                         }
                     }
                 }
                 ajaxT(obj);
+                return false;
             })//获取某人走过的路线
 
             $("body").delegate("#screenList .totalTime .titScreen strong", "click", function(){//获取某屏 停留时间
                 var screen=$(this).attr('screen');
                 $('#screenList .cntUser').html('');
                 var obj={
-                    type: "get",  url: '/getRemainTime',
-                    data:JSON.stringify({"screenName":screen}),
+                    type: "get",  url: '/getRemainTime',data:{"screenName":screen},
                     fn:function(data){
                         pHTML(data);
                     }
                 }
                 ajaxT(obj);
+                return false;
             })//获取某屏 停留时间
 
             /********网格相关evt end*******/
@@ -388,11 +438,16 @@ define(function (require, exports, module) {
                     .attr("stroke", "none")   //去掉边框
                     .data('dt', {x: cX, y: cY, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
                     .hover(function (e) {
-                        var dt = this.data('dt');
-                        msg =curr.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + dt.timePoint +' ' ;
+                        var dt = this.data('dt'),singleTxtRoute='';
+                        var nDate=new Date(dt.timePoint);
+                        var y=nDate.getFullYear(),m=nDate.getMonth()+ 1,d=nDate.getDate(),
+                            h=nDate.getHours(),m2=nDate.getMinutes(),s2=nDate.getSeconds();
+                        singleTxtRoute+=y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒';
+                        msg =curr.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + singleTxtRoute +' ' ;
                         var x=e.x - raphaelTP.offset().left + $(document).scrollLeft(),
                             y= e.y - $('#raphaelTP').offset().top + $(document).scrollTop();
                         $('#tips').html(msg).show().css({left:x+'px',top:y+'px'});
+                        circle1.node.setAttribute('qq',22);
                     }, function () {
                         $('#tips').hide();
                     })
@@ -400,23 +455,22 @@ define(function (require, exports, module) {
                         $('#screenList .cntUser').html('');
                         var obj={
                             type: "get",  url: '/getRemainTime',
-                            data:JSON.stringify({"deviceSerial":this.data('dt').deviceSerial}),//
+                            data:{"deviceSerial":this.data('dt').deviceSerial},
                             fn:function(data){
                                 pHTML(data);
                             }
                         }
                         ajaxT(obj);
                     });
-            var dt = circle1.data('dt');
             circle1.node.id = curr.deviceSerial;
-            circle1.node.setAttribute('msg',msg);
+
             var anim2 = Raphael.animation({"fill": "#000"}, Math.random() * 1500 + 300);
             circle1.animate(anim2.repeat(Infinity));//动画效果
             that.rapAll.push(circle1);
         },
-        posWay:function(dataFn){//人物路线。。
+        posWay:function(dataLine){//人物路线。。
            $('#route').remove();//删除过去某个人的路线
-            var tetronimo=canvasN.path(dataFn);
+            var tetronimo=canvasN.path(dataLine);
             tetronimo.attr({'stroke-width':3,'stroke':'#ff7300'});//测试画路线。。
             tetronimo.node.id = 'route';
         }
@@ -579,7 +633,6 @@ define(function (require, exports, module) {
             type: "get",  url: '/getPoints/false',
             fn:function(data){
                 var shopP=[],deviceSerial=[],shtml='';
-                var data=eval(data);//额外加的。
                 if(data.result=='there is no data'){
                     $('#screenList .routeSearch .cnt .tit').html(data.result+(++totF));
                     return false;
@@ -589,11 +642,6 @@ define(function (require, exports, module) {
                 }else{
                     shopP= data;
                 }
-                for(var k=0;k<shopP.length;k++){//额外加的。每项字符串转json
-                    shopP[k]=eval('('+shopP[k]+')');
-                }
-                console.log('二次eval:',shopP);
-
                 for(var m=0;m<shopP.length;m++){
                     deviceSerial.push(shopP[m].deviceSerial);
                 }
