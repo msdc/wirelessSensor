@@ -411,7 +411,7 @@ exports.getRemainTime=function(req,res){
                members.forEach(function(item,index){
                    var calculatedData = JSON.parse(item);
                    //同一个位置 时间累加
-                   if(calculatedData.location[0].valueOf()==screenArray[screenName].valueOf()){
+                   if((calculatedData.location[0].x==screenArray[screenName].x)&&(calculatedData.location[0].y==screenArray[screenName].y)){
                        if(calculatedData.remainTime!=null){
                            remainTime=remainTime+calculatedData.remainTime;
                        }
@@ -443,7 +443,7 @@ exports.getRemainTime=function(req,res){
                            members.forEach(function (item, index) {
                                var calculatedData = JSON.parse(item);
                                //同一个位置 时间累加
-                               if(calculatedData.location[0].valueOf()==screenArray[screenName].valueOf()){
+                               if((calculatedData.location[0].x==screenArray[screenName].x)&&(calculatedData.location[0].y==screenArray[screenName].y)){
                                    if(calculatedData.remainTime!=null){
                                        remainTime=remainTime+calculatedData.remainTime;
                                    }
@@ -480,7 +480,7 @@ exports.getRemainTime=function(req,res){
                    members.forEach(function (item, index) {
                        var calculatedData = JSON.parse(item);
 
-                       if(compareFactor==calculatedData.location[0].valueOf()){
+                       if((compareFactor.x==calculatedData.location[0].x)&&(compareFactor.y==calculatedData.location[0].y)){
                            if (calculatedData.remainTime != null) {
                                remainTime = remainTime + calculatedData.remainTime;
                            }
@@ -498,6 +498,34 @@ exports.getRemainTime=function(req,res){
            }else{
                client.quit();
                res.send({result:"there is no data."});
+               res.end();
+           }
+       });
+   }else{
+       var keyPart = "*_" + config.methodName.mapping;
+       client.keys(keyPart, function (err, listKeys) {
+           if (listKeys.length > 0) {
+               listKeys.forEach(function (listKey, listIndex){
+                   client.smembers(listKey, function (err, members){
+                       if (members.length > 0) {
+                           members.forEach(function (item, index) {
+                               var calculatedData = JSON.parse(item);
+                               resultArray.push(calculatedData);
+                               if(index==(members.length-1)){
+                                   if(listIndex==(listKeys.length-1)){
+                                       client.quit();
+                                       res.send(resultArray);
+                                   }
+                               }
+                           });
+                       }else{
+                           return;
+                       }
+                   });
+               });
+           }else{
+               client.quit();
+               res.send({result: "there is no data"});
                res.end();
            }
        });

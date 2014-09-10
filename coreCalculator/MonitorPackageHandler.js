@@ -326,6 +326,9 @@ MonitorPackageHandler.prototype.fixationPointGenerator=function(beaconArray,pres
     return resultLocationData;
 };
 
+global.deviceStartTime=null;//全局变量 存储设备进入时间
+global.currentLocation=[];//全局变量 存储当前的位置信息
+
 MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,monitorPackageHandler,originalData){
     var prefixString=this.prefixString;
     var mappingPointArray=this.beaconArray;
@@ -345,9 +348,6 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
 
         var location=[];
         var remainTime=null;//停留时间
-
-        deviceStartTime=null;//全局变量 存储设备进入时间
-        currentLocation=[];//全局变量 存储当前的位置信息
 
         //pointArr的长度应该为1或者2
         if(pointArr.length==1){
@@ -369,17 +369,19 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
          }
 
         var timePoint=(new Date()).getTime();//点计算完成的时间戳
-        if(currentLocation.toString()!=''){
-            if(currentLocation.toString()!=location.toString()){
-                remainTime=parseInt(timePoint-deviceStartTime);
-                deviceStartTime=timePoint;//保存下个位置的起始时间信息
-                currentLocation=location;
+        resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location,timePoint:timePoint,remainTime:null};
+
+        if(global.currentLocation.toString()!=''){
+            if((global.currentLocation[0].x!=location[0].x)&&(global.currentLocation[0].y!=location[0].y)){
+                remainTime=parseInt(timePoint-global.deviceStartTime);
+                global.deviceStartTime=timePoint;//保存下个位置的起始时间信息
+                global.currentLocation=location;
+                resultLocationData.remainTime=remainTime;
             }
         }
         //保存不同位置信息和时间信息
-        currentLocation=location;
-        deviceStartTime=timePoint;
-        resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location,timePoint:timePoint,remainTime:remainTime};
+        global.currentLocation=location;
+        global.deviceStartTime=timePoint;
         console.log('当前点计算完成!');
     }else
     {
