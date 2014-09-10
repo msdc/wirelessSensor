@@ -400,6 +400,7 @@ exports.getRemainTime=function(req,res){
    var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
    var remainTime=0;
    var screenArray=config.screensArray();
+   var resultArray=[];
 
    if(screenName&&deviceSerial){
        //the key of the sets
@@ -417,7 +418,8 @@ exports.getRemainTime=function(req,res){
 
                    if(index==(members.length-1)){
                        client.quit();
-                       res.send({screenName:screenName,remainTime:remainTime,deviceSerial:deviceSerial});
+                       resultArray.push({screenName:screenName,remainTime:remainTime,deviceSerial:deviceSerial});
+                       res.send(resultArray);
                        res.end();
                    }
                });
@@ -429,7 +431,16 @@ exports.getRemainTime=function(req,res){
        });
    }
    else if(screenName){
+       var keyPart = "*_" + config.methodName.mapping;
+       client.keys(keyPart, function (err, listKeys) {
+           if (listKeys.length > 0) {
 
+           }else{
+               client.quit();
+               res.send({result: "there is no data"});
+               res.end();
+           }
+       });
    }else if(deviceSerial){
 
    }
