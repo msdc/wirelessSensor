@@ -403,6 +403,7 @@ exports.getRemainTime=function(req,res){
    var resultArray=[];
 
    if(screenName&&deviceSerial){
+       screenName=parseInt(screenName);
        //the key of the sets
        var keyOfSets = sensorCalculator.getListsKey(deviceSerial, config.methodName.mapping);
        client.smembers(keyOfSets, function (err, members){
@@ -410,7 +411,7 @@ exports.getRemainTime=function(req,res){
                members.forEach(function(item,index){
                    var calculatedData = JSON.parse(item);
                    //同一个位置 时间累加
-                   if(calculatedData.location[0].valueOf()==screenArray[screenName].valueOf()){
+                   if((calculatedData.location[0].x==screenArray[screenName].x)&&(calculatedData.location[0].y==screenArray[screenName].y)){
                        if(calculatedData.remainTime!=null){
                            remainTime=remainTime+calculatedData.remainTime;
                        }
@@ -431,6 +432,7 @@ exports.getRemainTime=function(req,res){
        });
    }
    else if(screenName){
+       screenName=parseInt(screenName);
        var keyPart = "*_" + config.methodName.mapping;
        client.keys(keyPart, function (err, listKeys) {
            if (listKeys.length > 0) {
@@ -441,7 +443,7 @@ exports.getRemainTime=function(req,res){
                            members.forEach(function (item, index) {
                                var calculatedData = JSON.parse(item);
                                //同一个位置 时间累加
-                               if(calculatedData.location[0].valueOf()==screenArray[screenName].valueOf()){
+                               if((calculatedData.location[0].x==screenArray[screenName].x)&&(calculatedData.location[0].y==screenArray[screenName].y)){
                                    if(calculatedData.remainTime!=null){
                                        remainTime=remainTime+calculatedData.remainTime;
                                    }
@@ -455,7 +457,10 @@ exports.getRemainTime=function(req,res){
                                }
                            });
                        }else{
-                           return;
+                           if(listIndex==(listKeys.length-1)){
+                               client.quit();
+                               res.send(resultArray);
+                           }
                        }
                    });
                });
@@ -471,29 +476,62 @@ exports.getRemainTime=function(req,res){
 
        client.smembers(keyOfSets, function (err, members){
            if(members.length>0){
-               for(var screenIndex in screenArray) {
+               screenArray.forEach(function(arrItem,arrIndex){
                    //不同的屏幕
-                   var compareFactor = screenArray[screenIndex].valueOf();
+                   var compareFactor = arrItem.valueOf();
 
                    members.forEach(function (item, index) {
                        var calculatedData = JSON.parse(item);
 
-                       if(compareFactor==calculatedData.location[0].valueOf()){
+                       if((compareFactor.x==calculatedData.location[0].x)&&(compareFactor.y==calculatedData.location[0].y)){
                            if (calculatedData.remainTime != null) {
                                remainTime = remainTime + calculatedData.remainTime;
                            }
                        }
 
                        if (index === (members.length - 1)) {
-                           client.quit();
-                           resultArray.push({screenName: screenIndex, remainTime: remainTime, deviceSerial: deviceSerial});
-                           res.send(resultArray);
+                           resultArray.push({screenName: arrIndex, remainTime: remainTime, deviceSerial: deviceSerial});
+                           if(arrIndex==(screenArray.length-1)){
+                               client.quit();
+                               res.send(resultArray);
+                           }
                        }
                    });
-               }
+               });
            }else{
                client.quit();
                res.send({result:"there is no data."});
+               res.end();
+           }
+       });
+   }else{
+       var keyPart = "*_" + config.methodName.mapping;
+       client.keys(keyPart, function (err, listKeys) {
+           if (listKeys.length > 0) {
+               listKeys.forEach(function (listKey, listIndex){
+                   client.smembers(listKey, function (err, members){
+                       if (members.length > 0) {
+                           members.forEach(function (item, index) {
+                               var calculatedData = JSON.parse(item);
+                               resultArray.push(calculatedData);
+                               if(index==(members.length-1)){
+                                   if(listIndex==(listKeys.length-1)){
+                                       client.quit();
+                                       res.send(resultArray);
+                                   }
+                               }
+                           });
+                       }else{
+                           if(listIndex==(listKeys.length-1)){
+                               client.quit();
+                               res.send(resultArray);
+                           }
+                       }
+                   });
+               });
+           }else{
+               client.quit();
+               res.send({result: "there is no data"});
                res.end();
            }
        });
