@@ -393,3 +393,55 @@ function commonCalculator(data,client,methodName,cb){
     client.quit();
     return finalResult;
 }
+
+exports.getRemainTime=function(req,res){
+   var screenName=req.query.screenName;
+   var deviceSerial=req.query.deviceSerial;
+   var client = redis.createClient(config.redisSettings.port, config.redisSettings.host);
+   var remainTime=0;
+   var screenArray=config.screensArray();
+   var resultArray=[];
+
+   if(screenName&&deviceSerial){
+       //the key of the sets
+       var keyOfSets = sensorCalculator.getListsKey(deviceSerial, config.methodName.mapping);
+       client.smembers(keyOfSets, function (err, members){
+           if(members.length>0){
+               members.forEach(function(item,index){
+                   var calculatedData = JSON.parse(item);
+                   //同一个位置 时间累加
+                   if(calculatedData.location[0].valueOf()==screenArray[screenName].valueOf()){
+                       if(calculatedData.remainTime!=null){
+                           remainTime=remainTime+calculatedData.remainTime;
+                       }
+                   }
+
+                   if(index==(members.length-1)){
+                       client.quit();
+                       resultArray.push({screenName:screenName,remainTime:remainTime,deviceSerial:deviceSerial});
+                       res.send(resultArray);
+                       res.end();
+                   }
+               });
+           }else{
+               client.quit();
+               res.send({result:"there is no data."});
+               res.end();
+           }
+       });
+   }
+   else if(screenName){
+       var keyPart = "*_" + config.methodName.mapping;
+       client.keys(keyPart, function (err, listKeys) {
+           if (listKeys.length > 0) {
+
+           }else{
+               client.quit();
+               res.send({result: "there is no data"});
+               res.end();
+           }
+       });
+   }else if(deviceSerial){
+
+   }
+};

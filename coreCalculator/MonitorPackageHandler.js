@@ -344,6 +344,11 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
         }
 
         var location=[];
+        var remainTime=null;//停留时间
+
+        deviceStartTime=null;//全局变量 存储设备进入时间
+        currentLocation=[];//全局变量 存储当前的位置信息
+
         //pointArr的长度应该为1或者2
         if(pointArr.length==1){
             location.push(pointArr[0].location);
@@ -364,7 +369,17 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
          }
 
         var timePoint=(new Date()).getTime();//点计算完成的时间戳
-        resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location,timePoint:timePoint};
+        if(currentLocation.toString()!=''){
+            if(currentLocation.toString()!=location.toString()){
+                remainTime=parseInt(timePoint-deviceStartTime);
+                deviceStartTime=timePoint;//保存下个位置的起始时间信息
+                currentLocation=location;
+            }
+        }
+        //保存不同位置信息和时间信息
+        currentLocation=location;
+        deviceStartTime=timePoint;
+        resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location,timePoint:timePoint,remainTime:remainTime};
         console.log('当前点计算完成!');
     }else
     {
