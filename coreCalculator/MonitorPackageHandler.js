@@ -372,16 +372,22 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
         resultLocationData={deviceSerial:data.deviceSerial,deviceName:data.deviceName,location:location,timePoint:timePoint,remainTime:null};
 
         if(global.currentLocation.toString()!=''){
+            //不同的点 位置有变化
             if((global.currentLocation[0].x!=location[0].x)&&(global.currentLocation[0].y!=location[0].y)){
-                remainTime=parseInt(timePoint-global.deviceStartTime);
                 global.deviceStartTime=timePoint;//保存下个位置的起始时间信息
                 global.currentLocation=location;
+                resultLocationData.remainTime=null;
+            }else{//始终在同一个点位置,没有移动
+                remainTime=parseInt(timePoint-global.deviceStartTime);//上一个点的停留时间
                 resultLocationData.remainTime=remainTime;
             }
+        }else{
+            //初始化
+            global.deviceStartTime=timePoint;
         }
         //保存不同位置信息和时间信息
         global.currentLocation=location;
-        global.deviceStartTime=timePoint;
+
         console.log('当前点计算完成!');
     }else
     {
