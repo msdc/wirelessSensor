@@ -27,7 +27,7 @@ define(function (require, exports, module) {
     function pHTML(data){
         var shopP=[],strD='';
         console.log('获取某屏 停留时间:',data);
-        if(data.result=='there is no data'){return false;}
+        if(data.result=='there is no data'){$('#screenList .cntUser').html('there is no data');return false;}
         if(!(data instanceof Array)){shopP.push(data);}else{shopP= data;}
 
         for(var j=0;j<shopP.length;j++){
