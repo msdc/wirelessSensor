@@ -32,7 +32,7 @@ define(function (require, exports, module) {
 
         for(var j=0;j<shopP.length;j++){
             var curr=shopP[j];
-            strD+='screenName:'+(curr.screenName||'')+' deviceSerial:'+(curr.deviceSerial||'')+' 停留：'+(parseInt(curr.remainTime)/1000||0)+'分钟<br/>';
+            strD+='screenName:'+(curr.screenName||'')+' deviceSerial:'+(curr.deviceSerial||'')+' 停留：'+((parseInt(curr.remainTime)/1000/60).toFixed(2)||0)+'分钟<br/>';
         }
         $('#screenList .cntUser').html(strD);
     }
@@ -272,6 +272,28 @@ define(function (require, exports, module) {
             $("body").delegate("#getPInp", "click", function(){//获取所有人“人”列表
                that.getAllPerson();
             })//获取所有人“人”列表
+            $("body").delegate(".singleTxtRoute span", "mouseover", function(){//获取某人 该点的坐标。
+                clsImage(that);
+                var pxy=$(this).attr('pxy').split(',');
+                var msg;
+                var deviceserial=$(this).attr('deviceserial');
+                var circle1 = canvasN.image('images/ico_p.png', pxy[0], pxy[1], 20, 20);//var circle1=canvasN.circle(cX,cY,radius);//圆
+                circle1.hover(function (e) {
+                    var x=e.x - raphaelTP.offset().left + $(document).scrollLeft(),
+                        y= e.y - $('#raphaelTP').offset().top + $(document).scrollTop();
+
+                    msg=deviceserial+' 坐标 X:'+pxy[0]+'Y:'+pxy[1]+'时间：'+$(this).attr('timeS')
+                    if(x+parseInt($('#tips').width())>=configJson.canvas.w){//提示层显示到画布外
+                        x-=parseInt($('#tips').width());
+                    }
+                    if(y+parseInt($('#tips').height())>=configJson.canvas.h){//提示层显示到画布外
+                        y-=parseInt($('#tips').height());
+                    }
+                    $('#tips').html(msg).show().css({left:x+'px',top:y+'px'});
+                }, function () {
+                    $('#tips').hide();
+                })
+            })//获取某人 该点的坐标。
             $("body").delegate("#screenList .routeSearch strong", "click", function(){//获取某人走过的路线
                 var userId=$(this).attr('userId');
                 clsImage(that);
@@ -308,7 +330,8 @@ define(function (require, exports, module) {
                                 var nDate=new Date(shopP[j].timePoint);
                                 var y=nDate.getFullYear(),m=nDate.getMonth()+ 1,d=nDate.getDate(),
                                     h=nDate.getHours(),m2=nDate.getMinutes(),s2=nDate.getSeconds();
-                                singleTxtRoute+='<span msg="直接画线，数据已处理" deviceSerial="'+shopP[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+' 名称：'+shopP[j].deviceName+' 坐标:'+cX+','+cY+'</span><br/>';
+                                var timeS=y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒';
+                                singleTxtRoute+='<span msg="直接画线，数据已处理" timeS="'+timeS+'" deviceSerial="'+shopP[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+timeS+' 名称：'+shopP[j].deviceName+' 坐标:'+cX+','+cY+'</span>';
                                 selOptTxt+='<option timePoint="'+shopP[j].timePoint+'"pos="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+'</option>';
                                 if(routeArr.length==1){
                                     routeString='M '+cX+' '+cY;
@@ -323,8 +346,8 @@ define(function (require, exports, module) {
                         if(routeString.length){
                             $('.singleTxtRoute').html(singleTxtRoute);
                             $('.timePath select').html(selOptTxt);
-                            that.posWay(routeString);//路线..T
-                            //画完下后再加 “圆点”，再次发请求时，需要清除。。。。？？？？？？？？？？？？？？？？？
+                            /*  that.posWay(routeString);//路线..T
+
                             for(var m=0;m<shopP.length;m++){
                                 for(var n=0;n<shopP.length;n++){
                                     if(m==n){continue;}
@@ -341,7 +364,7 @@ define(function (require, exports, module) {
                             }
                             console.log('forD：',shopP);
                             that.formatData(shopP);
-                            console.log('allRoute22:',allRoute,shopP)
+                            console.log('allRoute22:',allRoute,shopP)*/
                         }
                         else{
                             $('.singleTxtRoute').html('');
@@ -368,7 +391,6 @@ define(function (require, exports, module) {
                 }
                 console.log('所需画线的点：',needLineRoute);
                 clsImage(that);
-                that.formatData(needLineRoute);
 
                 var singleTxtRoute='',selOptTxt='',routeArr=[];
 
@@ -381,10 +403,10 @@ define(function (require, exports, module) {
                         var nDate=new Date(needLineRoute[j].timePoint);
                         var y=nDate.getFullYear(),m=nDate.getMonth()+ 1,d=nDate.getDate(),
                             h=nDate.getHours(),m2=nDate.getMinutes(),s2=nDate.getSeconds();
-                        singleTxtRoute+='<span msg="直接画线，数据已处理" deviceSerial="'+needLineRoute[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+' 名称：'+needLineRoute[j].deviceName+' 坐标:'+cX+','+cY+'</span><br/>';
+                        singleTxtRoute+='<span msg="直接画线，数据已处理" deviceSerial="'+needLineRoute[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+' 名称：'+needLineRoute[j].deviceName+' 坐标:'+cX+','+cY+'</span>';
                         selOptTxt+='<option timePoint="'+needLineRoute[j].timePoint+'"pos="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+'</option>';
                         if(routeArr.length==1){
-                            routeString='M '+cX+' '+cY;
+                            routeString='M '+(cX-20)+' '+(cY-20);//起点-20。。这个是人图片的大小。为了看起来效果好一些。
                         }
                         else{
                             routeString+=' L '+cX+' '+cY;
@@ -396,6 +418,7 @@ define(function (require, exports, module) {
                 if(routeString.length){
                     $('.singleTxtRoute').html(singleTxtRoute);
                     that.posWay(routeString);//路线..T
+                    that.formatData(needLineRoute);
                 }
                 else{
                     $('.singleTxtRoute').html('');
