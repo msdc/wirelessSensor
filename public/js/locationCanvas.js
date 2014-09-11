@@ -32,8 +32,8 @@ define(function (require, exports, module) {
         if(!(data instanceof Array)){shopP.push(data);}else{shopP= data;}
 
         for(var j=0;j<shopP.length;j++){
-            var curr=shopP[j];
-            strD+='screenName:'+(curr.screenName||'')+' deviceSerial:'+(curr.deviceSerial||'')+' 停留：'+((parseInt(curr.remainTime)/1000/60).toFixed(2)||0)+'分钟<br/>';
+            var curr=shopP[j];//' deviceSerial:'+(curr.deviceSerial||'')
+            strD+='screenName:'+(curr.screenName||'')+' 停留：'+((parseInt(curr.remainTime)/1000/60).toFixed(2)||0)+'分钟<br/>';
         }
         $('#screenList .cntUser').html(strD);
     }
@@ -280,27 +280,56 @@ define(function (require, exports, module) {
                   return false;
               }
               animTimeout=setInterval(function(){
-                  if(L>0){
+                  if(L>1){
                      L--;
                      $('.singleTxtRoute span').eq(L).mouseover();
+/*                   var currR=$('.singleTxtRoute span').eq(L).attr('pxy')
+                     var currRxy=currR.split(',');
+
+                     var next=L-1>-1?L-1:0;
+
+                     var nextR=$('.singleTxtRoute span').eq(next);
+                     var nextRxy=nextR.attr('pxy').split(',');
+
+                     var m= 1,n=1;
+                      currRxy[0]=parseInt(currRxy[0]); currRxy[1]=parseInt(currRxy[1]);
+                      nextRxy[0]=parseInt(nextRxy[0]); nextRxy[1]=parseInt(nextRxy[1]);
+                     if(currRxy[0]>nextRxy[0]){
+                         m=-1;
+                     }
+                     while(currRxy[0]!=nextRxy[0]){
+                         clsImage(that);
+                         currRxy[0]+=m;
+                         var circle1 = canvasN.image('images/ico_p.png',currRxy[0],currRxy[1], 20, 20);
+                         console.log(m)
+                     }
+
+                     if(currRxy[0]!=nextRxy[0]){
+                         n=-1;
+                     }
+                      while(currRxy[1]!=nextRxy[1]){
+                          clsImage(that);
+                          currRxy[1]+=n;
+                          var circle1 = canvasN.image('images/ico_p.png',currRxy[0],currRxy[1], 20, 20);
+                      }*/
+
                   }
                   else{
                       clearInterval(animTimeout)
                   }
-              },300)
+              },500)
             })
             $("body").delegate(".singleTxtRoute span", "mouseover", function(){//获取某人 该点的坐标。
                 clsImage(that);
-
                 var pxy=$(this).attr('pxy').split(',');
-                var msg;
+                var msg,timeS=$(this).attr('timeS');
                 var deviceserial=$(this).attr('deviceserial');
                 var circle1 = canvasN.image('images/ico_p.png', pxy[0], pxy[1], 20, 20);//var circle1=canvasN.circle(cX,cY,radius);//圆
                 circle1.hover(function (e) {
                     var x=e.x - raphaelTP.offset().left + $(document).scrollLeft(),
                         y= e.y - $('#raphaelTP').offset().top + $(document).scrollTop();
 
-                    msg=deviceserial+' 坐标 X:'+pxy[0]+'Y:'+pxy[1]+'时间：'+$(this).attr('timeS')
+                    msg=deviceserial+' 坐标 X:'+pxy[0]+'Y:'+pxy[1]+'时间：'+timeS;
                     if(x+parseInt($('#tips').width())>=configJson.canvas.w){//提示层显示到画布外
                         x-=parseInt($('#tips').width());
                     }
@@ -349,7 +378,7 @@ define(function (require, exports, module) {
                                 var y=nDate.getFullYear(),m=nDate.getMonth()+ 1,d=nDate.getDate(),
                                     h=nDate.getHours(),m2=nDate.getMinutes(),s2=nDate.getSeconds();
                                 var timeS=y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒';
-                                singleTxtRoute+='<span msg="直接画线，数据已处理" timeS="'+timeS+'" deviceSerial="'+shopP[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+timeS+' 名称：'+shopP[j].deviceName+' 坐标:'+cX+','+cY+'</span>';
+                                singleTxtRoute+='<span msg="直接画线，数据已处理" timeS="'+timeS+'" deviceSerial="'+shopP[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+timeS+'<br/> 名称：'+shopP[j].deviceName+' 坐标:'+cX+','+cY+'</span>';
                                 selOptTxt+='<option timePoint="'+shopP[j].timePoint+'"pos="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+'</option>';
                                 if(routeArr.length==1){
                                     routeString='M '+cX+' '+cY;
@@ -394,7 +423,7 @@ define(function (require, exports, module) {
             })//获取某人走过的路线
 
             $('#timeRoute').unbind('click').click(function(){
-                var needLineRoute=[];
+                var needLineRoute=[],routeString='';
                 var startT=$('.timePath select.selA option:selected');
                 var endT=$('.timePath select.selB option:selected');
                 console.log(startT,endT)
@@ -417,11 +446,26 @@ define(function (require, exports, module) {
                     if(needLineRoute[j].location){
                         var cX = parseInt(parseFloat(curr.x) / configJson.resolution * configJson.zoomImg);//cX单位是px,resolution为1px等于多少mm
                         var cY = parseInt(parseFloat(curr.y) / configJson.resolution * configJson.zoomImg);
+/*                        for(var k=0;k<5;k++){//测试用的。
+                            console.log('k=',k)
+                            routeArr.push({x:cX-k*20,y:cY-k*20,timePoint:needLineRoute[j].timePoint});
+                            var nDate=new Date(needLineRoute[j].timePoint);
+                            var y=nDate.getFullYear(),m=nDate.getMonth()+ 1,d=nDate.getDate(),
+                                h=nDate.getHours(),m2=nDate.getMinutes(),s2=nDate.getSeconds();
+                            singleTxtRoute+='<span msg="直接画线，数据已处理" deviceSerial="'+needLineRoute[j].deviceSerial+'" pxy="'+(cX-k*20)+','+(cY-k*20)+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+'<br/>名称：'+needLineRoute[j].deviceName+' 坐标:'+(cX-k*20)+','+(cY-k*20)+'</span>';
+                            selOptTxt+='<option timePoint="'+needLineRoute[j].timePoint+'"pos="'+(cX-k*20)+','+(cY-k*20)+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+'</option>';
+                            if(routeArr.length==1){
+                                routeString='M '+(cX-20-k*20)+' '+(cY-20-k*20);//起点-20。。这个是人图片的大小。为了看起来效果好一些。
+                            }
+                            else{
+                                routeString+=' L '+cX+' '+cY;
+                            }
+                        }*/
                         routeArr.push({x:cX,y:cY,timePoint:needLineRoute[j].timePoint});
                         var nDate=new Date(needLineRoute[j].timePoint);
                         var y=nDate.getFullYear(),m=nDate.getMonth()+ 1,d=nDate.getDate(),
                             h=nDate.getHours(),m2=nDate.getMinutes(),s2=nDate.getSeconds();
-                        singleTxtRoute+='<span msg="直接画线，数据已处理" deviceSerial="'+needLineRoute[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+' 名称：'+needLineRoute[j].deviceName+' 坐标:'+cX+','+cY+'</span>';
+                        singleTxtRoute+='<span msg="直接画线，数据已处理" deviceSerial="'+needLineRoute[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+'<br/>名称：'+needLineRoute[j].deviceName+' 坐标:'+cX+','+cY+'</span>';
                         selOptTxt+='<option timePoint="'+needLineRoute[j].timePoint+'"pos="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+'</option>';
                         if(routeArr.length==1){
                             routeString='M '+(cX-20)+' '+(cY-20);//起点-20。。这个是人图片的大小。为了看起来效果好一些。
