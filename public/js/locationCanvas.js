@@ -38,7 +38,7 @@ define(function (require, exports, module) {
     }
     function clsImage(thatObj){//初始化，清掉已有的，画出设备的。
         $('circle,path,image').remove();//清除掉已有的路线和画的点。故设备坐标用图，则为image svg，而人则为时刻获取。
-        thatObj.sbPos(targetSb(),{src:'images/t3.png',w:30,h:30});//恢复设备的坐标
+        thatObj.sbPos(window.targetSb,{src:'images/t3.png',w:30,h:30});//恢复设备的坐标
     }
 
     function unique(arr){//去重
@@ -423,11 +423,12 @@ define(function (require, exports, module) {
         sbPos: function (uuidArr, imgJson) {//设备坐标（更新一次）
             var that = this, imgJ;
             var configJson = that.configJson;
+            console.log('imgJson:',uuidArr,imgJson);
             if (imgJson) {
-                imgJ = {src: imgJson.src || 'images/t2.png', w: imgJson.w || sbW, h: imgJson.h || sbH}
+                imgJ = {src: imgJson.src || 'images/t3.png', w: imgJson.w || sbW, h: imgJson.h || sbH}
             }
             else {
-                imgJ = {src: 'images/t2.png', w: sbW, h: sbH}
+                imgJ = {src: 'images/t3.png', w: sbW, h: sbH}
             }
 
             for (var m in uuidArr) {
