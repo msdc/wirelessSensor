@@ -12,6 +12,7 @@ define(function (require, exports, module) {
         isRect:false,//是否画矩形
         isClsRect:false//是否清除矩形障碍物
     };
+    var animTimeout;//定时器id
     var allRoute=[];//存放某个人的所有时间的走过的点。
     var interId,totalP= 0,totF=0;//人物定时器..totalP统计多少次没有人的的坐标.totF 获取所有人路线的统计
     var tipsHegith=100;//tips层的高度
@@ -272,8 +273,25 @@ define(function (require, exports, module) {
             $("body").delegate("#getPInp", "click", function(){//获取所有人“人”列表
                that.getAllPerson();
             })//获取所有人“人”列表
+            $("body").delegate("#animRoute", "click", function() {//获取所有人“人”列表
+              var L=$('.singleTxtRoute span').length;
+              if(L==0){
+                  alert('获取所有人后，然后点击某人且有时间点走过的路线后，方可走路线。');
+                  return false;
+              }
+              animTimeout=setInterval(function(){
+                  if(L>0){
+                     L--;
+                     $('.singleTxtRoute span').eq(L).mouseover();
+                  }
+                  else{
+                      clearInterval(animTimeout)
+                  }
+              },300)
+            })
             $("body").delegate(".singleTxtRoute span", "mouseover", function(){//获取某人 该点的坐标。
                 clsImage(that);
+
                 var pxy=$(this).attr('pxy').split(',');
                 var msg;
                 var deviceserial=$(this).attr('deviceserial');
