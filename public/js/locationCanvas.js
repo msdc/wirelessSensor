@@ -14,7 +14,7 @@ define(function (require, exports, module) {
     };
     var allRoute=[];//存放某个人的所有时间的走过的点。
     var interId,totalP= 0,totF=0;//人物定时器..totalP统计多少次没有人的的坐标.totF 获取所有人路线的统计
-
+    var tipsHegith=100;//tips层的高度
     function ajaxT(obj){
         $.ajax({
             type: obj.type,url: obj.url,data:obj.data,contentType:'application/text',dataType:'json',
@@ -401,8 +401,6 @@ define(function (require, exports, module) {
                     $('.singleTxtRoute').html('');
                 }
 
-
-
                 //去重//擦掉过去的 succ //画线 succ//画点 succ。
                 return false;
             });
@@ -448,6 +446,12 @@ define(function (require, exports, module) {
                         msg = '设备名称:' + this.data('dt').deviceSerial + ' 坐标 X:' + this.data('dt').x + ' Y:' + this.data('dt').y;
                         var x=e.x - raphaelTP.offset().left + $(document).scrollLeft(),
                             y= e.y - $('#raphaelTP').offset().top + $(document).scrollTop();
+                        if(x+parseInt($('#tips').width())>=configJson.canvas.w){//提示层显示到画布外
+                            x-=parseInt($('#tips').width());
+                        }
+                        if(y+parseInt($('#tips').height())>=configJson.canvas.h){//提示层显示到画布外
+                            y-=parseInt($('#tips').height());
+                        }
                         $('#tips').html(msg).show().css({left:x+'px',top:y+'px'});
                     }, function () {
                         $('#tips').hide();
@@ -525,6 +529,14 @@ define(function (require, exports, module) {
                         msg =curr.deviceSerial + ' 坐标 X:' + dt.x + ' Y:' + dt.y + ' 时间:' + singleTxtRoute +' ' ;
                         var x=e.x - raphaelTP.offset().left + $(document).scrollLeft(),
                             y= e.y - $('#raphaelTP').offset().top + $(document).scrollTop();
+
+                        if(x+parseInt($('#tips').width())>=configJson.canvas.w){//提示层显示到画布外
+                            x-=parseInt($('#tips').width());
+                        }
+                        if(y+parseInt($('#tips').height())>=configJson.canvas.h){//提示层显示到画布外
+                            y-=parseInt($('#tips').height());
+                        }
+
                         $('#tips').html(msg).show().css({left:x+'px',top:y+'px'});
                         circle1.node.setAttribute('qq',22);
                     }, function () {
