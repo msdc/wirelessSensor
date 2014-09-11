@@ -55,7 +55,7 @@ exports.dataInit=function(req,res){
 exports.clearCalculatedData=function(req,res){
     var client=redis.createClient(config.redisSettings.port,config.redisSettings.host);
 
-    client.keys('*_*_Calculated',function(err,keyList){
+    client.keys('*_mapping',function(err,keyList){
        if(keyList.length>0){
            keyList.forEach(function(item,index){
                client.del(item,function(err,rows){
