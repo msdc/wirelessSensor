@@ -5,6 +5,50 @@
     <title>网格及坐标系组件测试</title>
 </head>
 <body>
+<style>
+    body,html{margin:0;padding:0;font-family: '微软雅黑';}
+    #raphaelTP{position:relative;left:0px;top:0px;}
+    #raphael1,#wrapRapGird,#maptt,#bxPoint,#imgA10086{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;}
+    #imgA10086,#girdNext{position:absolute;left:0px;top:0px;z-index:-10;}
+
+    #tips{display:none;z-index:2000;max-width:300px;font-size:12px;line-height:1.2em;background:#fff;
+        border-radius:8px;position:absolute;left:200px;top:0px;border:1px solid #ff7300;padding:5px;
+    }
+
+    #maptt{position:absolute;left:0px;top:0px;z-index:-10;opacity:0;}
+    #maptt #tabBcoll{border-collapse:collapse;}
+    #maptt #tabBcoll td{background:#fff;width:20px;height:20px;border:1px solid #000;}
+    #maptt #tabBcoll td.mStart{background:#ff0000;}
+    #maptt #tabBcoll td.mEnd{background:#0000ff;}
+    #maptt #tabBcoll td.mSleep{background: #18990c;}
+    .setPoints{display:none;}
+    .setPoints em{margin:0px 5px;color:#cc0000;cursor:pointer;font-style:normal;}
+    input{border-radius: 5px;padding: 5px;border:0px;cursor:pointer;}
+    input.bor12{border:1px solid #0088cc;}
+    .setPoints{border: 1px solid #ff7300;padding: 10px;border-radius: 5px;width: 1220px;margin: 10px auto;}
+    .pMsg{padding:3px;}
+    .bzAdd,.wrp3{width: 1240px; margin: 0 auto;text-align: left;margin-bottom:10px;}
+    .bzAdd{margin-top:20px;}
+
+    #screenList{padding:5px;border: 1px solid #01bf9d;height: 400px; overflow-y:scroll;position: fixed;top: 200px;left: 0px;font-size: 12px;font-family: '微软雅黑';left: auto;top:0px;right:0px;width:330px;z-index:1000;}
+    #screenList .titScreen strong{padding:0px 10px;cursor:pointer;line-height: 30px;text-align:left;}
+    #screenList .routeSearch, #screenList .totalTime{padding-bottom:20px;clear:both;}
+    #screenList h4{font-weight:bold;color:#cc0000;font-size:14px;margin:0px;margin-bottom: 15px;}
+    #screenList .singleTxtRoute{line-height: 22px;}
+    #screenList select{width:210px;height:25px;border-radius: 5px;}
+    #screenList .timePath{line-height: 25px;}
+    #screenList .cnt{padding:10px;cursor:pointer;}
+    #screenList .selTemp{margin:0px;padding:0px;display:block;clear:both;}
+    #screenList .selTemp li{cursor:pointer;list-style:none;height:20px;padding:5px;float:left;border:1px solid green;border-bottom:none; position: relative;z-index:1;border-right:none;}
+    #screenList .selTemp li:nth-child(2){border-right:1px solid green;}
+    #screenList .selTemp li.line{padding:0px;width:310px;clear:both;border:none;font-size:1px;overflow:hidden;height:1px;line-height: 1px;overflow:hidden;background:green;z-index:0;}
+    #screenList .selTemp li.bc39f{background:#AAD6EC;}
+    .NR6-3{padding:10px;display:none;}
+    #screenList input[type="button"]{width:100px;border-radius: 5px;}
+    #screenList .mt10{padding-bottom:10px;}
+
+</style>
+
 <script src="js/sea.js"></script>
 <script src="js/astar.js"></script>
 <script>
@@ -18,19 +62,23 @@
 </script>
 
 <div id="screenList">
-    <div class="routeSearch">
+    <ul class="selTemp"><li class="bc39f">路线查询</li><li>停留时间</li><li class="line">&nbsp;</li></ul>
+    <div class="NR6-3 routeSearch" style="display:block;">
         <input type="button" value="获取所有人" id="getPInp"/>
         <div class="cnt">
-            <h4>路线查询：</h4>
             <div class="tit"></div><!--<strong userId="1">宋悦</strong><strong userId="2">王笑奕</strong>-->
+        </div>
+        <div class="timePath">
+            <div class="mt10">起始时间：<select class="selA"></select></div>
+            <div class="mt10">终止时间：<select class="selB"></select><br/></div>
+            <div class="mt10"><input type="button" value="查找" id="timeRoute"/></div>
         </div>
         <div class="singleTxtRoute"></div>
     </div><!--路线查询 end-->
-    <div class="totalTime">
-        <h4>停留时间：</h4>
+    <div class="NR6-3 totalTime">
         <div class="titScreen">
             <strong screen="01">1号屏幕</strong><strong screen="02">2号屏幕</strong>
-            <strong screen="03">3号屏幕</strong> <strong screen="04">4号屏幕</strong>
+            <strong screen="03">3号屏幕</strong> <strong screen="04">4号屏幕</strong><br/>
             <strong screen="05">5号屏幕</strong> <strong screen="06">6号屏幕</strong>
             <strong screen="07">7号屏幕</strong>
         </div>
@@ -67,36 +115,6 @@
     </div><!--坐标系+背景图片 end-->
 
 </div>
-<style>
-    body,html{margin:0;padding:0;font-family: '微软雅黑';}
-	#raphaelTP{position:relative;left:0px;top:0px;}
-    #raphael1,#wrapRapGird,#maptt,#bxPoint,#imgA10086{margin:0 auto;overflow:hidden;opacity:0.9;position:relative;}
-    #imgA10086,#girdNext{position:absolute;left:0px;top:0px;z-index:-10;}
-	
-    #tips{display:none;z-index:2000;max-width:300px;font-size:12px;line-height:1.2em;background:#fff;
-		border-radius:8px;position:absolute;left:200px;top:0px;border:1px solid #ff7300;padding:5px;
-	}
 
-	#maptt{position:absolute;left:0px;top:0px;z-index:-10;opacity:0;}
-    #maptt #tabBcoll{border-collapse:collapse;}
-    #maptt #tabBcoll td{background:#fff;width:20px;height:20px;border:1px solid #000;}
-    #maptt #tabBcoll td.mStart{background:#ff0000;}
-    #maptt #tabBcoll td.mEnd{background:#0000ff;}
-    #maptt #tabBcoll td.mSleep{background: #18990c;}
-    .setPoints{display:none;}
-    .setPoints em{margin:0px 5px;color:#cc0000;cursor:pointer;font-style:normal;}
-     input{border-radius: 5px;padding: 5px;border:0px;cursor:pointer;}
-     input.bor12{border:1px solid #0088cc;}
-    .setPoints{border: 1px solid #ff7300;padding: 10px;border-radius: 5px;width: 1220px;margin: 10px auto;}
-    .pMsg{padding:3px;}
-    .bzAdd,.wrp3{width: 1240px; margin: 0 auto;text-align: left;margin-bottom:10px;}
-    .bzAdd{margin-top:20px;}
-
-    #screenList{padding:5px;border: 1px solid #01bf9d;height: 400px; overflow-y:scroll;position: fixed;top: 200px;left: 0px;font-size: 12px;font-family: '微软雅黑';left: auto;top:0px;right:0px;width:500px;z-index:1000;}
-    #screenList strong{padding:0px 5px;cursor:pointer;}
-    #screenList .routeSearch{padding-bottom:20px;}
-    #screenList h4{font-weight:bold;color:#cc0000;font-size:14px;margin:0px;margin-bottom: 15px;}
-    #screenList .singleTxtRoute{line-height: 22px;}
-</style>
 </body>
 </html>

@@ -12,6 +12,7 @@ define(function (require, exports, module) {
         isRect:false,//是否画矩形
         isClsRect:false//是否清除矩形障碍物
     };
+    var allRoute=[];//存放某个人的所有时间的走过的点。
     var interId,totalP= 0,totF=0;//人物定时器..totalP统计多少次没有人的的坐标.totF 获取所有人路线的统计
 
     function ajaxT(obj){
@@ -31,16 +32,20 @@ define(function (require, exports, module) {
 
         for(var j=0;j<shopP.length;j++){
             var curr=shopP[j];
-            strD+='screenName:'+(curr.screenName||'')+' user:'+(curr.deviceSerial||'')+' 停留：'+(parseInt(curr.remainTime)/1000||0)+'分钟<br/>';
+            strD+='screenName:'+(curr.screenName||'')+' deviceSerial:'+(curr.deviceSerial||'')+' 停留：'+(parseInt(curr.remainTime)/1000||0)+'分钟<br/>';
         }
         $('#screenList .cntUser').html(strD);
     }
+    function clsImage(thatObj){//初始化，清掉已有的，画出设备的。
+        $('circle,path,image').remove();//清除掉已有的路线和画的点。故设备坐标用图，则为image svg，而人则为时刻获取。
+        thatObj.sbPos(targetSb(),{src:'images/t3.png',w:30,h:30});//恢复设备的坐标
+    }
 
-    Array.prototype.unique = function(){
+    function unique(arr){//去重
         var result=[];
         var o=[];
-        for(var i=0;i<this.length;i++){
-            var v=this[i];
+        for(var i=0;i<arr.length;i++){
+            var v=arr[i];
             if(!o[v]){
                 o[v] = true;
                 result.push(v);
@@ -252,6 +257,7 @@ define(function (require, exports, module) {
             $('#getCsP').unbind('click').data('close',1).click(function(){//获取场所“人”坐标
                 var clo=$(this).data('close');
                 if(clo==1){
+                    clsImage(that);
                     interId=setInterval(function(){
                         that.psonFun();//获取场所“人”坐标
                     },200);
@@ -268,20 +274,31 @@ define(function (require, exports, module) {
             })//获取所有人“人”列表
             $("body").delegate("#screenList .routeSearch strong", "click", function(){//获取某人走过的路线
                 var userId=$(this).attr('userId');
-                $('.onceDelRout').remove();
+                clsImage(that);
                 var obj={
                     type: "get",  url: '/getPoints/false',
                     data:{"deviceSerial":userId},
                     fn:function(data){
-                        var shopP=[],routeArr=[],routeString='',singleTxtRoute='';
-                        console.log('单个人:',data.result)
+                        var shopP=[],routeArr=[],routeString='',singleTxtRoute='',selOptTxt='';
+                        console.log('单个人:',data.result);
                         if(data.result=='there is no data'){return false;}
-                        if(!(data instanceof Array)){shopP.push(data);}else{shopP= data;}
+                        if(!(data instanceof Array)){
+                            shopP.push(data);
+                            var m=[data];
+                            allRoute=data.concat();//方便某个人使用选择时间点
+                        }else{
+                            shopP= data;
+                            allRoute=data.concat();//方便某个人使用选择时间点..复制。。防止因为shopP的修改而被修改。
+                        }
                         //转为路径。
-
+                        console.log('allRoute:',allRoute)
                         shopP.sort(function(a,b){
-                            return a.timePoint-b.timePoint
+                            return -(a.timePoint-b.timePoint);
                         });
+                        allRoute.sort(function(a,b){
+                            return a.timePoint-b.timePoint;
+                        });
+
                         for(var j=0;j<shopP.length;j++){
                             var curr=shopP[j].location[0];//[0]新加的;
                             if(shopP[j].location){
@@ -291,8 +308,8 @@ define(function (require, exports, module) {
                                 var nDate=new Date(shopP[j].timePoint);
                                 var y=nDate.getFullYear(),m=nDate.getMonth()+ 1,d=nDate.getDate(),
                                     h=nDate.getHours(),m2=nDate.getMinutes(),s2=nDate.getSeconds();
-                                singleTxtRoute+='<span msg="直接画线，数据已处理" pxy="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+' 名称：'+shopP[j].deviceSerial+' 坐标:'+cX+','+cY+'</span><br/>';
-
+                                singleTxtRoute+='<span msg="直接画线，数据已处理" deviceSerial="'+shopP[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+' 名称：'+shopP[j].deviceName+' 坐标:'+cX+','+cY+'</span><br/>';
+                                selOptTxt+='<option timePoint="'+shopP[j].timePoint+'"pos="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+'</option>';
                                 if(routeArr.length==1){
                                     routeString='M '+cX+' '+cY;
                                 }
@@ -301,9 +318,11 @@ define(function (require, exports, module) {
                                 }
                             }
                         }
+
                         console.log('此人的路线：',routeArr);
                         if(routeString.length){
                             $('.singleTxtRoute').html(singleTxtRoute);
+                            $('.timePath select').html(selOptTxt);
                             that.posWay(routeString);//路线..T
                             //画完下后再加 “圆点”，再次发请求时，需要清除。。。。？？？？？？？？？？？？？？？？？
                             for(var m=0;m<shopP.length;m++){
@@ -322,6 +341,7 @@ define(function (require, exports, module) {
                             }
                             console.log('forD：',shopP);
                             that.formatData(shopP);
+                            console.log('allRoute22:',allRoute,shopP)
                         }
                         else{
                             $('.singleTxtRoute').html('');
@@ -331,6 +351,61 @@ define(function (require, exports, module) {
                 ajaxT(obj);
                 return false;
             })//获取某人走过的路线
+
+            $('#timeRoute').unbind('click').click(function(){
+                var needLineRoute=[];
+                var startT=$('.timePath select.selA option:selected');
+                var endT=$('.timePath select.selB option:selected');
+                console.log(startT,endT)
+                var m1=startT.attr('timepoint'),m2=endT.attr('timepoint');
+                var c2=Math.max(m1,m2),c1=Math.min(m1,m2);
+                console.log('查询时间:',c1,c2,allRoute);
+
+                for(var j=0;j<allRoute.length;j++){//找数据
+                    if(allRoute[j].timePoint>=c1&&allRoute[j].timePoint<=c2){
+                        needLineRoute.push(allRoute[j]);
+                    }
+                }
+                console.log('所需画线的点：',needLineRoute);
+                clsImage(that);
+                that.formatData(needLineRoute);
+
+                var singleTxtRoute='',selOptTxt='',routeArr=[];
+
+                for(var j=0;j<needLineRoute.length;j++){//过会合并，拆出来。。
+                    var curr=needLineRoute[j].location[0];//[0]新加的;
+                    if(needLineRoute[j].location){
+                        var cX = parseInt(parseFloat(curr.x) / configJson.resolution * configJson.zoomImg);//cX单位是px,resolution为1px等于多少mm
+                        var cY = parseInt(parseFloat(curr.y) / configJson.resolution * configJson.zoomImg);
+                        routeArr.push({x:cX,y:cY,timePoint:needLineRoute[j].timePoint});
+                        var nDate=new Date(needLineRoute[j].timePoint);
+                        var y=nDate.getFullYear(),m=nDate.getMonth()+ 1,d=nDate.getDate(),
+                            h=nDate.getHours(),m2=nDate.getMinutes(),s2=nDate.getSeconds();
+                        singleTxtRoute+='<span msg="直接画线，数据已处理" deviceSerial="'+needLineRoute[j].deviceSerial+'" pxy="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+' 名称：'+needLineRoute[j].deviceName+' 坐标:'+cX+','+cY+'</span><br/>';
+                        selOptTxt+='<option timePoint="'+needLineRoute[j].timePoint+'"pos="'+cX+','+cY+'">'+y+'年'+m+'月'+d+'日'+h+'时'+m2+'分'+s2+'秒'+'</option>';
+                        if(routeArr.length==1){
+                            routeString='M '+cX+' '+cY;
+                        }
+                        else{
+                            routeString+=' L '+cX+' '+cY;
+                        }
+                    }
+                }
+
+                console.log('此人的路线：',routeArr);
+                if(routeString.length){
+                    $('.singleTxtRoute').html(singleTxtRoute);
+                    that.posWay(routeString);//路线..T
+                }
+                else{
+                    $('.singleTxtRoute').html('');
+                }
+
+
+
+                //去重//擦掉过去的 succ //画线 succ//画点 succ。
+                return false;
+            });
 
             $("body").delegate("#screenList .totalTime .titScreen strong", "click", function(){//获取某屏 停留时间
                 var screen=$(this).attr('screen');
@@ -362,6 +437,9 @@ define(function (require, exports, module) {
                 var cY = parseFloat(uuidArr[m].y) / configJson.resolution * configJson.zoomImg;
                 var msg='';
                 console.log('sbpos-XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
+                if(isNaN(cX)||isNaN(cY)){//去掉计算错误的设备
+                    continue;
+                }
                 var circle1 = canvasN.image(imgJ.src, cX, cY, imgJ.w, imgJ.h);//var circle1=canvasN.circle(cX,cY,radius);//圆
                 circle1.attr({"fill": "blue"})  //填充色
                     .attr("stroke", "none")   //去掉边框
@@ -397,8 +475,8 @@ define(function (require, exports, module) {
         },
         delNode: function () {//删除页面已有的,更新新的。(原有的是该人的旧坐标，该人现更新为新坐标)
             var that = this;
-            for (var m = 0; m < that.rapAll.length; m++) {//已有的node
-                for (var k = 0; k < that.fotData.length; k++) {//新来的
+            for (var k = 0; k < that.fotData.length; k++) {//新来的
+                 for (var m = 0; m < that.rapAll.length; m++) {//已有的node
                     if (that.fotData[k].deviceSerial == that.rapAll[m].node.getAttribute('id')) {//删除某个节点。
                         that.rapAll[m].remove();//删除svg上的位置
                         that.rapAll.splice(m, 1);//删除数组内已存该节点
@@ -433,7 +511,8 @@ define(function (require, exports, module) {
             cX = parseFloat(cX) / configJson.resolution * configJson.zoomImg;//cX单位是px,resolution为1px等于多少mm
             cY = parseFloat(cY) / configJson.resolution * configJson.zoomImg;
             console.log('XY:End-PX:', cX, cY, ' zoomImg:', configJson.zoomImg);
-            var circle1 = canvasN.circle(cX, cY, radius);//圆
+           // var circle1 = canvasN.circle(cX, cY, radius);//圆
+            var circle1 = canvasN.image('images/ico_p.png', cX, cY, 20, 20);//var circle1=canvasN.circle(cX,cY,radius);//圆
                 circle1.attr({"fill": "#f20bda"})  //填充色
                     .attr("stroke", "none")   //去掉边框
                     .data('dt', {x: cX, y: cY, timePoint: curr.timePoint, 'deviceSerial': curr.deviceSerial})
@@ -464,8 +543,8 @@ define(function (require, exports, module) {
                     });
             circle1.node.id = curr.deviceSerial;
 
-            var anim2 = Raphael.animation({"fill": "#000"}, Math.random() * 1500 + 300);
-            circle1.animate(anim2.repeat(Infinity));//动画效果
+            //var anim2 = Raphael.animation({"fill": "#000"}, Math.random() * 1500 + 300);
+            //circle1.animate(anim2.repeat(Infinity));//动画效果
             that.rapAll.push(circle1);
         },
         posWay:function(dataLine){//人物路线。。
@@ -627,12 +706,13 @@ define(function (require, exports, module) {
         }
         ajaxT(obj);
     },//获取人坐标
-    DrawPointer.prototype.getAllPerson=function(){//获取所有人坐标（注意：包含每个人的多次坐标）
+    DrawPointer.prototype.getAllPerson=function(){//获取所有人<坐标>（注意：包含每个人的多次坐标）
         var that=this;
+        clsImage(that);
         var obj={
             type: "get",  url: '/getPoints/false',
             fn:function(data){
-                var shopP=[],deviceSerial=[],shtml='';
+                var shopP=[],shopP2=[],deviceSerial=[],shtml='',deviceSerialName=[];
                 if(data.result=='there is no data'){
                     $('#screenList .routeSearch .cnt .tit').html(data.result+(++totF));
                     return false;
@@ -643,13 +723,17 @@ define(function (require, exports, module) {
                     shopP= data;
                 }
                 for(var m=0;m<shopP.length;m++){
-                    deviceSerial.push(shopP[m].deviceSerial);
+                    deviceSerial.push(shopP[m].deviceSerial);//shopP[m].deviceSerial
+                }
+                for(var m=0;m<shopP.length;m++){
+                    deviceSerialName.push(shopP[m].deviceName);//shopP[m].deviceSerial
                 }
                 console.log('ajax-res:',shopP);
-                shopP=deviceSerial.unique();//只有deviceSerial
+                shopP=unique(deviceSerial);//设备编号和设备名称是唯一的，不会重复。。故去重可用相对应关系
+                shopP2=unique(deviceSerialName);//设备编号和设备名称是唯一的，不会重复。。故去重可用相对应关系
                 console.log('res:',shopP);
                 for(var j=0;j<shopP.length;j++){
-                    shtml+='<strong userId="'+shopP[j]+'">'+shopP[j]+'</strong>';//只有deviceSerial
+                    shtml+='<strong userId="'+shopP[j]+'">'+shopP2[j]+'</strong>';//设备编号和设备名称是唯一的，不会重复。。故去重可用相对应关系
                 }
                 $('#screenList .routeSearch .cnt').html(shtml);
             }
