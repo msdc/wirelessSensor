@@ -79,13 +79,13 @@ exports.processDataFromHttp = function (req, res) {
         if (!data) {
             console.log('data is not defined.');
             client.quit();
+            res.send('data is not defined.');
             return;
         }
         if (!data.monitorPackage) {
             console.log('数据格式错误！monitorPackage未指定！');
-            res.send({result: false, message: "数据格式错误！monitorPackage未指定！"});
-            res.end();
             client.quit();
+            res.send({result: false, message: "数据格式错误！monitorPackage未指定！"});
             return;
         }
 
@@ -106,7 +106,6 @@ exports.processDataFromHttp = function (req, res) {
 
         console.log("deviceSerial=" + data.deviceSerial + "，数据接收成功！");
         res.send({result: true, message: "数据接收成功！"});
-        res.end();
     });
 };
 
