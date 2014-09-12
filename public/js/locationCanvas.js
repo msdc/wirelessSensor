@@ -34,7 +34,7 @@ define(function (require, exports, module) {
 
         for(var j=0;j<shopP.length;j++){
             var curr=shopP[j];//' deviceSerial:'+(curr.deviceSerial||'')
-            strD+='screenName:'+(curr.screenName||'')+' 名称:'+(curr.deviceName||'')+' 停留：'+((parseInt(curr.remainTime)/1000).toFixed(2)||0)+'秒<br/>';
+            strD+='screenName:'+(curr.screenName||'')+' 名称:'+(curr.deviceName||'')+' 停留：'+((parseInt(curr.remainTime)/1000/60).toFixed(2)||0)+'分钟<br/>';
         }
         $('#screenList .cntUser').html(strD);
     }
