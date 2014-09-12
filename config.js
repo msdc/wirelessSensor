@@ -45,7 +45,7 @@ exports.pointsMappingArray=function(){
     points[frontStr + "_0_3"+frontStr + "_0_6"]={x:668.00,y:2255.00};
     points[frontStr + "_0_6"+frontStr + "_0_2"]={x:896.00,y:2255.00};
     points[frontStr + "_0_2"+frontStr + "_0_9"]={x:1133.00,y:2255.00};
-    points[frontStr + "_0_9"+frontStr + "_0_8"]={x:1358.00,y:2255.00};
+    points[frontStr + "_0_9"+frontStr + "_0_7"]={x:1358.00,y:2255.00};
     points[frontStr + "_0_7"+frontStr + "_0_8"]={x:1641.00,y:2255.00};
 
     return points;
@@ -73,7 +73,7 @@ exports.lineOffset = {
 };
 
 //默认过滤指定acc的距离配置
-exports.defaultBeaconDistance=5;
+exports.defaultBeaconDistance=1.5;
 
 //各个模型所对应方法的名称
 exports.methodName={
