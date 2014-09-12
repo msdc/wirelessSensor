@@ -419,7 +419,7 @@ exports.getRemainTime=function(req,res){
 
                    if(index==(members.length-1)){
                        client.quit();
-                       resultArray.push({screenName:screenName,remainTime:remainTime,deviceSerial:deviceSerial});
+                       resultArray.push({screenName:screenName,remainTime:remainTime,deviceSerial:deviceSerial,deviceName:calculatedData.deviceName});
                        res.send(resultArray);
                        res.end();
                    }
@@ -440,6 +440,7 @@ exports.getRemainTime=function(req,res){
                    var deviceSerialString=listKey.substring(0,listKey.indexOf('_'));//当前的设备号
                    client.smembers(listKey, function (err, members){
                        if (members.length > 0) {
+                           var deviceNameString=JSON.parse(members[0]).deviceName;//当前设备名称
                            members.forEach(function (item, index) {
                                var calculatedData = JSON.parse(item);
                                //同一个位置 时间累加
@@ -449,7 +450,7 @@ exports.getRemainTime=function(req,res){
                                    }
                                }
                                if(index==(members.length-1)){
-                                   resultArray.push({screenName:screenName,remainTime:remainTime,deviceSerial:deviceSerialString});
+                                   resultArray.push({screenName:screenName,remainTime:remainTime,deviceSerial:deviceSerialString,deviceName:deviceNameString});
                                    if(listIndex==(listKeys.length-1)){
                                        client.quit();
                                        res.send(resultArray);
@@ -490,7 +491,7 @@ exports.getRemainTime=function(req,res){
                        }
 
                        if (index === (members.length - 1)) {
-                           resultArray.push({screenName: arrIndex, remainTime: remainTime, deviceSerial: deviceSerial});
+                           resultArray.push({screenName: arrIndex, remainTime: remainTime, deviceSerial: deviceSerial,deviceName:calculatedData.deviceName});
                            if(arrIndex==(screenArray.length-1)){
                                client.quit();
                                res.send(resultArray);
