@@ -53,13 +53,14 @@ exports.pointsMappingArray=function(){
 
 exports.screensArray=function(){
     var screens=[];
-    screens[1]={x:340.00,y:1977.00};
-    screens[2]={x:340.00,y:2022.00};
-    screens[3]={x:450.00,y:2225.00};
-    screens[4]={x:900.00,y:2225.00};
-    screens[5]={x:1350.00,y:2225.00};
-    screens[6]={x:1725.00,y:2225.00};
-    screens[7]={x:2725.00,y:2150.00};
+    screens[1]={x:291.00,y:2045.00};
+    screens[2]={x:291.00,y:2255.00};
+    screens[3]={x:456.00,y:2255.00};
+    screens[4]={x:668.00,y:2255.00};
+    screens[5]={x:896.00,y:2255.00};
+    screens[6]={x:1133.00,y:2255.00};
+    screens[7]={x:1358.00,y:2255.00};
+    screens[8]={x:1641.00,y:2255.00};
     return screens;
 };
 
