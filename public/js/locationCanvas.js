@@ -286,18 +286,24 @@ define(function (require, exports, module) {
                     alert('获取所有人后，然后点击某人且有时间点走过的路线后，方可走路线。');
                     return false;
                 }
-                animTimeout=setInterval(function(){
+               setInterval(function(){
                     if(L>0){
                         L--;
                         $('.singleTxtRoute span').eq(L).mouseover();
                     }
                     else{
                         clearInterval(animTimeout);
+                        for(var i = 1; i < 1000; i++) {
+                            clearInterval(i);
+                        }
                     }
                 },500)
             })
             $("body").delegate("#stopAnim", "click", function() {//停止‘点’的演示
                 clearInterval(animTimeout);
+                for(var i = 1; i < 1000; i++) {
+                    clearInterval(i);
+                }
             })
 
 
