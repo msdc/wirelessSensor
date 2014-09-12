@@ -12,7 +12,7 @@ define(function (require, exports, module) {
         isRect:false,//是否画矩形
         isClsRect:false//是否清除矩形障碍物
     };
-    var animTimeout;//定时器id
+    var animTimeout,diffScreen;//定时器id
     var allRoute=[];//存放某个人的所有时间的走过的点。
     var interId,totalP= 0,totF=0;//人物定时器..totalP统计多少次没有人的的坐标.totF 获取所有人路线的统计
     var tipsHegith=100;//tips层的高度
@@ -34,7 +34,7 @@ define(function (require, exports, module) {
 
         for(var j=0;j<shopP.length;j++){
             var curr=shopP[j];//' deviceSerial:'+(curr.deviceSerial||'')
-            strD+='screenName:'+(curr.screenName||'')+' 名称:'+(curr.deviceName||'')+' 停留：'+((parseInt(curr.remainTime)/1000/60).toFixed(2)||0)+'分钟<br/>';
+            strD+='screenName:'+diffScreen+' 名称:'+(curr.deviceName||'')+' 停留：'+((parseInt(curr.remainTime)/1000/60).toFixed(2)||0)+'分钟<br/>';
         }
         $('#screenList .cntUser').html(strD);
     }
@@ -290,36 +290,6 @@ define(function (require, exports, module) {
                     if(L>0){
                         L--;
                         $('.singleTxtRoute span').eq(L).mouseover();
-                        /*                   var currR=$('.singleTxtRoute span').eq(L).attr('pxy')
-                         var currRxy=currR.split(',');
-
-                         var next=L-1>-1?L-1:0;
-
-                         var nextR=$('.singleTxtRoute span').eq(next);
-                         var nextRxy=nextR.attr('pxy').split(',');
-
-                         var m= 1,n=1;
-                         currRxy[0]=parseInt(currRxy[0]); currRxy[1]=parseInt(currRxy[1]);
-                         nextRxy[0]=parseInt(nextRxy[0]); nextRxy[1]=parseInt(nextRxy[1]);
-                         if(currRxy[0]>nextRxy[0]){
-                         m=-1;
-                         }
-                         while(currRxy[0]!=nextRxy[0]){
-                         clsImage(that);
-                         currRxy[0]+=m;
-                         var circle1 = canvasN.image('images/ico_p.png',currRxy[0],currRxy[1], 20, 20);
-                         console.log(m)
-                         }
-
-                         if(currRxy[0]!=nextRxy[0]){
-                         n=-1;
-                         }
-                         while(currRxy[1]!=nextRxy[1]){
-                         clsImage(that);
-                         currRxy[1]+=n;
-                         var circle1 = canvasN.image('images/ico_p.png',currRxy[0],currRxy[1], 20, 20);
-                         }*/
-
                     }
                     else{
                         clearInterval(animTimeout);
@@ -505,6 +475,7 @@ define(function (require, exports, module) {
 
             $("body").delegate("#screenList .totalTime .titScreen strong", "click", function(){//获取某屏 停留时间
                 var screen=$(this).attr('screen');
+                diffScreen=$(this).attr('dis');
                 $('#screenList .cntUser').html('');
                 var obj={
                     type: "get",  url: '/getRemainTime',data:{"screenName":screen},
@@ -518,6 +489,7 @@ define(function (require, exports, module) {
             $("body").delegate("#screenIphone ", "click", function(){//获取某屏某人的停留
                 var deviceSerial=$('.selC option:selected');
                 var screen=$('.selD option:selected');
+                diffScreen=screen.attr('dis');
                 $('#screenList .cntUser').html('');
                 var obj={
                     type: "get",  url: '/getRemainTime',data:{"screenName":screen.val(),"deviceSerial":deviceSerial.val()},
