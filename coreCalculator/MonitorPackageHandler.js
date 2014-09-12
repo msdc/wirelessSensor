@@ -378,7 +378,8 @@ MonitorPackageHandler.prototype.getMappingPoint=function(beaconArray,offset,moni
                 global.currentLocation=location;
                 resultLocationData.remainTime=null;
             }else{//始终在同一个点位置,没有移动
-                remainTime=parseInt(timePoint-global.deviceStartTime);//上一个点的停留时间
+                //remainTime=parseInt(timePoint-global.deviceStartTime);//上一个点的停留时间
+                remainTime=configs.defaultDeviceTimeSpan;//手机端发送数据频率
                 resultLocationData.remainTime=remainTime;
             }
         }else{

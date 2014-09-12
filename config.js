@@ -75,6 +75,8 @@ exports.lineOffset = {
 
 //默认过滤指定acc的距离配置
 exports.defaultBeaconDistance=1.5;
+//手机端发送数据间隔 单位为毫秒
+exports.defaultDeviceTimeSpan=1000;
 
 //各个模型所对应方法的名称
 exports.methodName={
