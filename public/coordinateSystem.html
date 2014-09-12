@@ -49,6 +49,7 @@
     .showH{position: absolute;right:10px;top:3px;background:#01bf9d;padding:5px;cursor:pointer;}
     .singleTxtRoute span{cursor:pointer;display:block;margin-bottom:10px;}
     .singleTxtRoute span:hover{color:#ff7300;}
+    #screenList .cnt strong{padding:10px;line-height:18px;}
 </style>
 
 <script src="js/sea.js"></script>
@@ -68,7 +69,8 @@
     <ul class="selTemp"><li class="bc39f">路线查询</li><li>停留时间</li><li class="line">&nbsp;</li></ul>
     <div class="NR6-3 routeSearch" style="display:block;">
         <input type="button" value="获取所有人" id="getPInp"/>
-        <input type="button" value="看走过的路线" id="animRoute"/>
+        <input type="button" value="看走过的点" id="animRoute">
+        <input type="button" value="停止" id="stopAnim" style="width: 40px;margin-left: 5px;">
         <div class="cnt">
             <div class="tit"></div><!--<strong userId="1">宋悦</strong><strong userId="2">王笑奕</strong>-->
         </div>
