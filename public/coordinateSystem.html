@@ -47,6 +47,9 @@
     #screenList input[type="button"]{width:100px;border-radius: 5px;}
     #screenList .mt10{padding-bottom:10px;}
     .showH{position: absolute;right:10px;top:3px;background:#01bf9d;padding:5px;cursor:pointer;}
+    .singleTxtRoute span{cursor:pointer;display:block;margin-bottom:10px;}
+    .singleTxtRoute span:hover{color:#ff7300;}
+    #screenList .cnt strong{padding:10px;line-height:18px;}
 </style>
 
 <script src="js/sea.js"></script>
@@ -66,6 +69,8 @@
     <ul class="selTemp"><li class="bc39f">路线查询</li><li>停留时间</li><li class="line">&nbsp;</li></ul>
     <div class="NR6-3 routeSearch" style="display:block;">
         <input type="button" value="获取所有人" id="getPInp"/>
+        <input type="button" value="看走过的点" id="animRoute">
+        <input type="button" value="停止" id="stopAnim" style="width: 40px;margin-left: 5px;">
         <div class="cnt">
             <div class="tit"></div><!--<strong userId="1">宋悦</strong><strong userId="2">王笑奕</strong>-->
         </div>
@@ -81,7 +86,13 @@
             <strong screen="01">1号屏幕</strong><strong screen="02">2号屏幕</strong>
             <strong screen="03">3号屏幕</strong> <strong screen="04">4号屏幕</strong><br/>
             <strong screen="05">5号屏幕</strong> <strong screen="06">6号屏幕</strong>
-            <strong screen="07">7号屏幕</strong>
+            <strong screen="07">7号屏幕</strong><br/>
+            <div class="mt10">名称：<select class="selC"></select></div>
+            <div class="mt10">屏幕：<select class="selD">
+                <option value="01">1号屏幕</option> <option value="02">2号屏幕</option> <option value="03">3号屏幕</option> <option value="04">4号屏幕</option>
+                <option value="05">5号屏幕</option> <option value="06">6号屏幕</option> <option value="07">7号屏幕</option>
+            </select></div>
+            <input type="button" value="查询" id="screenIphone" />
         </div>
         <p class="cntUser">&nbsp;</p>
     </div><!--停留时间 end-->
