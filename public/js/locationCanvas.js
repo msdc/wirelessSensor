@@ -515,7 +515,19 @@ define(function (require, exports, module) {
                 ajaxT(obj);
                 return false;
             })//获取某屏 停留时间
-
+            $("body").delegate("#screenIphone ", "click", function(){//获取某屏某人的停留
+                var deviceSerial=$('.selC option:selected');
+                var screen=$('.selD option:selected');
+                $('#screenList .cntUser').html('');
+                var obj={
+                    type: "get",  url: '/getRemainTime',data:{"screenName":screen.val(),"deviceSerial":deviceSerial.val()},
+                    fn:function(data){
+                        pHTML(data);
+                    }
+                }
+                ajaxT(obj);
+                return false;
+            })//获取某屏 停留时间
             /********网格相关evt end*******/
         },
         sbPos: function (uuidArr, imgJson) {//设备坐标（更新一次）
@@ -823,7 +835,7 @@ define(function (require, exports, module) {
             var obj={
                 type: "get",  url: '/getPoints/false',
                 fn:function(data){
-                    var shopP=[],shopP2=[],deviceSerial=[],shtml='',deviceSerialName=[];
+                    var shopP=[],shopP2=[],deviceSerial=[],shtml='',mhtml='',deviceSerialName=[];
                     if(data.result=='there is no data'){
                         $('#screenList .routeSearch .cnt .tit').html(data.result+(++totF));
                         return false;
@@ -845,8 +857,10 @@ define(function (require, exports, module) {
                     console.log('res:',shopP);
                     for(var j=0;j<shopP.length;j++){
                         shtml+='<strong userId="'+shopP[j]+'">'+shopP2[j]+'</strong>';//设备编号和设备名称是唯一的，不会重复。。故去重可用相对应关系
+                        mhtml+='<option value="'+shopP[j]+'">'+shopP2[j]+'</option>';
                     }
                     $('#screenList .routeSearch .cnt').html(shtml);
+                    $('#screenList .selC').html(mhtml);
                 }
             }
             ajaxT(obj);
