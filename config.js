@@ -42,10 +42,10 @@ exports.pointsMappingArray=function(){
     points[frontStr + "_0_1"+frontStr + "_0_5"]={x:328.00,y:2045.00};
     //points[frontStr + "_0_5"+frontStr + "_0_4"]={x:291.00,y:2255.00};
     points[frontStr + "_0_4"+frontStr + "_0_3"]={x:456.00,y:2255.00};
-    points[frontStr + "_0_3"+frontStr + "_0_6"]={x:668.00,y:2255.00};
+    //points[frontStr + "_0_3"+frontStr + "_0_6"]={x:668.00,y:2255.00};
     points[frontStr + "_0_6"+frontStr + "_0_2"]={x:896.00,y:2255.00};
     points[frontStr + "_0_2"+frontStr + "_0_9"]={x:1133.00,y:2255.00};
-    points[frontStr + "_0_9"+frontStr + "_0_8"]={x:1358.00,y:2255.00};
+    //points[frontStr + "_0_9"+frontStr + "_0_8"]={x:1358.00,y:2255.00};
     points[frontStr + "_0_8"+frontStr + "_0_7"]={x:1641.00,y:2255.00};
 
     return points;
