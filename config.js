@@ -39,8 +39,8 @@ exports.redisSettings = {
 exports.pointsMappingArray=function(){
     var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
     var points=[];
-    points[frontStr + "_0_1"+frontStr + "_0_5"]={x:291.00,y:2045.00};
-    points[frontStr + "_0_5"+frontStr + "_0_4"]={x:291.00,y:2255.00};
+    points[frontStr + "_0_1"+frontStr + "_0_5"]={x:328.00,y:2045.00};
+    //points[frontStr + "_0_5"+frontStr + "_0_4"]={x:291.00,y:2255.00};
     points[frontStr + "_0_4"+frontStr + "_0_3"]={x:456.00,y:2255.00};
     points[frontStr + "_0_3"+frontStr + "_0_6"]={x:668.00,y:2255.00};
     points[frontStr + "_0_6"+frontStr + "_0_2"]={x:896.00,y:2255.00};
@@ -53,7 +53,7 @@ exports.pointsMappingArray=function(){
 
 exports.screensArray=function(){
     var screens=[];
-    screens[1]={x:291.00,y:2045.00};
+    screens[1]={x:328.00,y:2045.00};
     screens[2]={x:291.00,y:2255.00};
     screens[3]={x:456.00,y:2255.00};
     screens[4]={x:668.00,y:2255.00};
@@ -74,7 +74,7 @@ exports.lineOffset = {
 };
 
 //默认过滤指定acc的距离配置
-exports.defaultBeaconDistance=3;
+exports.defaultBeaconDistance=2;
 //手机端发送数据间隔 单位为毫秒
 exports.defaultDeviceTimeSpan=1000;
 
