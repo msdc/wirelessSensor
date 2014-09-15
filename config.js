@@ -35,7 +35,7 @@ exports.redisSettings = {
     port: 6379
 }
 
-//模型三：固定点与beacon点的映射表
+//模型三：固定点与beacon点的映射表  点位置154362987
 exports.pointsMappingArray=function(){
     var frontStr='E2C56DB5-DFFB-48D2-B060-D0F5A71096E0';
     var points=[];
