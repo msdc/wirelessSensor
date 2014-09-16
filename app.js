@@ -48,6 +48,7 @@ app.get("/init/clear_calculated",initializer.clearCalculatedData);
 
 app.get("/getRemainTime",sensor.getRemainTime);
 app.post("/newsSegment",segment.newsSegment);
+app.post("/gradeSplit",segment.gradeSplit);
 
 app.listen(1337, function () {
     console.log('Express server listening on port 1337');

@@ -3,9 +3,22 @@
  */
 $(function(){
     $('#btn_segment').click(function(){
-        getSegmentResult();
+        $('#segment_result').text('分词处理中...')
+            .css({color:"red"});
+        getSegmentResult();//分词
+        gradeSplit();//极性划分
     });
 });
+
+function gradeSplit(){
+    var newsContent=$('#news_content').val();
+    var request = $.ajax({
+        url: "/gradeSplit",
+        type: "POST",
+        data: { newsContent : newsContent }
+    });
+    request.done(gradeSplitHandler);
+}
 
 //发送ajax请求
 function getSegmentResult(){
@@ -20,5 +33,15 @@ function getSegmentResult(){
 
 //处理分词结果
 function segmentDataHandler(data){
-    alert(data);
+    var result=data;
+    var resultString=' | ';
+    for(var index in result){
+       resultString=resultString+result[index].w+' | ';
+    }
+    $('#segment_result').text(resultString)
+        .css({color:"blue"});
+}
+
+function gradeSplitHandler(data){
+  alert(data);
 }
