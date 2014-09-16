@@ -47,7 +47,6 @@ function gradeSplit(words){
 
         for (var wordIndex in words) {
             var word=words[wordIndex];
-            console.log(word.w);
             for (var dictIndex in data) {
                 var line = data[dictIndex];
                 var blocks = line.split('\t');
@@ -56,15 +55,15 @@ function gradeSplit(words){
                     var w2 = blocks[1].trim();
                     var grade = Number(blocks[2]);
 
-                    if ((word.w.indexOf(w1) > -1) || (word.w.indexOf(w2) > -1)) {//有情感词
+                    if ( word.w==w1 || word.w==w2 ) {//有情感词
                         if (grade > 0) {//正得分
                             positiveScore = positiveScore + grade;//正得分
-                            positiveWords.push(word.w);//正得分集合
+                            positiveWords.push(word.w+"="+grade);//正得分集合
                             positiveWordsCount++;//正得分数量
                             break;//查找到则终止循环
                         } else {
                             negativeScore = negativeScore + grade;//负得分
-                            negativeWords.push(word.w);//负得分集合
+                            negativeWords.push(word.w+"="+grade);//负得分集合
                             negativeWordsCount++;//负得分数量
                             break;
                         }

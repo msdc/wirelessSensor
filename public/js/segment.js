@@ -58,11 +58,19 @@ function gradeSplitHandler(data){
        $('#noScoreWordsCount').text(result.noScoreWordsCount).css({color:"blue"});
 
        for(var index in positiveWords){
-           positiveWordsString=positiveWordsString+positiveWords[index]+' ';
+           var str=', ';
+           if(index==(positiveWords.length-1)){
+               str='.';
+           }
+           positiveWordsString=positiveWordsString+positiveWords[index]+str;
        }
 
        for(var index in negativeWords){
-           negativeWordsString=negativeWordsString+negativeWords[index]+' ';
+           var str=', ';
+           if(index==(negativeWords.length-1)){
+               str='.';
+           }
+           negativeWordsString=negativeWordsString+negativeWords[index]+str;
        }
 
        $('#positiveWords').text(positiveWordsString)
