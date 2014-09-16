@@ -42,6 +42,33 @@ function segmentDataHandler(data){
         .css({color:"blue"});
 }
 
+//处理极性划分
 function gradeSplitHandler(data){
-  alert(data);
+   var result=data;
+   var positiveWordsString=' ';
+   var negativeWordsString=' ';
+   var positiveWords=result.positiveWords;
+   var negativeWords=result.negativeWords;
+   if(result){
+       $('#totalScore').text(result.totalScore).css({color:"blue"});
+       $('#positiveScore').text(result.positiveScore).css({color:"blue"});
+       $('#negativeScore').text(result.negativeScore).css({color:"blue"});
+       $('#positiveWordsCount').text(result.positiveWordsCount).css({color:"blue"});
+       $('#negativeWordsCount').text(result.negativeWordsCount).css({color:"blue"});
+       $('#noScoreWordsCount').text(result.noScoreWordsCount).css({color:"blue"});
+
+       for(var index in positiveWords){
+           positiveWordsString=positiveWordsString+positiveWords[index]+' ';
+       }
+
+       for(var index in negativeWords){
+           negativeWordsString=negativeWordsString+negativeWords[index]+' ';
+       }
+
+       $('#positiveWords').text(positiveWordsString)
+           .css({color:"blue"});
+
+       $('#negativeWords').text(negativeWordsString)
+           .css({color:"blue"});
+   }
 }

@@ -20,7 +20,8 @@ exports.newsSegment=function(req,res){
 exports.gradeSplit=function(req,res){
     easypost.get(req, res, function (data) {
         var segmentWords=segment.doSegment(data.newsContent);
-        res.send(gradeSplit(segmentWords));
+        var grade=gradeSplit(segmentWords);
+        res.send(grade);
     });
 };
 
@@ -44,48 +45,47 @@ function gradeSplit(words){
         var data = fs.readFileSync(filename, 'utf8');
         data = data.split(/\r?\n/);
 
-        words.forEach(function(word,wordIndex){
-            data.forEach(function (line,dictIndex) {
+        for (var wordIndex in words) {
+            var word=words[wordIndex];
+            console.log(word.w);
+            for (var dictIndex in data) {
+                var line = data[dictIndex];
                 var blocks = line.split('\t');
                 if (blocks.length > 2) {
-                    var w1=blocks[0].trim();
-                    var w2=blocks[1].trim();
-                    var grade=Number(blocks[2]);
+                    var w1 = blocks[0].trim();
+                    var w2 = blocks[1].trim();
+                    var grade = Number(blocks[2]);
 
-                    if((word.w.indexOf(w1)>-1)||(word.w.indexOf(w2)>-1)){//有情感词
-                        if(grade>0){//正得分
-                            positiveScore=positiveScore+grade;//正得分
+                    if ((word.w.indexOf(w1) > -1) || (word.w.indexOf(w2) > -1)) {//有情感词
+                        if (grade > 0) {//正得分
+                            positiveScore = positiveScore + grade;//正得分
                             positiveWords.push(word.w);//正得分集合
                             positiveWordsCount++;//正得分数量
-                        }else{
-                            negativeScore=negativeScore+grade;//负得分
+                            break;//查找到则终止循环
+                        } else {
+                            negativeScore = negativeScore + grade;//负得分
                             negativeWords.push(word.w);//负得分集合
                             negativeWordsCount++;//负得分数量
-                        }
-                    }else{//无情感词
-                        noScoreWordsCount++;
-                    }
-
-                    if(dictIndex==(data.length-1)){
-                        if(wordIndex==(words.length-1)){
-                            //总得分
-                            totalScore=positiveScore+negativeScore;
-
-                            splitResult.positiveScore=positiveScore;
-                            splitResult.positiveWords=positiveWords;
-                            splitResult.positiveWordsCount=positiveWordsCount;
-                            splitResult.negativeScore=negativeScore;
-                            splitResult.negativeWords=negativeWords;
-                            splitResult.negativeWordsCount=negativeWordsCount;
-                            splitResult.totalScore=totalScore;
-
-                            return splitResult;
+                            break;
                         }
                     }
-
                 }
-            });
-        });
+            }
+        }
+
+        noScoreWordsCount=words.length-(positiveWordsCount+negativeWordsCount);
+        totalScore=positiveScore+negativeScore;
+
+        splitResult.positiveScore=positiveScore;
+        splitResult.positiveWords=positiveWords;
+        splitResult.positiveWordsCount=positiveWordsCount;
+        splitResult.negativeScore=negativeScore;
+        splitResult.negativeWords=negativeWords;
+        splitResult.negativeWordsCount=negativeWordsCount;
+        splitResult.totalScore=totalScore;
+        splitResult.noScoreWordsCount=noScoreWordsCount;
+
+        return splitResult;
     }
 };
 

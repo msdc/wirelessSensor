@@ -26,7 +26,7 @@
 
     <div class="row">
         <h4>测试结果：</h4>
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="grade_result">
             <thead>
             <tr>
                 <td>Flag</td>
@@ -43,12 +43,12 @@
             <tr>
                 <td>通过系统词库-判断全文</td>
                 <td>-1.0</td>
-                <td>-99.47</td>
-                <td>2.33</td>
-                <td>-101.8</td>
-                <td>4.0</td>
-                <td>2.0</td>
-                <td>0</td>
+                <td id="totalScore">-99.47</td>
+                <td id="positiveScore">2.33</td>
+                <td id="negativeScore">-101.8</td>
+                <td id="positiveWordsCount">4.0</td>
+                <td id="negativeWordsCount">2.0</td>
+                <td id="noScoreWordsCount">0</td>
             </tr>
             </tbody>
         </table>
@@ -59,7 +59,7 @@
     <div class="row">
         <h4>为正的情感倾向词集合：</h4>
 
-        <p>便捷=0.51 安全=0.51 规划=0.51 需要=0.8</p>
+        <p id="positiveWords">便捷=0.51 安全=0.51 规划=0.51 需要=0.8</p>
     </div>
 
     <div class="row addRowHeight"></div>
@@ -67,7 +67,7 @@
     <div class="row">
         <h4>为负的情感倾向词集合：</h4>
 
-        <p>投诉=-1.0 破坏=-0.8</p>
+        <p id="negativeWords">投诉=-1.0 破坏=-0.8</p>
     </div>
 
     <div class="row addRowHeight"></div>
