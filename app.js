@@ -6,6 +6,7 @@ var maintain=require('./webAPI/maintainModule.js');
 var app = express();
 var timeout = require('connect-timeout');
 var initializer=require('./webAPI/initializer.js');
+var segment=require('./webAPI/segment.js');
 
 app.use(timeout("30s"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,6 +47,7 @@ app.get("/init/dataInit",initializer.dataInit);
 app.get("/init/clear_calculated",initializer.clearCalculatedData);
 
 app.get("/getRemainTime",sensor.getRemainTime);
+app.post("/newsSegment",segment.newsSegment);
 
 app.listen(1337, function () {
     console.log('Express server listening on port 1337');
