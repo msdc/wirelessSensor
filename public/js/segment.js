@@ -49,6 +49,7 @@ function gradeSplitHandler(data){
    var negativeWordsString=' ';
    var positiveWords=result.positiveWords;
    var negativeWords=result.negativeWords;
+
    if(result){
        $('#totalScore').text(result.totalScore).css({color:"blue"});
        $('#positiveScore').text(result.positiveScore).css({color:"blue"});
@@ -77,6 +78,19 @@ function gradeSplitHandler(data){
            .css({color:"blue"});
 
        $('#negativeWords').text(negativeWordsString)
+           .css({color:"blue"});
+
+       var emotionScore=function(){
+           if(result.positiveScore>result.negativeScore){
+               return 1;
+           }else if(result.positiveScore==result.negativeScore){
+               return 0;
+           }else{
+              return -1;
+           }
+       };
+
+       $('#emotionScore').text(emotionScore)
            .css({color:"blue"});
    }
 }
